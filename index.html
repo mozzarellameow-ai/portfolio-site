@@ -1160,33 +1160,11 @@ body.editing .row-head{cursor:default}
     <button aria-pressed="true" data-tag="all">All</button>
     <button aria-pressed="false" data-tag="Levvels">레벨스 (최근)</button>
     <button aria-pressed="false" data-tag="Logistics">Logistics</button>
-    <button aria-pressed="false" data-tag="Entertainment">Entertainment</button>
-    <button aria-pressed="false" data-tag="Healthcare">Healthcare</button>
     <button aria-pressed="false" data-tag="Retool">Low-code</button>
     <button aria-pressed="false" data-tag="Study">Study · 기획</button>
   </div>
 
   <div class="grid" id="pgrid">
-    <div class="card" role="button" tabindex="0" data-tags="Levvels AI" data-title="신규 AI 서비스 0-to-1 런칭 기획">
-      <span class="no">L1 / 0-TO-1</span>
-      <h3>신규 AI 서비스 0-to-1 런칭 기획</h3>
-      <p>화면 한 장 없던 상태에서 런칭 스펙까지. 대화 정책, UGC 제작 도구, 콘텐츠 검열, 전환 퍼널을 하나의 문서 체계로 묶은 과정.</p>
-      <div class="chips"><span class="chip">0-to-1</span><span class="chip">LLM</span></div>
-      <span class="go">자세히 →</span>
-      <div class="proj-doc" hidden>
-        <p>미출시 상태라 서비스명과 화면은 공개하지 않습니다. 대신 <b>0-to-1 기획에서 무엇을 먼저 닫아야 하는지</b>에 대한 판단을 정리했습니다.</p>
-        <ul class="did">
-          <li>런칭 전체 기획 총괄 — 화면·플로우·정책 설계, 오픈 스펙 정의, QA 전략 수립</li>
-          <li>대화 도메인의 컨텍스트·메모리 정책 설계. 무엇을 기억하고 무엇을 잊을지가 제품 성격을 결정한다고 봄</li>
-          <li>UGC 제작 도구를 작가용 에디터와 위저드 기반 빠른 제작 두 갈래로 나눔 — 창작 깊이와 진입 장벽을 동시에 잡기 위한 구조</li>
-          <li>콘텐츠·메시지 검열 엔진과 제재 정책의 기획 오너십 보유. 오탐과 미탐의 비용이 다르다는 전제로 임계값 설계</li>
-          <li>가입 → 온보딩 → 첫 대화 → 구독 퍼널을 출시 전에 정의하고 이벤트 스키마를 먼저 구축</li>
-          <li>KO·JA·EN 다국어 관리 체계와 문자열 키 관리 프로세스 수립</li>
-        </ul>
-        <div class="outcome">지표 체계를 출시 전에 확정해 둔 덕분에, 런칭 직후부터 단계별 이탈을 근거로 개선 순서를 정할 수 있는 상태로 시작</div>
-      </div>
-    </div>
-
     <div class="card" role="button" tabindex="0" data-tags="Levvels Commerce" data-title="재고 기반 확률형 가챠 설계">
       <span class="no">L2 / GACHA</span>
       <h3>재고 기반 확률형 가챠 설계</h3>
@@ -1256,30 +1234,6 @@ body.editing .row-head{cursor:default}
       </div>
     </div>
 
-    <div class="card" role="button" tabindex="0" data-tags="Logistics Retool" data-notion="https://app.notion.com/52184382ed064bafa50603bd1a49cda3" data-title="판매자 시스템(OMS) 구축">
-      <span class="cover-bg" style="background-image:url('images/pf37.jpg')" aria-hidden="true"></span>
-      <span class="no">01 / OMS</span>
-      <h3>판매자 시스템(OMS) 구축</h3>
-      <p>실시간 배송 추적, 통합 물류 관리, 쇼핑몰 솔루션 연동, 매출 데이터 분석까지. 운영 효율과 개발 생산성을 함께 끌어올린 판매자용 시스템.</p>
-      <div class="chips"><span class="chip">PM</span><span class="chip">SQL</span></div>
-      <span class="go">자세히 →</span>
-    <div class="proj-doc" hidden><p>화주사가 직접 주문을 올리고 배송 상태를 확인하는 판매자용 시스템입니다. 자사 판매자 시스템을 갖춰 신규 화주사를 확보하는 것이 목표였습니다.</p><ul class="did"><li>대량 주문 업로드, 배송·반품 신청, 송장 출력, 알림톡 관리, 실시간 배송 추적을 설계</li><li>v2·v3를 Retool로 직접 개발해 배포하고 유지보수 — 요구사항 반영 속도를 높이기 위한 선택</li><li>결과 내 검색을 도입해 서버 요청을 줄이고 검색 실패율을 낮춤</li></ul><div class="outcome">2023년 Q1 대비 Q2 신규 계약율 50% 증가, 물동량 20% 증가, 서버 요청 수 50% 감소.</div></div></div>
-    <div class="card" role="button" tabindex="0" data-tags="Logistics Retool" data-notion="https://app.notion.com/5b3b631350f8430889f7fe71cecf8487" data-title="배송 관제 시스템 (TMS · Backoffice)">
-      <span class="cover-bg" style="background-image:url('images/pf27.jpg')" aria-hidden="true"></span>
-      <span class="no">02 / TMS</span>
-      <h3>배송 관제 시스템 (TMS · Backoffice)</h3>
-      <p>현장 상황을 반영한 자동 분류와 클러스터링 개선, 기사 실시간 위치 모니터링, 데이터 기반 경로 최적화로 리드타임을 줄인 관제 시스템.</p>
-      <div class="chips"><span class="chip">PM</span><span class="chip">UXUI</span></div>
-      <span class="go">자세히 →</span>
-    <div class="proj-doc" hidden><p>자동 분류가 당일 현장 상황을 반영하지 못해 허브에서 재분류가 반복되는 문제에서 출발했습니다.</p><ul class="did"><li>사전 플래닝 단계에서 운영자가 클러스터를 직접 편집하는 GIS 화면 설계</li><li>데이터 기반 허브 상·하차 최적 경로 자동 생성 로직 기획</li><li>자동 배차·예약 관리, 간선 라우트 관리, 실시간 운행 관제</li></ul><div class="outcome">재분류 필요성 50% 감소, 분류 오류율 0.1%, 배송 리드타임 20% 단축.</div></div></div>
-    <div class="card" role="button" tabindex="0" data-tags="Logistics" data-notion="https://app.notion.com/7a240eed4aaf4135abd5ba3dad7a28c4" data-title="라스트마일(Last-Mile) 앱">
-      <span class="cover-bg" style="background-image:url('images/pf12.jpg')" aria-hidden="true"></span>
-      <span class="no">03 / APP</span>
-      <h3>라스트마일(Last-Mile) 앱</h3>
-      <p>평균 6시간 내 당일 배송·반품을 위한 기사용 앱. 허브 앤 스포크의 지연 문제를 모듈화된 프로세스와 자동화로 푼 리서치 및 UX 개선 사례.</p>
-      <div class="chips"><span class="chip">React Native</span><span class="chip">iOS · aOS</span></div>
-      <span class="go">자세히 →</span>
-    <div class="proj-doc" hidden><p>평균 6시간 이내 당일 배송과 반품을 처리하는 배송 기사용 앱입니다. 허브 앤 스포크 구조의 지연 문제를 모듈화된 프로세스로 풀었습니다.</p><ul class="did"><li>쿠팡 배송 현장 필드 리서치로 고정형·플렉스 기사 페르소나 정의</li><li>본인인증, 자동·수동 배차, 출입 정보 수집, 바코드 스캔, 실시간 위치 추적 설계</li><li>MVP를 PWA로 두 달 만에 출시해 검증한 뒤 React Native로 Android·iOS 전환</li></ul><div class="outcome">상하차 시간 30분 → 3분, 물품당 배송 완료 9분 → 5분, 미배송률 일평균 60% 감소.</div></div></div>
     <div class="card" role="button" tabindex="0" data-tags="Logistics Retool" data-notion="https://app.notion.com/67dbbe4479264f739fd9ec372fbd3ac9" data-title="비개발자의 로우코드 개발 — 물류 OMS 구축 후기">
       <span class="no">04 / ESSAY</span>
       <h3>비개발자의 로우코드 개발 — 물류 OMS 구축 후기</h3>
@@ -1301,38 +1255,6 @@ body.editing .row-head{cursor:default}
       <div class="chips"><span class="chip">PM</span><span class="chip">PWA</span></div>
       <span class="go">자세히 →</span>
     <div class="proj-doc" hidden><p>고객이 배송 상태를 직접 확인하고 반품까지 접수하는 웹앱입니다. 광고 배너를 통한 추가 수익 모델을 함께 설계했습니다.</p><ul class="did"><li>실시간 배송 조회, 반품·교환 신청, 배송 주소 수집, 주소 검색 설계</li><li>광고주 유치를 위한 배너 지면과 KPI 기반 성과 측정 방식 기획</li></ul><div class="outcome">반품 리드타임 내 처리율 90%, 월평균 문의 50 → 30건, MAU 30% 상승.</div></div></div>
-    <div class="card" role="button" tabindex="0" data-tags="Entertainment" data-notion="https://app.notion.com/ff9a6e682640476e86ef26dca94bdb3f" data-title="아티스트 영상 메시지 서비스 플랫폼">
-      <span class="cover-bg" style="background-image:url('images/pf49.jpg')" aria-hidden="true"></span>
-      <span class="no">07 / CREAM</span>
-      <h3>아티스트 영상 메시지 서비스 플랫폼</h3>
-      <p>팬이 셀럽에게 개인화된 영상 메시지를 받는 플랫폼. 예약 시스템, 맞춤 메시지 옵션, 리뷰 시스템과 수수료·프리미엄 중심 수익 모델 설계.</p>
-      <div class="chips"><span class="chip">UXUI</span><span class="chip">iOS · aOS</span></div>
-      <span class="go">자세히 →</span>
-    <div class="proj-doc" hidden><p>팬이 셀럽에게 개인화된 영상 메시지를 요청하는 플랫폼입니다. 팬덤 문화를 수익 구조로 연결했습니다.</p><ul class="did"><li>Cameo·CelebVM 경쟁사 분석으로 차별화 지점 도출</li><li>요청 → 녹화 → 전달로 이어지는 양방향 플로우와 셀럽 예약 시스템 설계</li><li>맞춤 메시지 옵션, 리뷰 시스템, 수수료·프리미엄 수익 모델 기획</li></ul><div class="outcome">인앱 결제 도입 후 6개월 내 매출 25% 증가, PG사 결제 도입으로 수수료 15% 절감.</div></div></div>
-    <div class="card" role="button" tabindex="0" data-tags="Entertainment" data-notion="https://app.notion.com/e0a40223d46d49dca539b156106dca57" data-title="디지털 콘텐츠 · 소장품 거래 플랫폼">
-      <span class="cover-bg" style="background-image:url('images/pf55.jpg')" aria-hidden="true"></span>
-      <span class="no">08 / FANLINK</span>
-      <h3>디지털 콘텐츠 · 소장품 거래 플랫폼</h3>
-      <p>팬들이 소장품을 나누고 교환하는 플랫폼. 등록·검색·교환·채팅 기능과 구독, 프리미엄 멤버십, 광고 기반 수익 구조를 함께 기획.</p>
-      <div class="chips"><span class="chip">UXUI</span><span class="chip">BM</span></div>
-      <span class="go">자세히 →</span>
-    <div class="proj-doc" hidden><p>팬들이 소장품을 나누고 교환하는 플랫폼 기획입니다.</p><ul class="did"><li>물품 등록·검색·나눔·교환·채팅 기능 설계</li><li>구독 요금, 프리미엄 멤버십, 광고를 조합한 수익 구조</li><li>초기 사용자 확보와 커뮤니티 활성화 전략</li></ul></div></div>
-    <div class="card" role="button" tabindex="0" data-tags="Healthcare" data-notion="https://app.notion.com/89a3791271614c1286e46e830517e9c1" data-title="맞춤 비타민 헬스케어 플랫폼">
-      <span class="cover-bg" style="background-image:url('images/pf60.jpg')" aria-hidden="true"></span>
-      <span class="no">09 / LEMONBOX</span>
-      <h3>맞춤 비타민 헬스케어 플랫폼</h3>
-      <p>개인 맞춤형 비타민·건강기능식품 웹 서비스의 UX 설계와 브랜드 경험 디자인.</p>
-      <div class="chips"><span class="chip">UXUI</span><span class="chip">BX</span></div>
-      <span class="go">자세히 →</span>
-    <div class="proj-doc" hidden><p>‘비타민에도 취향을 담을 수 있을까’라는 질문에서 시작한 맞춤 건강기능식품 서비스입니다.</p><ul class="did"><li>브랜드 정의와 구매 의사결정 단계별 서비스 전략 수립</li><li>와이어프레임과 UX 설계, 코디 신청 화면 디자인</li><li>컬러·컴포넌트 시스템 구축</li></ul></div></div>
-    <div class="card" role="button" tabindex="0" data-tags="Healthcare" data-notion="https://app.notion.com/e28bc181d60b46379665473969464379" data-title="셀프메디케이션 헬스케어 플랫폼">
-      <span class="cover-bg" style="background-image:url('images/pf70.jpg')" aria-hidden="true"></span>
-      <span class="no">10 / 21CHALLENGE</span>
-      <h3>셀프메디케이션 헬스케어 플랫폼</h3>
-      <p>21일간 건강 습관을 만드는 플랫폼. 맞춤 알림, 게임화된 도전, 전문가 상담, AI 챗봇과 월간 구독 모델로 지속적인 참여를 설계.</p>
-      <div class="chips"><span class="chip">UXUI</span><span class="chip">App</span></div>
-      <span class="go">자세히 →</span>
-    <div class="proj-doc" hidden><p>새로운 행동이 습관이 되는 21일을 축으로 한 헬스케어 플랫폼 기획입니다.</p><ul class="did"><li>맞춤 알림, 게임화된 도전 과제, 전문가 상담 설계</li><li>월간 구독 모델과 AI 챗봇 기반 개인화 서비스 구조</li><li>제품 구조도와 챌린지 진행·결과 화면</li></ul></div></div>
     <div class="card" role="button" tabindex="0" data-tags="Study" data-notion="https://app.notion.com/8eba684305f34273976d178f13499ebb" data-title="티메프 사태 정리 — PG사 / VAN사">
       <span class="no">11 / STUDY</span>
       <h3>티메프 사태 정리 — PG사 / VAN사</h3>
