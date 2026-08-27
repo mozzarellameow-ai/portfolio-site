@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>세포 마켓 — 2차 창작자 도입 (embed)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+:root{--lime:#D0F727;--tint:#F4FCD5;--edge:#B4DC1E;--l2:#828282;--l3:#e0e0e0;--g1:#333;--g6:#6e6e6e;--neg:#8C2F39;--sh:0 1.807px 11.293px rgba(0,0,0,.15);}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#F3F4F6;overflow-x:hidden}
+body{font-family:Pretendard,-apple-system,sans-serif;font-variant-numeric:tabular-nums;display:flex;flex-direction:column;align-items:center;gap:0}
+
+.wrap{width:100%;display:flex;justify-content:center}
+.stage{width:1920px;height:1080px;position:relative;flex:none;transform-origin:top center;transform:scale(var(--s,1))}
+
+.frame{position:absolute;inset:0;background:#f0f0f0;overflow:hidden}
+.rule{position:absolute;top:150px;height:1px;background:#000}
+.rule.a{left:150px;width:367.5px}
+.rule.b{left:567.5px;right:150px}
+.lead{position:absolute;left:150px;font-size:17px;color:#333;line-height:1.72;font-weight:500}
+.lead b{color:#000;font-weight:700}
+.sec{position:absolute;display:flex;align-items:baseline;gap:12px}
+.sec .n{font-size:15px;font-weight:700;color:#000;background:var(--lime);width:24px;height:24px;
+  display:flex;align-items:center;justify-content:center;border-radius:3px}
+.sec .t{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.sec .d{font-size:13.5px;color:#6e6e6e;font-weight:500}
+.lbl{position:absolute;font-size:11px;color:#6e6e6e;font-weight:600;letter-spacing:.08em}
+.note{position:absolute;left:150px;bottom:44px;width:1450px;display:flex;
+  align-items:flex-start;gap:13px;font-size:13.5px;color:#5a5a5a;font-weight:500;line-height:1.65}
+.note b{color:#000;font-weight:700}
+.mk{background:var(--lime);color:#000;font-weight:700;padding:2px 8px;border-radius:3px;
+  font-size:12.5px;white-space:nowrap;flex:none}
+.card{position:absolute;border-radius:9.034px;box-shadow:var(--sh);
+  display:flex;flex-direction:column;justify-content:center}
+.c1{background:var(--lime);color:#000}
+.c2{background:#828282;color:#fff}
+.c3{background:#e0e0e0;color:#333}
+.cd,.cdark{background:#16181A;color:var(--lime)}
+.cw{background:#fff;border:1.5px solid var(--edge);color:#333}
+.en{font-size:11px;opacity:.6;font-weight:500}
+.tb{position:absolute}
+.tr{display:flex;align-items:center;border-bottom:1px solid #dcdcdc}
+.tr.hd{border-bottom:1.5px solid #000}
+.tr.hd div{font-size:11.5px;color:#6e6e6e;font-weight:600;letter-spacing:.07em}
+.tr.alt{background:#e6e6e6}
+.tr.mk2,.tr.mark{background:var(--tint);box-shadow:inset 3px 0 0 var(--edge)}
+.tr div{padding:0 18px;font-size:14.5px;color:#333;font-weight:500}
+.tr div.k{font-weight:600;color:#000}
+.tr div.dim{color:#9a9a9a}
+.chip{display:inline-block;background:#fff;border:1px solid #cfcfcf;border-radius:4px;
+  padding:2px 10px;font-size:13px;color:#333;font-weight:500}
+.chip.on{background:var(--lime);border-color:var(--edge);color:#000;font-weight:700}
+.chip.no{background:#f2eaea;border-color:#d8c4c6;color:var(--neg)}
+.chip.sm{font-size:11.5px;padding:2px 8px}
+.pill{display:inline-block;background:#fff;border:1px solid #cfcfcf;border-radius:4px;
+  padding:2px 10px;font-size:13px}
+.pill.on{background:var(--lime);border-color:var(--edge);font-weight:700;color:#000}
+.box{position:absolute;background:#fff;border:1px solid #dcdcdc;border-radius:9.034px}
+.box.hi{background:var(--tint);border:1.5px solid var(--edge)}
+.box.dk{background:#16181A;border:0}
+.stat{position:absolute}
+.stat .v{font-size:38px;font-weight:700;color:#000;line-height:1;letter-spacing:-.02em}
+.stat .v em{font-style:normal;background:var(--lime);padding:0 5px}
+.stat .n{font-size:12.5px;color:#6e6e6e;font-weight:500;margin-top:9px}
+.arw{position:absolute;font-size:20px;color:#b0b0b0}
+.stem{position:absolute;background:#b8b8b8}
+.shot{position:absolute;border:1px solid #cfcfcf;border-radius:6px;overflow:hidden;box-shadow:var(--sh);background:#fff}
+.shot img{display:block;width:100%}
+.shotcap{position:absolute;font-size:11.5px;color:#6e6e6e;font-weight:600}
+.hko{position:absolute;left:150px;top:178px;font-size:40px;font-weight:700;letter-spacing:-.02em}
+.hen{position:absolute;left:150px;top:236px;font-size:20px;font-weight:700;color:#000;background:var(--lime);padding:1px 9px}
+.hmeta{position:absolute;right:150px;top:182px;text-align:right;font-size:13px;color:#7a7a7a;line-height:1.7}
+.hmeta b{color:#333;font-weight:600}
+.pg{position:absolute;right:150px;bottom:52px;font-size:12px;color:#9a9a9a;font-weight:600;letter-spacing:.08em}
+.h-ko{position:absolute;left:150px;top:178px;font-size:40px;font-weight:700;letter-spacing:-.02em}
+.h-en{position:absolute;left:150px;top:236px;font-size:20px;font-weight:700;color:#000;background:var(--lime);padding:1px 9px}
+.h-meta{position:absolute;right:150px;top:182px;text-align:right;font-size:13px;color:#7a7a7a;line-height:1.7}
+.h-meta b{color:#333;font-weight:600}
+.pageno{position:absolute;right:150px;bottom:56px;font-size:12px;color:#9a9a9a;font-weight:600;letter-spacing:.08em}
+.lagrow{position:absolute;left:150px;width:1620px;height:74px;border-top:1px solid #d6d6d6;display:flex;align-items:center}
+.lagname{width:330px;font-size:15px;font-weight:600;color:#000;padding-left:4px}
+.track{position:relative;flex:1;height:100%}
+.axis{position:absolute;left:0;right:0;top:50%;height:1px;background:#dcdcdc}
+.bar{position:absolute;top:50%;transform:translateY(-50%);height:9px;background:#b8b8b8;border-radius:1px}
+.bar.neg{background:#e0cccd}
+.pt{position:absolute;top:50%;width:15px;height:15px;transform:translate(-50%,-50%)}
+.pt.pay{background:#fff;border:2px solid #000;border-radius:2px}
+.pt.fix{background:var(--lime);border:2px solid #000;border-radius:2px}
+.pt.non{background:#8C2F39;transform:translate(-50%,-50%) rotate(45deg)}
+.gap{width:140px;text-align:right;font-size:14px;color:#8a8a8a;font-weight:600;padding-right:4px}
+.gap.long{color:#8C2F39}
+.mhead{position:absolute;font-size:12.5px;color:#6e6e6e;font-weight:600;transform:translateX(-50%)}
+.legend{position:absolute;left:150px;display:flex;gap:36px;align-items:center;font-size:12.5px;color:#6e6e6e;font-weight:500}
+.legend i{width:13px;height:13px;display:inline-block;margin-right:8px;vertical-align:-2px}
+.ledger{position:absolute;background:#fff;border:1px solid #cfcfcf;border-radius:9.034px;box-shadow:var(--sh);overflow:hidden}
+.lhead{display:flex;justify-content:space-between;align-items:center;height:46px;padding:0 24px;border-bottom:1px solid #dcdcdc;font-size:11.5px;color:#6e6e6e;font-weight:600;letter-spacing:.08em}
+.lin{display:flex;justify-content:space-between;align-items:center;height:96px;padding:0 24px;border-bottom:2px solid #000;background:var(--tint)}
+.lin .k{font-size:16px;font-weight:700;color:#000}
+.lin .s{font-size:12.5px;color:#7a7a7a;font-weight:500;margin-top:3px}
+.lin .v{font-size:34px;font-weight:700;color:#000;letter-spacing:-.02em}
+.lrow{display:flex;align-items:center;height:62px;padding:0 24px;border-bottom:1px solid #e4e4e4}
+.lrow.alt{background:#f6f6f6}
+.lrow .k{width:200px;font-size:15px;font-weight:600;color:#000}
+.lrow .h{flex:1;font-size:12.5px;color:#8a8a8a;font-weight:500}
+.lrow .v{width:150px;text-align:right;font-size:18px;font-weight:700;color:#000}
+.ltot{display:flex;align-items:center;height:60px;padding:0 24px;border-top:2px double #000}
+.ltot .k{flex:1;font-size:11.5px;color:#6e6e6e;font-weight:600;letter-spacing:.08em}
+.ltot .v{font-size:19px;font-weight:700}
+.tag{display:inline-block;border:1px solid #cfcfcf;border-radius:3px;padding:1px 7px;font-size:10.5px;color:#8a8a8a;font-weight:600;margin-left:9px;vertical-align:2px}
+.st{position:absolute;height:92px;border-radius:9.034px;box-shadow:var(--sh);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.st .n{font-size:18px;font-weight:700;letter-spacing:.04em}
+.st .d{font-size:12px;font-weight:500;opacity:.72}
+.branch{position:absolute;height:62px;border:1.5px dashed #a8a8a8;border-radius:9.034px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;letter-spacing:.04em;color:#333}
+.branch.neg{border-color:#8C2F39;color:#8C2F39}
+.bdesc{position:absolute;font-size:14.5px;color:#333;font-weight:500}
+.metric{position:absolute;width:516px;height:150px;background:#fff;border:1px solid #dcdcdc;border-radius:9.034px;box-shadow:var(--sh);padding:26px 28px}
+.metric .k{font-size:40px;font-weight:700;color:#000;letter-spacing:-.02em}
+.metric .k em{font-style:normal;background:var(--lime);padding:0 6px}
+.metric .n{font-size:14px;color:#6e6e6e;font-weight:500;margin-top:10px}
+.olist{position:absolute;left:150px;width:1620px}
+.oitem{display:flex;gap:16px;align-items:center;height:60px;border-bottom:1px solid #dcdcdc;font-size:15px;color:#333;font-weight:500}
+.oitem span.d{color:#b0b0b0;font-weight:700}
+
+</style></head>
+<body>
+<!-- ═══════ 01 개요 ═══════ -->
+<div class="wrap"><div class="stage"><div class="frame">
+ <div class="rule a"></div><div class="rule b"></div>
+ <div class="hko">2차 창작자 도입</div><div class="hen">Derivative Creator</div>
+ <div class="hmeta"><b>Vuddy</b> · 세포 마켓 1차<br>PM · 정책 정의 · 화면 기획 (Studio / Admin)</div>
+
+ <div class="lead" style="top:312px;width:1080px">
+  크리에이터의 IP를 기반으로 <b>팬이 직접 상품을 만들어 파는 채널</b>을 플랫폼에 새로 열었습니다.
+  판매자가 한 층 늘어난다는 것은 회원 등급 하나를 추가하는 일이 아니라,
+  <b>회원 · 채널 · 판매 · 정산 네 도메인의 규칙을 전부 다시 여는 일</b>이었습니다.</div>
+
+ <div class="box" style="left:1290px;top:300px;width:480px;height:172px;padding:22px 26px">
+   <div class="lbl" style="position:static">기존 구조와의 관계</div>
+   <div style="font-size:13.5px;color:var(--g1);font-weight:500;line-height:1.75;margin-top:12px">
+     기존 규칙을 <b style="color:#000">[일반] 타입</b>으로 정의해 크리에이터 채널에 그대로 두고,
+     <b style="color:#000">[2차 창작] 타입</b>을 신규로 얹었습니다.
+     돌아가는 것을 건드리지 않고 확장하는 쪽을 택했습니다.</div></div>
+
+ <div class="lbl" style="left:150px;top:470px">새로 정의한 값</div>
+ <div class="stat" style="left:150px;top:500px"><div class="v"><em>4</em></div><div class="n">채널 상태값<br>ACTIVE · SUSPENDED<br>DETACHED · CLOSED</div></div>
+ <div class="stat" style="left:420px;top:500px"><div class="v"><em>4</em></div><div class="n">정산 타겟 타입<br>PG · 플레이스토어<br>· 앱스토어 분기</div></div>
+ <div class="stat" style="left:690px;top:500px"><div class="v"><em>3</em></div><div class="n">신청 상태값<br>검토중 · 완료 · 취소<br>어드민 수동 전이</div></div>
+ <div class="stat" style="left:960px;top:500px"><div class="v"><em>3</em></div><div class="n">정산 주체 유형<br>개인 · 개인사업자<br>· 법인사업자</div></div>
+ <div class="stat" style="left:1230px;top:500px"><div class="v"><em>1</em></div><div class="n">회원 등급 · 채널 타입<br>· 채널 카테고리<br>각 1개씩 추가</div></div>
+ <div class="stat" style="left:1500px;top:500px"><div class="v"><em>2</em></div><div class="n">판매 가능 타입<br>실물 · 베이직 디지털<br>(4개 타입은 불가)</div></div>
+
+ <div class="sec" style="left:150px;top:700px"><span class="n">·</span><span class="t">건드려야 했던 도메인</span>
+   <span class="d">하나의 등급 추가가 네 도메인으로 번집니다</span></div>
+
+ <div class="card cd" style="left:150px;top:752px;width:390px;height:74px;align-items:center;gap:3px">
+   <div style="font-size:16px;font-weight:600">회원 · 채널</div><div class="en" style="color:#fff;opacity:.55">Member / Channel</div></div>
+ <div class="card cd" style="left:558px;top:752px;width:390px;height:74px;align-items:center;gap:3px">
+   <div style="font-size:16px;font-weight:600">온보딩 · 인증</div><div class="en" style="color:#fff;opacity:.55">Onboarding / KYC</div></div>
+ <div class="card cd" style="left:966px;top:752px;width:390px;height:74px;align-items:center;gap:3px">
+   <div style="font-size:16px;font-weight:600">판매</div><div class="en" style="color:#fff;opacity:.55">Sale</div></div>
+ <div class="card cd" style="left:1374px;top:752px;width:396px;height:74px;align-items:center;gap:3px">
+   <div style="font-size:16px;font-weight:600">정산</div><div class="en" style="color:#fff;opacity:.55">Settlement</div></div>
+
+ <div class="card c3" style="left:150px;top:840px;width:390px;height:56px;align-items:center;gap:1px"><div style="font-size:13px;font-weight:500">등급 · 채널 타입 · 카테고리 추가</div></div>
+ <div class="card c3" style="left:150px;top:904px;width:390px;height:56px;align-items:center;gap:1px"><div style="font-size:13px;font-weight:500">채널 상태값 4종 · 겸직 정책</div></div>
+ <div class="card c3" style="left:558px;top:840px;width:390px;height:56px;align-items:center;gap:1px"><div style="font-size:13px;font-weight:500">신청 플로우 · 수집 정보 · 약관 3종</div></div>
+ <div class="card c3" style="left:558px;top:904px;width:390px;height:56px;align-items:center;gap:1px"><div style="font-size:13px;font-weight:500">본인인증(KCP) · 채널 자동 개설</div></div>
+ <div class="card c3" style="left:966px;top:840px;width:390px;height:56px;align-items:center;gap:1px"><div style="font-size:13px;font-weight:500">판매 가능 타입 제한</div></div>
+ <div class="card c3" style="left:966px;top:904px;width:390px;height:56px;align-items:center;gap:1px"><div style="font-size:13px;font-weight:500">기능 지원 범위 정의</div></div>
+ <div class="card c3" style="left:1374px;top:840px;width:396px;height:56px;align-items:center;gap:1px"><div style="font-size:13px;font-weight:500">정산 규칙 [2차 창작] 타입 신규</div></div>
+ <div class="card c3" style="left:1374px;top:904px;width:396px;height:56px;align-items:center;gap:1px"><div style="font-size:13px;font-weight:500">계산식 · 명세 항목 · 어드민</div></div>
+
+ <div class="note"><span class="mk">범위</span><span>세포 마켓 1차 배포 기준. 정책 정의부터 Studio · Admin 화면 기획까지 단독으로 담당했습니다.</span></div>
+ <div class="pg">SEPO / 01</div>
+</div></div></div>
+
+
+<!-- ═══════ 02 회원·채널 ═══════ -->
+<div class="wrap"><div class="stage"><div class="frame">
+ <div class="rule a"></div><div class="rule b"></div>
+ <div class="hko">회원 · 채널 확장</div><div class="hen">Member &amp; Channel</div>
+ <div class="hmeta"><b>01</b> 회원 · 채널<br>기존 열거값에 2차 창작 추가</div>
+
+ <div class="lead" style="top:308px;width:1440px">
+  판매 주체가 늘어나면 <b>회원 등급 · 채널 타입 · 채널 카테고리</b> 세 개의 열거값이 동시에 벌어집니다.
+  세 축은 성격이 달라서 하나로 묶을 수 없었습니다 — 등급은 <b>사람</b>, 타입은 <b>채널의 정산 규칙</b>, 카테고리는 <b>탐색 분류</b>입니다.</div>
+
+ <div class="lbl" style="left:150px;top:394px">회원 등급 · MEMBER GRADE</div>
+ <div style="position:absolute;left:150px;top:422px;display:flex;gap:9px">
+  <span class="chip">크리에이터</span><span class="chip">채널 관리자</span><span class="chip">일반</span><span class="chip on">2차 창작자</span></div>
+
+ <div class="lbl" style="left:150px;top:486px">채널 타입 · CHANNEL TYPE <span style="color:#9a9a9a;letter-spacing:0;font-weight:500">— 정산 규칙이 붙는 축</span></div>
+ <div style="position:absolute;left:150px;top:514px;display:flex;gap:9px">
+  <span class="chip">일반 (크리에이터)</span><span class="chip">이니시</span><span class="chip on">2차 창작</span></div>
+
+ <div class="lbl" style="left:150px;top:578px">채널 카테고리 · CATEGORY</div>
+ <div style="position:absolute;left:150px;top:606px;display:flex;gap:9px;flex-wrap:wrap;width:900px">
+  <span class="chip">엔터테인먼트</span><span class="chip">버츄얼</span><span class="chip">웹툰</span><span class="chip">일러스트</span>
+  <span class="chip">보이스</span><span class="chip">브랜드</span><span class="chip">클래스</span><span class="chip on">2차 창작</span></div>
+
+ <div class="box" style="left:1130px;top:380px;width:640px;height:290px;padding:24px 28px">
+  <div class="lbl" style="position:static">함께 정의한 정책</div>
+  <div class="tb" style="position:static;margin-top:14px">
+   <div class="tr" style="height:56px"><div class="k" style="width:64px;padding-left:0"><span class="chip sm on">핵심</span></div>
+     <div style="flex:1">2차 창작자는 <b style="color:#000">다른 등급과 겸할 수 없음</b></div></div>
+   <div class="tr" style="height:56px"><div style="width:64px;padding-left:0"></div>
+     <div style="flex:1">채널 개설 &amp; 판매 오픈 후 <b style="color:#000">등급 변경 불가</b></div></div>
+   <div class="tr" style="height:52px"><div style="width:64px;padding-left:0"></div>
+     <div style="flex:1">n개 채널 개설 가능 <span style="color:#9a9a9a">(단, UI는 제공하지 않음)</span></div></div>
+   <div class="tr" style="height:52px;border-bottom:0"><div style="width:64px;padding-left:0"></div>
+     <div style="flex:1">2차 창작 채널도 채널 관리자 지정 가능</div></div>
+  </div></div>
+
+ <div class="box hi" style="left:150px;top:700px;width:1620px;height:186px;padding:26px 30px">
+  <div style="display:flex;gap:44px">
+   <div style="width:420px">
+    <div class="lbl" style="position:static;color:#7a8a2a">판단</div>
+    <div style="font-size:18px;font-weight:700;color:#000;margin-top:9px;line-height:1.45">겸직을 막은 이유는<br>UI가 아니라 정산입니다</div></div>
+   <div style="flex:1;font-size:14.5px;color:var(--g1);font-weight:500;line-height:1.8">
+    한 사람이 크리에이터이면서 동시에 2차 창작자이면, 자기 IP에 자기가 로열티를 내는 거래가 만들어집니다.
+    정산 명세에서 <b style="color:#000">지급 주체와 수취 주체가 같은 행</b>이 생기고, 수수료 귀속을 결정할 수 없게 됩니다.<br>
+    판매 오픈 이후 등급 변경도 같은 이유로 막았습니다 — 이미 발생한 거래의 정산 규칙을 소급해서 바꿀 수 없기 때문입니다.</div>
+  </div></div>
+
+ <div class="note"><span class="mk">확장 원칙</span><span>세 축을 하나의 값으로 합치지 않았습니다. 카테고리에 2차 창작을 넣는 것은 탐색의 문제지만,
+   채널 타입에 넣는 것은 <b>정산 규칙이 갈리는</b> 문제입니다.</span></div>
+ <div class="pg">SEPO / 02</div>
+</div></div></div>
+
+
+<!-- ═══════ 03 온보딩 ═══════ -->
+<div class="wrap"><div class="stage"><div class="frame">
+ <div class="rule a"></div><div class="rule b"></div>
+ <div class="hko">2차 창작자 신청</div><div class="hen">Application Flow</div>
+ <div class="hmeta"><b>02</b> 온보딩 · 인증<br>신청 → 검토 → 등급 전환 → 채널 개설</div>
+
+ <div class="sec" style="left:150px;top:308px"><span class="n">1</span><span class="t">신청 상태 플로우</span>
+   <span class="d">상태는 어드민에서 수동 변경</span></div>
+
+ <div class="card c3" style="left:150px;top:360px;width:150px;height:66px;align-items:center"><div style="font-size:14px;font-weight:600">시작</div></div>
+ <div class="arw" style="left:312px;top:384px">▶ <span style="font-size:11px">제출</span></div>
+ <div class="card cd" style="left:400px;top:360px;width:200px;height:66px;align-items:center;gap:2px"><div style="font-size:14px;font-weight:600">검토중</div><div class="en" style="color:#fff;opacity:.5">Reviewing</div></div>
+ <div class="arw" style="left:612px;top:384px">▶ <span style="font-size:11px">승인</span></div>
+ <div class="card cd" style="left:700px;top:360px;width:200px;height:66px;align-items:center;gap:2px"><div style="font-size:14px;font-weight:600">승인 완료</div><div class="en" style="color:#fff;opacity:.5">Completed</div></div>
+ <div class="arw" style="left:912px;top:378px">▶ <span style="font-size:11px">2차 창작자<br>&nbsp;&nbsp;&nbsp;전환</span></div>
+ <div class="card c1" style="left:1040px;top:360px;width:210px;height:66px;align-items:center;gap:2px"><div style="font-size:14px;font-weight:600">활성 상태</div><div class="en" style="opacity:.55">ACTIVE</div></div>
+
+ <div class="stem" style="left:500px;top:426px;width:1px;height:44px"></div>
+ <div class="arw" style="left:512px;top:462px" ><span style="font-size:11px">취소</span> ▶</div>
+ <div class="card c3" style="left:610px;top:452px;width:180px;height:54px;align-items:center"><div style="font-size:13.5px;font-weight:600">취소됨</div></div>
+ <div class="arw" style="left:802px;top:470px">▶</div>
+ <div class="card c3" style="left:836px;top:452px;width:140px;height:54px;align-items:center"><div style="font-size:13.5px;font-weight:600;opacity:.6">종료</div></div>
+
+ <div class="box" style="left:1300px;top:352px;width:470px;height:162px;padding:20px 24px">
+  <div class="lbl" style="position:static">판단</div>
+  <div style="font-size:14.5px;color:var(--g1);font-weight:500;line-height:1.75;margin-top:10px">
+   <b style="color:#000">신청자는 스스로 취소할 수 없습니다.</b> 고객센터로 연결됩니다.
+   IP 이용 허가와 저작권 약관이 걸린 신청이라, 철회 이력이 남지 않으면 분쟁에서 설명할 수 없기 때문입니다.</div></div>
+
+ <div class="sec" style="left:150px;top:556px"><span class="n">2</span><span class="t">등급 변경을 위한 수집 정보</span>
+   <span class="d">개인 / 개인사업자 / 법인사업자</span></div>
+
+ <div class="tb" style="left:150px;top:606px;width:1000px">
+  <div class="tr hd" style="height:38px"><div style="width:230px">항목</div><div style="flex:1">설명</div></div>
+  <div class="tr" style="height:52px"><div class="k" style="width:230px">크리에이터 선택</div><div style="flex:1">2차 창작 대상 크리에이터 선택</div></div>
+  <div class="tr alt" style="height:52px"><div class="k" style="width:230px">정산 정보</div><div style="flex:1">개인 / 개인사업자 / 법인사업자 구분</div></div>
+  <div class="tr mk2" style="height:60px"><div class="k" style="width:230px">미성년자 여부</div><div style="flex:1">미성년자일 경우 <b style="color:#000">보호자 동의서 필수</b></div></div>
+  <div class="tr" style="height:76px"><div class="k" style="width:230px">약관 · 3종</div>
+    <div style="flex:1">2차 창작자 저작권 가이드라인 / 2차 창작자 활동 허용 약관 / 개인정보 수집</div></div>
+ </div>
+
+ <div class="box" style="left:1200px;top:606px;width:570px;height:240px;padding:22px 26px">
+  <div class="lbl" style="position:static">본인 인증</div>
+  <div style="font-size:14.5px;color:var(--g1);font-weight:500;line-height:1.75;margin-top:12px">
+   정산 형태가 <b style="color:#000">'개인'일 경우에만</b> 본인 인증을 거쳐
+   정산 정보 테이블에 저장합니다.</div>
+  <div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:14px">
+   <span class="chip sm">연락 가능한 전화번호</span><span class="chip sm">이름</span>
+   <span class="chip sm">생년월일</span><span class="chip sm">성별</span></div>
+  <div style="font-size:13px;color:var(--g6);font-weight:500;margin-top:16px;padding-top:14px;border-top:1px solid #e4e4e4">
+   KCP 본인인증 모듈 사용 · 사업자는 사업자등록증과 통장 사본 업로드로 대체</div></div>
+
+ <div class="note"><span class="mk">설계 지점</span><span>미성년자 보호자 동의서와 정산 주체 유형은 <b>같은 화면에서 갈립니다.</b>
+   2차 창작자는 돈을 받는 주체이므로, 팬 가입과 달리 신원과 납세 형태를 신청 단계에서 확정해야 합니다.</span></div>
+ <div class="pg">SEPO / 03</div>
+</div></div></div>
+
+
+<!-- ═══════ 04 채널 자동 개설 + 상태 ═══════ -->
+<div class="wrap"><div class="stage"><div class="frame">
+ <div class="rule a"></div><div class="rule b"></div>
+ <div class="hko">채널 자동 개설과 상태</div><div class="hen">Auto Provisioning &amp; State</div>
+ <div class="hmeta"><b>01</b> 회원 · 채널<br>등급 전환 시점 자동 처리</div>
+
+ <div class="sec" style="left:150px;top:306px"><span class="n">1</span><span class="t">크리에이터는 직접 만들고, 2차 창작자는 자동으로 생깁니다</span></div>
+
+ <div class="box" style="left:150px;top:356px;width:760px;height:110px;padding:20px 26px">
+  <div style="display:flex;align-items:center;gap:18px">
+   <span class="chip sm">크리에이터</span>
+   <span style="font-size:14px;color:var(--g1);font-weight:500">등급 변경 후 <b style="color:#000">직접 스튜디오에서 개설</b></span></div>
+  <div style="height:1px;background:#e4e4e4;margin:14px 0"></div>
+  <div style="display:flex;align-items:center;gap:18px">
+   <span class="chip sm on">2차 창작자</span>
+   <span style="font-size:14px;color:var(--g1);font-weight:500">등급 변경 시점에 <b style="color:#000">채널 개설까지 자동 처리</b></span></div></div>
+
+ <div class="box hi" style="left:950px;top:356px;width:820px;height:110px;padding:20px 26px">
+  <div class="lbl" style="position:static;color:#7a8a2a">판단</div>
+  <div style="font-size:14px;color:var(--g1);font-weight:500;line-height:1.7;margin-top:8px">
+   2차 창작자에게 채널 설정을 맡기면 <b style="color:#000">승인과 판매 시작 사이에 이탈</b>이 생깁니다.
+   승인 즉시 팔 수 있는 상태로 만들고, 꾸미는 것은 나중에 하도록 순서를 뒤집었습니다.</div></div>
+
+ <div class="lbl" style="left:150px;top:500px">자동 생성 규칙 · 회원 정보에서 매핑</div>
+ <div class="tb" style="left:150px;top:528px;width:760px">
+  <div class="tr hd" style="height:34px"><div style="width:200px">항목</div><div style="flex:1">내용</div></div>
+  <div class="tr" style="height:46px"><div class="k" style="width:200px">프로필 이미지</div><div style="flex:1">회원 프로필 이미지</div></div>
+  <div class="tr alt" style="height:46px"><div class="k" style="width:200px">채널 이름</div><div style="flex:1">회원 닉네임</div></div>
+  <div class="tr" style="height:46px"><div class="k" style="width:200px">URL</div><div style="flex:1">닉네임 기반 생성</div></div>
+  <div class="tr alt" style="height:46px"><div class="k" style="width:200px">태그</div><div style="flex:1">2차 창작</div></div>
+  <div class="tr" style="height:46px"><div class="k" style="width:200px">채널 커버</div><div style="flex:1">디폴트 이미지</div></div>
+  <div class="tr alt" style="height:46px;border-bottom:0"><div class="k" style="width:200px">배송비</div><div style="flex:1">일반 / 도서산간 기본값</div></div>
+ </div>
+
+ <div class="sec" style="left:950px;top:500px"><span class="n">2</span><span class="t">2차 창작 채널 상태값</span></div>
+ <div class="tb" style="left:950px;top:548px;width:820px">
+  <div class="tr hd" style="height:34px"><div style="width:190px">상태</div><div style="flex:1">정의</div></div>
+  <div class="tr" style="height:54px"><div class="k" style="width:190px">ACTIVE <span style="font-weight:500;color:#9a9a9a">활성</span></div>
+    <div style="flex:1">1개 이상 유효한 크리에이터 채널 연결이 있음</div></div>
+  <div class="tr alt" style="height:54px"><div class="k" style="width:190px">SUSPENDED <span style="font-weight:500;color:#9a9a9a">정지</span></div>
+    <div style="flex:1">정책 위반으로 정지된 상태</div></div>
+  <div class="tr mk2" style="height:54px"><div class="k" style="width:190px">DETACHED <span style="font-weight:500;color:#9a9a9a">해제</span></div>
+    <div style="flex:1"><b style="color:#000">모든 연결이 종료된 상태</b></div></div>
+  <div class="tr" style="height:54px;border-bottom:0"><div class="k" style="width:190px">CLOSED <span style="font-weight:500;color:#9a9a9a">탈퇴</span></div>
+    <div style="flex:1">2차 창작자가 탈퇴하여 채널주가 없는 상태</div></div>
+ </div>
+
+ <div class="box dk" style="left:950px;top:800px;width:820px;height:130px;padding:22px 26px">
+  <div class="lbl" style="position:static;color:var(--lime)">DETACHED를 별도 상태로 둔 이유</div>
+  <div style="font-size:14px;color:#fff;font-weight:500;line-height:1.75;margin-top:10px">
+   2차 창작 채널의 존속은 <b style="color:var(--lime)">크리에이터의 허용에 달려 있습니다.</b>
+   크리에이터가 2차 창작 허용을 거두면 채널은 팔 수 없게 되지만, 탈퇴한 것은 아닙니다.
+   과거 판매 이력과 <b style="color:var(--lime)">미지급 정산금</b>이 남아 있기 때문에 삭제할 수 없습니다.</div></div>
+
+ <div class="note" style="width:760px"><span class="mk">연결</span><span>정지 · 해제 · 탈퇴를 하나의 값으로 합쳤다면,
+   지급해야 할 정산금이 남은 채널과 남지 않은 채널을 구분할 수 없습니다.</span></div>
+ <div class="pg">SEPO / 04</div>
+</div></div></div>
+
+
+<!-- ═══════ 05 판매 범위 ═══════ -->
+<div class="wrap"><div class="stage"><div class="frame">
+ <div class="rule a"></div><div class="rule b"></div>
+ <div class="hko">판매 가능 범위</div><div class="hen">Sellable Scope</div>
+ <div class="hmeta"><b>03</b> 판매<br>2차 창작 채널 판매 가능 타입</div>
+
+ <div class="lead" style="top:308px;width:1440px">
+  기존 상품 타입을 전부 열어주지 않았습니다. 2차 창작은 <b>타인의 IP에서 파생된 판매</b>라,
+  선결제 · 주문제작 · 확률형처럼 <b>이행 리스크나 사행성이 얹히는 방식</b>은 열지 않았습니다.</div>
+
+ <div class="lbl" style="left:150px;top:392px">판매 가능</div>
+ <div class="card c1" style="left:150px;top:420px;width:380px;height:88px;padding:0 26px;gap:4px">
+   <div style="font-size:17px;font-weight:700">실물</div>
+   <div style="font-size:12.5px;font-weight:600;opacity:.72">크리에이터 굿즈만 가능</div></div>
+ <div class="card c1" style="left:552px;top:420px;width:380px;height:88px;padding:0 26px;gap:4px">
+   <div style="font-size:17px;font-weight:700">베이직 디지털</div>
+   <div style="font-size:12.5px;font-weight:600;opacity:.72">일반 베이직 / 랜덤 베이직</div></div>
+
+ <div class="lbl" style="left:1020px;top:392px">판매 불가</div>
+ <div style="position:absolute;left:1020px;top:420px;display:flex;gap:10px;flex-wrap:wrap;width:750px">
+  <span class="chip no" style="padding:14px 26px;font-size:15px">펀딩</span>
+  <span class="chip no" style="padding:14px 26px;font-size:15px">커스텀</span>
+  <span class="chip no" style="padding:14px 26px;font-size:15px">가챠</span>
+  <span class="chip no" style="padding:14px 26px;font-size:15px">클래스</span>
+  <span class="chip no" style="padding:10px 18px;font-size:13px">베이직 · 퍼스널 교환권</span></div>
+
+ <div class="tb" style="left:1020px;top:520px;width:750px">
+  <div class="tr hd" style="height:32px"><div style="width:170px">제외 사유</div><div style="flex:1"></div></div>
+  <div class="tr" style="height:46px"><div class="k" style="width:170px">펀딩</div><div style="flex:1">선결제 후 수개월 뒤 이행 — 제작 실패 시 회수 부담</div></div>
+  <div class="tr alt" style="height:46px"><div class="k" style="width:170px">커스텀</div><div style="flex:1">개별 주문제작 — 청약철회 제한과 분쟁 소지</div></div>
+  <div class="tr" style="height:46px"><div class="k" style="width:170px">가챠</div><div style="flex:1">확률 고지 의무 — IP 파생 상품에 적용 곤란</div></div>
+  <div class="tr alt" style="height:46px;border-bottom:0"><div class="k" style="width:170px">클래스</div><div style="flex:1">크리에이터 본인의 활동 영역</div></div>
+ </div>
+
+ <div class="sec" style="left:150px;top:576px"><span class="n">·</span><span class="t">채널 기능 지원 범위</span></div>
+ <div class="card c2" style="left:150px;top:624px;width:185px;height:64px;align-items:center"><div style="font-size:14.5px;font-weight:600">포스트</div></div>
+ <div class="card c2" style="left:349px;top:624px;width:185px;height:64px;align-items:center"><div style="font-size:14.5px;font-weight:600">실물 판매</div></div>
+ <div class="card c2" style="left:548px;top:624px;width:185px;height:64px;align-items:center"><div style="font-size:14.5px;font-weight:600">베이직 디지털</div></div>
+ <div class="card c2" style="left:747px;top:624px;width:185px;height:64px;align-items:center"><div style="font-size:14.5px;font-weight:600">정산</div></div>
+
+ <div class="box hi" style="left:150px;top:730px;width:1620px;height:170px;padding:26px 30px">
+  <div style="display:flex;gap:44px">
+   <div style="width:400px">
+    <div class="lbl" style="position:static;color:#7a8a2a">판단</div>
+    <div style="font-size:18px;font-weight:700;color:#000;margin-top:9px;line-height:1.45">여는 것보다<br>닫는 것을 먼저 정했습니다</div></div>
+   <div style="flex:1;font-size:14.5px;color:var(--g1);font-weight:500;line-height:1.8">
+    2차 창작 채널은 <b style="color:#000">오픈마켓</b>이므로 플랫폼이 제작·이행에 개입하지 않습니다.
+    문제가 생겼을 때 플랫폼이 대신 감당해야 하는 방식은 1차 범위에서 제외하고, <b style="color:#000">즉시 이행이 끝나는 두 타입</b>만 열었습니다.<br>
+    같은 이유로 2차 창작 채널에는 <b style="color:#000">버디 오리지널 케이스가 존재하지 않습니다</b> — 플랫폼이 제작 주체가 되는 상품은 이 채널에서 나올 수 없습니다.</div>
+  </div></div>
+
+ <div class="note"><span class="mk">확장 여지</span><span>1차에서 닫아둔 타입은 이행 주체와 책임 범위가 정리되면 순차적으로 열 수 있도록,
+   판매 가능 여부를 <b>채널 타입 기준으로 판정</b>하게 설계했습니다.</span></div>
+ <div class="pg">SEPO / 05</div>
+</div></div></div>
+
+
+<!-- ═══════ 06 정산 규칙 ═══════ -->
+<div class="wrap"><div class="stage"><div class="frame">
+ <div class="rule a"></div><div class="rule b"></div>
+ <div class="hko">정산 규칙 확장</div><div class="hen">Settlement Rule</div>
+ <div class="hmeta"><b>04</b> 정산<br>[일반] · [2차 창작] 타입 구분</div>
+
+ <div class="lead" style="top:308px;width:1440px">
+  기존 정산 규칙을 <b>[일반] 타입</b>으로 정의해 크리에이터 채널에 그대로 적용하고,
+  <b>[2차 창작] 타입</b>을 신규 구현해 2차 창작 채널에 적용했습니다. 돌아가던 규칙은 건드리지 않았습니다.</div>
+
+ <div class="card c2" style="left:150px;top:392px;width:500px;height:80px;padding:0 26px;gap:3px">
+  <div style="font-size:16px;font-weight:600">[일반] 타입</div>
+  <div style="font-size:12.5px;opacity:.75;font-weight:500">기존 규칙 · 크리에이터 채널</div></div>
+ <div class="card cd" style="left:672px;top:392px;width:500px;height:80px;padding:0 26px;gap:3px">
+  <div style="font-size:16px;font-weight:600">[2차 창작] 타입</div>
+  <div style="font-size:12.5px;color:#fff;opacity:.6;font-weight:500">신규 구현 · 2차 창작 채널</div></div>
+
+ <div class="box" style="left:1194px;top:392px;width:576px;height:80px;padding:0 24px;display:flex;flex-direction:column;justify-content:center">
+  <div style="font-size:13.5px;color:var(--g1);font-weight:500;line-height:1.6">
+   2차 창작 채널은 오픈마켓이므로<br><b style="color:#000">버디 오리지널 케이스 없음</b></div></div>
+
+ <div class="lbl" style="left:150px;top:508px">정산 타겟 타입 · 결제 경로에 따라 4분기</div>
+ <div style="position:absolute;left:150px;top:536px;display:flex;gap:10px">
+  <span class="chip">크리에이터 굿즈 &gt; PG사</span><span class="chip">디지털 &gt; PG사</span>
+  <span class="chip">디지털 &gt; 플레이스토어</span><span class="chip">디지털 &gt; 앱스토어</span></div>
+
+ <div class="lbl" style="left:150px;top:600px">정산 규칙 데이터 · 수수료 단위 레코드</div>
+ <div class="tb" style="left:150px;top:628px;width:1000px">
+  <div class="tr hd" style="height:32px"><div style="width:280px">항목</div><div style="flex:1">내용</div></div>
+  <div class="tr" style="height:40px"><div class="k" style="width:280px">수수료 ID</div><div style="flex:1">자동 채번</div></div>
+  <div class="tr alt" style="height:40px"><div class="k" style="width:280px">2차 창작 채널</div><div style="flex:1">적용 대상 채널</div></div>
+  <div class="tr" style="height:40px"><div class="k" style="width:280px">상품 타입 상세</div><div style="flex:1">정산 타겟 타입 4종 중 선택</div></div>
+  <div class="tr alt" style="height:40px"><div class="k" style="width:280px">PG 수수료율</div><div style="flex:1">크리에이터 채널 비율 기준</div></div>
+  <div class="tr" style="height:40px"><div class="k" style="width:280px">플랫폼 수수료율</div><div style="flex:1">실물 A% / 디지털 B%</div></div>
+  <div class="tr alt" style="height:40px"><div class="k" style="width:280px;color:var(--neg)">IP 로열티</div><div style="flex:1">2차 창작자에게 수취하는 비율</div></div>
+  <div class="tr" style="height:40px"><div class="k" style="width:280px;color:var(--neg)">IP 매니지먼트 수수료율</div><div style="flex:1">수취한 IP 로열티에 대한 플랫폼 비율</div></div>
+  <div class="tr mk2" style="height:40px"><div class="k" style="width:280px">적용 시작 일자 / 종료 일자</div><div style="flex:1">요율의 유효 기간</div></div>
+  <div class="tr mk2" style="height:40px"><div class="k" style="width:280px">수정 히스토리</div><div style="flex:1">수정 내용 / 업데이트 일자</div></div>
+  <div class="tr" style="height:40px;border-bottom:0"><div class="k dim" style="width:280px">생성 일자 / 업데이트 일자</div><div style="flex:1" class="dim">감사 로그</div></div>
+ </div>
+
+ <div class="box hi" style="left:1200px;top:600px;width:570px;height:290px;padding:24px 26px">
+  <div class="lbl" style="position:static;color:#7a8a2a">판단</div>
+  <div style="font-size:18px;font-weight:700;color:#000;margin-top:9px;line-height:1.45">요율은 값이 아니라<br>기간을 가진 레코드입니다</div>
+  <div style="font-size:14px;color:var(--g1);font-weight:500;line-height:1.8;margin-top:16px">
+   적용 시작 · 종료 일자와 수정 히스토리를 규칙 자체에 넣었습니다.<br><br>
+   요율이 바뀌어도 <b style="color:#000">과거 회차를 다시 계산할 때 당시 유효했던 요율</b>이 적용되고,
+   정산 금액에 대한 문의가 들어왔을 때 어떤 규칙으로 계산됐는지 되짚을 수 있습니다.</div></div>
+
+ <div class="note"><span class="mk">비공개</span><span>플랫폼 수수료율은 실제 계약 조건이므로 A · B로 표기했습니다. 항목 구조와 계산 방식만 공개합니다.</span></div>
+ <div class="pg">SEPO / 06</div>
+</div></div></div>
+
+
+<!-- ═══════ 07 계산식 ═══════ -->
+<div class="wrap"><div class="stage"><div class="frame">
+ <div class="rule a"></div><div class="rule b"></div>
+ <div class="hko">정산 계산식</div><div class="hen">Calculation</div>
+ <div class="hmeta"><b>04</b> 정산<br>채널별 계산 · 배송비 귀속</div>
+
+ <div class="lbl" style="left:150px;top:306px">2차 창작 채널</div>
+ <div class="box dk" style="left:150px;top:334px;width:1620px;height:92px;padding:0 32px;display:flex;align-items:center">
+  <div style="font-size:19px;color:#fff;font-weight:600;letter-spacing:-.01em">
+   [ '구매 확정' 주문 건의 금액 총합 ]
+   <span style="color:var(--lime)"> − </span>[ 결제 수수료 ]
+   <span style="color:var(--lime)"> − </span>[ 플랫폼 수수료 ]
+   <span style="color:var(--lime)"> − </span>[ IP 로열티 ]
+   <span style="color:var(--lime)"> − </span>{ 배송비 }</div></div>
+
+ <div class="lbl" style="left:150px;top:454px">크리에이터 채널</div>
+ <div class="box dk" style="left:150px;top:482px;width:800px;height:82px;padding:0 32px;display:flex;align-items:center">
+  <div style="font-size:19px;color:#fff;font-weight:600;letter-spacing:-.01em">
+   [ IP 로열티 정산금 ] = [ IP 로열티 ]<span style="color:var(--lime)"> − </span>[ IP 매니지먼트 수수료 ]</div></div>
+
+ <div class="box" style="left:990px;top:482px;width:780px;height:82px;padding:0 28px;display:flex;align-items:center">
+  <div style="font-size:14px;color:var(--g1);font-weight:500;line-height:1.6">
+   크리에이터는 <b style="color:#000">월 단위로</b> 2차 창작 채널의 매출에서 발생한 로열티를 정산받습니다.</div></div>
+
+ <div class="lbl" style="left:150px;top:596px">항목별 계산 기준 — 모수가 항목마다 다릅니다</div>
+ <div class="tb" style="left:150px;top:624px;width:1620px">
+  <div class="tr hd" style="height:34px"><div style="width:330px">항목</div><div style="width:400px">모수</div>
+    <div style="width:200px">요율</div><div style="flex:1">귀속</div></div>
+  <div class="tr" style="height:52px"><div class="k" style="width:330px">결제 수수료</div>
+    <div style="width:400px"><b style="color:#000">배송비 포함</b> 주문 금액</div><div style="width:200px">3.3%</div><div style="flex:1">PG</div></div>
+  <div class="tr alt" style="height:52px"><div class="k" style="width:330px">플랫폼 수수료</div>
+    <div style="width:400px"><b style="color:#000">배송비 제외</b> 주문 금액</div><div style="width:200px">정산 규칙</div><div style="flex:1">플랫폼</div></div>
+  <div class="tr" style="height:52px"><div class="k" style="width:330px">IP 로열티</div>
+    <div style="width:400px"><b style="color:#000">배송비 제외</b> 주문 금액</div><div style="width:200px">정산 규칙</div><div style="flex:1">크리에이터</div></div>
+  <div class="tr alt" style="height:52px"><div class="k" style="width:330px">IP 매니지먼트 수수료</div>
+    <div style="width:400px">IP 로열티</div><div style="width:200px">정산 규칙</div><div style="flex:1">플랫폼</div></div>
+  <div class="tr mk2" style="height:62px"><div class="k" style="width:330px">배송비</div>
+    <div style="width:400px">실 청구 배송비</div><div style="width:200px">—</div>
+    <div style="flex:1"><b style="color:#000">2차 창작자</b> <span style="color:#7a7a7a">— 오픈마켓이므로 배송 주체에게 정산</span></div></div>
+ </div>
+
+ <div class="box hi" style="left:150px;top:900px;width:1620px;height:96px;padding:0 30px;display:flex;align-items:center;gap:40px">
+  <div style="width:300px">
+   <div class="lbl" style="position:static;color:#7a8a2a">판단</div>
+   <div style="font-size:16px;font-weight:700;color:#000;margin-top:5px">배송비는 공제가 아닙니다</div></div>
+  <div style="flex:1;font-size:14px;color:var(--g1);font-weight:500;line-height:1.7">
+   계산식에서는 차감되지만, 오픈마켓 구조상 배송 주체가 2차 창작자이므로 <b style="color:#000">실제 정산에서는 다시 2차 창작자에게 지급</b>됩니다.
+   결제 수수료만 배송비를 포함한 총액에 부과되므로, 배송비에 대한 PG 수수료는 2차 창작자가 부담하는 구조가 됩니다.</div></div>
+
+ <div class="pg">SEPO / 07</div>
+</div></div></div>
+
+
+<!-- ═══════ 08 명세 항목 ═══════ -->
+<div class="wrap"><div class="stage"><div class="frame">
+ <div class="rule a"></div><div class="rule b"></div>
+ <div class="hko">정산 명세 항목 정의</div><div class="hen">Statement Columns</div>
+ <div class="hmeta"><b>04</b> 정산<br>어드민 · 채널별 상세 · 엑셀 시트</div>
+
+ <div class="lead" style="top:306px;width:1440px">
+  같은 IP 로열티라도 <b>내는 쪽과 받는 쪽의 명세에 다른 항목이 필요합니다.</b>
+  2차 창작 채널 명세에는 공제 근거가, 크리에이터 채널 명세에는 수익 산출 과정이 남아야 합니다.</div>
+
+ <div class="lbl" style="left:150px;top:396px">2차 창작 채널별 정산 상세 — 기존 [주문별 정산 상세]에서 추가</div>
+ <div class="box" style="left:150px;top:426px;width:790px;height:280px;padding:24px 26px">
+  <div style="display:flex;flex-direction:column;gap:9px">
+   <span class="chip">채널 이름</span><span class="chip">판매 ID</span><span class="chip">판매 이름</span>
+   <span class="chip on">IP 로열티 (%)</span><span class="chip on">IP 로열티 (KRW)</span></div>
+  <div style="font-size:13px;color:var(--g6);font-weight:500;line-height:1.65;margin-top:20px;padding-top:16px;border-top:1px solid #e4e4e4">
+   판매 건마다 어느 IP에 얼마를 냈는지가 남습니다. 로열티는 <b style="color:#000">공제 항목</b>으로 표기됩니다.</div></div>
+
+ <div class="lbl" style="left:980px;top:396px">크리에이터 채널별 정산 상세</div>
+ <div class="box hi" style="left:980px;top:426px;width:790px;height:280px;padding:24px 26px">
+  <div style="display:flex;flex-direction:column;gap:9px">
+   <span class="chip">채널 이름</span><span class="chip">판매 ID</span><span class="chip">판매 이름</span>
+   <span class="chip on">IP 로열티 (%)</span><span class="chip on">IP 매니지먼트 수수료율 (%)</span>
+   <span class="chip on">IP 로열티 (KRW)</span><span class="chip on">IP 매니지먼트 수수료 (KRW)</span>
+   <span class="chip on">IP 로열티 정산금 (KRW)</span></div>
+  <div style="font-size:13px;color:var(--g6);font-weight:500;line-height:1.65;margin-top:16px;padding-top:14px;border-top:1px solid #cfdba8">
+   어느 2차 창작 채널의 어느 판매에서 나온 수익인지, <b style="color:#000">수수료가 얼마나 빠졌는지</b>까지 보입니다.</div></div>
+
+ <div class="sec" style="left:150px;top:748px"><span class="n">·</span><span class="t">어드민 정산 화면</span>
+   <span class="d">크리에이터 채널 정산 내역에 2차 창작 채널 정산금 영역 추가</span></div>
+
+ <div class="card c2" style="left:150px;top:796px;width:420px;height:70px;padding:0 24px;gap:3px">
+  <div style="font-size:15px;font-weight:600">[1] 정산 금액</div>
+  <div style="font-size:12px;opacity:.72;font-weight:500">2차 창작 채널명 &amp; 정산 금액</div></div>
+ <div class="arw" style="left:586px;top:820px">▶</div>
+ <div class="card c2" style="left:622px;top:796px;width:420px;height:70px;padding:0 24px;gap:3px">
+  <div style="font-size:15px;font-weight:600">[2] 채널별 정산 상세</div>
+  <div style="font-size:12px;opacity:.72;font-weight:500">판매 단위 계산 근거</div></div>
+ <div class="arw" style="left:1058px;top:820px">▶</div>
+ <div class="card c1" style="left:1094px;top:796px;width:420px;height:70px;padding:0 24px;gap:3px">
+  <div style="font-size:15px;font-weight:600">[3] 엑셀 시트</div>
+  <div style="font-size:12px;opacity:.72;font-weight:500">채널 단위 시트 생성</div></div>
+
+ <div class="note"><span class="mk">표기 원칙</span><span>같은 값을 2차 창작자에게는 <b>공제</b>로, 크리에이터에게는 <b>수익</b>으로 적었습니다.
+   돈이 나가는 사람과 들어오는 사람에게 같은 단어를 쓰면 명세를 여는 순간 오해가 생깁니다.</span></div>
+ <div class="pg">SEPO / 08</div>
+</div></div></div>
+
+
+<!-- ═══════ 09 산출물 ═══════ -->
+<div class="wrap"><div class="stage"><div class="frame">
+ <div class="rule a"></div><div class="rule b"></div>
+ <div class="hko">산출물</div><div class="hen">Deliverables</div>
+ <div class="hmeta"><b>Vuddy</b> · 세포 마켓 1차<br>정책 정의서 · 화면 기획 (Studio / Admin)</div>
+
+ <div class="lead" style="top:306px;width:1000px">
+  정책 정의부터 화면 기획까지 단독으로 작성했습니다. 상태값과 예외 케이스를 문서에서 먼저 확정하고,
+  <b>그 정의가 화면에 그대로 대응되도록</b> 설계했습니다.</div>
+
+ <div class="shotcap" style="left:150px;top:406px">STUDIO · 크리에이터 &amp; 2차 창작 채널</div>
+ <div class="shot" style="left:150px;top:430px;width:600px"><img src="../images/sepo1.jpg" alt="Studio 화면 기획"></div>
+
+ <div class="shotcap" style="left:150px;top:672px">ADMIN · 2차 창작자 심사 · 정산 관리</div>
+ <div class="shot" style="left:150px;top:696px;width:600px"><img src="../images/sepo2.jpg" alt="Admin 화면 기획"></div>
+
+ <div class="shotcap" style="left:800px;top:406px">본인 확인 · 사업자 서류 업로드 예외 케이스</div>
+ <div class="shot" style="left:800px;top:430px;width:640px"><img src="../images/sepo3.jpg" alt="본인확인 및 서류 업로드 플로우"></div>
+
+ <div class="box" style="left:1490px;top:430px;width:280px;height:436px;padding:24px 24px">
+  <div class="lbl" style="position:static">예외 케이스 정의</div>
+  <div style="font-size:13.5px;color:var(--g1);font-weight:500;line-height:1.75;margin-top:12px">
+   사업자등록증과 통장 사본 업로드는 <b style="color:#000">Photo · Camera · File · 설정</b> 네 경로마다
+   권한 거부 · 용량 초과 · 형식 오류의 분기가 다릅니다.</div>
+  <div style="height:1px;background:#e4e4e4;margin:18px 0"></div>
+  <div style="display:flex;flex-direction:column;gap:8px">
+   <span class="chip sm">본인 확인 8단계</span>
+   <span class="chip sm">업로드 경로 4종</span>
+   <span class="chip sm">다이얼로그 20+</span>
+   <span class="chip sm">정산 주체 3유형 분기</span></div>
+  <div style="font-size:13px;color:var(--g6);font-weight:500;line-height:1.65;margin-top:20px">
+   정산금을 받는 절차라서 <b style="color:#000">중간에 막히면 이탈이 곧 매출 손실</b>입니다.
+   모든 실패 경로에 복구 동선을 붙였습니다.</div></div>
+
+ <div class="note"><span class="mk">비공개</span><span>사내 문서이므로 캔버스 전경만 노출하고 상세 내용은 가렸습니다. 실물은 면접 시 열람 가능합니다.</span></div>
+ <div class="pg">SEPO / 09</div>
+</div></div></div>
+
+<script>
+function vw(){return document.documentElement.clientWidth||window.innerWidth;}
+function post(){try{parent.postMessage({type:'embed:height',
+  height:document.documentElement.scrollHeight},'*');}catch(e){}}
+function fit(){var s=Math.min(vw()/1920,1);
+document.querySelectorAll('.stage').forEach(function(e){e.style.setProperty('--s',s)});
+document.querySelectorAll('.wrap').forEach(function(e){e.style.height=(1080*s)+'px'});
+post();}
+fit();window.addEventListener('resize',fit);window.addEventListener('load',fit);
+if(window.ResizeObserver){new ResizeObserver(fit).observe(document.documentElement);}
+if(location.hash){var t=document.querySelector(location.hash);if(t)setTimeout(function(){t.scrollIntoView();},50);}
+
+</script>
+</body></html>

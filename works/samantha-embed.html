@@ -649,7 +649,7 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
 </div></div></div>
 <script>
 function vw(){return document.documentElement.clientWidth||window.innerWidth;}
-function post(){try{parent.postMessage({type:'samantha:height',
+function post(){try{parent.postMessage({type:'embed:height',
   height:document.documentElement.scrollHeight},'*');}catch(e){}}
 function fit(){var s=Math.min(vw()/1920,1);
 document.querySelectorAll('.stage').forEach(function(e){e.style.setProperty('--s',s)});
