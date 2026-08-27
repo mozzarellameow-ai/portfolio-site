@@ -353,6 +353,7 @@ footer{padding-top:clamp(80px,11vw,150px);padding-bottom:36px}
   transform:translateX(100%);transition:transform .42s cubic-bezier(.16,1,.3,1),visibility .42s;
   box-shadow:-30px 0 70px rgba(0,0,0,.4)}
 .viewer.on{transform:none;visibility:visible}
+.viewer.wide{width:min(1280px,96vw)}
 @media(max-width:640px){.viewer{width:100%}}
 body.locked{overflow:hidden}
 .v-bar{display:flex;align-items:center;gap:14px;padding:16px clamp(20px,4vw,44px);border-bottom:1px solid var(--line);flex:none}
@@ -369,6 +370,13 @@ body.locked{overflow:hidden}
   display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;
   font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
 .v-inner iframe{width:100%;aspect-ratio:16/9;border:1px solid var(--line);background:var(--pane)}
+.v-inner iframe.embed-frame{aspect-ratio:auto;display:block;width:100%;border:0;background:none}
+.embed-narrow{border:1px solid var(--line);border-radius:8px;padding:clamp(24px,4vw,40px);
+  display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.embed-narrow p{font-size:14.5px;line-height:1.7;color:var(--body)}
+.embed-narrow a{font-size:12.5px;letter-spacing:-.01em;background:none;border:1px solid var(--line);
+  color:var(--fg);padding:8px 13px;border-radius:99px;transition:.2s}
+.embed-narrow a:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .v-prog{position:absolute;left:0;right:0;bottom:0;height:2px;background:transparent}
 .v-prog i{display:block;height:100%;width:0;background:var(--fg)}
 @media(max-width:640px){
@@ -2028,9 +2036,9 @@ body.editing .row-head{cursor:default}
       cover:'images/sepo1.jpg', pages:9, body:'' },
     { title:'Vuddy — 상품·판매·정산·채팅·미디어', note:'도메인 설계 · 커머스 · 정산 구조', cs:'vuddy',
       cover:'images/pf77.jpg', pages:12, body:'' },
-    { title:'신규 AI 서비스 — 런칭 기획', note:'0-to-1 · 대화 정책 / UGC / 검열', node:null, pages:0,
-      body:'미출시 서비스라 화면은 공개하지 않습니다. 0-to-1 기획에서 무엇을 먼저 닫아야 하는지 — 대화의 컨텍스트·메모리 정책, UGC 제작 도구의 두 갈래 구조, 콘텐츠 검열의 임계값 설계, 그리고 출시 전에 확정한 전환 퍼널까지의 판단 과정을 정리했습니다.',
-      cover:'', imgs:[] },
+    { title:'신규 AI 서비스 — 런칭 기획', note:'Samantha · 0140am · 2026', role:'Product Manager', node:null, pages:0,
+      embed:'works/samantha-embed.html', gradient:'linear-gradient(135deg,#2E6BFF,#0F1420)',
+      body:'', cover:'', imgs:[] },
     { title:'라스트마일 배송 기사 앱', note:'필드 리서치 → 페르소나 → UX 개선 3건', node:'1:10976', pages:14,
       body:'쿠팡 배송 현장 필드 리서치에서 출발해 고정형·플렉스 기사 페르소나를 정의하고, 상차 스캔·출입 정보·오프라인 업로드 세 가지 문제를 각각 문제·영향·해결·성과 구조로 정리했습니다. 다크 모드와 컬러 시스템까지 포함.',
       cover:'images/pf12.jpg', imgs:[] },
@@ -2070,11 +2078,12 @@ body.editing .row-head{cursor:default}
       var thumb = item.cover
         ? '<img src="' + item.cover + '" alt="' + item.title + ' 대표 이미지" loading="lazy">'
         : '<span class="ph">Case ' + n + '<br>' + label + '</span>';
+      var thumbStyle = (!item.cover && item.gradient) ? ' style="background:' + item.gradient + '"' : '';
       var b = document.createElement('button');
       b.className = 'reel-item';
       if (item.cs) b.dataset.cs = item.cs;
       b.innerHTML =
-        '<span class="thumb">' + thumb +
+        '<span class="thumb"' + thumbStyle + '>' + thumb +
           '<span class="cnt">' + n + (item.pages ? ' / ' + item.pages + 'P' : '') + '</span>' +
           '<span class="open">' + (item.cs ? 'Deck ↗' : 'View ↗') + '</span>' +
         '</span>' +
@@ -2096,8 +2105,8 @@ body.editing .row-head{cursor:default}
       }
       reel.appendChild(b);
 
-      /* 케이스 본문 — cs 덱 항목은 뷰어가 따로 있으므로 스킵 */
-      if (!item.cs) {
+      /* 케이스 본문 — cs 덱 / embed 항목은 뷰어가 따로 있으므로 스킵 */
+      if (!item.cs && !item.embed) {
         var doc = document.createElement('div');
         doc.className = 'proj-doc'; doc.hidden = true;
         doc.innerHTML = '<p>' + item.body + '</p>' +
@@ -2126,6 +2135,13 @@ body.editing .row-head{cursor:default}
     sync();
   }
 
+  /* Samantha embed 덱이 자기 콘텐츠 높이를 postMessage로 알려주면 iframe 높이에 반영 */
+  window.addEventListener('message', function(e){
+    if (!e.data || e.data.type !== 'samantha:height') return;
+    var f = document.getElementById('samanthaFrame');
+    if (f && e.source === f.contentWindow) f.style.height = e.data.height + 'px';
+  });
+
   var docHome = null;
   var viewer = document.getElementById('viewer'),
       vInner = document.getElementById('vInner'),
@@ -2137,13 +2153,34 @@ body.editing .row-head{cursor:default}
     var item = PORTFOLIO[i];
     lastFocus = document.activeElement;
     document.getElementById('vTitle').textContent = item.title;
-    document.getElementById('vMeta').textContent = item.note + (item.pages ? ' · ' + item.pages + ' pages' : '');
+    document.getElementById('vMeta').textContent = item.note +
+      (item.role ? ' · ' + item.role : '') + (item.pages ? ' · ' + item.pages + ' pages' : '');
     var link = document.getElementById('vLink');
-    if (item.node){ link.href = figmaLink(item.node); link.textContent = 'Figma ↗'; link.hidden = false; }
+    if (item.embed){ link.href = item.embed; link.textContent = '전체화면 ↗'; link.hidden = false; }
+    else if (item.node){ link.href = figmaLink(item.node); link.textContent = 'Figma ↗'; link.hidden = false; }
     else link.hidden = true;
 
     returnDoc();
-    if (USE_FIGMA_EMBED){
+    viewer.classList.toggle('wide', !!item.embed);
+    if (item.embed){
+      var minW = 1200, w = viewer.clientWidth;
+      if (w < minW){
+        vInner.innerHTML =
+          '<div class="embed-narrow">' +
+            '<p>이 케이스는 화면이 넓어야 제대로 보입니다. 데스크톱 브라우저에서 열어주세요.</p>' +
+            '<a href="' + item.embed + '" target="_blank" rel="noopener">새 탭에서 열기 ↗</a>' +
+          '</div>';
+      } else {
+        var f = document.createElement('iframe');
+        f.id = 'samanthaFrame';
+        f.className = 'embed-frame';
+        f.src = item.embed;
+        f.scrolling = 'no';
+        f.setAttribute('title', item.title);
+        f.style.height = '1200px';
+        vInner.appendChild(f);
+      }
+    } else if (USE_FIGMA_EMBED){
       vInner.innerHTML = '<iframe src="https://embed.figma.com/design/' + FIGMA_FILE + '/' + FIGMA_NAME +
         '?node-id=' + item.node.replace(':', '-') + '&embed-host=share" allowfullscreen title="' +
         item.title + '"></iframe>';

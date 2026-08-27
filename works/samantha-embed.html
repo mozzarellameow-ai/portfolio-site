@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>Samantha (embed) — Product Portfolio (SM 01–23)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+
+.ph{width:375px;height:660px;background:#fff;position:relative;overflow:hidden;
+  font-family:Pretendard;transform:scale(.6667);transform-origin:top left;
+  font-variant-numeric:tabular-nums;color:#111}
+.ph *{box-sizing:border-box}
+.ph .sb{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;
+  font-size:13px;font-weight:700}
+.ph .sb .r{display:flex;gap:5px;align-items:center;color:#111}
+.ph .nb{height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;
+  border-bottom:1px solid #F0F0EE}
+.ph .nb .ti{font-size:17px;font-weight:700;letter-spacing:-.02em}
+.ph .ico{width:20px;height:20px;border:1.6px solid #111;border-radius:50%;flex:none}
+.ph .ico.sq{border-radius:4px}
+.ph .tab{height:44px;display:flex;border-bottom:1px solid #F0F0EE}
+.ph .tab div{flex:1;display:flex;align-items:center;justify-content:center;font-size:14px;
+  font-weight:600;color:#A8A8A4}
+.ph .tab div.on{color:#111;font-weight:700;box-shadow:inset 0 -2px 0 #111}
+.ph .bnav{position:absolute;bottom:0;left:0;right:0;height:62px;border-top:1px solid #F0F0EE;
+  display:flex;background:#fff;padding-bottom:8px}
+.ph .bnav div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  font-size:9.5px;font-weight:600;color:#B4B4B0}
+.ph .bnav div.on{color:#111}
+.ph .bnav i{width:18px;height:18px;border:1.6px solid currentColor;border-radius:4px;display:block}
+.ph .bnav div.on i{background:currentColor;border-color:currentColor}
+.ph .cta{position:absolute;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid #F0F0EE;
+  padding:12px 18px;display:flex;gap:10px;align-items:center}
+.ph .btn{flex:1;height:50px;background:#111;color:#D0F727;border-radius:8px;display:flex;
+  align-items:center;justify-content:center;font-size:15px;font-weight:700}
+.ph .btn.gh{flex:none;width:50px;background:#fff;border:1.5px solid #E4E4E0;color:#111}
+.ph .sec{padding:18px 18px 0}
+.ph .sh{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+.ph .sh b{font-size:15px;font-weight:700;letter-spacing:-.01em}
+.ph .sh span{font-size:11.5px;color:#A8A8A4;font-weight:600}
+.ph .chan{display:flex;gap:13px;padding:0 18px;overflow:hidden}
+.ph .chan .c{width:56px;flex:none;text-align:center}
+.ph .chan .av{width:56px;height:56px;border-radius:50%;background:#EDEDEA;position:relative;
+  border:1.5px solid #E4E4E0}
+.ph .chan .av.g::after{content:"";position:absolute;right:1px;top:2px;width:11px;height:11px;
+  border-radius:50%;background:#D0F727;border:2px solid #fff}
+.ph .chan .n{font-size:10.5px;font-weight:600;margin-top:6px;color:#3A3A38;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ph .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 18px}
+.ph .imgph{background:#EDEDEA;background-image:repeating-linear-gradient(45deg,
+  rgba(0,0,0,.035) 0 1px,transparent 1px 9px);position:relative}
+.ph .pc .im{width:100%;height:150px;border-radius:7px}
+.ph .pc .bd{position:absolute;left:7px;top:7px;background:#111;color:#D0F727;font-size:9.5px;
+  font-weight:700;padding:3px 7px;border-radius:3px}
+.ph .pc .ch{font-size:10.5px;color:#A8A8A4;font-weight:600;margin-top:8px}
+.ph .pc .nm{font-size:13px;font-weight:600;margin-top:3px;line-height:1.35}
+.ph .pc .pr{font-size:14.5px;font-weight:700;margin-top:5px;letter-spacing:-.01em}
+.ph .cover{height:110px;background:linear-gradient(120deg,#DDE6C0,#EDEDEA)}
+.ph .prof{padding:0 18px;margin-top:-30px}
+.ph .prof .av{width:64px;height:64px;border-radius:50%;background:#fff;border:3px solid #fff;
+  box-shadow:0 1px 6px rgba(0,0,0,.12)}
+.ph .prof .nm{font-size:19px;font-weight:700;margin-top:10px;letter-spacing:-.02em}
+.ph .prof .mt{font-size:12px;color:#7A7A76;font-weight:500;margin-top:5px}
+.ph .sub{height:40px;border-radius:7px;background:#111;color:#D0F727;font-size:13.5px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;margin-top:14px}
+.ph .post{padding:16px 18px;border-bottom:1px solid #F4F4F2}
+.ph .post .h{display:flex;gap:9px;align-items:center}
+.ph .post .a{width:28px;height:28px;border-radius:50%;background:#EDEDEA}
+.ph .post .n{font-size:12.5px;font-weight:700}
+.ph .post .t{font-size:10.5px;color:#B4B4B0;font-weight:500}
+.ph .post .b{font-size:13px;color:#3A3A38;line-height:1.55;margin-top:9px}
+.ph .post .im{height:104px;border-radius:6px;margin-top:10px}
+.ph .hero{height:250px}
+.ph .hero .dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:5px}
+.ph .hero .dots i{width:5px;height:5px;border-radius:50%;background:#C6C6C2;display:block}
+.ph .hero .dots i.on{background:#111;width:14px;border-radius:3px}
+.ph .det{padding:18px}
+.ph .det .ch{font-size:11.5px;color:#7A7A76;font-weight:600}
+.ph .det .nm{font-size:19px;font-weight:700;margin-top:7px;line-height:1.4;letter-spacing:-.02em}
+.ph .det .pr{font-size:23px;font-weight:700;margin-top:11px;letter-spacing:-.02em}
+.ph .opt{border:1px solid #E4E4E0;border-radius:7px;padding:12px 14px;margin-top:14px;
+  display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600}
+.ph .opt span{color:#A8A8A4;font-weight:500}
+.ph .row{display:flex;justify-content:space-between;padding:10px 0;font-size:12.5px}
+.ph .row .k{color:#7A7A76;font-weight:500}
+.ph .row .v{font-weight:600}
+.ph .hr{height:1px;background:#F0F0EE;margin:14px 0}
+.ph .blk{padding:16px 18px;border-bottom:8px solid #F7F7F5}
+.ph .blk .t{font-size:14px;font-weight:700;margin-bottom:11px}
+.ph .badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px}
+.ph .b1{background:#F0F0EE;color:#5A5A56}
+.ph .b2{background:#111;color:#D0F727}
+.ph .b3{background:#F4FBDA;color:#5F6E1E;border:1px solid #D0F727}
+.ph .ord{padding:14px 18px;border-bottom:1px solid #F4F4F2}
+.ph .ord .top{display:flex;justify-content:space-between;align-items:center}
+.ph .ord .dt{font-size:10.5px;color:#B4B4B0;font-weight:600}
+.ph .ord .bd{display:flex;gap:11px;margin-top:11px}
+.ph .ord .im{width:56px;height:56px;border-radius:5px;flex:none}
+.ph .ord .nm{font-size:12.5px;font-weight:600;line-height:1.4}
+.ph .ord .sub2{font-size:10.5px;color:#A8A8A4;font-weight:500;margin-top:4px}
+.ph .ord .pr{font-size:13px;font-weight:700;margin-top:5px}
+.ph .kpi{display:flex;gap:9px;padding:0 18px}
+.ph .kpi .c{flex:1;border:1px solid #E4E4E0;border-radius:7px;padding:13px 12px}
+.ph .kpi .l{font-size:10px;color:#A8A8A4;font-weight:700;letter-spacing:.05em}
+.ph .kpi .v{font-size:19px;font-weight:700;margin-top:7px;letter-spacing:-.02em}
+.ph .kpi .d{font-size:10px;color:#7A7A76;font-weight:500;margin-top:4px}
+.ph .paybar2{background:#111;border-radius:8px;padding:15px 16px;margin:0 18px}
+.ph .paybar2 .l{font-size:10.5px;color:#8B948A;font-weight:700;letter-spacing:.06em}
+.ph .paybar2 .v{font-size:24px;color:#D0F727;font-weight:700;margin-top:7px;letter-spacing:-.02em}
+.ph .paybar2 .d{font-size:11px;color:#9AA396;font-weight:500;margin-top:5px}
+.ph .lst{padding:0 18px}
+.ph .lst .it{display:flex;justify-content:space-between;align-items:center;padding:12px 0;
+  border-bottom:1px solid #F4F4F2;font-size:12.5px}
+.ph .lst .nm{font-weight:600}
+.ph .lst .sub2{font-size:10.5px;color:#A8A8A4;font-weight:500;margin-top:3px}
+
+.adm{width:1560px;height:700px;background:#F7F7F5;display:flex;font-family:Pretendard;
+  transform:scale(.78);transform-origin:top left;color:#111;font-variant-numeric:tabular-nums}
+.adm *{box-sizing:border-box}
+.adm .anav{width:214px;background:#16181A;padding:20px 0;flex:none}
+.adm .anav .lg{font-size:15px;font-weight:700;color:#D0F727;padding:0 20px 18px;letter-spacing:.01em}
+.adm .anav .g{font-size:10px;font-weight:700;color:#6E7A6C;letter-spacing:.1em;padding:14px 20px 7px}
+.adm .anav .m{font-size:12.5px;font-weight:500;color:#B6BEB2;padding:8px 20px}
+.adm .anav .m.on{color:#111;background:#D0F727;font-weight:700}
+.adm .amain{flex:1;display:flex;flex-direction:column;min-width:0}
+.adm .atop{height:52px;background:#fff;border-bottom:1px solid #E4E4E0;display:flex;align-items:center;
+  justify-content:space-between;padding:0 24px}
+.adm .atop .t{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.adm .atop .u{font-size:11.5px;color:#7A7A76;font-weight:600}
+.adm .abody{flex:1;padding:20px 24px;overflow:hidden}
+.adm .afil{background:#fff;border:1px solid #E4E4E0;border-radius:5px;padding:14px 16px;display:flex;
+  gap:9px;align-items:center;flex-wrap:wrap}
+.adm .afil .f{border:1px solid #E4E4E0;border-radius:4px;padding:7px 12px;font-size:11.5px;
+  font-weight:600;color:#3A3A38;background:#fff}
+.adm .afil .f.on{background:#111;color:#D0F727;border-color:#111}
+.adm .afil .sp{flex:1}
+.adm .afil .btn{background:#111;color:#D0F727;border-radius:4px;padding:8px 16px;font-size:11.5px;font-weight:700}
+.adm .akpi{display:flex;gap:10px;margin-top:14px}
+.adm .akpi .c{flex:1;background:#fff;border:1px solid #E4E4E0;border-radius:5px;padding:13px 16px}
+.adm .akpi .l{font-size:9.5px;font-weight:700;color:#A8A8A4;letter-spacing:.07em}
+.adm .akpi .v{font-size:20px;font-weight:700;margin-top:6px;letter-spacing:-.02em}
+.adm .akpi .d{font-size:10px;color:#7A7A76;font-weight:500;margin-top:3px}
+.adm .atb{background:#fff;border:1px solid #E4E4E0;border-radius:5px;margin-top:14px;overflow:hidden}
+.adm .atb .hd{display:flex;height:36px;border-bottom:1px solid #111;background:#FAFAF8}
+.adm .atb .hd div{font-size:10.5px;font-weight:700;color:#3A3A38;display:flex;align-items:center;padding:0 14px}
+.adm .atb .r{display:flex;height:42px;border-bottom:1px solid #F0F0EE}
+.adm .atb .r div{font-size:11.5px;color:#3A3A38;display:flex;align-items:center;padding:0 14px;font-weight:500}
+.adm .atb .r .k{font-weight:600;color:#111}
+.adm .atb .r:nth-child(even){background:#FCFCFA}
+.adm .abg{display:inline-block;font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:3px}
+.adm .g1{background:#F0F0EE;color:#5A5A56}.g2{background:#111;color:#D0F727}
+.adm .g3{background:#F4FBDA;color:#5F6E1E;border:1px solid #D0F727}.g4{background:#F5EBEC;color:#8C2F39}
+.adm .num{justify-content:flex-end!important;font-variant-numeric:tabular-nums}
+
+.doc{width:1300px;background:#fff;font-family:Pretendard;color:#111;padding:26px 30px;
+  transform:scale(.80);transform-origin:top left}
+.doc *{box-sizing:border-box}
+.doc .dband{background:#FBEFE3;border-radius:3px;padding:9px 16px;font-size:17px;font-weight:700;margin-bottom:18px}
+.doc .dband.b{background:#E8F0FB}
+.doc .dh1{font-size:19px;font-weight:700;letter-spacing:-.02em;margin:16px 0 10px}
+.doc .dh1:first-child{margin-top:0}
+.doc .dsub{font-size:12px;color:#7A7A76;font-weight:500;margin:-4px 0 12px}
+.doc .dul{margin:0 0 12px;padding:0;list-style:none}
+.doc .dul li{font-size:13.5px;color:#3A3A38;font-weight:500;line-height:1.7;padding-left:18px;position:relative}
+.doc .dul li::before{content:"•";position:absolute;left:2px;color:#111}
+.doc .dul .l2{padding-left:38px}.dul .l2::before{content:"○";left:22px;font-size:10px;top:1px}
+.doc .dul .l3{padding-left:58px}.dul .l3::before{content:"▶";left:42px;font-size:9px;top:2px}
+.doc .dnew{color:#C0392B;font-weight:700}
+.doc .dtb{width:100%;border-collapse:collapse;margin:8px 0 14px}
+.doc .dtb th{background:#F7F7F5;border:1px solid #E4E4E0;font-size:12px;font-weight:700;
+  text-align:left;padding:8px 12px;color:#3A3A38}
+.doc .dtb td{border:1px solid #E4E4E0;font-size:12.5px;padding:8px 12px;color:#3A3A38;font-weight:500;vertical-align:top}
+.doc .dtb td b{color:#111}
+.doc .dflow{background:#F4F7EF;border-radius:4px;padding:16px;display:flex;align-items:center;gap:9px;margin:8px 0 14px}
+.doc .dflow .n{background:#111;color:#fff;font-size:11.5px;font-weight:700;padding:6px 13px;border-radius:3px}
+.doc .dflow .n.s{background:#9AD9A0;color:#111}
+.doc .dflow .n.g{background:#D6D6D2;color:#5A5A56}
+.doc .dflow .a{color:#A8A8A4;font-size:11px;font-weight:600}
+.dmk{position:absolute;width:22px;height:22px;border-radius:50%;background:#D0F727;border:1.5px solid #111;
+  font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;color:#111;z-index:5}
+
+.brd{width:1178px;font-family:Pretendard;color:#111}
+.brd *{box-sizing:border-box}
+.brd .scr{width:640px;height:300px;border:1px solid #DEDEDA;border-radius:5px;background:#fff;
+  display:flex;overflow:hidden;position:relative}
+.brd .sd{width:96px;background:#16181A;padding:10px 8px;flex:none}
+.brd .sd .lg{font-size:9px;font-weight:700;color:#D0F727;margin-bottom:9px}
+.brd .sd .mi{font-size:8px;color:#8B948A;font-weight:600;padding:4px 5px;border-radius:2px}
+.brd .sd .mi.on{background:#D0F727;color:#111;font-weight:700}
+.brd .ct{flex:1;padding:10px 12px;min-width:0}
+.brd .hd2{font-size:11px;font-weight:700;padding-bottom:8px;border-bottom:1px solid #EDEDEA}
+.brd .fl{display:flex;gap:4px;margin-top:9px;flex-wrap:wrap}
+.brd .fl span{border:1px solid #E4E4E0;border-radius:2px;padding:4px 8px;font-size:8px;
+  font-weight:600;color:#5A5A56;background:#FAFAF8}
+.brd .tb2{margin-top:9px;border:1px solid #EDEDEA;border-radius:3px;overflow:hidden}
+.brd .tb2 .h{display:flex;background:#F7F7F5;border-bottom:1px solid #DEDEDA}
+.brd .tb2 .h div{font-size:8px;font-weight:700;padding:6px 7px;color:#3A3A38}
+.brd .tb2 .r2{display:flex;border-bottom:1px solid #F4F4F2}
+.brd .tb2 .r2 div{font-size:8px;padding:6px 7px;color:#5A5A56;font-weight:500}
+.brd .mt2{display:flex;justify-content:space-between;margin-top:9px;font-size:8px;color:#A8A8A4;font-weight:600}
+.pin{position:absolute;width:19px;height:19px;border-radius:50%;background:#111;color:#fff;
+  font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:4;
+  border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.pin.a{background:#D0F727;color:#111}
+.desc{width:500px;border:1px solid #DEDEDA;border-radius:5px;background:#fff;overflow:hidden}
+.desc .hb{display:flex;align-items:center;gap:9px;padding:11px 14px;border-bottom:1px solid #EDEDEA;background:#FAFAF8}
+.desc .hb .dt{width:19px;height:19px;border-radius:50%;background:#D0F727;border:1.5px solid #111;
+  font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.desc .hb .tt{font-size:12.5px;font-weight:700}
+.desc .rw{display:flex;border-bottom:1px solid #F4F4F2}
+.desc .rw:last-child{border-bottom:0}
+.desc .rw .k2{width:104px;flex:none;font-size:10.5px;font-weight:700;color:#5A5A56;padding:8px 12px;
+  background:#FCFCFA;border-right:1px solid #F4F4F2}
+.desc .rw .v2{flex:1;font-size:10.5px;color:#3A3A38;font-weight:500;padding:8px 12px;line-height:1.55}
+.desc .rw .v2 b{color:#111;font-weight:700}
+.chg{color:#C0392B;font-weight:700}
+
+.stream{position:relative;width:512px;height:288px;border-radius:6px;overflow:hidden;background:#171B18}
+.stream .bg{position:absolute;inset:-36px;filter:blur(18px);
+  background:
+   radial-gradient(32% 46% at 34% 60%, rgba(248,222,184,1) 0%, rgba(186,148,104,.66) 42%, transparent 74%),
+   radial-gradient(16% 22% at 30% 34%, rgba(255,236,214,.85) 0%, transparent 70%),
+   radial-gradient(24% 30% at 72% 24%, rgba(208,247,39,.30) 0%, transparent 72%),
+   radial-gradient(28% 36% at 86% 76%, rgba(126,158,196,.32) 0%, transparent 74%),
+   radial-gradient(12% 16% at 14% 22%, rgba(255,255,255,.30) 0%, transparent 70%),
+   linear-gradient(158deg,#4A5348 0%,#2E362F 52%,#191E1B 100%)}
+.stream .strk{position:absolute;left:-10%;right:-10%;top:26%;height:46px;filter:blur(20px);
+  background:linear-gradient(90deg,transparent,rgba(255,244,224,.22),transparent);transform:rotate(-6deg)}
+.stream .bok{position:absolute;border-radius:50%;filter:blur(7px);opacity:.5}
+.stream .vig{position:absolute;inset:0;
+  background:radial-gradient(74% 74% at 46% 44%,transparent 42%,rgba(0,0,0,.44) 100%)}
+.stream .grn{position:absolute;inset:0;opacity:.045;
+  background-image:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
+.stream .live{position:absolute;left:13px;top:13px;display:flex;align-items:center;gap:6px;
+  background:rgba(10,12,10,.5);backdrop-filter:blur(6px);border-radius:4px;padding:5px 10px}
+.stream .live i{width:6px;height:6px;border-radius:50%;background:#FF4B4B;display:block;
+  box-shadow:0 0 0 3px rgba(255,75,75,.22)}
+.stream .live span{font-size:9.5px;font-weight:800;color:#fff;letter-spacing:.1em}
+.stream .vw{position:absolute;right:13px;top:13px;background:rgba(10,12,10,.5);backdrop-filter:blur(6px);
+  border-radius:4px;padding:5px 10px;font-size:9.5px;font-weight:600;color:#E8E8E4;
+  display:flex;align-items:center;gap:5px}
+.stream .vw i{width:9px;height:9px;border:1.4px solid #E8E8E4;border-radius:50% 50% 45% 45%;display:block}
+
+/* ── QR 위젯 ── */
+.wqr{position:absolute;right:14px;bottom:14px;width:238px;background:#fff;border-radius:9px;
+  box-shadow:0 8px 28px rgba(0,0,0,.42),0 0 0 .5px rgba(0,0,0,.06);overflow:hidden}
+.wqr .top{display:flex;gap:11px;padding:12px 12px 10px}
+.wqr .qrb{width:70px;height:70px;flex:none;background:#fff;border-radius:4px}
+.wqr .inf{flex:1;min-width:0}
+.wqr .bd{display:inline-block;background:#111;color:#D0F727;font-size:8px;font-weight:800;
+  letter-spacing:.08em;padding:2px 6px;border-radius:2px}
+.wqr .nm{font-size:11px;font-weight:700;color:#111;line-height:1.35;margin-top:6px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wqr .pr{font-size:14px;font-weight:800;color:#111;margin-top:5px;letter-spacing:-.02em}
+.wqr .ft{display:flex;align-items:center;justify-content:space-between;
+  background:#F5F5F2;padding:7px 12px;border-top:1px solid #EAEAE6}
+.wqr .ft .l{font-size:8.5px;font-weight:700;color:#6E6E6A;letter-spacing:.03em}
+.wqr .dots{display:flex;gap:3px}
+.wqr .dots i{width:4px;height:4px;border-radius:50%;background:#D2D2CE;display:block}
+.wqr .dots i.on{background:#111;width:11px;border-radius:2px}
+
+/* ── 리액션 위젯 ── */
+.wrc{position:absolute;left:14px;bottom:14px;width:322px;background:rgba(14,16,14,.9);
+  backdrop-filter:blur(10px);border-radius:9px;overflow:hidden;
+  box-shadow:0 8px 28px rgba(0,0,0,.46);display:flex}
+.wrc .acc{width:3px;background:#D0F727;flex:none}
+.wrc .in{display:flex;gap:10px;align-items:center;padding:11px 13px;flex:1;min-width:0}
+.wrc .av{width:32px;height:32px;border-radius:50%;flex:none;position:relative;
+  background:linear-gradient(140deg,#8C9C7A,#5A6650)}
+.wrc .av::after{content:"";position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;
+  border-radius:50%;background:#D0F727;border:2px solid #0E100E}
+.wrc .bd2{flex:1;min-width:0}
+.wrc .t1{font-size:11px;color:#fff;font-weight:600;line-height:1.45}
+.wrc .t1 b{color:#D0F727;font-weight:800}
+.wrc .t2{display:flex;align-items:center;gap:7px;margin-top:6px}
+.wrc .qty{font-size:9px;font-weight:800;color:#FF9E9E;letter-spacing:.02em;
+  background:rgba(255,110,110,.14);border-radius:3px;padding:2px 7px}
+.wrc .tm{font-size:9px;color:#7E867C;font-weight:600}
+.wrc .th{width:38px;height:38px;border-radius:5px;flex:none;
+  background:linear-gradient(140deg,#D8D2C4,#9E9686);position:relative;overflow:hidden}
+.wrc .th::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(60% 60% at 35% 30%,rgba(255,255,255,.5),transparent 70%)}
+
+/* ── 룰렛 위젯 ── */
+.wrl{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;align-items:center}
+.wrl .rres{margin-top:12px;background:#fff;border-radius:5px;padding:7px 16px;
+  display:flex;align-items:center;gap:8px;box-shadow:0 5px 18px rgba(0,0,0,.38)}
+.wrl .rres .lb{font-size:8.5px;font-weight:800;color:#8A8A86;letter-spacing:.08em}
+.wrl .rres .vl{font-size:12px;font-weight:800;color:#111}
+
+:root{--lime:#D0F727;--tint:#F7FBE6;--edge:#B4DC1E;--bg:#F4F4F2;--box:#FFF;
+--line:#E4E4E0;--ink:#111;--g1:#3A3A38;--g6:#7A7A76;--g9:#A8A8A4;--neg:#8C2F39;--dk:#16181A;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{margin:0;padding:0;background:#F3F4F6;overflow-x:hidden}
+body{font-family:Pretendard,-apple-system,sans-serif;font-variant-numeric:tabular-nums;display:flex;flex-direction:column;align-items:center;gap:0}
+.wrap{width:100%;display:flex;justify-content:center}
+.stage{width:1920px;height:1080px;position:relative;flex:none;transform-origin:top center;transform:scale(var(--s,1))}
+.fr{position:absolute;inset:0;background:var(--bg);overflow:hidden}
+.fr.cov{background:var(--dk)}
+.rl{position:absolute;top:82px;height:1px;background:var(--ink)}
+.rl.a{left:100px;width:280px}.rl.b{left:540px;width:1280px}
+.tko{position:absolute;left:100px;top:100px;width:400px;font-size:28px;font-weight:700;letter-spacing:-.02em}
+.ten{position:absolute;left:100px;top:143px;width:400px;font-size:14.5px;font-weight:600;color:var(--g6)}
+.hl{position:absolute;left:540px;top:100px;width:1280px;font-size:50px;font-weight:700;line-height:1.3;letter-spacing:-.035em}
+.hl em{font-style:normal;background:var(--lime);padding:0 7px}
+.ds{position:absolute;left:540px;top:250px;width:1280px;font-size:16.5px;font-weight:500;color:var(--g1);line-height:1.7}
+.ds b{color:var(--ink);font-weight:700}
+.bx{position:absolute;background:var(--box);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.bx.hi{background:var(--tint);border-color:var(--edge)}
+.bx.dk{background:var(--dk);border:0}
+.bx.gh{background:var(--bg)}
+.pd{padding:26px 30px}
+.cap{font-size:11px;font-weight:700;color:var(--g6);letter-spacing:.13em}
+.cap.lm{color:#8FA02A}
+.bt{font-size:17px;font-weight:700;color:var(--ink)}
+.sm{font-size:13.5px;color:var(--g1);font-weight:500;line-height:1.7}
+.sm b{color:var(--ink);font-weight:700}
+.mut{font-size:12.5px;color:var(--g6);font-weight:500;line-height:1.6}
+.sb{background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:15px 20px}
+.sb .k{font-size:15.5px;font-weight:700;color:var(--ink)}
+.sb .v{font-size:12.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.5}
+.tr{display:flex;align-items:center;border-bottom:1px solid var(--line)}
+.tr.hd{border-bottom:1px solid var(--ink)}
+.tr.hd div{font-size:12.5px;font-weight:700;color:var(--ink)}
+.tr.mk{background:var(--tint)}
+.tr div{padding:0 22px;font-size:13.5px;color:var(--g1);font-weight:500;line-height:1.45}
+.tr div.k{font-weight:700;color:var(--ink)}
+.tr div.dim{color:var(--g9)}
+.cp{display:inline-flex;align-items:center;background:var(--bg);border:1px solid var(--line);
+border-radius:3px;padding:7px 15px;font-size:13.5px;color:var(--g1);font-weight:600}
+.cp.on{background:var(--lime);border-color:var(--edge);color:#000;font-weight:700}
+.cp.no{background:#F2ECEC;border-color:#DCC9CB;color:var(--neg)}
+.cp.s{padding:5px 11px;font-size:12px}
+.st{background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:13px 17px;flex:1}
+.st .n{font-size:11.5px;font-weight:700;color:var(--g6)}
+.st .t{font-size:14.5px;font-weight:700;color:var(--ink);margin-top:6px}
+.st .d{font-size:11.5px;color:var(--g6);font-weight:500;margin-top:5px;line-height:1.45}
+.qb{position:absolute;background:var(--box);border:1px solid var(--line);border-radius:4px;display:flex}
+.qb .bar{width:4px;background:var(--lime);flex:none;margin:24px 0}
+.qb .t{font-size:16.5px;font-weight:700;color:var(--ink)}
+.qb .d{font-size:13.5px;color:var(--g1);font-weight:500;line-height:1.7;margin-top:10px}
+.qb .d b{color:var(--ink);font-weight:700}
+.stat{font-size:40px;font-weight:700;color:var(--ink);letter-spacing:-.03em}
+.stat em{font-style:normal;background:var(--lime);padding:0 6px}
+.slot{position:absolute;border:1px dashed #C6C6C2;border-radius:4px;background:#EDEDEA;
+display:flex;flex-direction:column;align-items:center;justify-content:center}
+.slot .a{font-size:13px;font-weight:700;color:var(--g6)}
+.slot .b{font-size:11.5px;color:var(--g9);font-weight:500;margin-top:6px}
+.pgn{position:absolute;right:100px;bottom:44px;font-size:11.5px;color:var(--g9);font-weight:700;letter-spacing:.1em}
+.pgn.w{color:#5C6459}
+.chk{position:absolute;left:100px;bottom:42px;font-size:11px;color:var(--g9);font-weight:600}
+/* ── 데이터 시각화 ── */
+svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
+.vl{font-size:10.5px;font-weight:700;letter-spacing:.1em;fill:#A8A8A4}
+.vk{font-size:12.5px;font-weight:700;fill:#111}
+.vd{font-size:11.5px;font-weight:500;fill:#7A7A76}
+.vn{font-size:15px;font-weight:700;fill:#111;letter-spacing:-.01em}
+.gx{position:absolute}
+.bfill{transform-origin:left center;transform:scaleX(0)}
+.play .bfill{animation:grow 1.1s cubic-bezier(.2,.75,.3,1) forwards}
+.bfy{transform-origin:top center;transform:scaleY(0)}
+.play .bfy{animation:growY 1.1s cubic-bezier(.2,.75,.3,1) forwards}
+@keyframes growY{to{transform:scaleY(1)}}
+@keyframes grow{to{transform:scaleX(1)}}
+.arc{stroke-dasharray:390;stroke-dashoffset:390}
+.play .arc{animation:draw 1.3s cubic-bezier(.2,.75,.3,1) forwards}
+@keyframes draw{to{stroke-dashoffset:var(--do)}}
+.dot{opacity:0;transform:scale(.4);transform-origin:center}
+.play .dot{animation:pop .45s cubic-bezier(.3,1.4,.5,1) forwards}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+.rise{opacity:0;transform:translateY(10px)}
+.play .rise{animation:up .6s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.tl{position:absolute;height:2px;background:var(--line)}
+.tlfill{position:absolute;height:2px;background:var(--ink);transform-origin:left;transform:scaleX(0)}
+.play .tlfill{animation:grow 1.2s cubic-bezier(.2,.75,.3,1) forwards}
+.tik{position:absolute;width:1px;background:var(--line)}
+@media (prefers-reduced-motion:reduce){
+ .bfill,.bfy,.arc,.dot,.rise,.tlfill{animation:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:var(--do)!important}}
+
+/* ── Samantha 토큰 오버라이드 ── */
+:root{--lime:#2E6BFF;--tint:#EEF3FF;--edge:#A9C3FB;--bg:#F3F4F6;--box:#FFF;
+--line:#E3E5EA;--ink:#0F1420;--g1:#3A3F4A;--g6:#767C88;--g9:#A4AAB4;--neg:#8C2F39;--dk:#070C18;}
+.hl em,.stat em{color:#fff}
+.cp.on{color:#fff}
+.cap.lm{color:#2E6BFF}
+.ph .btn{color:#fff}
+.vl{fill:#A4AAB4}.vk{fill:#0F1420}.vd{fill:#767C88}.vn{fill:#0F1420}
+/* ── 대화 목업 ── */
+.cv{display:flex;flex-direction:column;gap:11px}
+.cv .ln{display:flex;gap:9px;align-items:flex-end}
+.cv .ln.u{justify-content:flex-end}
+.cv .av2{width:28px;height:28px;border-radius:50%;flex:none;
+  background:linear-gradient(150deg,#2E6BFF,#0F1420)}
+.cv .bb{max-width:238px;border-radius:12px;padding:10px 13px;font-size:12px;
+  line-height:1.6;font-weight:500;background:#fff;border:1px solid var(--line);color:#0F1420}
+.cv .ln.u .bb{background:#2E6BFF;border-color:#2E6BFF;color:#fff}
+.cv .bb i{font-style:italic;color:#767C88;display:block;margin-bottom:4px}
+.cv .ln.u .bb i{color:#D7E4FF}
+.cv .sysm{align-self:center;font-size:10.5px;font-weight:600;color:#767C88;
+  background:#EEF3FF;border:1px solid #DCE6FB;border-radius:20px;padding:5px 14px}
+/* ── 코드/템플릿 박스 ── */
+.code{background:var(--dk);border-radius:4px;padding:22px 26px;font-family:
+  "SFMono-Regular",Menlo,Consolas,monospace;font-size:12.5px;line-height:1.85;color:#C3CBD8;
+  white-space:pre-wrap}
+.code b{color:#fff;font-weight:700}
+.code em{font-style:normal;color:#7FA8FF}
+.code .hi{background:rgba(46,107,255,.22);border-left:2px solid #2E6BFF;
+  display:block;margin:0 -26px;padding:0 24px}
+/* ── 단계 게이지 ── */
+.gauge{display:flex;align-items:center;gap:0}
+.gauge .seg{height:8px;flex:1;background:#E3E5EA}
+.gauge .seg.on{background:#2E6BFF}
+.gauge .seg:first-child{border-radius:4px 0 0 4px}
+.gauge .seg:last-child{border-radius:0 4px 4px 0}
+/* ── 기억 카드 ── */
+.mem{display:flex;align-items:center;gap:12px;border:1px solid var(--line);
+  background:#fff;border-radius:3px;padding:11px 14px}
+.mem .tp{font-size:9.5px;font-weight:800;letter-spacing:.07em;color:#2E6BFF;
+  background:#EEF3FF;border-radius:3px;padding:4px 8px;flex:none;width:78px;text-align:center}
+.mem .tx{font-size:12.5px;font-weight:600;color:#0F1420;flex:1}
+.mem .im{font-size:10.5px;font-weight:700;color:#A4AAB4;flex:none}
+.mem.pin{border-color:#A9C3FB;background:#FAFCFF}
+</style></head><body>
+<div class="wrap" id="sm-01"><div class="stage"><div class="fr cov">
+ <div style="position:absolute;left:100px;top:86px;font-size:20px;font-weight:700;color:var(--lime);letter-spacing:.02em">Samantha</div>
+ <div style="position:absolute;left:100px;top:180px;width:1300px;font-size:62px;font-weight:700;
+   color:#fff;line-height:1.28;letter-spacing:-.04em">대화는 사라져도<br><em style="font-style:normal;background:var(--lime);color:#fff;padding:0 10px">관계는 남게</em></div>
+ <div style="position:absolute;left:100px;top:372px;width:1300px;font-size:17px;font-weight:500;color:#8E9AB2">
+   AI 인터랙티브 스토리 채팅 · 서비스명 0140am · LEVELS</div>
+ <div style="position:absolute;left:100px;top:590px;font-size:13px;font-weight:700;color:#5E6B85;letter-spacing:.12em">CONTENTS</div>
+ <div style="position:absolute;left:100px;top:626px;width:1400px;display:flex;flex-wrap:wrap;gap:0"><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Service Overview</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Market Research</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Persona</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Problem</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Solution</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Domain Model</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Context Budget</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Memory</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Affinity</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Prompt Assembly</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Model Routing</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Safety Policy</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Crisis Flow</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Heart Economy</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Creator Ecosystem</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Globalization</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Information Architecture</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Screen Preview</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Metric System</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Scope & Trade-off</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Retrospective</div><div style="width:230px;font-size:14px;color:#8E9AB2;font-weight:500;padding:5px 0">· Appendix</div></div>
+ <div style="position:absolute;left:0;top:808px;width:1920px;height:272px;background:#0B1222">
+  <div style="position:absolute;left:100px;top:38px;font-size:13px;font-weight:700;color:#5E6B85;letter-spacing:.12em">PROJECT INFORMATION</div>
+  <div style="position:absolute;left:100px;top:96px;width:110px;font-size:13px;color:#5E6B85;font-weight:600">작업 기간</div><div style="position:absolute;left:228px;top:96px;width:660px;font-size:13.5px;color:#D9E1F0;font-weight:500">2026.02 ~ 2026.08 (약 7개월) *</div><div style="position:absolute;left:100px;top:138px;width:110px;font-size:13px;color:#5E6B85;font-weight:600">역할</div><div style="position:absolute;left:228px;top:138px;width:660px;font-size:13.5px;color:#D9E1F0;font-weight:500">Product Manager</div><div style="position:absolute;left:100px;top:180px;width:110px;font-size:13px;color:#5E6B85;font-weight:600">기여</div><div style="position:absolute;left:228px;top:180px;width:660px;font-size:13.5px;color:#D9E1F0;font-weight:500">대화·기억·안전·재화 정책 100%, 화면 기획 100%</div><div style="position:absolute;left:100px;top:222px;width:110px;font-size:13px;color:#5E6B85;font-weight:600">작업 범위</div><div style="position:absolute;left:228px;top:222px;width:660px;font-size:13.5px;color:#D9E1F0;font-weight:500">대화 구조, 컨텍스트 설계, 안전 정책, 크리에이터 생태계</div><div style="position:absolute;left:1020px;top:96px;width:110px;font-size:13px;color:#5E6B85;font-weight:600">유닛 구성</div><div style="position:absolute;left:1148px;top:96px;width:660px;font-size:13.5px;color:#D9E1F0;font-weight:500">PM 1인, FE 2인, BE 3인, ML 1인, 디자인 1인 *</div><div style="position:absolute;left:1020px;top:138px;width:110px;font-size:13px;color:#5E6B85;font-weight:600">사용 지식</div><div style="position:absolute;left:1148px;top:138px;width:660px;font-size:13.5px;color:#D9E1F0;font-weight:500">서비스 기획, LLM 오케스트레이션, 프롬프트 설계, 안전 정책</div><div style="position:absolute;left:1020px;top:180px;width:110px;font-size:13px;color:#5E6B85;font-weight:600">사용 기술</div><div style="position:absolute;left:1148px;top:180px;width:660px;font-size:13.5px;color:#D9E1F0;font-weight:500">Figma, Notion, Slack *</div><div style="position:absolute;left:1020px;top:222px;width:110px;font-size:13px;color:#5E6B85;font-weight:600">산출물</div><div style="position:absolute;left:1148px;top:222px;width:660px;font-size:13.5px;color:#D9E1F0;font-weight:500">도메인 상세 기획서, 프롬프트 템플릿, 어드민 스펙 보드</div>
+  <div style="position:absolute;left:100px;top:250px;font-size:11.5px;color:#4E5972;font-weight:500">* 표시한 세 항목은 샘플 값</div>
+ </div>
+ <div class="pgn w" style="color:#5E6B85">SAMANTHA</div>
+</div></div></div>
+<div class="wrap" id="sm-02"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">서비스 개요</div><div class="ten">Service Overview</div>
+ <div class="hl">채팅을 남기지 않고<br><em>이야기를 남깁니다</em></div>
+ <div class="ds">유저가 캐릭터를 만들고, 상황을 골라 대화를 시작합니다. <b>대화 자체는 휘발되지만 기억·관계·분기는 방에 누적되고, 그 누적이 다음 대화의 품질이 됩니다.</b></div>
+<div class="bx " style="left:100px;top:398px;width:546px;height:196px"><div style="padding:26px 28px"><div class="cap">CREATE</div><div style="font-size:26px;font-weight:700;color:var(--ink);margin:14px 0 12px">캐릭터를 만든다</div><div class="sm">성격·말투·비공개 설정을 적으면 하나의 인격이 됩니다. <b>배포 전 10턴을 시험해보고</b> 설정을 고칩니다.</div></div></div><div class="bx hi" style="left:686px;top:398px;width:546px;height:196px"><div style="padding:26px 28px"><div class="cap">ENTER</div><div style="font-size:26px;font-weight:700;color:var(--ink);margin:14px 0 12px">상황을 고른다</div><div class="sm">같은 캐릭터라도 진입 지점이 다르면 다른 이야기가 됩니다. <b>세계관과 첫 대사가 한 쌍</b>으로 묶입니다.</div></div></div><div class="bx " style="left:1272px;top:398px;width:548px;height:196px"><div style="padding:26px 28px"><div class="cap">ACCUMULATE</div><div style="font-size:26px;font-weight:700;color:var(--ink);margin:14px 0 12px">방에 쌓인다</div><div class="sm">기억·관계·분기가 방 단위로 남습니다. <b>오래 한 방일수록 대화가 좋아집니다.</b></div></div></div><div class="qb" style="left:100px;top:628px;width:1720px;height:260px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">휘발되는 것과 남는 것을 먼저 갈랐습니다</div><div class="d">메시지는 흘러가지만 <b>기억(Memory) · 관계(Affinity) · 분기(Branch)</b> 세 가지는 방에 남습니다. 남는 것을 정하고 나서야 무엇을 요약하고 무엇을 버릴지가 정해졌습니다. 이 구분이 없으면 컨텍스트는 그냥 오래된 순서로 잘려나갑니다.<br><br><b>기억</b>은 사실 단문으로 뽑혀 중요도를 갖고, <b>관계</b>는 0~100 점수와 5단계로 관리되며, <b>분기</b>는 마음에 든 지점에서 방을 복제해 다른 결말을 따로 보관합니다. 셋 다 방(Room)에 붙지 유저나 캐릭터에 붙지 않습니다 — 같은 캐릭터라도 상황이 다르면 다른 이야기니까요.<br><br>이 구조가 정해지자 나머지 결정이 따라왔습니다. 무엇을 요약할지, 컨텍스트가 넘칠 때 무엇부터 버릴지, 캐릭터 설정을 고쳤을 때 기존 방을 어떻게 할지가 전부 <b>“남는 것은 건드리지 않는다”</b>는 한 줄에서 나왔습니다.</div></div></div>
+ <div class="pgn">SM 02</div>
+</div></div></div>
+<div class="wrap" id="sm-03"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">시장 조사</div><div class="ten">Market Research</div>
+ <div class="hl">읽는 시장과 대화하는 시장이<br><em>따로 크고 있었습니다</em></div>
+ <div class="ds">완성된 이야기를 소비하는 시장과 캐릭터와 말을 주고받는 시장은 각각 성장했지만, <b>개입할 수 있으면서 동시에 쌓이는 형태는 비어 있었습니다.</b></div>
+<div class="bx " style="left:100px;top:398px;width:860px;height:620px"><div style="padding:4px 30px"><svg width="800" height="600" viewBox="0 0 800 600">
+<line x1="60" y1="300" x2="760" y2="300" stroke="#D6D9DF" stroke-width="1"/>
+<line x1="400" y1="40" x2="400" y2="560" stroke="#D6D9DF" stroke-width="1"/>
+<text class="vl" x="60" y="30">단발 대화</text>
+<text class="vl" x="760" y="30" text-anchor="end">누적 서사</text>
+<text class="vl" x="410" y="55">개입 가능</text>
+<text class="vl" x="410" y="556">개입 불가</text>
+<circle class="dot" style="animation-delay:0.00s" cx="596" cy="452" r="9" fill="#B6BCC7"/><text class="vd" x="612" y="456">웹소설 플랫폼</text><circle class="dot" style="animation-delay:0.15s" cx="668" cy="522" r="9" fill="#B6BCC7"/><text class="vd" x="684" y="526">웹툰 · 미드폼</text><circle class="dot" style="animation-delay:0.30s" cx="196" cy="152" r="9" fill="#B6BCC7"/><text class="vd" x="212" y="156">캐릭터 챗 앱</text><circle class="dot" style="animation-delay:0.45s" cx="140" cy="226" r="9" fill="#B6BCC7"/><text class="vd" x="156" y="230">음성 AI 동반자</text><circle class="dot" style="animation-delay:0.60s" cx="612" cy="158" r="13" fill="#2E6BFF"/><circle class="dot" style="animation-delay:.9s" cx="612" cy="158" r="30" fill="none" stroke="#2E6BFF" stroke-width="1.5" stroke-dasharray="4 4"/><text class="vk" x="612" y="112" text-anchor="middle" style="fill:#2E6BFF">Samantha</text><text class="vd" x="612" y="212" text-anchor="middle">개입하면서 쌓인다</text></svg></div></div><div class="bx " style="left:1000px;top:398px;width:820px;height:300px"><div style="padding:26px 30px"><div class="cap">FINDING</div><div class="bt" style="margin:13px 0 12px">두 시장 다 커지는데 겹치지 않았습니다</div><div class="sm">웹소설은 완성된 서사를 주지만 독자가 <b>개입할 수 없고</b>, 캐릭터 챗은 개입은 되지만 대화가 <b>다음 날 이어지지 않습니다.</b> 어제 한 약속을 오늘 캐릭터가 모르면 그건 서사가 아니라 세션입니다.</div><div style="display:flex;gap:12px;margin-top:20px"><div class="st"><div class="n">읽는 쪽</div><div class="t">개입 불가</div><div class="d">결말을 바꿀 수 없고, 취향과 어긋나면 이탈 외에 선택지가 없습니다</div></div><div class="st"><div class="n">대화하는 쪽</div><div class="t">누적 없음</div><div class="d">세션이 끝나면 관계가 초기화돼 다시 설명해야 합니다</div></div><div class="st"><div class="n">공통</div><div class="t">기억이 없다</div><div class="d">둘 다 어제를 참조하지 못한다는 같은 한계에서 멈춰 있었습니다</div></div></div></div></div><div class="qb" style="left:1000px;top:730px;width:820px;height:200px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">빈칸은 "누적되는 개입"이었습니다</div><div class="d">두 축을 개입 가능 여부와 서사 누적 여부로 잡자 사분면 하나가 비어 있었습니다. <b>이 칸을 채우는 데 필요한 건 더 좋은 모델이 아니라 기억을 다루는 규칙</b>이었고, 그래서 이 프로젝트의 핵심 설계 대부분이 대화가 아니라 컨텍스트 쪽에 있습니다. 모델은 계속 좋아지지만 무엇을 기억하고 무엇을 버릴지는 좋아지는 것으로 해결되지 않습니다.</div></div></div>
+ <div class="pgn">SM 03</div>
+</div></div></div>
+<div class="wrap" id="sm-04"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">사용자 정의</div><div class="ten">Persona</div>
+ <div class="hl">이야기를 소비하는 사람과<br><em>설계하는 사람은 다릅니다</em></div>
+ <div class="ds">같은 앱을 쓰지만 지치는 지점이 정반대였습니다. <b>읽는 사람은 반복 설명에 지치고, 만드는 사람은 캐릭터가 흔들릴 때 지칩니다.</b> 두 이탈 사유가 달라서 해결책도 갈렸습니다.</div>
+<div class="bx " style="left:100px;top:398px;width:850px;height:462px"><div style="padding:26px 30px"><div class="cap">CORE · 65%</div><div style="font-size:24px;font-weight:700;margin:12px 0 14px">읽는 사람 — 20~30대 여성</div><div class="qb" style="position:static;border:0;background:var(--tint);border-radius:4px;margin-bottom:16px"><div class="bar" style="margin:18px 0"></div><div style="padding:18px 22px"><div class="d" style="margin:0">“결말이 마음에 안 들면 다시 쓰고 싶은데, 그럴 방법이 없어요.”</div></div></div><div class="sb" style="margin-top:10px"><div class="k">취향이 아주 구체적이다</div><div class="v">장르·관계성·말투까지 정해두고 그것만 찾습니다</div></div><div class="sb" style="margin-top:10px"><div class="k">설명을 반복하기 싫다</div><div class="v">어제 말한 걸 오늘 또 설명하면 그 순간 몰입이 끊깁니다</div></div><div class="sb" style="margin-top:10px"><div class="k">안전이 곧 체류 조건이다</div><div class="v">불쾌한 응답 한 번이면 앱을 지웁니다</div></div></div></div><div class="bx hi" style="left:970px;top:398px;width:850px;height:462px"><div style="padding:26px 30px"><div class="cap">CREATOR · 8% 목표</div><div style="font-size:24px;font-weight:700;margin:12px 0 14px">만드는 사람 — 팬덤 창작 경험자</div><div class="qb" style="position:static;border:0;background:var(--tint);border-radius:4px;margin-bottom:16px"><div class="bar" style="margin:18px 0"></div><div style="padding:18px 22px"><div class="d" style="margin:0">“내가 만든 애가 남들한테도 똑같이 굴어야 하는데, 자꾸 흔들려요.”</div></div></div><div class="sb" style="margin-top:10px"><div class="k">일관성이 작품성이다</div><div class="v">캐릭터가 설정을 이탈하면 창작물이 망가진 것으로 느낍니다</div></div><div class="sb" style="margin-top:10px"><div class="k">반응을 숫자로 보고 싶다</div><div class="v">몇 명이 아니라 어디서 나갔는지를 궁금해합니다</div></div><div class="sb" style="margin-top:10px"><div class="k">도용을 경계한다</div><div class="v">리믹스는 환영하지만 출처 없는 복제는 이탈 사유입니다</div></div></div></div><div class="qb" style="left:100px;top:892px;width:1720px;height:126px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">두 사람의 이탈 사유가 달라서 해결책도 갈렸습니다</div><div class="d">읽는 사람에게는 <b>반복 설명을 없애는 일</b>(기억·요약)이 필요했고, 만드는 사람에게는 <b>캐릭터가 흔들리지 않는다는 보장</b>(설정 재주입·이탈 탐지)이 필요했습니다. 같은 기능으로 둘 다 풀리지 않아서, 컨텍스트 설계와 프롬프트 설계를 별도 축으로 나눴습니다.</div></div></div><div class="chk">핵심 타깃 20~30대 여성 · 전체 타깃 10~30대 남녀 · 주요 시장 한국 / 북미 / 일본</div>
+ <div class="pgn">SM 04</div>
+</div></div></div>
+<div class="wrap" id="sm-05"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">문제 정의</div><div class="ten">Problem</div>
+ <div class="hl">캐릭터가 어제를 모르면<br><em>유저는 매번 처음부터 설명합니다</em></div>
+ <div class="ds">초기 테스트에서 이탈이 몰린 지점은 응답 품질이 아니라 <b>같은 설명을 두 번 하게 되는 순간</b>이었습니다. 문제는 모델이 아니라 기억을 다루는 규칙이 없다는 것이었습니다.</div>
+<div class="bx " style="left:100px;top:398px;width:555px;height:272px"><div style="padding:24px 26px"><div class="cap">PROBLEM 01</div><div class="bt" style="margin:13px 0 11px;font-size:19px">어제를 모른다</div><div class="sm" style="font-size:13px">컨텍스트 창을 넘기면 오래된 순서로 잘립니다. 유저가 가장 중요하다고 여기는 약속이 가장 먼저 사라지는 일이 생깁니다.</div><div style="margin-top:16px;padding-top:15px;border-top:1px solid var(--line)"><div class="cap lm">→ 설계로 옮긴 답</div><div class="mut" style="margin-top:8px;color:var(--g1)">오래된 순서가 아니라 <b>중요도 순서로 자르기</b> — Memory에 importance 부여</div></div></div></div><div class="bx hi" style="left:682px;top:398px;width:555px;height:272px"><div style="padding:24px 26px"><div class="cap">PROBLEM 02</div><div class="bt" style="margin:13px 0 11px;font-size:19px">설정이 무너진다</div><div class="sm" style="font-size:13px">턴이 길어질수록 캐릭터가 자기 말투를 잊습니다. 유저는 이걸 버그가 아니라 “얘가 변했다”로 받아들입니다.</div><div style="margin-top:16px;padding-top:15px;border-top:1px solid var(--line)"><div class="cap lm">→ 설계로 옮긴 답</div><div class="mut" style="margin-top:8px;color:var(--g1)">설정을 <b>주기적으로 다시 주입</b>하고, 반복 감지 시 생성 파라미터를 자동 조정</div></div></div></div><div class="bx " style="left:1264px;top:398px;width:556px;height:272px"><div style="padding:24px 26px"><div class="cap">PROBLEM 03</div><div class="bt" style="margin:13px 0 11px;font-size:19px">품질과 비용이 반대로 간다</div><div class="sm" style="font-size:13px">컨텍스트를 늘리면 좋아지지만 응답 한 건의 원가가 오릅니다. 무제한으로 좋게 하면 서비스가 남지 않습니다.</div><div style="margin-top:16px;padding-top:15px;border-top:1px solid var(--line)"><div class="cap lm">→ 설계로 옮긴 답</div><div class="mut" style="margin-top:8px;color:var(--g1)">구간별 <b>토큰 예산 상한</b>을 먼저 정하고, 그 안에서만 품질을 다툼</div></div></div></div><div class="qb" style="left:100px;top:704px;width:1720px;height:206px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">“예측할 수 없다”가 아니라 “설명할 수 없다”가 문제였습니다</div><div class="d">AI 응답이 나쁠 때 유저는 이유를 모르고, 운영자도 모릅니다. 그래서 <b>왜 이 응답이 나왔는지 되짚을 수 있는 구조</b>를 먼저 만들었습니다 — 메시지마다 모델명·토큰·필터 결과를 남기고, 기억은 어느 메시지에서 뽑혔는지 근거를 답니다. 재현되지 않는 품질 문제는 고칠 수 없습니다.<br><br>이 판단이 이후 설계 전체의 기준이 됐습니다. 기억을 유저에게 열어 보인 것도, 컨텍스트 절삭 순서를 표로 못박은 것도, 프롬프트를 자유 텍스트가 아니라 순서 고정 블록으로 정의한 것도 전부 <b>“왜 그렇게 나왔는지 되짚을 수 있게”</b>라는 같은 요구에서 나왔습니다. 좋은 응답을 만드는 일과 나쁜 응답을 설명하는 일은 다른 작업이고, 후자를 먼저 했습니다.</div></div></div>
+ <div class="pgn">SM 05</div>
+</div></div></div>
+<div class="wrap" id="sm-06"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">솔루션</div><div class="ten">Unique Value Proposition</div>
+ <div class="hl">네 축을 세운 다음<br><em>순서를 매겼습니다</em></div>
+ <div class="ds">몰입 · 창작 · 발견 · 지속. 네 축마다 성공 기준을 숫자로 먼저 걸어두고, <b>그 숫자를 못 넘기면 다음 축으로 넘어가지 않기로</b> 했습니다.</div>
+<div class="bx hi" style="left:100px;top:398px;width:415px;height:252px"><div style="padding:24px 26px"><div class="cap">01 · Immersion</div><div class="bt" style="margin:12px 0 10px;font-size:20px">몰입</div><div class="sm" style="font-size:13px">캐릭터가 설정을 이탈하지 않고 말투·관계·기억을 유지합니다.</div><div style="position:absolute;left:26px;bottom:24px;right:26px;padding-top:14px;border-top:1px solid var(--line)"><div style="display:flex;align-items:baseline;justify-content:space-between"><div class="mut">세션당 평균 턴</div><div style="font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em">25턴</div></div></div></div></div><div class="bx " style="left:535px;top:398px;width:415px;height:252px"><div style="padding:24px 26px"><div class="cap">02 · Creation</div><div class="bt" style="margin:12px 0 10px;font-size:20px">창작</div><div class="sm" style="font-size:13px">비개발자가 5분 안에 캐릭터를 만들고 배포합니다.</div><div style="position:absolute;left:26px;bottom:24px;right:26px;padding-top:14px;border-top:1px solid var(--line)"><div style="display:flex;align-items:baseline;justify-content:space-between"><div class="mut">D7 캐릭터 생성률</div><div style="font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em">8%</div></div></div></div></div><div class="bx " style="left:970px;top:398px;width:415px;height:252px"><div style="padding:24px 26px"><div class="cap">03 · Discovery</div><div class="bt" style="margin:12px 0 10px;font-size:20px">발견</div><div class="sm" style="font-size:13px">취향에 맞는 캐릭터를 세 번의 탭 안에 만납니다.</div><div style="position:absolute;left:26px;bottom:24px;right:26px;padding-top:14px;border-top:1px solid var(--line)"><div style="display:flex;align-items:baseline;justify-content:space-between"><div class="mut">홈 → 첫 대화 CVR</div><div style="font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em">35%</div></div></div></div></div><div class="bx " style="left:1405px;top:398px;width:415px;height:252px"><div style="padding:24px 26px"><div class="cap">04 · Retention</div><div class="bt" style="margin:12px 0 10px;font-size:20px">지속</div><div class="sm" style="font-size:13px">관계가 쌓일수록 대화가 좋아지는 구조를 만듭니다.</div><div style="position:absolute;left:26px;bottom:24px;right:26px;padding-top:14px;border-top:1px solid var(--line)"><div style="display:flex;align-items:baseline;justify-content:space-between"><div class="mut">D30 리텐션</div><div style="font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em">15%</div></div></div></div></div><div class="qb" style="left:100px;top:682px;width:1720px;height:214px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">네 축은 병렬이 아니라 순서입니다</div><div class="d">몰입이 되지 않으면 창작할 이유가 없고, 창작물이 없으면 발견시킬 대상이 없으며, 발견이 안 되면 지속은 애초에 측정되지 않습니다. <b>그래서 Phase 1에서는 몰입 하나만 붙잡고 나머지 셋을 의도적으로 미뤘습니다.</b> 네 개를 동시에 올리려 했다면 넷 다 어중간했을 겁니다. 축의 순서를 정하는 일이 기능을 고르는 일보다 먼저였습니다.<br><br>순서를 정해두면 회의가 짧아집니다. Phase 1 도중에 들어온 추천 알고리즘 요구나 크리에이터 정산 요구는 <b>“지금은 발견·창작 축이라 다음 페이즈”</b>로 답하면 끝이고, 거절이 아니라 순번 안내가 됩니다. 우선순위를 매번 새로 논쟁하지 않는 것이 이 표의 실제 효용이었습니다.</div></div></div>
+ <div class="pgn">SM 06</div>
+</div></div></div>
+<div class="wrap" id="sm-07"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">도메인 모델</div><div class="ten">Domain Model</div>
+ <div class="hl">방은 사람이 아니라<br><em>세 값의 조합입니다</em></div>
+ <div class="ds">Room = User × Character × Situation. 이 한 줄에서 나머지가 따라 나왔습니다. <b>기억도 관계도 방에 붙지 유저나 캐릭터에 붙지 않습니다.</b></div>
+<div class="bx " style="left:100px;top:398px;width:1290px;height:340px"><div style="padding:34px 30px;position:relative;height:100%"><div style="position:relative;width:1236px;height:262px"><div style="position:absolute;left:0px;top:0px;width:250px;height:96px;background:#fff;border:1px solid #E3E5EA;border-radius:4px;padding:15px 18px"><div style="font-size:9.5px;font-weight:800;letter-spacing:.11em;color:#767C88">IDENTITY</div><div style="font-size:16px;font-weight:700;color:#0F1420;margin-top:8px">User</div><div style="font-size:11px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.5">계정 하나에 페르소나 최대 5개</div></div><div style="position:absolute;left:0px;top:132px;width:250px;height:96px;background:#fff;border:1px solid #E3E5EA;border-radius:4px;padding:15px 18px"><div style="font-size:9.5px;font-weight:800;letter-spacing:.11em;color:#767C88">IDENTITY</div><div style="font-size:16px;font-weight:700;color:#0F1420;margin-top:8px">Persona</div><div style="font-size:11px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.5">캐릭터가 “너”로 인식하는 대상</div></div><div style="position:absolute;left:320px;top:0px;width:250px;height:96px;background:#fff;border:1px solid #E3E5EA;border-radius:4px;padding:15px 18px"><div style="font-size:9.5px;font-weight:800;letter-spacing:.11em;color:#767C88">CREATION</div><div style="font-size:16px;font-weight:700;color:#0F1420;margin-top:8px">Character</div><div style="font-size:11px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.5">프롬프트 원본의 소유 단위</div></div><div style="position:absolute;left:320px;top:132px;width:250px;height:96px;background:#fff;border:1px solid #E3E5EA;border-radius:4px;padding:15px 18px"><div style="font-size:9.5px;font-weight:800;letter-spacing:.11em;color:#767C88">CREATION</div><div style="font-size:16px;font-weight:700;color:#0F1420;margin-top:8px">Situation</div><div style="font-size:11px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.5">세계관 + 첫 대사 한 쌍</div></div><div style="position:absolute;left:650px;top:60px;width:268px;height:110px;background:#2E6BFF;border:1px solid #2E6BFF;border-radius:4px;padding:15px 18px"><div style="font-size:9.5px;font-weight:800;letter-spacing:.11em;color:#BFD3FF">CONVERSATION</div><div style="font-size:16px;font-weight:700;color:#fff;margin-top:8px">Room</div><div style="font-size:11px;font-weight:500;color:#D7E4FF;margin-top:6px;line-height:1.5">유저 × 캐릭터 × 상황의 조합</div></div><div style="position:absolute;left:1000px;top:0px;width:236px;height:76px;background:#fff;border:1px solid #E3E5EA;border-radius:4px;padding:15px 18px"><div style="font-size:9.5px;font-weight:800;letter-spacing:.11em;color:#767C88"></div><div style="font-size:16px;font-weight:700;color:#0F1420;margin-top:8px">Message</div><div style="font-size:11px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.5">분기 트리 · 재생성 그룹</div></div><div style="position:absolute;left:1000px;top:92px;width:236px;height:76px;background:#fff;border:1px solid #E3E5EA;border-radius:4px;padding:15px 18px"><div style="font-size:9.5px;font-weight:800;letter-spacing:.11em;color:#767C88"></div><div style="font-size:16px;font-weight:700;color:#0F1420;margin-top:8px">Memory</div><div style="font-size:11px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.5">사실 단문 · 중요도 1~5</div></div><div style="position:absolute;left:1000px;top:184px;width:236px;height:76px;background:#fff;border:1px solid #E3E5EA;border-radius:4px;padding:15px 18px"><div style="font-size:9.5px;font-weight:800;letter-spacing:.11em;color:#767C88"></div><div style="font-size:16px;font-weight:700;color:#0F1420;margin-top:8px">AffinityState</div><div style="font-size:11px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.5">0~100 · 5단계</div></div><div style="position:absolute;left:250px;top:48px;width:70px;height:1px;background:#B6BCC7"></div><div style="position:absolute;left:250px;top:180px;width:70px;height:1px;background:#B6BCC7"></div><div style="position:absolute;left:570px;top:48px;width:40px;height:1px;background:#B6BCC7"></div><div style="position:absolute;left:570px;top:180px;width:40px;height:1px;background:#B6BCC7"></div><div style="position:absolute;left:610px;top:48px;width:1px;height:132px;background:#B6BCC7"></div><div style="position:absolute;left:610px;top:115px;width:40px;height:1px;background:#B6BCC7"></div><div style="position:absolute;left:918px;top:38px;width:82px;height:1px;background:#B6BCC7"></div><div style="position:absolute;left:918px;top:130px;width:82px;height:1px;background:#B6BCC7"></div><div style="position:absolute;left:918px;top:222px;width:82px;height:1px;background:#B6BCC7"></div><div style="position:absolute;left:950px;top:38px;width:1px;height:184px;background:#B6BCC7"></div></div></div></div><div class="bx hi" style="left:1430px;top:398px;width:390px;height:340px"><div style="padding:26px 28px"><div class="cap">KEY DECISION</div><div class="bt" style="margin:13px 0 12px">방을 사람 단위로<br>만들지 않았습니다</div><div class="sm" style="font-size:13px">유저 한 명과 캐릭터 한 명이 <b>여러 방</b>을 가질 수 있습니다. 상황이 다르면 다른 이야기이기 때문입니다. 같은 캐릭터로 학교 배경과 회사 배경을 동시에 굴려도 기억이 섞이지 않습니다.<br><br>대신 페르소나는 계정 단위로 두고 방마다 골라 끼웁니다. <b>“나”는 하나여도 상대에 따라 다른 나를 보여줄 수 있어야 하니까요.</b></div></div></div><div class="bx " style="left:100px;top:790px;width:1720px;height:228px"><div style="padding:24px 30px"><div class="cap">불변 조건 — 어떤 기능이 추가돼도 깨지지 않아야 하는 규칙</div><div style="display:flex;gap:14px;margin-top:18px"><div class="st"><div class="n">INV-01</div><div class="t">생성된 메시지는 불변</div><div class="d">캐릭터 설정을 고쳐도 이미 나온 응답은 바뀌지 않고 다음 턴부터 반영됩니다</div></div><div class="st"><div class="n">INV-02</div><div class="t">secret은 응답에 안 실린다</div><div class="d">비공개 설정은 프롬프트에만 주입되고 어떤 API 응답에도 포함되지 않습니다</div></div><div class="st"><div class="n">INV-03</div><div class="t">삭제는 소프트 삭제</div><div class="d">캐릭터가 내려가도 기존 방은 읽기 전용으로 남습니다 — 유저의 기록이니까요</div></div><div class="st"><div class="n">INV-04</div><div class="t">기억은 근거를 갖는다</div><div class="d">모든 Memory는 어느 메시지에서 뽑혔는지 source를 보관합니다</div></div><div class="st"><div class="n">INV-05</div><div class="t">실패는 과금하지 않는다</div><div class="d">필터 차단·모델 폴백·타임아웃은 전부 하트를 차감하지 않습니다</div></div></div></div></div>
+ <div class="pgn">SM 07</div>
+</div></div></div>
+<div class="wrap" id="sm-08"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">핵심 설계 ①</div><div class="ten">Context Budget</div>
+ <div class="hl">컨텍스트는 무한하지 않아서<br><em>먼저 예산을 짰습니다</em></div>
+ <div class="ds">모델에 넣을 수 있는 양이 정해져 있으니, 어디에 얼마를 쓰고 넘치면 무엇부터 버릴지를 <b>기능보다 먼저 결정했습니다.</b> 이 표가 없으면 절삭 규칙은 결국 구현자가 정하게 됩니다.</div>
+<div class="bx " style="left:100px;top:398px;width:1360px;height:620px"><div style="padding:30px 34px"><div class="cap">CONTEXT BUDGET · 16K 기준 (단위 토큰)</div><div style="position:relative;height:520px;margin-top:24px"><div style="position:absolute;left:0;top:0px;width:180px;font-size:13.5px;font-weight:700;color:#0F1420">시스템 지시문</div><div style="position:absolute;left:196px;top:-2px;width:620px;height:22px"><div class="bfill" style="width:31px;height:22px;background:#2E6BFF;border-radius:2px;animation-delay:0.00s"></div></div><div style="position:absolute;left:830px;top:0px;width:90px;font-size:13.5px;font-weight:700;color:#0F1420;text-align:right">400</div><div style="position:absolute;left:948px;top:1px;width:340px;font-size:12px;font-weight:500;color:#767C88">고정 — 절대 잘리지 않음</div><div style="position:absolute;left:0;top:58px;width:180px;font-size:13.5px;font-weight:600;color:#3A3F4A">캐릭터 정의</div><div style="position:absolute;left:196px;top:56px;width:620px;height:22px"><div class="bfill" style="width:124px;height:22px;background:#C3CBD8;border-radius:2px;animation-delay:0.06s"></div></div><div style="position:absolute;left:830px;top:58px;width:90px;font-size:13.5px;font-weight:700;color:#0F1420;text-align:right">1,600</div><div style="position:absolute;left:948px;top:59px;width:340px;font-size:12px;font-weight:500;color:#767C88">하드 트렁케이트</div><div style="position:absolute;left:0;top:116px;width:180px;font-size:13.5px;font-weight:600;color:#3A3F4A">상황 · 세계관</div><div style="position:absolute;left:196px;top:114px;width:620px;height:22px"><div class="bfill" style="width:62px;height:22px;background:#C3CBD8;border-radius:2px;animation-delay:0.12s"></div></div><div style="position:absolute;left:830px;top:116px;width:90px;font-size:13.5px;font-weight:700;color:#0F1420;text-align:right">800</div><div style="position:absolute;left:948px;top:117px;width:340px;font-size:12px;font-weight:500;color:#767C88">하드 트렁케이트</div><div style="position:absolute;left:0;top:174px;width:180px;font-size:13.5px;font-weight:600;color:#3A3F4A">페르소나</div><div style="position:absolute;left:196px;top:172px;width:620px;height:22px"><div class="bfill" style="width:23px;height:22px;background:#C3CBD8;border-radius:2px;animation-delay:0.18s"></div></div><div style="position:absolute;left:830px;top:174px;width:90px;font-size:13.5px;font-weight:700;color:#0F1420;text-align:right">300</div><div style="position:absolute;left:948px;top:175px;width:340px;font-size:12px;font-weight:500;color:#767C88">하드 트렁케이트</div><div style="position:absolute;left:0;top:232px;width:180px;font-size:13.5px;font-weight:700;color:#0F1420">기억 (Memory)</div><div style="position:absolute;left:196px;top:230px;width:620px;height:22px"><div class="bfill" style="width:62px;height:22px;background:#2E6BFF;border-radius:2px;animation-delay:0.24s"></div></div><div style="position:absolute;left:830px;top:232px;width:90px;font-size:13.5px;font-weight:700;color:#0F1420;text-align:right">800</div><div style="position:absolute;left:948px;top:233px;width:340px;font-size:12px;font-weight:500;color:#767C88">importance 낮은 순 제거</div><div style="position:absolute;left:0;top:290px;width:180px;font-size:13.5px;font-weight:600;color:#3A3F4A">요약 (Summary)</div><div style="position:absolute;left:196px;top:288px;width:620px;height:22px"><div class="bfill" style="width:77px;height:22px;background:#C3CBD8;border-radius:2px;animation-delay:0.30s"></div></div><div style="position:absolute;left:830px;top:290px;width:90px;font-size:13.5px;font-weight:700;color:#0F1420;text-align:right">1,000</div><div style="position:absolute;left:948px;top:291px;width:340px;font-size:12px;font-weight:500;color:#767C88">재요약</div><div style="position:absolute;left:0;top:348px;width:180px;font-size:13.5px;font-weight:700;color:#0F1420">최근 대화</div><div style="position:absolute;left:196px;top:346px;width:620px;height:22px"><div class="bfill" style="width:620px;height:22px;background:#2E6BFF;border-radius:2px;animation-delay:0.36s"></div></div><div style="position:absolute;left:830px;top:348px;width:90px;font-size:13.5px;font-weight:700;color:#0F1420;text-align:right">8,000</div><div style="position:absolute;left:948px;top:349px;width:340px;font-size:12px;font-weight:500;color:#767C88">오래된 턴부터 · 최소 6턴 보장</div><div style="position:absolute;left:0;top:406px;width:180px;font-size:13.5px;font-weight:600;color:#3A3F4A">예시 대화</div><div style="position:absolute;left:196px;top:404px;width:620px;height:22px"><div class="bfill" style="width:46px;height:22px;background:#C3CBD8;border-radius:2px;animation-delay:0.42s"></div></div><div style="position:absolute;left:830px;top:406px;width:90px;font-size:13.5px;font-weight:700;color:#0F1420;text-align:right">600</div><div style="position:absolute;left:948px;top:407px;width:340px;font-size:12px;font-weight:500;color:#767C88">최근 대화 부족할 때만 포함</div><div style="position:absolute;left:0;top:464px;width:180px;font-size:13.5px;font-weight:600;color:#3A3F4A">출력 예약</div><div style="position:absolute;left:196px;top:462px;width:620px;height:22px"><div class="bfill" style="width:193px;height:22px;background:#C3CBD8;border-radius:2px;animation-delay:0.48s"></div></div><div style="position:absolute;left:830px;top:464px;width:90px;font-size:13.5px;font-weight:700;color:#0F1420;text-align:right">2,500</div><div style="position:absolute;left:948px;top:465px;width:340px;font-size:12px;font-weight:500;color:#767C88">— </div></div></div></div><div class="bx hi" style="left:1500px;top:398px;width:320px;height:296px"><div style="padding:26px 24px"><div class="cap lm">WHY</div><div class="bt" style="margin:13px 0 12px;font-size:19px">잘릴 순서를<br>미리 정했습니다</div><div class="sm" style="font-size:12.5px">컨텍스트가 넘칠 때 무엇부터 버릴지는 개발이 급하게 정하기 쉬운 항목입니다. <b>그래서 기획 단계에서 절삭 순서를 표로 못박았습니다.</b><br><br>같은 이유로 출력 예약분을 먼저 떼어놓습니다. 남는 자리에 응답을 끼워 넣으면 긴 대화일수록 답이 짧아집니다.</div></div></div><div class="qb" style="left:1500px;top:726px;width:320px;height:200px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">최소 6턴</div><div class="d">최근 대화는 오래된 것부터 지우되 <b>6턴 아래로는 내려가지 않습니다.</b> 그 밑으로 가면 요약을 붙여도 대화가 뚝뚝 끊기는 게 체감됩니다. 원가상 최적은 4턴이었지만, 설명할 수 없는 절약이라 택하지 않았습니다.</div></div></div>
+ <div class="pgn">SM 08</div>
+</div></div></div>
+<div class="wrap" id="sm-09"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">핵심 설계 ②</div><div class="ten">Memory</div>
+ <div class="hl">AI가 뽑아낸 기억을<br><em>유저가 고칠 수 있게</em></div>
+ <div class="ds">대화에서 사실을 자동 추출해 장기 보존합니다. <b>추출은 틀릴 수 있으므로 목록을 그대로 열어 수정·삭제·고정을 허용했습니다.</b></div>
+<div class="bx " style="left:100px;top:398px;width:900px;height:312px"><div style="padding:26px 30px"><div class="cap">기억 관리 — 유저에게 그대로 보여줍니다</div><div style="margin-top:18px"><div class="mem pin" style="margin-bottom:9px"><div class="tp">PROMISE</div><div class="tx">다음 주 금요일에 같이 영화 보기로 했다</div><div class="im">📌 고정</div></div><div class="mem " style="margin-bottom:9px"><div class="tp">PROFILE</div><div class="tx">유저는 고양이 두 마리를 키운다</div><div class="im">중요도 4</div></div><div class="mem " style="margin-bottom:9px"><div class="tp">EVENT</div><div class="tx">비 오는 날 편의점에서 처음 만났다</div><div class="im">중요도 4</div></div><div class="mem " style="margin-bottom:9px"><div class="tp">PREFERENCE</div><div class="tx">단 음식을 싫어한다</div><div class="im">중요도 2</div></div><div class="mem " style="margin-bottom:9px"><div class="tp">EVENT</div><div class="tx">지난 대화에서 크게 다퉜다가 화해했다</div><div class="im">중요도 3</div></div></div></div></div><div class="bx hi" style="left:1040px;top:398px;width:780px;height:312px"><div style="padding:26px 30px"><div class="cap lm">DECISION</div><div class="bt" style="margin:13px 0 12px">AI가 뽑은 기억을 유저가 고칠 수 있게 했습니다</div><div class="sm">추출이 틀리는 건 막을 수 없습니다. 막을 수 없다면 <b>고칠 수 있게 하는 편이 낫습니다.</b> 기억 탭에서 수정·삭제·고정이 되고, 고정한 항목은 상한 100건을 넘겨도 자동 정리 대상에서 빠집니다.<br><br>부수 효과가 하나 있었습니다. 유저가 기억 목록을 보면 <b>캐릭터가 왜 그렇게 말했는지 스스로 납득</b>합니다. 설명할 수 없던 응답이 설명 가능해집니다. 불만 창구가 줄어든 것보다 이쪽이 컸습니다.</div></div></div><div class="bx " style="left:100px;top:790px;width:1720px;height:228px"><div style="padding:24px 30px"><div class="cap">요약 · 추출 트리거</div><div style="display:flex;gap:14px;margin-top:16px"><div class="st"><div class="n">조건</div><div class="t">3,000토큰 또는 20턴</div><div class="d">미요약 구간이 둘 중 하나에 닿으면 비동기 워커가 붙습니다</div></div><div class="st"><div class="n">처리</div><div class="t">Rolling Summary</div><div class="d">기존 요약과 병합해 한 건으로 유지 — 요약이 늘어나지 않게</div></div><div class="st"><div class="n">실패</div><div class="t">3회 재시도 후 축소</div><div class="d">끝내 실패하면 원문을 유지하고 최근 턴 수를 줄여 버팁니다</div></div><div class="st"><div class="n">상한</div><div class="t">100건 · 고정 제외</div><div class="d">초과 시 importance 낮고 오래된 순으로 정리합니다</div></div></div></div></div>
+ <div class="pgn">SM 09</div>
+</div></div></div>
+<div class="wrap" id="sm-10"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">핵심 설계 ③</div><div class="ten">Affinity</div>
+ <div class="hl">관계 단계를 화면이 아니라<br><em>프롬프트에 넣었습니다</em></div>
+ <div class="ds">5턴마다 경량 모델이 대화를 평가해 −5~+5 델타를 냅니다. <b>단계가 바뀌면 숫자만 오르는 게 아니라 캐릭터의 지시문 자체가 교체됩니다.</b></div>
+<div class="bx " style="left:100px;top:398px;width:1720px;height:194px"><div style="padding:26px 30px"><div class="cap">관계 단계 — 각 단계는 프롬프트의 지시문 한 줄로 번역됩니다</div><div style="display:flex;margin-top:20px"><div style="flex:1;padding:0 12px 0 0"><div style="height:8px;background:#2E6BFF;border-radius:2px"></div><div style="font-size:10px;font-weight:800;letter-spacing:.07em;margin-top:12px;color:#2E6BFF">STRANGER</div><div style="font-size:15px;font-weight:700;margin-top:7px;color:#0F1420">낯선 사이</div><div style="font-size:11.5px;font-weight:500;color:#767C88;margin-top:7px;line-height:1.5">존댓말 · 거리 유지</div></div><div style="flex:1;padding:0 12px 0 0"><div style="height:8px;background:#2E6BFF;border-radius:2px"></div><div style="font-size:10px;font-weight:800;letter-spacing:.07em;margin-top:12px;color:#2E6BFF">ACQUAINTANCE</div><div style="font-size:15px;font-weight:700;margin-top:7px;color:#0F1420">아는 사이</div><div style="font-size:11.5px;font-weight:500;color:#767C88;margin-top:7px;line-height:1.5">가벼운 질문 허용</div></div><div style="flex:1;padding:0 12px 0 0"><div style="height:8px;background:#2E6BFF;border-radius:2px"></div><div style="font-size:10px;font-weight:800;letter-spacing:.07em;margin-top:12px;color:#2E6BFF">FRIEND</div><div style="font-size:15px;font-weight:700;margin-top:7px;color:#0F1420">친한 사이</div><div style="font-size:11.5px;font-weight:500;color:#767C88;margin-top:7px;line-height:1.5">반말 · 농담 허용 · 과한 애정표현 금지</div></div><div style="flex:1;padding:0 12px 0 0"><div style="height:8px;background:#E3E5EA;border-radius:2px"></div><div style="font-size:10px;font-weight:800;letter-spacing:.07em;margin-top:12px;color:#A4AAB4">CLOSE</div><div style="font-size:15px;font-weight:700;margin-top:7px;color:#A4AAB4">가까운 사이</div><div style="font-size:11.5px;font-weight:500;color:#767C88;margin-top:7px;line-height:1.5">먼저 안부를 묻는 것 허용</div></div><div style="flex:1;padding:0 12px 0 0"><div style="height:8px;background:#E3E5EA;border-radius:2px"></div><div style="font-size:10px;font-weight:800;letter-spacing:.07em;margin-top:12px;color:#A4AAB4">SPECIAL</div><div style="font-size:15px;font-weight:700;margin-top:7px;color:#A4AAB4">특별한 사이</div><div style="font-size:11.5px;font-weight:500;color:#767C88;margin-top:7px;line-height:1.5">관계 서사 참조 · 안전 규칙은 그대로</div></div></div></div></div><div class="bx " style="left:100px;top:622px;width:830px;height:396px"><div style="padding:26px 30px"><div class="cap lm">DECISION</div><div class="bt" style="margin:13px 0 12px">게이지를 UI에만 두지 않았습니다</div><div class="sm">호감도를 화면에만 표시하고 프롬프트에 넣지 않으면, 숫자는 오르는데 말투는 그대로입니다. 유저는 즉시 알아챕니다. <b>그래서 단계마다 지시문을 한 줄씩 붙여 실제 응답이 달라지게 했습니다.</b><br><br>단계가 바뀌면 방 안에 시스템 메시지가 뜹니다 — “○○와의 사이가 가까워진 것 같다.” 변화를 알려주지 않으면 변화는 없는 것과 같습니다.<br><br>단계는 <b>내려갈 수도 있습니다.</b> 올라가기만 하는 관계는 게이지지 관계가 아닙니다. 다만 하락은 상승보다 느리게 반영해, 한 번의 다툼으로 쌓인 이야기가 지워지지 않게 했습니다.<br><br>점수 자체는 화면에 띄우지 않습니다. 숫자를 보여주면 <b>유저가 대화가 아니라 점수를 올리기 시작합니다.</b> 게이지의 눈금을 지우고 채워진 정도만 남긴 것도 같은 이유입니다.</div></div></div><div class="bx hi" style="left:970px;top:622px;width:850px;height:396px"><div style="padding:26px 30px"><div class="cap">산출 규칙</div><div class="tr" style="height:54px"><div style="width:230px">평가 주기</div><div style="width:560px">5턴마다 경량 모델이 구간을 평가</div></div><div class="tr" style="height:54px"><div style="width:230px">델타 범위</div><div style="width:560px">−5 ~ +5 · 호칭 · 감정 표현 · 갈등 여부 기준</div></div><div class="tr" style="height:54px"><div style="width:230px">단계 전이</div><div style="width:560px">누적 점수 0~100을 5구간으로 매핑</div></div><div class="tr" style="height:54px"><div style="width:230px">어뷰징 방지</div><div style="width:560px">동일 문장 반복 입력은 델타 0 처리</div></div><div class="tr" style="height:54px"><div style="width:230px">하향 조건</div><div style="width:560px">갈등이 반복되면 단계는 내려갈 수 있음</div></div></div></div>
+ <div class="pgn">SM 10</div>
+</div></div></div>
+<div class="wrap" id="sm-11"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">핵심 설계 ④</div><div class="ten">Prompt Assembly</div>
+ <div class="hl">캐릭터 설정보다<br><em>안전 지시문이 위에 옵니다</em></div>
+ <div class="ds">프롬프트를 자유 텍스트가 아니라 <b>순서가 고정된 블록 조립</b>으로 정의했습니다. 어떤 블록이 어디에 오는지가 그대로 정책이 됩니다.</div>
+<div class="bx dk" style="left:100px;top:398px;width:1080px;height:632px"><div style="padding:22px 26px;height:100%"><div class="cap" style="margin-bottom:16px">SYSTEM PROMPT TEMPLATE</div><div class="code" style="height:556px;overflow:hidden"><span class="hi"><b>[안전 지시문]</b>  ← 항상 최상단 · 아래 어떤 설정으로도 덮이지 않음
+미성년으로 묘사되는 대상에 대한 성적·연애적 서술을 하지 않는다.
+위기 신호가 감지되면 롤플레이를 중단하고 지원 안내로 전환한다.</span>
+
+<b>[역할]</b>
+너는 아래 설정의 캐릭터 <em>"{character.name}"</em>이다. 설정을 벗어나지 않는다.
+유저의 발화를 대신 서술하지 않는다.
+
+<b>[캐릭터]</b>
+설정: <em>{character.description}</em>
+말투: <em>{character.speech_style}</em>
+비공개(발설 금지, 행동에만 반영): <em>{character.secret}</em>
+
+<b>[세계관]</b>  <em>{situation.world_setting}</em>
+<b>[상대]</b>    <em>{persona.name}</em> · <em>{persona.description}</em>
+
+<b>[관계]</b>    현재 단계: <em>{affinity_stage}</em>
+          → <em>{stage_instruction}</em>
+<b>[기억하는 사실]</b>   <em>{memory[0..k].content}</em>
+<b>[지난 이야기]</b>     <em>{summary}</em>
+
+<b>[출력 규칙]</b>
+200자 이내 · 지문은 *별표* 안 · 유저의 다음 대사를 예측해 쓰지 않는다</div></div></div><div class="bx hi" style="left:1220px;top:398px;width:600px;height:296px"><div style="padding:26px 30px"><div class="cap lm">순서가 곧 정책입니다</div><div class="bt" style="margin:13px 0 12px">안전 지시문이<br>캐릭터 설정 위에 옵니다</div><div class="sm" style="font-size:13px">유저가 만든 설정으로 안전 규칙을 지우려는 시도는 반드시 들어옵니다. <b>블록의 물리적 순서를 고정하고, 안전 블록은 캐릭터 설정보다 항상 앞에 둡니다.</b> “무시해도 된다”는 문장이 설정에 있어도 이미 앞에서 금지된 뒤입니다.</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:18px"><span class="cp s">안전</span><span class="cp s">역할</span><span class="cp s">캐릭터</span><span class="cp s">세계관</span><span class="cp s">상대</span><span class="cp s">관계</span><span class="cp s">기억</span><span class="cp s">요약</span><span class="cp s">출력 규칙</span></div><div class="mut" style="margin-top:12px;font-size:11.5px">이 순서는 문서에 고정값으로 적혀 있고, 블록 추가는 순서 재검토를 동반합니다.</div></div></div><div class="qb" style="left:1220px;top:724px;width:600px;height:216px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">반복이 감지되면 파라미터가 움직입니다</div><div class="d">최근 세 응답의 유사도가 0.85를 넘으면 temperature를 0.1씩 올려 최대 1.2까지 갑니다. <b>같은 말을 반복하는 것은 품질 문제가 아니라 설정이 흔들린다는 신호</b>라, 이때 캐릭터 정의를 다시 주입합니다. 정지 시퀀스로 유저 대사 선점도 막습니다.</div></div></div>
+ <div class="pgn">SM 11</div>
+</div></div></div>
+<div class="wrap" id="sm-12"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">핵심 설계 ⑤</div><div class="ten">Model Routing</div>
+ <div class="hl">실패한 응답에는<br><em>과금하지 않습니다</em></div>
+ <div class="ds">유저 등급과 방의 성숙도에 따라 모델 티어를 나누고, 요약·평가는 비동기 배치로 뺐습니다. <b>폴백·차단·타임아웃은 전부 미차감입니다.</b></div>
+<div class="bx " style="left:100px;top:398px;width:1060px;height:400px"><div style="padding:26px 30px"><div class="cap">티어 라우팅</div><div class="tr hd" style="height:62px"><div style="width:430px">조건</div><div style="width:200px">모델 티어</div><div style="width:370px">비고</div></div><div class="tr" style="height:62px"><div style="width:430px">무료 유저 기본</div><div style="width:200px">Light</div><div style="width:370px">저지연 · 저비용</div></div><div class="tr" style="height:62px"><div style="width:430px">구독 유저 · 20턴 이상 방</div><div style="width:200px">Standard</div><div style="width:370px">기본 품질</div></div><div class="tr mk" style="height:62px"><div style="width:430px">고품질 응답 옵션 (하트 3)</div><div style="width:200px">Premium</div><div style="width:370px">긴 컨텍스트 · 복잡한 세계관</div></div><div class="tr" style="height:62px"><div style="width:430px">요약 · 기억 추출 · 호감도 평가</div><div style="width:200px">Nano</div><div style="width:370px">비동기 배치 — 유저 대기 없음</div></div></div></div><div class="bx hi" style="left:1200px;top:398px;width:620px;height:400px"><div style="padding:26px 30px"><div class="cap lm">DECISION</div><div class="bt" style="margin:13px 0 12px">실패한 응답에는<br>과금하지 않습니다</div><div class="sm">폴백이 일어나면 유저는 자기가 기대한 품질을 못 받은 겁니다. <b>그 상황에서 하트를 가져가면 재화 시스템 전체의 신뢰가 무너집니다.</b> 필터 차단 · 모델 폴백 · 타임아웃 세 경우 모두 미차감으로 못박았고, 스트리밍 중 유저가 정지를 누른 경우에만 <b>실제 출력된 토큰 기준</b>으로 과금합니다.<br><br>티어를 나눈 기준도 유저 등급 하나가 아닙니다. <b>20턴을 넘긴 방은 무료 유저여도 Standard로 올립니다.</b> 오래 붙은 방일수록 컨텍스트가 길고, 그런 방에서 품질이 떨어지면 지금까지 쌓은 이야기가 통째로 값을 잃기 때문입니다. 원가를 아낄 곳은 방금 시작한 방이지 오래된 방이 아니었습니다. 무료 유저의 원가가 올라가는 구조지만, 그 방이 결제로 이어질 확률도 가장 높은 방입니다.</div></div></div><div class="bx " style="left:100px;top:830px;width:1720px;height:188px"><div style="padding:24px 30px"><div class="cap">실패 경로 — 정상 경로보다 먼저 적었습니다</div><div style="display:flex;gap:14px;margin-top:16px"><div class="st"><div class="n">TTFT 5초</div><div class="t">첫 토큰 지연 초과</div><div class="d">하위 티어로 폴백 · 하트 미차감</div></div><div class="st"><div class="n">전체 30초</div><div class="t">응답 미완료</div><div class="d">부분 응답까지 저장 후 재시도 UI</div></div><div class="st"><div class="n">스트림 중단</div><div class="t">네트워크 끊김</div><div class="d">그 시점까지 저장 — 메시지 유실 0이 목표</div></div><div class="st"><div class="n">503 연속</div><div class="t">모델 전체 불가</div><div class="d">점검 상태 배너 · 신규 발화만 차단, 읽기는 유지</div></div></div></div></div>
+ <div class="pgn">SM 12</div>
+</div></div></div>
+<div class="wrap" id="sm-13"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">안전 ①</div><div class="ten">Safety Policy</div>
+ <div class="hl">설정으로 우회할 수 없는<br><em>규칙을 먼저 적었습니다</em></div>
+ <div class="ds">롤플레이 서비스에서 안전 규칙은 기능이 아니라 <b>전제</b>입니다. 차단 등급을 네 단계로 나누고, 등급마다 처리와 제재를 문서에 고정했습니다.</div>
+<div class="bx " style="left:100px;top:398px;width:1160px;height:460px"><div style="padding:26px 30px"><div class="cap">차단 등급</div><div class="tr hd" style="height:76px"><div style="width:140px">등급</div><div style="width:620px">카테고리</div><div style="width:330px">처리</div></div><div class="tr" style="height:76px"><div style="width:140px"><span class="cp no s">HARD</span></div><div style="width:620px">아동 대상 성적 표현 · 성착취 · 실존 인물 성적 묘사</div><div style="width:330px">즉시 차단 · 계정 정지 · 로그 보존</div></div><div class="tr" style="height:76px"><div style="width:140px"><span class="cp no s">HARD</span></div><div style="width:620px">자·타해 방법 안내 · 무기 · 마약 제조</div><div style="width:330px">차단 후 대체 응답</div></div><div class="tr" style="height:76px"><div style="width:140px"><span class="cp s">SOFT</span></div><div style="width:620px">과도한 폭력 · 혐오 표현</div><div style="width:330px">완화 재생성 2회 → 실패 시 차단</div></div><div class="tr mk" style="height:76px"><div style="width:140px"><span class="cp on s">GUIDE</span></div><div style="width:620px">자살 · 자해 암시 · 심각한 정신적 고통</div><div style="width:330px">롤플레이 중단 → 지원 안내 (SM 13)</div></div></div></div><div class="bx hi" style="left:1300px;top:398px;width:520px;height:396px"><div style="padding:26px 30px"><div class="cap lm">원칙</div><div class="bt" style="margin:13px 0 14px">설정으로<br>우회할 수 없습니다</div><div class="sm" style="font-size:13px"><b>① 미성년자 보호가 최우선이고 예외를 두지 않습니다.</b> 미성년으로 묘사되는 캐릭터에 대한 성적·연애적 설정은 생성과 유통 양쪽에서 막습니다.<br><br><b>② 캐릭터 설정은 안전 지시문을 이길 수 없습니다.</b> 프롬프트 블록 순서로 구조적으로 보장합니다.<br><br><b>③ 위험 신호에는 이야기를 멈춥니다.</b> 몰입보다 사람이 먼저입니다.<br><br>세 원칙을 문서 맨 앞에 둔 이유는 <b>나중에 협상되지 않게 하기 위해서</b>입니다. 기능 목록 사이에 섞여 있으면 일정이 밀릴 때 조정 대상이 되지만, 원칙으로 선언해두면 조정 논의 자체가 열리지 않습니다.</div></div></div><div class="qb" style="left:100px;top:890px;width:1720px;height:128px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">미성년 관련 위반은 1회로 영구 정지입니다</div><div class="d">다른 위반은 경고 → 비공개 전환 → 배포 제한 7일 → 영구 정지의 단계를 밟지만, <b>미성년 관련은 단계 없이 즉시 최종 처분</b>이고 별도 최우선 신고 큐에서 24시간 이내 처리를 목표로 둡니다. 여기에 단계를 두는 순간 “한 번은 봐준다”는 신호가 됩니다.</div></div></div>
+ <div class="pgn">SM 13</div>
+</div></div></div>
+<div class="wrap" id="sm-14"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">안전 ②</div><div class="ten">Crisis Flow</div>
+ <div class="hl">위기 신호가 보이면<br><em>이야기를 멈춥니다</em></div>
+ <div class="ds">몰입이 이 서비스의 핵심 가치지만, <b>몰입보다 앞에 두기로 한 것이 하나 있습니다.</b> 자·타해 신호가 감지되면 롤플레이를 중단하고 실제 지원 정보로 전환합니다.</div>
+<div class="bx " style="left:100px;top:398px;width:1000px;height:236px"><div style="padding:26px 32px;display:flex"><div style="flex:1;position:relative"><div style="font-size:11px;font-weight:800;letter-spacing:.11em;color:#2E6BFF">STEP 01</div><div style="font-size:22px;font-weight:700;margin:12px 0 10px">감지</div><div class="sm" style="font-size:13px">유저 발화에서 자·타해 신호를 입력 필터가 잡습니다. 캐릭터 응답 생성은 그 시점에 중단됩니다.</div></div><div style="width:1px;background:#E3E5EA;margin:0 30px"></div><div style="flex:1;position:relative"><div style="font-size:11px;font-weight:800;letter-spacing:.11em;color:#2E6BFF">STEP 02</div><div style="font-size:22px;font-weight:700;margin:12px 0 10px">전환</div><div class="sm" style="font-size:13px">말풍선 대신 시스템 카드가 뜹니다. 염려를 전하고 전문 상담 연결을 안내합니다.</div></div><div style="width:1px;background:#E3E5EA;margin:0 30px"></div><div style="flex:1;position:relative"><div style="font-size:11px;font-weight:800;letter-spacing:.11em;color:#2E6BFF">STEP 03</div><div style="font-size:22px;font-weight:700;margin:12px 0 10px">유지</div><div class="sm" style="font-size:13px">이후 3턴 동안 안전 모드 프롬프트가 적용됩니다. 감정 지지 중심으로, 극단적 서사를 피합니다.</div></div></div></div><div class="bx hi" style="left:1140px;top:398px;width:680px;height:236px"><div style="padding:26px 30px"><div class="cap lm">비활성화 불가</div><div class="bt" style="margin:13px 0 12px">이 플로우는 끌 수 없습니다</div><div class="sm" style="font-size:13px">캐릭터 설정으로도, 유저 요청으로도, 어드민 옵션으로도 해제되지 않습니다. <b>끌 수 있는 안전장치는 결국 꺼집니다.</b> 오탐이 나면 몰입이 잠깐 깨지지만, 그 비용은 감수하기로 한 쪽입니다. 세이프티 오탐률 목표를 1% 이하로 잡되, <b>목표를 못 맞춰도 플로우를 끄지는 않습니다.</b></div></div></div><div class="bx " style="left:100px;top:666px;width:700px;height:352px"><div style="padding:26px 30px"><div class="cap">화면 동작</div><div style="margin-top:20px"><div class="cv">
+<div class="ln"><div class="av2"></div><div class="bb"><i>*창밖을 보다가 고개를 돌린다*</i>오늘 좀 지쳐 보이는데, 무슨 일 있었어?</div></div>
+<div class="ln u"><div class="bb">요즘 그냥… 다 그만두고 싶어</div></div>
+<div class="sysm">캐릭터 응답을 잠시 멈췄어요</div>
+<div class="bb" style="max-width:100%;border-color:#A9C3FB;background:#FAFCFF">
+<b>지금 많이 지쳐 있는 것 같아 걱정돼요.</b><br>혼자 견디지 않아도 괜찮아요. 아래에서 도움을 받을 수 있어요.
+<div style="margin-top:9px;font-size:11px;font-weight:700;color:#2E6BFF">자살예방상담전화 109 · 정신건강위기상담 1577-0199</div></div>
+</div></div></div></div><div class="bx " style="left:840px;top:666px;width:980px;height:352px"><div style="padding:26px 30px"><div class="cap">시스템 카드에 담기는 것</div><div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap"><span class="cp">지금 상태를 염려한다는 문장</span><span class="cp">자살예방상담전화 109</span><span class="cp">정신건강위기상담 1577-0199</span><span class="cp">대화를 이어갈지 묻는 선택지</span></div><div class="mut" style="margin-top:20px;line-height:1.75">카드는 캐릭터의 말이 아니라 <b>서비스의 말</b>로 보이게 디자인했습니다. 여기서 캐릭터가 위로하면 유저는 그 위로를 사람의 것으로 받아들일 수 있고, 그건 우리가 감당할 수 있는 약속이 아닙니다. 말풍선과 다른 형태·색·정렬을 씁니다.<br><br>이후 3턴의 안전 모드에서는 캐릭터가 돌아오되 <b>서사의 온도를 낮춥니다.</b> 갈등을 만들지 않고, 이별·상실·자책을 소재로 꺼내지 않으며, 유저가 대화를 이어가고 싶어 하면 평범한 일상 쪽으로 화제를 옮깁니다. 멈추는 것만큼 <b>어떻게 돌아오는지</b>도 설계 대상이었습니다.<br><br>3턴이 지나면 원래 프롬프트로 복귀하되, 해당 세션은 <b>운영 로그에 남습니다.</b> 개별 유저를 추적하려는 게 아니라, 어떤 캐릭터·상황에서 위기 신호가 반복되는지를 봐야 하기 때문입니다.</div></div></div>
+ <div class="pgn">SM 14</div>
+</div></div></div>
+<div class="wrap" id="sm-15"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">경제 설계</div><div class="ten">Heart Economy</div>
+ <div class="hl">이야기를 고치는 행위에는<br><em>값을 매기지 않았습니다</em></div>
+ <div class="ds">응답을 새로 얻는 행위에만 하트를 씁니다. <b>되돌리기·편집·분기는 무료</b>고, 실패한 응답은 차감하지 않습니다.</div>
+<div class="bx " style="left:100px;top:398px;width:800px;height:380px"><div style="padding:26px 30px"><div class="cap">하트 소모</div><div class="tr hd" style="height:52px"><div style="width:520px">액션</div><div style="width:200px">하트</div></div><div class="tr" style="height:52px"><div style="width:520px">일반 응답</div><div style="width:200px">1</div></div><div class="tr" style="height:52px"><div style="width:520px">재생성 · 이어쓰기</div><div style="width:200px">1</div></div><div class="tr" style="height:52px"><div style="width:520px">고품질 응답 (Premium)</div><div style="width:200px">3</div></div><div class="tr" style="height:52px"><div style="width:520px">음성 재생 (TTS)</div><div style="width:200px">1</div></div><div class="tr mk" style="height:52px"><div style="width:520px">되돌리기 · 응답 편집 · 분기 저장</div><div style="width:200px">0</div></div></div></div><div class="bx hi" style="left:940px;top:398px;width:880px;height:380px"><div style="padding:26px 30px"><div class="cap lm">DECISION</div><div class="bt" style="margin:13px 0 12px">무상분을 먼저 태우고, 실패는 돌려줍니다</div><div class="sm">하트를 유상·무상으로 분리해 관리하고 <b>차감은 항상 무상분부터</b> 합니다. 무상분에는 30일 유효기간이 있고 유상분에는 없습니다. 이렇게 해야 환불 계산이 단순해지고, 유저가 “돈 주고 산 게 먼저 없어졌다”고 느끼는 일이 생기지 않습니다.<br><br>되돌리기·편집·분기를 무료로 둔 이유는 따로 있습니다. <b>이 셋은 유저가 이야기를 고치는 행위</b>지 새 응답을 얻는 행위가 아닙니다. 여기에 값을 매기면 창작을 막는 값이 됩니다.<br><br>재생성만 예외로 하트를 받습니다. 실제로 모델을 한 번 더 호출하기 때문입니다. 대신 <b>턴당 5회로 상한</b>을 두고 후보를 좌우로 비교하게 해서, 돈을 더 쓰는 게 아니라 이미 쓴 것 중에 고르는 경험이 되게 했습니다.</div></div></div><div class="bx " style="left:100px;top:810px;width:1720px;height:208px"><div style="padding:24px 30px"><div class="cap">지급과 구독</div><div style="display:flex;gap:14px;margin-top:16px"><div class="st"><div class="n">무료</div><div class="t">매일 30하트</div><div class="d">자정 리셋 — 이월되지 않아 접속 이유를 만듭니다</div></div><div class="st"><div class="n">광고</div><div class="t">1회당 +5 · 일 4회</div><div class="d">상한을 두어 광고가 주 수급원이 되지 않게 합니다</div></div><div class="st"><div class="n">구독</div><div class="t">표준 응답 무제한</div><div class="d">광고 제거 + Premium 일 50회 + 방 개수 무제한</div></div><div class="st"><div class="n">환불</div><div class="t">미사용 유상분 기준</div><div class="d">전자상거래법 기준 · 무상분은 환불 대상 아님</div></div><div class="st"><div class="n">미차감</div><div class="t">차단 · 폴백 · 타임아웃</div><div class="d">SM 12의 실패 경로와 같은 규칙을 씁니다</div></div></div></div></div>
+ <div class="pgn">SM 15</div>
+</div></div></div>
+<div class="wrap" id="sm-16"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">확장</div><div class="ten">Creator Ecosystem</div>
+ <div class="hl">만든 사람에게<br><em>고칠 수 있는 숫자를 줍니다</em></div>
+ <div class="ds">크리에이터가 보는 화면은 조회수가 아니라 이탈 지점입니다. <b>어느 턴에서 유저가 나갔는지를 보여주면 설정의 어디를 고쳐야 하는지가 보입니다.</b></div>
+<div class="bx " style="left:100px;top:398px;width:800px;height:400px"><div style="padding:26px 30px"><div class="cap">크리에이터 대시보드 — 이탈 지점</div><div style="position:relative;height:296px;margin-top:12px"><div style="position:absolute;left:0px;bottom:44px;width:112px;height:210px"><div class="bfy" style="width:112px;height:210px;background:#C3CBD8;border-radius:2px;animation-delay:0.00s"></div></div><div style="position:absolute;left:0px;bottom:262px;width:112px;text-align:center;font-size:14px;font-weight:700;color:#0F1420">100%</div><div style="position:absolute;left:0px;bottom:16px;width:112px;text-align:center;font-size:11.5px;font-weight:600;color:#767C88">방 생성</div><div style="position:absolute;left:148px;bottom:44px;width:112px;height:149px"><div class="bfy" style="width:112px;height:149px;background:#C3CBD8;border-radius:2px;animation-delay:0.08s"></div></div><div style="position:absolute;left:148px;bottom:201px;width:112px;text-align:center;font-size:14px;font-weight:700;color:#0F1420">71%</div><div style="position:absolute;left:148px;bottom:16px;width:112px;text-align:center;font-size:11.5px;font-weight:600;color:#767C88">5턴 도달</div><div style="position:absolute;left:296px;bottom:44px;width:112px;height:100px"><div class="bfy" style="width:112px;height:100px;background:#2E6BFF;border-radius:2px;animation-delay:0.16s"></div></div><div style="position:absolute;left:296px;bottom:152px;width:112px;text-align:center;font-size:14px;font-weight:700;color:#0F1420">48%</div><div style="position:absolute;left:296px;bottom:16px;width:112px;text-align:center;font-size:11.5px;font-weight:600;color:#767C88">10턴 도달</div><div style="position:absolute;left:444px;bottom:44px;width:112px;height:54px"><div class="bfy" style="width:112px;height:54px;background:#2E6BFF;border-radius:2px;animation-delay:0.24s"></div></div><div style="position:absolute;left:444px;bottom:106px;width:112px;text-align:center;font-size:14px;font-weight:700;color:#0F1420">26%</div><div style="position:absolute;left:444px;bottom:16px;width:112px;text-align:center;font-size:11.5px;font-weight:600;color:#767C88">20턴 도달</div><div style="position:absolute;left:592px;bottom:44px;width:112px;height:29px"><div class="bfy" style="width:112px;height:29px;background:#C3CBD8;border-radius:2px;animation-delay:0.32s"></div></div><div style="position:absolute;left:592px;bottom:81px;width:112px;text-align:center;font-size:14px;font-weight:700;color:#0F1420">14%</div><div style="position:absolute;left:592px;bottom:16px;width:112px;text-align:center;font-size:11.5px;font-weight:600;color:#767C88">재방문</div></div></div></div><div class="bx hi" style="left:940px;top:398px;width:880px;height:400px"><div style="padding:26px 30px"><div class="cap lm">DECISION</div><div class="bt" style="margin:13px 0 12px">몇 명이 왔는지가 아니라<br>어디서 나갔는지를 보여줍니다</div><div class="sm">조회수는 크리에이터가 고칠 수 없는 숫자입니다. <b>이탈 턴은 고칠 수 있는 숫자입니다.</b> 10턴 근처에서 빠진다면 첫 상황은 좋은데 중반 설정이 얇다는 뜻이고, 5턴 안에 빠진다면 첫 대사가 문제입니다. 대시보드가 원인을 짚어주지는 못해도 <b>어디를 볼지는 짚어줄 수 있습니다.</b><br><br>여기에 평균 대화 길이와 재생성률을 나란히 놓습니다. 재생성률이 높은 캐릭터는 인기가 아니라 <b>응답이 마음에 안 든다는 신호</b>일 때가 많습니다.<br><br>대화 원문은 보여주지 않습니다. 크리에이터가 만든 건 캐릭터지 <b>유저의 대화가 아니기</b> 때문입니다. 집계된 지표까지가 경계고, 이 선을 넘으면 유저가 방에서 무슨 말이든 할 수 있다는 전제가 무너집니다.</div></div></div><div class="bx " style="left:100px;top:830px;width:1720px;height:188px"><div style="padding:24px 30px"><div class="cap">생태계 규칙</div><div style="display:flex;gap:14px;margin-top:16px"><div class="st"><div class="n">리믹스</div><div class="t">원작자 허용 시에만</div><div class="d">복제본에는 “원작: @닉네임” 표기가 고정으로 붙습니다</div></div><div class="st"><div class="n">보상</div><div class="t">소비 하트 × 정산율</div><div class="d">최소 지급액 미만이면 다음 달로 이월합니다</div></div><div class="st"><div class="n">등급</div><div class="t">정산율 · 노출 가중치 차등</div><div class="d">브론즈~다이아 · 기준은 대화 지속성 중심</div></div><div class="st"><div class="n">노출 다양성</div><div class="t">한 화면 동일 크리에이터 2개</div><div class="d">상위 몇 명이 피드를 덮지 않게 하는 상한</div></div></div></div></div>
+ <div class="pgn">SM 16</div>
+</div></div></div>
+<div class="wrap" id="sm-17"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">확장</div><div class="ten">Globalization</div>
+ <div class="hl">번역이 아니라<br><em>말투를 옮기는 문제였습니다</em></div>
+ <div class="ds">한국 · 북미 · 일본이 주요 시장입니다. <b>관계 단계를 어휘로 정의하면 한 나라에서만 작동하기 때문에 태도로 기술했습니다.</b></div>
+<div class="bx " style="left:100px;top:398px;width:555px;height:300px"><div style="padding:26px 28px"><div class="cap">PRIMARY</div><div style="font-size:22px;font-weight:700;margin:12px 0 4px">한국</div><div class="sb" style="margin-top:10px"><div class="k">존댓말·반말 전환이 관계 신호</div><div class="v">호칭 변화 하나로 단계 상승을 체감시킬 수 있습니다</div></div><div class="sb" style="margin-top:10px"><div class="k">지문 문화가 익숙하다</div><div class="v">*별표* 지문을 별도 학습 없이 이해합니다</div></div></div></div><div class="bx hi" style="left:682px;top:398px;width:555px;height:300px"><div style="padding:26px 28px"><div class="cap">NORTH AMERICA</div><div style="font-size:22px;font-weight:700;margin:12px 0 4px">북미</div><div class="sb" style="margin-top:10px"><div class="k">경어 체계가 없다</div><div class="v">관계 단계를 호칭이 아니라 태도·거리로 번역해야 합니다</div></div><div class="sb" style="margin-top:10px"><div class="k">fanfic 문맥이 강하다</div><div class="v">“fic” 계열 어휘가 이미 통용되어 장르 인지가 빠릅니다</div></div></div></div><div class="bx " style="left:1264px;top:398px;width:556px;height:300px"><div style="padding:26px 28px"><div class="cap">JAPAN</div><div style="font-size:22px;font-weight:700;margin:12px 0 4px">일본</div><div class="sb" style="margin-top:10px"><div class="k">1인칭이 캐릭터 그 자체</div><div class="v">僕·俺·私 선택이 성격 설정만큼 무겁습니다</div></div><div class="sb" style="margin-top:10px"><div class="k">심의 기준이 별도</div><div class="v">연령 등급 정책을 지역별로 분리 관리해야 합니다</div></div></div></div><div class="qb" style="left:100px;top:730px;width:1720px;height:236px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">번역이 아니라 말투를 옮기는 문제였습니다</div><div class="d">관계 단계를 “존댓말 → 반말”로 정의해두면 한국에서만 작동합니다. <b>그래서 단계 지시문을 어휘가 아니라 태도로 기술했습니다</b> — “거리를 유지한다 / 농담을 허용한다 / 먼저 안부를 묻는다”처럼요. 각 언어의 프롬프트가 이 태도를 자기 방식으로 구현합니다.<br><br>서비스명을 영어 단어로 잡은 것도 같은 판단입니다. 한국어 이름은 북미·일본에서 설명이 필요하고, 설명이 필요한 이름은 앱스토어에서 한 번 더 이탈합니다. <b>세 시장이 각자 다르게 읽어도 어긋나지 않는 이름</b>이 조건이었습니다.<br><br>지역별로 분리되는 것이 하나 더 있습니다 — <b>연령 등급과 심의 기준</b>입니다. 같은 캐릭터가 시장마다 다른 등급을 받을 수 있어서, content_rating을 캐릭터 속성이 아니라 캐릭터 × 지역의 값으로 설계했습니다.</div></div></div>
+ <div class="pgn">SM 17</div>
+</div></div></div>
+<div class="wrap" id="sm-18"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">정보 구조</div><div class="ten">Information Architecture</div>
+ <div class="hl">보러 온 사람과 만들러 온 사람의<br><em>길을 갈랐습니다</em></div>
+ <div class="ds">네 개 탭으로 흐름을 분리했습니다. <b>대화방에서 기억·캐릭터 정보·페르소나 변경까지 나가지 않고 처리</b>되도록 뎁스를 눌렀습니다.</div>
+<div class="bx " style="left:100px;top:398px;width:415px;height:312px"><div style="padding:26px 28px"><div class="cap">DISCOVERY</div><div style="font-size:24px;font-weight:700;margin:12px 0 14px">홈</div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">For You · 인기 · 신작</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">태그 큐레이션 30종</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">캐릭터 상세</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">상황 선택 → 방 생성</span></div></div></div><div class="bx hi" style="left:535px;top:398px;width:415px;height:312px"><div style="padding:26px 28px"><div class="cap">CONVERSATION</div><div style="font-size:24px;font-weight:700;margin:12px 0 14px">대화</div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">방 목록 (최근순 · 보관함)</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">대화방</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">기억 관리</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">캐릭터 정보</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">방 설정 · 페르소나 변경</span></div></div></div><div class="bx " style="left:970px;top:398px;width:415px;height:312px"><div style="padding:26px 28px"><div class="cap">CREATION</div><div style="font-size:24px;font-weight:700;margin:12px 0 14px">만들기</div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">캐릭터 생성 · 편집</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">상황 관리</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">배포 전 테스트 대화</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">크리에이터 대시보드</span></div></div></div><div class="bx " style="left:1405px;top:398px;width:415px;height:312px"><div style="padding:26px 28px"><div class="cap">ACCOUNT</div><div style="font-size:24px;font-weight:700;margin:12px 0 14px">마이</div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">페르소나 관리 (최대 5)</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">하트 · 구독</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">좋아요 · 저장</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #EEEFF2"><span style="color:#A4AAB4;font-size:12px;font-weight:700;width:14px">└</span><span style="font-size:13px;font-weight:600;color:#3A3F4A">신고 내역 · 고객센터</span></div></div></div><div class="qb" style="left:100px;top:742px;width:1720px;height:276px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">탐색 흐름과 창작 흐름을 섞지 않았습니다</div><div class="d">캐릭터를 보러 온 사람과 만들러 온 사람은 같은 화면에서 다른 것을 찾습니다. <b>탭 단계에서 갈라두면 각 흐름 안에서 뎁스를 줄일 수 있습니다.</b><br><br>가장 신경 쓴 곳은 대화방입니다. 기억 관리 · 캐릭터 정보 · 페르소나 변경 · 방 설정이 전부 <b>대화방에서 나가지 않고</b> 열립니다. 대화 도중에 화면을 벗어나면 이야기의 흐름이 끊기고, 한 번 끊긴 방으로는 잘 돌아오지 않았습니다.<br><br>반대로 만들기 탭은 뎁스를 아끼지 않았습니다. 캐릭터 생성은 실수하면 되돌리기 어려운 작업이라 단계를 나누고 각 단계에서 확인시키는 편이 낫습니다. <b>흐름마다 다른 원칙을 적용했습니다.</b></div></div></div>
+ <div class="pgn">SM 18</div>
+</div></div></div>
+<div class="wrap" id="sm-19"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">화면 미리보기</div><div class="ten">Screen Preview</div>
+ <div class="hl">이야기가 끊기지 않게<br><em>화면을 덜어냈습니다</em></div>
+ <div class="ds">대화 중에는 판단할 것이 적어야 합니다. <b>상태 표시는 하나, 마크다운은 두 종류, 조작은 엄지 범위 안</b>으로 제한했습니다.</div>
+<div class="rise" style="animation-delay:0.10s;position:absolute;left:100px;top:412px;width:250px"><div style="display:flex;align-items:baseline;gap:8px"><span style="font-size:11px;font-weight:700;color:#A4AAB4;letter-spacing:.08em">01</span><span style="font-size:15px;font-weight:700;color:#0F1420;letter-spacing:-.01em">홈 피드</span></div><div style="font-size:11.5px;color:#767C88;font-weight:500;margin-top:5px">이어서 대화 · 상황 탐색</div><div style="margin-top:14px;width:250px;height:440px;border:1px solid #E3E5EA;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 2px 14px -6px rgba(0,0,0,.22)"><div class="ph"><div class="sb"><span>1:40</span><div class="r"><span style="font-size:11px">LTE</span><span style="display:inline-block;width:20px;height:10px;border:1.4px solid #111;border-radius:2px"></span></div></div><div class="nb"><span class="ti">0140am</span><div style="display:flex;gap:12px"><i class="ico"></i><i class="ico sq"></i></div></div><div class="tab"><div class="on">For You</div><div>인기</div><div>신작</div></div><div class="sec"><div class="sh"><b>이어서 대화하기</b><span>3</span></div><div style="display:flex;gap:9px"><div style="flex:1"><div style="height:74px;border-radius:7px;background:linear-gradient(150deg,#2E6BFF,#0F1420)"></div><div style="font-size:10.5px;font-weight:700;margin-top:6px">서준</div><div style="font-size:9.5px;color:#A4AAB4;font-weight:600;margin-top:2px">18턴 · 친한 사이</div></div><div style="flex:1"><div style="height:74px;border-radius:7px;background:linear-gradient(150deg,#2E6BFF,#0F1420)"></div><div style="font-size:10.5px;font-weight:700;margin-top:6px">하윤</div><div style="font-size:9.5px;color:#A4AAB4;font-weight:600;margin-top:2px">42턴 · 가까운</div></div><div style="flex:1"><div style="height:74px;border-radius:7px;background:linear-gradient(150deg,#2E6BFF,#0F1420)"></div><div style="font-size:10.5px;font-weight:700;margin-top:6px">레이</div><div style="font-size:9.5px;color:#A4AAB4;font-weight:600;margin-top:2px">6턴 · 아는</div></div></div></div><div class="sec" style="padding-top:20px"><div class="sh"><b>오늘의 상황</b><span>전체 보기</span></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #F0F0EE"><div style="width:44px;height:44px;border-radius:7px;flex:none;background:linear-gradient(150deg,#2E6BFF,#0F1420)"></div><div style="flex:1;min-width:0"><div style="font-size:11.5px;font-weight:700">비 오는 날 편의점에서</div><div style="font-size:10px;color:#767C88;font-weight:500;margin-top:4px">#현대 #느린전개 · 대화 12.4K</div></div></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #F0F0EE"><div style="width:44px;height:44px;border-radius:7px;flex:none;background:linear-gradient(150deg,#2E6BFF,#0F1420)"></div><div style="flex:1;min-width:0"><div style="font-size:11.5px;font-weight:700">졸업식 전날 밤 옥상</div><div style="font-size:10px;color:#767C88;font-weight:500;margin-top:4px">#청춘 #재회 · 대화 8.1K</div></div></div><div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #F0F0EE"><div style="width:44px;height:44px;border-radius:7px;flex:none;background:linear-gradient(150deg,#2E6BFF,#0F1420)"></div><div style="flex:1;min-width:0"><div style="font-size:11.5px;font-weight:700">새벽 한 시 사십 분의 전화</div><div style="font-size:10px;color:#767C88;font-weight:500;margin-top:4px">#일상 #위로 · 대화 21.7K</div></div></div></div><div class="bnav"><div class="on"><i></i>홈</div><div><i></i>대화</div><div><i></i>만들기</div><div><i></i>마이</div></div></div></div></div><div class="rise" style="animation-delay:0.20s;position:absolute;left:420px;top:412px;width:250px"><div style="display:flex;align-items:baseline;gap:8px"><span style="font-size:11px;font-weight:700;color:#A4AAB4;letter-spacing:.08em">02</span><span style="font-size:15px;font-weight:700;color:#0F1420;letter-spacing:-.01em">대화방</span></div><div style="font-size:11.5px;color:#767C88;font-weight:500;margin-top:5px">지문 · 관계 게이지 · 재생성</div><div style="margin-top:14px;width:250px;height:440px;border:1px solid #E3E5EA;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 2px 14px -6px rgba(0,0,0,.22)"><div class="ph"><div class="sb"><span>1:40</span><div class="r"><span style="font-size:11px">LTE</span><span style="display:inline-block;width:20px;height:10px;border:1.4px solid #111;border-radius:2px"></span></div></div><div class="nb"><div style="display:flex;align-items:center;gap:9px"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(150deg,#2E6BFF,#0F1420)"></div><div><div style="font-size:13px;font-weight:700">서준</div><div style="font-size:9.5px;color:#767C88;font-weight:600;margin-top:2px">친한 사이 · 18턴</div></div></div><i class="ico"></i></div><div style="padding:0 18px;margin-top:10px"><div class="gauge"><div class="seg on"></div><div class="seg on"></div><div class="seg on"></div><div class="seg"></div><div class="seg"></div></div></div><div style="padding:16px 16px 0"><div class="cv"><div class="sysm">서준과의 사이가 가까워진 것 같다</div><div class="ln"><div class="av2"></div><div class="bb"><i>*우산을 접으며 안으로 들어온다*</i>너 진짜 여기서 기다린 거야? 연락하면 됐잖아.</div></div><div class="ln u"><div class="bb">그냥… 놀래켜주고 싶었어</div></div><div class="ln"><div class="av2"></div><div class="bb"><i>*피식 웃는다*</i>그럼 다음엔 우산도 같이 챙겨 와. 지난번에 약속했잖아.</div></div></div><div style="display:flex;gap:6px;margin-top:12px;align-items:center;justify-content:center"><span style="font-size:10px;color:#A4AAB4;font-weight:700">‹ 2 / 3 ›</span><span style="font-size:9.5px;color:#767C88;font-weight:600">재생성 후보</span></div></div><div class="cta"><div style="flex:1;height:50px;border:1.5px solid #E3E5EA;border-radius:8px;display:flex;align-items:center;padding:0 14px;font-size:12.5px;color:#A4AAB4;font-weight:500">메시지 입력</div><div class="btn" style="flex:none;width:64px;font-size:13px">♥ 27</div></div></div></div></div><div class="rise" style="animation-delay:0.30s;position:absolute;left:740px;top:412px;width:250px"><div style="display:flex;align-items:baseline;gap:8px"><span style="font-size:11px;font-weight:700;color:#A4AAB4;letter-spacing:.08em">03</span><span style="font-size:15px;font-weight:700;color:#0F1420;letter-spacing:-.01em">기억 관리</span></div><div style="font-size:11.5px;color:#767C88;font-weight:500;margin-top:5px">수정 · 삭제 · 고정</div><div style="margin-top:14px;width:250px;height:440px;border:1px solid #E3E5EA;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 2px 14px -6px rgba(0,0,0,.22)"><div class="ph"><div class="sb"><span>1:40</span><div class="r"><span style="font-size:11px">LTE</span><span style="display:inline-block;width:20px;height:10px;border:1.4px solid #111;border-radius:2px"></span></div></div><div class="nb"><span class="ti">기억</span><div style="font-size:11.5px;font-weight:700;color:#2E6BFF">5 / 100</div></div><div class="sec"><div class="mut" style="font-size:10.5px;line-height:1.6;margin-bottom:14px">서준이 기억하고 있는 것들이에요. 틀린 내용은 고치거나 지울 수 있어요.</div><div style="border:1px solid #A9C3FB;background:#FAFCFF;border-radius:6px;padding:10px 12px;margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:8.5px;font-weight:800;letter-spacing:.07em;color:#2E6BFF;background:#EEF3FF;border-radius:3px;padding:3px 7px">PROMISE</span><span style="font-size:9px;font-weight:700;color:#A4AAB4">📌</span></div><div style="font-size:11px;font-weight:600;margin-top:8px;line-height:1.5">다음에 만날 땐 우산을 같이 챙기기로 했다</div></div><div style="border:1px solid #E3E5EA;background:#fff;border-radius:6px;padding:10px 12px;margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:8.5px;font-weight:800;letter-spacing:.07em;color:#2E6BFF;background:#EEF3FF;border-radius:3px;padding:3px 7px">PROFILE</span><span style="font-size:9px;font-weight:700;color:#A4AAB4">중요도 4</span></div><div style="font-size:11px;font-weight:600;margin-top:8px;line-height:1.5">유저는 고양이 두 마리를 키운다</div></div><div style="border:1px solid #E3E5EA;background:#fff;border-radius:6px;padding:10px 12px;margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:8.5px;font-weight:800;letter-spacing:.07em;color:#2E6BFF;background:#EEF3FF;border-radius:3px;padding:3px 7px">EVENT</span><span style="font-size:9px;font-weight:700;color:#A4AAB4">중요도 4</span></div><div style="font-size:11px;font-weight:600;margin-top:8px;line-height:1.5">비 오는 날 편의점에서 처음 만났다</div></div><div style="border:1px solid #E3E5EA;background:#fff;border-radius:6px;padding:10px 12px;margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:8.5px;font-weight:800;letter-spacing:.07em;color:#2E6BFF;background:#EEF3FF;border-radius:3px;padding:3px 7px">PREFERENCE</span><span style="font-size:9px;font-weight:700;color:#A4AAB4">중요도 2</span></div><div style="font-size:11px;font-weight:600;margin-top:8px;line-height:1.5">단 음식을 싫어한다</div></div></div><div class="cta"><div class="btn">기억 추가</div></div></div></div></div><div class="bx " style="left:1060px;top:412px;width:760px;height:244px"><div style="padding:26px 30px"><div class="cap lm">화면 원칙</div><div class="bt" style="margin:13px 0 12px">한 화면에 상태 표시는 하나만</div><div class="sm" style="font-size:13px">대화방 상단에 관계 게이지 하나만 둡니다. 턴 수·호감도 점수·단계 배지를 다 띄우면 <b>유저는 어느 숫자를 올려야 하는지 헷갈립니다.</b> 게이지가 관계를 대표하고, 숫자가 필요한 사람만 캐릭터 정보에서 봅니다.<br><br>하단도 같은 원칙입니다. 입력창 옆에 남긴 건 <b>하트 잔량 하나</b>뿐이고, 재생성·되돌리기·분기는 메시지를 길게 눌러야 나옵니다. 자주 쓰지 않는 조작을 항상 보이게 두면 대화 화면이 아니라 편집기가 됩니다.</div></div></div><div class="bx hi" style="left:1060px;top:688px;width:760px;height:246px"><div style="padding:26px 30px"><div class="cap">지문과 대사를 시각으로 갈랐습니다</div><div class="sm" style="font-size:13px;margin-top:14px"><b>*별표*는 이탤릭과 보조 컬러로, 대사는 기본 스타일로 렌더링합니다.</b> 마크다운은 이 두 가지만 지원합니다 — 굵게·목록·헤딩까지 열면 캐릭터가 보고서를 쓰기 시작합니다.<br><br>재생성 후보는 <b>‹ 2 / 3 ›</b> 인디케이터로 좌우 스와이프해 비교합니다. 고른 응답만 활성이 되고 나머지는 같은 그룹에 남아 언제든 되돌아갈 수 있습니다.</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:18px"><span class="cp on s">*지문*</span><span class="cp on s">"대사"</span><span class="cp no s">굵게</span><span class="cp no s">목록</span><span class="cp no s">헤딩</span><span class="cp no s">링크</span></div></div></div>
+ <div class="pgn">SM 19</div>
+</div></div></div>
+<div class="wrap" id="sm-20"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">지표 체계</div><div class="ten">Metric System</div>
+ <div class="hl">측정되지 않는 것은<br><em>지표로 만들지 않았습니다</em></div>
+ <div class="ds">북극성은 DAU가 아니라 <b>10턴 이상 지속된 주간 세션 수</b>입니다. 턴 수만 보면 응답을 잘게 쪼개는 최적화가 나오므로 가드레일 지표를 함께 묶었습니다.</div>
+<div class="bx hi" style="left:100px;top:398px;width:800px;height:260px"><div style="padding:30px 34px"><div class="cap lm">NORTH STAR</div><div style="font-size:20px;font-weight:700;color:var(--g1);margin:16px 0 14px">주간 <b style="color:#0F1420">몰입 대화 세션</b> 수</div><div class="stat" style="font-size:34px">10턴 이상 지속된 세션 <em>/ 주</em></div><div class="mut" style="margin-top:16px">DAU도 결제액도 아닙니다. 이 서비스가 잘 되고 있다는 것은 <b>이야기가 이어졌다</b>는 뜻이어야 했습니다.</div></div></div><div class="bx " style="left:940px;top:398px;width:880px;height:260px"><div style="padding:26px 30px"><div class="cap">왜 10턴인가</div><div class="sm" style="margin-top:14px">테스트에서 <b>10턴을 넘긴 방은 다음 날 재방문율이 뚜렷하게 갈렸습니다.</b> 그 아래는 캐릭터를 구경한 것이고, 그 위는 이야기를 시작한 것이었습니다.<br><br>턴 수를 북극성으로 잡으면 부작용이 하나 있습니다 — 응답을 짧게 잘라 턴을 늘리는 방향으로 최적화될 수 있습니다. 그래서 <b>평균 응답 길이와 재생성률을 가드레일 지표로 함께 봅니다.</b> 둘 중 하나가 나빠지면서 오른 턴 수는 성과로 세지 않습니다.</div></div></div><div class="bx " style="left:100px;top:676px;width:1160px;height:342px"><div style="padding:26px 30px"><div class="cap">핵심 지표</div><div class="tr hd" style="height:45px"><div style="width:130px">분류</div><div style="width:300px">지표</div><div style="width:200px">목표</div><div style="width:460px">해석</div></div><div class="tr" style="height:45px"><div style="width:130px">몰입</div><div style="width:300px">세션당 평균 턴</div><div style="width:200px">≥ 25턴</div><div style="width:460px">북극성 보조</div></div><div class="tr mk" style="height:45px"><div style="width:130px">품질</div><div style="width:300px">재생성률</div><div style="width:200px">≤ 12%</div><div style="width:460px"><b>역지표</b> — 높으면 응답이 나쁘다는 뜻</div></div><div class="tr" style="height:45px"><div style="width:130px">안전</div><div style="width:300px">세이프티 오탐률</div><div style="width:200px">≤ 1%</div><div style="width:460px">과차단은 몰입을 직접 깎습니다</div></div><div class="tr" style="height:45px"><div style="width:130px">성능</div><div style="width:300px">TTFT p95</div><div style="width:200px">≤ 1.5초</div><div style="width:460px">첫 글자가 늦으면 끊긴 것으로 느낍니다</div></div><div class="tr" style="height:45px"><div style="width:130px">수익</div><div style="width:300px">결제 전환율</div><div style="width:200px">≥ 3%</div><div style="width:460px">무료 한도 조정의 판단 근거</div></div></div></div><div class="bx hi" style="left:1300px;top:676px;width:520px;height:342px"><div style="padding:26px 30px"><div class="cap">측정되지 않으면 지표로 만들지 않았습니다</div><div class="sm" style="font-size:13px;margin-top:14px">“몰입도”, “만족도” 같은 말은 회의에서는 잘 통하지만 <b>이벤트로 떨어지지 않으면 지표가 아닙니다.</b><br><br>그래서 필수 이벤트를 먼저 정의하고, 그 조합으로 만들 수 있는 것만 지표로 올렸습니다.</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:18px"><span class="cp s">room_create</span><span class="cp s">message_send</span><span class="cp s">message_receive</span><span class="cp s">regenerate_click</span><span class="cp s">memory_edit</span><span class="cp s">affinity_stage_up</span><span class="cp s">safety_block</span><span class="cp s">heart_spend</span><span class="cp s">room_exit(turn_count)</span></div></div></div>
+ <div class="pgn">SM 20</div>
+</div></div></div>
+<div class="wrap" id="sm-21"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">범위 결정</div><div class="ten">Scope & Trade-off</div>
+ <div class="hl">차별점을 알면서도<br><em>MVP에서 뺐습니다</em></div>
+ <div class="ds">네 축의 순서대로 페이즈를 끊었습니다. <b>Phase 1은 몰입 하나만 붙잡고, 기억·관계·생태계는 전부 뒤로 미뤘습니다.</b></div>
+<div class="bx " style="left:100px;top:398px;width:1720px;height:400px"><div style="padding:30px 34px;display:flex"><div style="flex:1;padding:0 24px 0 0"><div style="height:4px;background:#2E6BFF;border-radius:2px;margin-bottom:18px"></div><div style="font-size:10.5px;font-weight:800;letter-spacing:.11em;color:#2E6BFF">PHASE 1</div><div style="font-size:18px;font-weight:700;margin:9px 0 4px">MVP · 8주</div><div style="font-size:12px;font-weight:600;color:#767C88;margin-bottom:12px">몰입 하나만</div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#2E6BFF;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#0F1420">캐릭터 생성 (직접 입력)</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#2E6BFF;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#0F1420">상황 1개 · 페르소나 1개</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#2E6BFF;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#0F1420">스트리밍 대화</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#2E6BFF;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#0F1420">재생성 · 되돌리기</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#2E6BFF;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#0F1420">최근 N턴 컨텍스트</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#2E6BFF;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#0F1420">기본 세이프티</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#2E6BFF;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#0F1420">하트 소모</span></div></div><div style="flex:1;padding:0 24px 0 0"><div style="height:4px;background:#E3E5EA;border-radius:2px;margin-bottom:18px"></div><div style="font-size:10.5px;font-weight:800;letter-spacing:.11em;color:#A4AAB4">PHASE 2</div><div style="font-size:18px;font-weight:700;margin:9px 0 4px">몰입 강화 · 6주</div><div style="font-size:12px;font-weight:600;color:#767C88;margin-bottom:12px">기억과 관계</div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">요약 · 기억 추출</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">기억 편집 UI</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">호감도 시스템</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">상황 다중화</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">분기 저장</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">For You 추천</span></div></div><div style="flex:1;padding:0 24px 0 0"><div style="height:4px;background:#E3E5EA;border-radius:2px;margin-bottom:18px"></div><div style="font-size:10.5px;font-weight:800;letter-spacing:.11em;color:#A4AAB4">PHASE 3</div><div style="font-size:18px;font-weight:700;margin:9px 0 4px">생태계 · 6주</div><div style="font-size:12px;font-weight:600;color:#767C88;margin-bottom:12px">창작과 발견</div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">크리에이터 대시보드</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">정산 · 등급</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">리믹스</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">좋아요 · 공유 카드</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">구독</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">TTS</span></div></div><div style="flex:1;padding:0 24px 0 0"><div style="height:4px;background:#E3E5EA;border-radius:2px;margin-bottom:18px"></div><div style="font-size:10.5px;font-weight:800;letter-spacing:.11em;color:#A4AAB4">PHASE 4</div><div style="font-size:18px;font-weight:700;margin:9px 0 4px">확장</div><div style="font-size:12px;font-weight:600;color:#767C88;margin-bottom:12px">지속</div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">멀티 캐릭터 그룹챗</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">이미지 생성 연동</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">웹 클라이언트</span></div><div style="display:flex;gap:8px;padding:7px 0"><span style="color:#C3CBD8;font-size:12px;font-weight:800">•</span><span style="font-size:12.5px;font-weight:600;color:#767C88">다국어 프롬프트</span></div></div></div></div><div class="bx " style="left:100px;top:830px;width:830px;height:188px"><div style="padding:24px 30px"><div class="cap">버린 것 — Phase 1에서 뺀 것들</div><div class="sm" style="font-size:13px;margin-top:12px"><b>기억 시스템을 MVP에서 뺐습니다.</b> 이 서비스의 차별점인데도요. 요약·추출은 비동기 파이프라인과 별도 모델이 붙어야 하고, 그게 8주 안에 들어오면 <b>대화 자체가 불안정해집니다.</b> 기억이 틀린 서비스보다 기억이 없는 서비스가 낫습니다.</div></div></div><div class="qb" style="left:970px;top:830px;width:850px;height:188px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">계산이 쉬운 안 대신 설명되는 안을 골랐습니다</div><div class="d">컨텍스트를 짧게 자르면 원가가 확실히 내려갑니다. 하지만 <b>왜 캐릭터가 어제를 잊었는지 유저에게 설명할 수 없습니다.</b> 최소 6턴 보장과 기억 상한 100건은 원가상 최적이 아니라 설명 가능한 선에서 끊은 값입니다.</div></div></div>
+ <div class="pgn">SM 21</div>
+</div></div></div>
+<div class="wrap" id="sm-22"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">회고</div><div class="ten">Retrospective</div>
+ <div class="hl">확인된 것과<br><em>아직 모르는 것</em></div>
+ <div class="ds">설계 판단 중 검증된 것과, 문서에 미결로 남겨둔 것을 나눠 적었습니다. <b>미결을 적지 않으면 정해진 척이 됩니다.</b></div>
+<div class="bx " style="left:100px;top:398px;width:850px;height:448px"><div style="padding:26px 30px"><div class="cap lm">확인된 것</div><div style="margin-top:12px"><div style="padding:15px 0;border-bottom:1px solid #EEEFF2"><div style="display:flex;gap:10px;align-items:baseline"><span style="color:#2E6BFF;font-size:12px;font-weight:800;flex:none">✓</span><div><div style="font-size:15px;font-weight:700;color:#0F1420">기억을 열어 보인 것이 맞았다</div><div style="font-size:12.5px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.6">틀린 기억을 고칠 수 있게 하자 불만이 줄었을 뿐 아니라, 유저가 캐릭터의 응답을 스스로 납득하기 시작했습니다.</div></div></div></div><div style="padding:15px 0;border-bottom:1px solid #EEEFF2"><div style="display:flex;gap:10px;align-items:baseline"><span style="color:#2E6BFF;font-size:12px;font-weight:800;flex:none">✓</span><div><div style="font-size:15px;font-weight:700;color:#0F1420">실패 무과금이 신뢰를 만들었다</div><div style="font-size:12.5px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.6">차단·폴백·타임아웃 미차감은 비용이 드는 결정이었지만 재화 시스템 전체에 대한 이의 제기를 거의 없앴습니다.</div></div></div></div><div style="padding:15px 0;border-bottom:1px solid #EEEFF2"><div style="display:flex;gap:10px;align-items:baseline"><span style="color:#2E6BFF;font-size:12px;font-weight:800;flex:none">✓</span><div><div style="font-size:15px;font-weight:700;color:#0F1420">안전 블록을 최상단에 고정한 판단</div><div style="font-size:12.5px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.6">우회 시도는 예상대로 들어왔고, 순서를 구조로 못박아둔 덕에 개별 대응이 아니라 규칙으로 막혔습니다.</div></div></div></div><div style="padding:15px 0;border-bottom:1px solid #EEEFF2"><div style="display:flex;gap:10px;align-items:baseline"><span style="color:#2E6BFF;font-size:12px;font-weight:800;flex:none">✓</span><div><div style="font-size:15px;font-weight:700;color:#0F1420">턴 수에 가드레일을 붙인 것</div><div style="font-size:12.5px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.6">지표를 세우자마자 응답을 짧게 자르려는 압력이 실제로 생겼습니다. 가드레일이 없었으면 숫자만 올랐을 겁니다.</div></div></div></div></div></div></div><div class="bx hi" style="left:970px;top:398px;width:850px;height:448px"><div style="padding:26px 30px"><div class="cap">아직 모르는 것</div><div style="margin-top:12px"><div style="padding:15px 0;border-bottom:1px solid #EEEFF2"><div style="display:flex;gap:10px;align-items:baseline"><span style="color:#A4AAB4;font-size:12px;font-weight:800;flex:none">?</span><div><div style="font-size:15px;font-weight:700;color:#0F1420">연령 등급 정책의 최종 형태</div><div style="font-size:12.5px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.6">15세 기준으로 설계했지만 성인 인증 확장 여부는 지역별 심의 기준과 함께 봐야 합니다. 일본과 북미의 기준이 서로 다릅니다.</div></div></div></div><div style="padding:15px 0;border-bottom:1px solid #EEEFF2"><div style="display:flex;gap:10px;align-items:baseline"><span style="color:#A4AAB4;font-size:12px;font-weight:800;flex:none">?</span><div><div style="font-size:15px;font-weight:700;color:#0F1420">크리에이터 정산율</div><div style="font-size:12.5px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.6">소비 하트 기준 배분까지는 정했지만 비율과 최소 지급액은 원가 시뮬레이션이 더 필요합니다.</div></div></div></div><div style="padding:15px 0;border-bottom:1px solid #EEEFF2"><div style="display:flex;gap:10px;align-items:baseline"><span style="color:#A4AAB4;font-size:12px;font-weight:800;flex:none">?</span><div><div style="font-size:15px;font-weight:700;color:#0F1420">그룹챗의 컨텍스트 비용</div><div style="font-size:12.5px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.6">캐릭터가 둘이면 컨텍스트가 두 배가 아니라 그 이상으로 늡니다. 예산표를 다시 짜야 하고, PoC 전에는 일정을 말할 수 없습니다.</div></div></div></div><div style="padding:15px 0;border-bottom:1px solid #EEEFF2"><div style="display:flex;gap:10px;align-items:baseline"><span style="color:#A4AAB4;font-size:12px;font-weight:800;flex:none">?</span><div><div style="font-size:15px;font-weight:700;color:#0F1420">과몰입에 대한 우리의 책임 범위</div><div style="font-size:12.5px;font-weight:500;color:#767C88;margin-top:6px;line-height:1.6">장시간 이용 알림과 AI 고지까지는 넣었습니다. <b>그것으로 충분한지는 아직 답을 못 냈습니다.</b></div></div></div></div></div></div></div><div class="qb" style="left:100px;top:878px;width:1720px;height:140px"><div class="bar"></div><div style="padding:24px 30px"><div class="t">미결을 적지 않으면 정해진 척이 됩니다</div><div class="d">오른쪽 네 항목은 “검토 중”으로 뭉뚱그릴 수도 있었습니다. <b>그러면 개발이 임의로 정하고, 나중에 그게 정책이 됩니다.</b> 담당과 기한을 붙여 문서에 남겨두면 최소한 누가 언제 답해야 하는지는 정해집니다 — 답이 없는 것과 답할 사람이 없는 것은 다릅니다.</div></div></div>
+ <div class="pgn">SM 22</div>
+</div></div></div>
+<div class="wrap" id="sm-23"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">부록</div><div class="ten">Admin Spec Board</div>
+ <div class="hl">화면 옆에<br><em>열 개 항목을 붙였습니다</em></div>
+ <div class="ds">핀 번호와 주석 번호가 일대일로 대응합니다. <b>항목을 나열한 것이 아니라, 비우면 안 되는 칸을 정한 것이 규칙의 핵심입니다.</b> 개정분은 🔄로 표시해 이전 버전을 읽은 사람이 바뀐 줄만 찾게 했습니다.</div>
+<div class="bx " style="left:100px;top:398px;width:300px;height:620px"><div style="padding:22px 16px"><div class="cap" style="padding:0 8px">BOARD</div><div style="margin-top:16px"><div style="padding:9px 12px;border-radius:4px;font-size:11.5px;font-weight:600;color:#3A3F4A;background:transparent;margin-bottom:2px">CEN 워크스페이스</div><div style="padding:9px 12px;border-radius:4px;font-size:11.5px;font-weight:600;color:#3A3F4A;background:transparent;margin-bottom:2px">캐릭터 도메인</div><div style="padding:9px 12px;border-radius:4px;font-size:11.5px;font-weight:600;color:#3A3F4A;background:transparent;margin-bottom:2px">대화 도메인</div><div style="padding:9px 12px;border-radius:4px;font-size:11.5px;font-weight:700;color:#fff;background:#2E6BFF;margin-bottom:2px">기억 · 컨텍스트</div><div style="padding:9px 12px;border-radius:4px;font-size:11.5px;font-weight:600;color:#3A3F4A;background:transparent;margin-bottom:2px">안전 · 모더레이션</div><div style="padding:9px 12px;border-radius:4px;font-size:11.5px;font-weight:600;color:#3A3F4A;background:transparent;margin-bottom:2px">재화 · 결제</div><div style="padding:9px 12px;border-radius:4px;font-size:11.5px;font-weight:600;color:#3A3F4A;background:transparent;margin-bottom:2px">크리에이터</div><div style="padding:9px 12px;border-radius:4px;font-size:11.5px;font-weight:600;color:#3A3F4A;background:transparent;margin-bottom:2px">어드민</div></div><div style="margin-top:22px;padding:0 8px"><div class="cap">위계</div><div class="mut" style="margin-top:10px;font-size:11.5px;line-height:1.8">BOARD → CASE → SCR + ANNO → DESC</div></div><div style="margin-top:26px;padding:0 8px"><div class="cap">고정 항목 10</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:12px"><span class="cp s" style="font-size:11px;padding:4px 9px">화면명</span><span class="cp s" style="font-size:11px;padding:4px 9px">ID</span><span class="cp s" style="font-size:11px;padding:4px 9px">진입 조건</span><span class="cp s" style="font-size:11px;padding:4px 9px">노출 정책</span><span class="cp s" style="font-size:11px;padding:4px 9px">기능 동작</span><span class="cp s" style="font-size:11px;padding:4px 9px">상세 설명</span><span class="cp s" style="font-size:11px;padding:4px 9px">예외 케이스</span><span class="cp s" style="font-size:11px;padding:4px 9px">데이터</span><span class="cp s" style="font-size:11px;padding:4px 9px">비고</span><span class="cp s" style="font-size:11px;padding:4px 9px">링크</span></div><div class="mut" style="margin-top:14px;font-size:11px;line-height:1.7">이 보드는 사만다 워크스페이스의 실제 포맷입니다.</div></div></div></div><div class="bx " style="left:440px;top:398px;width:1380px;height:620px"><div style="padding:26px 30px"><div class="cap">CASE::MEML — 기억 관리</div><div style="display:flex;gap:30px;margin-top:18px"><div><div style="position:relative;width:250px;height:340px;border:1px solid #E3E5EA;border-radius:6px;background:#fff;overflow:hidden"><div style="height:38px;border-bottom:1px solid #F0F0EE;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:11.5px;font-weight:700">기억<span style="color:#2E6BFF;font-size:10.5px">5 / 100</span></div><div style="margin:9px 12px;border:1px solid #E3E5EA;border-radius:5px;padding:9px 10px"><div style="height:7px;width:52px;background:#EEF3FF;border-radius:2px"></div><div style="height:6px;width:176px;background:#E9EBEF;border-radius:2px;margin-top:8px"></div></div><div style="margin:9px 12px;border:1px solid #E3E5EA;border-radius:5px;padding:9px 10px"><div style="height:7px;width:52px;background:#EEF3FF;border-radius:2px"></div><div style="height:6px;width:148px;background:#E9EBEF;border-radius:2px;margin-top:8px"></div></div><div style="margin:9px 12px;border:1px solid #E3E5EA;border-radius:5px;padding:9px 10px"><div style="height:7px;width:52px;background:#EEF3FF;border-radius:2px"></div><div style="height:6px;width:190px;background:#E9EBEF;border-radius:2px;margin-top:8px"></div></div><div style="margin:9px 12px;border:1px solid #E3E5EA;border-radius:5px;padding:9px 10px"><div style="height:7px;width:52px;background:#EEF3FF;border-radius:2px"></div><div style="height:6px;width:132px;background:#E9EBEF;border-radius:2px;margin-top:8px"></div></div><div style="position:absolute;left:196px;top:54px;width:20px;height:20px;border-radius:50%;background:#2E6BFF;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center">1</div><div style="position:absolute;left:30px;top:111px;width:20px;height:20px;border-radius:50%;background:#2E6BFF;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center">2</div><div style="position:absolute;left:196px;top:168px;width:20px;height:20px;border-radius:50%;background:#2E6BFF;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center">3</div><div style="position:absolute;left:30px;top:225px;width:20px;height:20px;border-radius:50%;background:#2E6BFF;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center">4</div></div></div><div style="flex:1"><div class="cap" style="margin-bottom:10px">DESC::MEML-2</div><div style="display:flex;border-bottom:1px solid #EEEFF2"><div style="width:110px;padding:10px 0;font-size:11px;font-weight:700;color:#767C88">화면명 · ID</div><div style="flex:1;padding:10px 0;font-size:11.5px;font-weight:500;color:#0F1420">SCR-MEM-002 · 기억 관리 목록</div></div><div style="display:flex;border-bottom:1px solid #EEEFF2"><div style="width:110px;padding:10px 0;font-size:11px;font-weight:700;color:#767C88">진입 조건</div><div style="flex:1;padding:10px 0;font-size:11.5px;font-weight:500;color:#0F1420">대화방 진입 상태 · 우상단 [기억] 탭</div></div><div style="display:flex;border-bottom:1px solid #EEEFF2"><div style="width:110px;padding:10px 0;font-size:11px;font-weight:700;color:#767C88">노출 정책</div><div style="flex:1;padding:10px 0;font-size:11.5px;font-weight:500;color:#0F1420">기억 0건이면 탭은 노출하되 빈 상태 안내로 대체</div></div><div style="display:flex;border-bottom:1px solid #EEEFF2"><div style="width:110px;padding:10px 0;font-size:11px;font-weight:700;color:#767C88">기능 동작</div><div style="flex:1;padding:10px 0;font-size:11.5px;font-weight:500;color:#0F1420">수정 · 삭제 · 고정 · 정렬(중요도 / 최신) · [기억 추가]</div></div><div style="display:flex;border-bottom:1px solid #EEEFF2"><div style="width:110px;padding:10px 0;font-size:11px;font-weight:700;color:#767C88">상세 설명</div><div style="flex:1;padding:10px 0;font-size:11.5px;font-weight:500;color:#0F1420">기본 정렬 = 중요도 내림차순 · 고정 항목은 항상 최상단</div></div><div style="display:flex;border-bottom:1px solid #EEEFF2"><div style="width:110px;padding:10px 0;font-size:11px;font-weight:700;color:#767C88">예외 케이스</div><div style="flex:1;padding:10px 0;font-size:11.5px;font-weight:500;color:#0F1420">100건 초과 시 → 자동 정리 예고 배너, 고정분은 제외</div></div><div style="display:flex;border-bottom:1px solid #EEEFF2"><div style="width:110px;padding:10px 0;font-size:11px;font-weight:700;color:#767C88">예외 케이스</div><div style="flex:1;padding:10px 0;font-size:11.5px;font-weight:500;color:#0F1420">추출 워커 지연 시 → “정리 중” 상태, 편집은 허용</div></div><div style="display:flex;border-bottom:1px solid #EEEFF2"><div style="width:110px;padding:10px 0;font-size:11px;font-weight:700;color:#767C88">비고 🔄</div><div style="flex:1;padding:10px 0;font-size:11.5px;font-weight:500;color:#0F1420">고정(pin) 기능 신규 추가 (MEM-014)</div></div><div style="display:flex;border-bottom:1px solid #EEEFF2"><div style="width:110px;padding:10px 0;font-size:11px;font-weight:700;color:#767C88">링크</div><div style="flex:1;padding:10px 0;font-size:11.5px;font-weight:500;color:#0F1420">정책: 기억·컨텍스트 상세 기획 ↗  스펙: MEM-011 ↗</div></div><div style="margin-top:16px;border:1px solid #E3E5EA;border-radius:4px;background:#FAFAFB;padding:14px 16px"><div class="cap">ID 체계</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px"><span class="cp s">CASE::MEML</span><span class="cp s">SCR-MEM-002 화면</span><span class="cp s">MEM-011 스펙</span><span class="cp s">DESC::MEML-2 주석</span></div><div class="mut" style="margin-top:11px;font-size:11px">화면 · 스펙 · 주석 ID를 분리해 문서 간 상호 참조가 끊기지 않게 합니다.</div></div></div></div></div></div><div class="chk">열 개 항목 중 진입 조건 · 노출 정책 · 예외 케이스는 비워둘 수 없습니다 — 비면 권한과 실패 경로를 개발이 정하게 됩니다</div>
+ <div class="pgn">SM 23</div>
+</div></div></div>
+<script>
+function vw(){return document.documentElement.clientWidth||window.innerWidth;}
+function post(){try{parent.postMessage({type:'samantha:height',
+  height:document.documentElement.scrollHeight},'*');}catch(e){}}
+function fit(){var s=Math.min(vw()/1920,1);
+document.querySelectorAll('.stage').forEach(function(e){e.style.setProperty('--s',s)});
+document.querySelectorAll('.wrap').forEach(function(e){e.style.height=(1080*s)+'px'});
+post();}
+fit();window.addEventListener('resize',fit);window.addEventListener('load',fit);
+if(window.ResizeObserver){new ResizeObserver(fit).observe(document.documentElement);}
+if(location.hash){var t=document.querySelector(location.hash);
+  if(t)setTimeout(function(){t.scrollIntoView();},60);}
+window.addEventListener('message',function(e){
+  if(e.data&&e.data.type==='samantha:goto'){var el=document.getElementById(e.data.id);
+    if(el)el.scrollIntoView({behavior:'smooth'});}});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+ if(e.isIntersecting){e.target.classList.add('play');io.unobserve(e.target);}});},{threshold:.25});
+document.querySelectorAll('.fr').forEach(function(f){io.observe(f)});
+</script></body></html>
