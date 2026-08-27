@@ -44,7 +44,7 @@
   color-scheme:light;
 }
 html{transition:background-color .35s ease}
-body,.band,.card,.viewer,.thumb{transition:background-color .35s ease,color .35s ease,border-color .35s ease}
+body,.band,#pgrid .card,.viewer,.thumb{transition:background-color .35s ease,color .35s ease,border-color .35s ease}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
@@ -234,36 +234,36 @@ section{padding-top:clamp(70px,10vw,140px)}
 .filters button:hover{color:var(--fg);border-color:var(--dim)}
 .filters button[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.card{
+#pgrid .card{
   background:var(--bg);padding:26px 24px 22px;min-height:230px;
   display:flex;flex-direction:column;gap:12px;transition:background .3s,color .3s;
 }
-.card:hover,.card:focus-visible{background:var(--fg);color:var(--bg)}
-.card .no{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.10em;color:var(--dim)}
-.card:hover .no{color:var(--bg);opacity:.5}
-.card h3{font-size:17px;line-height:1.35;letter-spacing:-.025em;font-weight:600}
-.card p{font-size:14px;line-height:1.75;color:var(--dim)}
-.card:hover p{color:var(--inv-dim)}
-.card .chips{margin-top:auto}
-.card:hover .chip{border-color:var(--inv-line);color:var(--inv-dim)}
-.card .go{margin-top:10px;font-size:12px;opacity:0;transition:opacity .25s}
-.card{cursor:pointer}
-.card:has(.cover-bg){position:relative;overflow:hidden;isolation:isolate}
-.card .cover-bg{
+#pgrid .card:hover,#pgrid .card:focus-visible{background:var(--fg);color:var(--bg)}
+#pgrid .card .no{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.10em;color:var(--dim)}
+#pgrid .card:hover .no{color:var(--bg);opacity:.5}
+#pgrid .card h3{font-size:17px;line-height:1.35;letter-spacing:-.025em;font-weight:600}
+#pgrid .card p{font-size:14px;line-height:1.75;color:var(--dim)}
+#pgrid .card:hover p{color:var(--inv-dim)}
+#pgrid .card .chips{margin-top:auto}
+#pgrid .card:hover .chip{border-color:var(--inv-line);color:var(--inv-dim)}
+#pgrid .card .go{margin-top:10px;font-size:12px;opacity:0;transition:opacity .25s}
+#pgrid .card{cursor:pointer}
+#pgrid .card:has(.cover-bg){position:relative;overflow:hidden;isolation:isolate}
+#pgrid .card .cover-bg{
   position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;
   opacity:0;transform:scale(1.06);
   transition:opacity .45s ease,transform .7s cubic-bezier(.16,1,.3,1);
 }
-.card .cover-bg::after{
+#pgrid .card .cover-bg::after{
   content:"";position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(10,10,10,.06) 0%,rgba(10,10,10,.55) 55%,rgba(10,10,10,.9) 100%);
 }
-.card:has(.cover-bg):hover,.card:has(.cover-bg):focus-visible{background:transparent;color:#fff}
-.card:has(.cover-bg):hover .cover-bg,.card:has(.cover-bg):focus-visible .cover-bg{opacity:1;transform:scale(1)}
-.card:has(.cover-bg):hover .no,.card:has(.cover-bg):focus-visible .no{color:rgba(255,255,255,.55)}
-.card:has(.cover-bg):hover p,.card:has(.cover-bg):focus-visible p{color:rgba(255,255,255,.82)}
-.card:has(.cover-bg):hover .chip,.card:has(.cover-bg):focus-visible .chip{border-color:rgba(255,255,255,.4);color:rgba(255,255,255,.85)}
-.card>*:not(.cover-bg){position:relative;z-index:1}
+#pgrid .card:has(.cover-bg):hover,#pgrid .card:has(.cover-bg):focus-visible{background:transparent;color:#fff}
+#pgrid .card:has(.cover-bg):hover .cover-bg,#pgrid .card:has(.cover-bg):focus-visible .cover-bg{opacity:1;transform:scale(1)}
+#pgrid .card:has(.cover-bg):hover .no,#pgrid .card:has(.cover-bg):focus-visible .no{color:rgba(255,255,255,.55)}
+#pgrid .card:has(.cover-bg):hover p,#pgrid .card:has(.cover-bg):focus-visible p{color:rgba(255,255,255,.82)}
+#pgrid .card:has(.cover-bg):hover .chip,#pgrid .card:has(.cover-bg):focus-visible .chip{border-color:rgba(255,255,255,.4);color:rgba(255,255,255,.85)}
+#pgrid .card>*:not(.cover-bg){position:relative;z-index:1}
 .proj-doc[hidden]{display:none}
 .v-inner .proj-doc{display:block;max-width:42em}
 body.editing .v-inner .proj-doc{min-height:1em}
@@ -278,7 +278,7 @@ body.editing .v-inner .proj-doc{min-height:1em}
 [contenteditable] code{font-family:"IBM Plex Mono",monospace;font-size:.9em;
   border:1px solid var(--line);border-radius:3px;padding:1px 5px}
 [contenteditable] a{text-decoration:underline;text-underline-offset:3px}
-.card:hover .go{opacity:1}
+#pgrid .card:hover .go{opacity:1}
 
 /* ---------- capability ---------- */
 .cap-lead{font-size:15.5px;line-height:1.75;color:var(--body);max-width:38em;margin-bottom:26px}
@@ -341,8 +341,8 @@ footer{padding-top:clamp(80px,11vw,150px);padding-bottom:36px}
 .reel-item:hover .open,.reel-item:focus-visible .open{opacity:1}
 .reel-item h3{font-size:16px;font-weight:600;letter-spacing:-.025em;line-height:1.35}
 .reel-item p{font-size:14px;color:var(--dim);line-height:1.7}
-.bar{height:1px;background:var(--line);margin-top:24px;position:relative;overflow:hidden}
-.bar i{position:absolute;left:0;top:0;height:100%;background:var(--fg);width:20%}
+#reel+.bar{height:1px;background:var(--line);margin-top:24px;position:relative;overflow:hidden}
+#reel+.bar i{position:absolute;left:0;top:0;height:100%;background:var(--fg);width:20%}
 
 /* ---------- case viewer ---------- */
 #scrim{position:fixed;inset:0;z-index:190;background:rgba(0,0,0,.55);backdrop-filter:blur(2px);
@@ -4739,7 +4739,6 @@ document.addEventListener('DOMContentLoaded', function(){
 <div class="bx " style="left:100px;top:404px;width:470px;height:640px"><div style="padding:24px 28px"><div class="cap">BOARD STRUCTURE</div><div class="rise" style="animation-delay:0.20s;margin-top:18px;padding-left:14px;border-left:2px solid #111"><div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;color:#8FA02A">BOARD</div><div style="font-size:14px;font-weight:700;color:#111;margin-top:4px">보드 헤드</div><div style="font-size:11.5px;color:#7A7A76;font-weight:500;margin-top:5px;line-height:1.55">SPEC 배지 · 도메인명 · 한 줄 요약 · 스펙 ID 범위</div></div><div class="rise" style="animation-delay:0.30s;margin-top:16px;padding-left:24px;border-left:2px solid #111"><div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;color:#8FA02A">CASE</div><div style="font-size:14px;font-weight:700;color:#111;margin-top:4px">화면 케이스</div><div style="font-size:11.5px;color:#7A7A76;font-weight:500;margin-top:5px;line-height:1.55">한 화면 단위. 보드 하나에 10~12개</div></div><div class="rise" style="animation-delay:0.40s;margin-top:16px;padding-left:34px;border-left:2px solid #D0F727"><div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;color:#8FA02A">SCR + ANNO</div><div style="font-size:14px;font-weight:700;color:#111;margin-top:4px">화면과 주석</div><div style="font-size:11.5px;color:#7A7A76;font-weight:500;margin-top:5px;line-height:1.55">실제 화면 1440×800 위에 번호 핀, 우측에 주석 묶음</div></div><div class="rise" style="animation-delay:0.50s;margin-top:16px;padding-left:44px;border-left:2px solid #D0F727"><div style="font-size:10.5px;font-weight:700;letter-spacing:.07em;color:#8FA02A">DESC</div><div style="font-size:14px;font-weight:700;color:#111;margin-top:4px">주석 카드</div><div style="font-size:11.5px;color:#7A7A76;font-weight:500;margin-top:5px;line-height:1.55">번호 하나당 카드 하나. 아래 열 개 항목 고정</div></div><div style="height:1px;background:var(--line);margin:22px 0"></div><div class="cap">FIXED ROWS · 10</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px"><span class="cp s">타입</span><span class="cp s">경로</span><span class="cp s">구성</span><span class="cp s">진입 조건</span><span class="cp s">노출 정책</span><span class="cp s">기능 동작</span><span class="cp s">상세 설명</span><span class="cp s">예외 케이스</span><span class="cp s">비고</span><span class="cp s">링크</span></div><div class="sm" style="margin-top:18px;color:var(--g6)">열 개 중 <b>진입 조건 · 노출 정책 · 예외 케이스</b>를 비우지 못하게 한 것이 핵심입니다. 이 셋이 비면 권한과 실패 경로를 개발이 정하게 됩니다.</div><div class="sm" style="margin-top:14px;color:var(--g6)">개정분에는 <span class="chg">🔄</span>를 붙여 이전 버전을 읽은 사람이 <b>바뀐 줄만</b> 찾을 수 있게 합니다.</div></div></div><div class="bx " style="left:590px;top:404px;width:1230px;height:596px"><div style="padding:22px 26px"><div class="cap">TEMPLATE · SCR-STL-001 · 정산 내역 리스트</div><div style="margin-top:14px"><div class="brd"><div style="display:flex;gap:38px;align-items:flex-start"><div class="scr"><div class="sd"><div class="lg">Vuddy Admin</div><div class="mi">회원 목록</div><div class="mi">채널 목록</div><div class="mi">상품 목록</div><div class="mi">주문 목록</div><div class="mi">정산 규칙</div><div class="mi on">정산 내역</div><div class="mi">인보이스</div><div class="mi">송금 관리</div></div><div class="ct"><div class="hd2">정산 내역 · 2025년 11월</div><div class="fl"><span>기간</span><span>채널 타입</span><span>정산 상태</span><span>금액 구간</span><span>검색</span></div><div class="tb2"><div class="h"><div style="width:74px">채널 ID</div><div style="width:74px">채널명</div><div style="width:64px">타입</div><div style="flex:1">판매 금액</div><div style="flex:1">정산 금액</div><div style="width:64px">상태</div></div><div class="r2"><div style="width:74px">CH-1042</div><div style="width:74px">루미</div><div style="width:64px">크리에이터</div><div style="flex:1">2,184,000</div><div style="flex:1">1,482,600</div><div style="width:64px">지급 준비중</div></div><div class="r2"><div style="width:74px">CH-2071</div><div style="width:74px">하다</div><div style="width:64px">2차 창작</div><div style="flex:1">861,500</div><div style="flex:1">604,120</div><div style="width:64px">정산 대기</div></div><div class="r2"><div style="width:74px">CH-1188</div><div style="width:74px">별밤</div><div style="width:64px">크리에이터</div><div style="flex:1">1,320,000</div><div style="flex:1">912,700</div><div style="width:64px">지급 완료</div></div><div class="r2"><div style="width:74px">CH-2094</div><div style="width:74px">코코</div><div style="width:64px">2차 창작</div><div style="flex:1">247,000</div><div style="flex:1">172,300</div><div style="width:64px">정산 보류</div></div><div class="r2"><div style="width:74px">CH-1237</div><div style="width:74px">윤슬</div><div style="width:64px">크리에이터</div><div style="flex:1">0</div><div style="flex:1">0</div><div style="width:64px">대상 없음</div></div><div class="r2"><div style="width:74px">CH-2110</div><div style="width:74px">네온</div><div style="width:64px">2차 창작</div><div style="flex:1">512,000</div><div style="flex:1">358,900</div><div style="width:64px">정산 대기</div></div></div><div class="mt2"><span>총 128건</span><span>1 2 3 … 3</span></div></div><span class="pin" style="left:80px;top:10px">1</span><span class="pin" style="left:80px;top:46px">2</span><span class="pin a" style="left:80px;top:88px">3</span><span class="pin" style="left:80px;top:250px">4</span></div><div class="desc"><div class="hb"><span class="dt">3</span><span class="tt">정산 내역 · 필터</span></div><div class="rw"><div class="k2">타입</div><div class="v2">목록 화면(STL-020) · 필터 영역</div></div><div class="rw"><div class="k2">경로</div><div class="v2">정산 &gt; 정산 내역</div></div><div class="rw"><div class="k2">구성</div><div class="v2">기간 · 채널 타입 · 정산 상태 · 금액 구간 · 채널 검색(채널명 · ID)</div></div><div class="rw"><div class="k2">진입 조건</div><div class="v2">settlement_admin 이상 권한 · 어드민 정산 메뉴</div></div><div class="rw"><div class="k2">노출 정책</div><div class="v2">권한 미만 → 메뉴 비노출 (접근 불가)</div></div><div class="rw"><div class="k2">기능 동작</div><div class="v2">필터 조합 AND 적용 · [검색] → 목록 갱신</div></div><div class="rw"><div class="k2">상세 설명</div><div class="v2">기본값 = 직전 확정 회차, 전체 상태 · 운영자 월 정산 검토 진입 기준</div></div><div class="rw"><div class="k2">예외 케이스</div><div class="v2">조회 결과 0건 → 빈 상태 노출 &quot;조건에 맞는 정산 내역이 없어요.&quot;</div></div><div class="rw"><div class="k2">비고 <span class="chg">🔄</span></div><div class="v2">2차 창작 채널 타입 필터 신규 추가 (STL-031)</div></div><div class="rw"><div class="k2">링크</div><div class="v2">정책: 정산 도메인 상세 기획 ↗ &nbsp; 상세 스펙: STL-020 ↗</div></div></div></div><div style="margin-top:18px;width:1178px;border:1px solid #E4E4E0;border-radius:4px;background:#FAFAF8;padding:14px 16px"><div style="font-size:10px;font-weight:700;letter-spacing:.08em;color:#A8A8A4">ID 체계</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center"><span style="border:1px solid #E4E4E0;background:#fff;border-radius:3px;padding:4px 10px;font-size:10.5px;font-weight:600;color:#3A3A38">CASE::STLL</span><span style="border:1px solid #E4E4E0;background:#fff;border-radius:3px;padding:4px 10px;font-size:10.5px;font-weight:600;color:#3A3A38">SCR-STL-001 화면</span><span style="border:1px solid #E4E4E0;background:#fff;border-radius:3px;padding:4px 10px;font-size:10.5px;font-weight:600;color:#3A3A38">STL-020 스펙</span><span style="border:1px solid #E4E4E0;background:#fff;border-radius:3px;padding:4px 10px;font-size:10.5px;font-weight:600;color:#3A3A38">DESC::STLL-3 주석</span></div><div style="font-size:10.5px;color:#7A7A76;font-weight:500;margin-top:11px;line-height:1.55">화면 · 스펙 · 주석 ID를 분리해 문서 간 상호 참조가 끊기지 않게 합니다.</div></div></div></div></div></div>
  <div class="pgn">VD 33</div>
 </div></div></div>
-</div>/div>
 
 
 <!-- ══════════ pf84 · 정산 상태 전이 ══════════ -->
