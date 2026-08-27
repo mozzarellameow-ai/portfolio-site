@@ -365,6 +365,8 @@ body.locked{overflow:hidden}
 .v-bar a:hover,.v-bar button:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .v-scroll{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:clamp(20px,3vw,38px) clamp(20px,4vw,44px) 96px}
 .v-inner{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(14px,2vw,28px)}
+.viewer.wide .v-scroll{padding-left:0;padding-right:0}
+.viewer.wide .v-inner{max-width:none}
 .v-inner img{width:100%;display:block;border:1px solid var(--line);background:var(--pane)}
 .v-inner .ph-page{aspect-ratio:16/10;border:1px solid var(--line);background:var(--pane);
   display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;
