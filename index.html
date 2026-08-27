@@ -316,18 +316,9 @@ footer{padding-top:clamp(80px,11vw,150px);padding-bottom:36px}
 
 /* ---------- portfolio reel ---------- */
 .reel-head{display:flex;align-items:center;gap:14px;padding:6px 0 18px}
-.reel-head .arrows{margin-left:auto;display:flex;gap:8px}
-.reel-head button{width:38px;height:38px;border:1px solid var(--line);background:none;color:var(--fg);
-  border-radius:50%;cursor:pointer;font-size:14px;line-height:1;transition:.2s}
-.reel-head button:hover:not(:disabled){background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.reel-head button:disabled{opacity:.25;cursor:default}
-.reel{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
-  scrollbar-width:none;-ms-overflow-style:none;padding-bottom:2px;
-  margin-left:calc(var(--gut)*-1);margin-right:calc(var(--gut)*-1);
-  padding-left:var(--gut);padding-right:var(--gut);scroll-padding-left:var(--gut)}
-.reel::-webkit-scrollbar{display:none}
+.reel{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 28px}
 .reel-item{
-  flex:0 0 clamp(258px,32vw,400px);scroll-snap-align:start;background:none;border:0;padding:0;
+  background:none;border:0;padding:0;
   color:inherit;font:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:12px;
 }
 .thumb{position:relative;aspect-ratio:16/9;border:1px solid var(--line);background:var(--pane);
@@ -341,8 +332,6 @@ footer{padding-top:clamp(80px,11vw,150px);padding-bottom:36px}
 .reel-item:hover .open,.reel-item:focus-visible .open{opacity:1}
 .reel-item h3{font-size:16px;font-weight:600;letter-spacing:-.025em;line-height:1.35}
 .reel-item p{font-size:14px;color:var(--dim);line-height:1.7}
-#reel+.bar{height:1px;background:var(--line);margin-top:24px;position:relative;overflow:hidden}
-#reel+.bar i{position:absolute;left:0;top:0;height:100%;background:var(--fg);width:20%}
 
 /* ---------- case viewer ---------- */
 #scrim{position:fixed;inset:0;z-index:190;background:rgba(0,0,0,.55);backdrop-filter:blur(2px);
@@ -647,13 +636,13 @@ body.editing .row-head{cursor:default}
 
 @media(max-width:1000px){
   .about,.body-in,.two{grid-template-columns:1fr}
-  .grid{grid-template-columns:repeat(2,1fr)}
+  .grid,.reel{grid-template-columns:repeat(2,1fr)}
   .row-head{grid-template-columns:40px 1fr 28px;gap:14px}
   .row-head .role{grid-column:2;font-size:14px;font-weight:600;color:var(--body);padding-top:2px}
   .row-head:hover .role{color:inherit}
 }
 @media(max-width:640px){
-  .grid{grid-template-columns:1fr}
+  .grid,.reel{grid-template-columns:1fr}
         .cap-row{grid-template-columns:1fr auto}
   .cap-row span{grid-column:1;grid-row:2}
   .hero-sub{flex-direction:column;align-items:flex-start}
@@ -1012,15 +1001,10 @@ body.editing .row-head{cursor:default}
   <div class="sec-head"><h2 class="en">Portfolio</h2><span class="label">03 / 케이스 스터디</span></div>
   <div class="reel-head">
     <p class="label" style="max-width:34em;text-transform:none;letter-spacing:0;font-size:12.5px;line-height:1.7">
-      좌우로 넘겨보고, 카드를 열면 전체 페이지를 이어서 볼 수 있습니다.
+      카드를 열면 전체 페이지를 이어서 볼 수 있습니다.
     </p>
-    <div class="arrows">
-      <button id="reelPrev" aria-label="이전">←</button>
-      <button id="reelNext" aria-label="다음">→</button>
-    </div>
   </div>
-  <div class="reel" id="reel" tabindex="0" aria-label="포트폴리오 케이스"></div>
-  <div class="bar"><i id="reelBar"></i></div>
+  <div class="reel" id="reel" aria-label="포트폴리오 케이스"></div>
 </section>
 
 <!-- 케이스 뷰어 -->
@@ -1427,34 +1411,45 @@ body.editing .row-head{cursor:default}
 
   var PORTFOLIO = [
     { title:'세포 마켓 — 2차 창작자 도입', note:'PM · 정책 설계 · 채널 · 정산',
+      desc:'크리에이터 IP를 활용해 팬이 직접 상품을 만들어 파는 2차 창작 오픈마켓. IP 권한 구조부터 입점 심사, 정산 분기, 구매자 보호까지 신뢰가 필요한 지점을 설계했습니다.',
       embed:'works/sepo-embed.html', cover:'images/sepo1.jpg', pages:16, body:'' },
     { title:'Vuddy — 상품·판매·정산·채팅·미디어', note:'도메인 설계 · 커머스 · 정산 구조',
+      desc:'팬 창작자 굿즈 커머스와 커뮤니티 플랫폼. 상품·판매·정산·채팅·미디어 전 도메인의 정책과 화면을 설계해 창작자가 수익과 관계를 예측할 수 있게 만들었습니다.',
       embed:'works/vuddy-embed.html', cover:'images/pf77.jpg', pages:33, body:'' },
     { title:'신규 AI 서비스 — 런칭 기획', note:'Samantha · 0140am · 2026', role:'Product Manager', node:null, pages:0,
+      desc:'대화는 사라져도 관계는 남도록 설계한 AI 인터랙티브 스토리 채팅 서비스. 기억·컨텍스트 정책, 콘텐츠 검열, 크리에이터 생태계까지 0-to-1 전 과정을 기획했습니다.',
       embed:'works/samantha-embed.html', gradient:'linear-gradient(135deg,#2E6BFF,#0F1420)',
       body:'', cover:'images/samantha-cover.jpg', imgs:[] },
     { title:'라스트마일 배송 기사 앱', note:'필드 리서치 → 페르소나 → UX 개선 3건', node:'1:10976', pages:14,
+      desc:'당일 배송·반품을 처리하는 배송 기사용 앱. 필드 리서치로 페르소나를 정의하고, 상차 스캔·출입 정보·오프라인 업로드 세 가지 UX 문제를 개선했습니다.',
       body:'쿠팡 배송 현장 필드 리서치에서 출발해 고정형·플렉스 기사 페르소나를 정의하고, 상차 스캔·출입 정보·오프라인 업로드 세 가지 문제를 각각 문제·영향·해결·성과 구조로 정리했습니다. 다크 모드와 컬러 시스템까지 포함.',
       cover:'images/pf12.jpg', imgs:[] },
     { title:'배송 관제 시스템 TMS', note:'클러스터링 재분류 문제 · 배차 관리', node:'1:14370', pages:10,
+      desc:'허브 재분류 문제를 해결하기 위해 운영자가 클러스터를 직접 편집할 수 있는 사전 플래닝 구조를 설계한 배송 관제 시스템. 배차 신청부터 실시간 관제까지 포함합니다.',
       body:'자동 분류가 당일 현장 상황을 반영하지 못해 허브에서 재분류가 발생하는 문제를 정의하고, 사전 플래닝 단계에서 운영자가 클러스터를 직접 편집할 수 있는 구조를 설계했습니다. 배차 신청·목록·폼 설정 화면 포함.',
       cover:'images/pf27.jpg', imgs:[] },
     { title:'판매자 OMS 시스템', note:'제품 구조도 · 반품 플로우 · 로우코드', node:'1:17278', pages:12,
+      desc:'실시간 배송 추적과 통합 물류 관리를 축으로 제품 구조도와 반품 플로우를 설계한 판매자 시스템. 화면 정의서부터 로우코드 개발 프로세스까지 구현 과정을 담았습니다.',
       body:'실시간 배송 추적과 통합 물류 관리를 축으로 제품 구조도와 반품 플로우를 설계하고, 화면·기능 정의서까지 작성했습니다. 결과 내 검색 도입으로 서버 부하를 줄인 과정과 최소 커스텀 컴포넌트 시스템, 로우코드 개발 프로세스를 함께 담았습니다.',
       cover:'images/pf37.jpg', imgs:[] },
     { title:'물류 산업 리서치', note:'택배 물동량 추이 · 허브앤스포크 구조 분석', node:'1:6996', pages:10,
+      desc:'국내 택배 시장 물동량과 매출 추이를 분석해 허브-스포크 구조의 단계별 지연 원인을 짚고, 유닛 기반 모델과 TMS 모듈 맵으로 이어지는 도메인 리서치입니다.',
       body:'국내 택배 시장 물동량과 매출 추이에서 시작해, 메가 허브–스포크 구조의 단계별 지연 원인을 짚고 유닛 기반 모델과 TMS 모듈 맵으로 이어지는 도메인 리서치입니다. 2주 스프린트 운영 방식도 포함.',
       cover:'images/pf04.jpg', imgs:[] },
     { title:'CREAM 셀럽 영상 메시지', note:'경쟁사 분석 · 요청–녹화–전달 플로우', node:'1:19090', pages:6,
+      desc:'팬이 셀럽에게 1:1 영상 메시지를 요청하는 플랫폼. Cameo·CelebVM 경쟁사 분석으로 차별화 전략을 세우고 요청–녹화–전달 양방향 플로우를 설계했습니다.',
       body:'Cameo·CelebVM 경쟁사 분석으로 차별화 전략을 세우고, 팬이 멤버를 골라 1:1 영상 메시지를 요청하면 셀럽이 24~48시간 내 녹화·업로드하는 양방향 플로우를 설계했습니다.',
       cover:'images/pf49.jpg', imgs:[] },
     { title:'FANLINK 팬 콘텐츠 거래', note:'아티스트 콘텐츠 · 팬 커뮤니티', node:'1:20268', pages:5,
+      desc:'아티스트 콘텐츠를 거래하고 팬 커뮤니티로 이어지는 플랫폼. 아티스트와 팬 양쪽의 동기를 정리하고 거래 참여 화면을 설계했습니다.',
       body:'아티스트 콘텐츠를 거래하고 팬 커뮤니티로 이어지는 플랫폼 기획. 아티스트와 팬 양쪽의 동기를 정리하고 거래 참여 화면을 설계했습니다.',
       cover:'images/pf55.jpg', imgs:[] },
     { title:'LEMONBOX 맞춤 비타민', note:'브랜드 정의 · 코디 신청 · 컴포넌트 시스템', node:'1:21508', pages:10,
+      desc:'"비타민에도 취향을 담을 수 있을까"라는 질문에서 시작한 브랜드 정의부터 컬러·컴포넌트 시스템, 코디 신청 화면까지 이어지는 BX 디자인 프로젝트입니다.',
       body:'"비타민에도 취향을 담을 수 있을까"라는 질문에서 시작한 브랜드 정의부터, 건강기능식품 시장 규모 분석, 구매 의사결정 단계별 서비스 전략, 컬러·컴포넌트 시스템, 코디 신청 화면까지 이어집니다.',
       cover:'images/pf60.jpg', imgs:[] },
     { title:'21Challenge 셀프메디케이션', note:'21일 습관 형성 · 제품 구조도', node:'1:24097', pages:6,
+      desc:'새로운 행동이 습관이 되는 21일을 축으로 한 헬스케어 플랫폼. 제품 구조도부터 진행 중인 챌린지·결과 확인 화면까지 설계했습니다.',
       body:'새로운 행동이 습관이 되는 21일을 축으로 한 헬스케어 플랫폼. 비즈니스 개요와 제품 구조도, 진행 중인 챌린지·결과 확인 화면을 설계했습니다.',
       cover:'images/pf70.jpg', imgs:[] }
   ];
@@ -1481,7 +1476,7 @@ body.editing .row-head{cursor:default}
           '<span class="open">View ↗</span>' +
         '</span>' +
         '<h3>' + item.title + '</h3>' +
-        '<p>' + item.note + '</p>';
+        '<p>' + (item.desc || item.note) + '</p>';
       b.addEventListener('click', (function(idx){ return function(e){
         if (document.body.classList.contains('editing') && e.target.closest('[contenteditable]')) return;
         openCase(idx);
@@ -1498,24 +1493,6 @@ body.editing .row-head{cursor:default}
         document.getElementById('pfDocs').appendChild(doc);
       }
     });
-
-    var prev = document.getElementById('reelPrev'),
-        next = document.getElementById('reelNext'),
-        bar  = document.getElementById('reelBar');
-    function step(){ var it = reel.querySelector('.reel-item'); return it ? it.offsetWidth + 14 : 320; }
-    prev.addEventListener('click', function(){ reel.scrollBy({left:-step(), behavior:'smooth'}); });
-    next.addEventListener('click', function(){ reel.scrollBy({left: step(), behavior:'smooth'}); });
-    function sync(){
-      var max = reel.scrollWidth - reel.clientWidth;
-      var p = max > 0 ? reel.scrollLeft / max : 0;
-      bar.style.width = Math.max(12, (reel.clientWidth / reel.scrollWidth) * 100) + '%';
-      bar.style.transform = 'translateX(' + (p * (reel.scrollWidth / reel.clientWidth - 1) * 100) + '%)';
-      prev.disabled = reel.scrollLeft < 4;
-      next.disabled = reel.scrollLeft > max - 4;
-    }
-    reel.addEventListener('scroll', sync, {passive:true});
-    window.addEventListener('resize', sync);
-    sync();
   }
 
   /* 임베드 케이스 덱(Samantha/세포마켓/Vuddy)이 자기 콘텐츠 높이를 postMessage로 알려주면 iframe 높이에 반영 */
