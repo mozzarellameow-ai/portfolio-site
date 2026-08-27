@@ -316,12 +316,14 @@ footer{padding-top:clamp(80px,11vw,150px);padding-bottom:36px}
 
 /* ---------- portfolio reel ---------- */
 .reel-head{display:flex;align-items:center;gap:14px;padding:6px 0 18px}
-.reel{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 28px}
+.reel{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .reel-item{
-  background:none;border:0;padding:0;
-  color:inherit;font:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:12px;
+  background:var(--bg);border:0;padding:0 0 24px;
+  color:inherit;font:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:0;
+  transition:background .3s,color .3s;
 }
-.thumb{position:relative;aspect-ratio:16/9;border:1px solid var(--line);background:var(--pane);
+.thumb{position:relative;aspect-ratio:16/9;background:var(--pane);
   overflow:hidden;display:flex;align-items:center;justify-content:center}
 .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1),opacity .3s}
 .reel-item:hover .thumb img,.reel-item:focus-visible .thumb img{transform:scale(1.04)}
@@ -330,8 +332,8 @@ footer{padding-top:clamp(80px,11vw,150px);padding-bottom:36px}
   font-size:12px;letter-spacing:.10em;color:var(--fg);background:var(--scrim);padding:4px 8px;border-radius:99px}
 .thumb .open{position:absolute;right:12px;bottom:12px;font-size:12px;letter-spacing:-.01em;background:var(--fg);color:var(--bg);padding:5px 10px;border-radius:99px;opacity:0;transition:opacity .25s}
 .reel-item:hover .open,.reel-item:focus-visible .open{opacity:1}
-.reel-item h3{font-size:16px;font-weight:600;letter-spacing:-.025em;line-height:1.35}
-.reel-item p{font-size:14px;color:var(--dim);line-height:1.7}
+.reel-item h3{padding:0 18px;margin-top:16px;font-size:14.5px;font-weight:600;letter-spacing:-.02em;line-height:1.35}
+.reel-item p{padding:0 18px;margin-top:7px;font-size:12.5px;color:var(--dim);line-height:1.6}
 
 /* ---------- case viewer ---------- */
 #scrim{position:fixed;inset:0;z-index:190;background:rgba(0,0,0,.55);backdrop-filter:blur(2px);
@@ -634,6 +636,9 @@ body.editing .row-head{cursor:default}
 :focus-visible{outline:1px solid var(--fg);outline-offset:3px}
 ::selection{background:var(--fg);color:var(--bg)}
 
+@media(max-width:1300px){
+  .reel{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:1000px){
   .about,.body-in,.two{grid-template-columns:1fr}
   .grid,.reel{grid-template-columns:repeat(2,1fr)}
