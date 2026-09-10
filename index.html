@@ -327,9 +327,6 @@ footer{padding-top:clamp(80px,11vw,150px);padding-bottom:36px}
   overflow:hidden;display:flex;align-items:center;justify-content:center}
 .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1),opacity .3s}
 .reel-item:hover .thumb img,.reel-item:focus-visible .thumb img{transform:scale(1.04)}
-.thumb .ph{font-size:12.5px;color:var(--dim);text-align:center;line-height:1.9}
-.thumb .cnt{position:absolute;left:12px;bottom:12px;font-family:"IBM Plex Mono",monospace;
-  font-size:12px;letter-spacing:.10em;color:var(--fg);background:var(--scrim);padding:4px 8px;border-radius:99px}
 .thumb .open{position:absolute;right:12px;bottom:12px;font-size:12px;letter-spacing:-.01em;background:var(--fg);color:var(--bg);padding:5px 10px;border-radius:99px;opacity:0;transition:opacity .25s}
 .reel-item:hover .open,.reel-item:focus-visible .open{opacity:1}
 .reel-item h3{padding:0 18px;margin-top:16px;font-size:14.5px;font-weight:600;letter-spacing:-.02em;line-height:1.35}
@@ -359,9 +356,6 @@ body.locked{overflow:hidden}
 .viewer.wide .v-scroll{padding-left:0;padding-right:0}
 .viewer.wide .v-inner{max-width:none}
 .v-inner img{width:100%;display:block;border:1px solid var(--line);background:var(--pane)}
-.v-inner .ph-page{aspect-ratio:16/10;border:1px solid var(--line);background:var(--pane);
-  display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
 .v-inner iframe{width:100%;aspect-ratio:16/9;border:1px solid var(--line);background:var(--pane)}
 .v-inner iframe.embed-frame{aspect-ratio:auto;display:block;width:100%;border:0;background:none}
 .embed-narrow{border:1px solid var(--line);border-radius:8px;padding:clamp(24px,4vw,40px);
@@ -1135,7 +1129,7 @@ body.editing .row-head{cursor:default}
     <span class="meta" id="vMeta"></span>
     <span class="spacer"></span>
     <button type="button" id="vEdit">편집</button>
-    <a id="vLink" href="#" target="_blank" rel="noopener" hidden>Figma ↗</a>
+    <a id="vLink" href="#" target="_blank" rel="noopener" hidden></a>
     <button id="vClose">Close ✕</button>
   </div>
   <div class="v-scroll" id="vScroll"><div class="v-inner" id="vInner"></div></div>
@@ -1400,19 +1394,10 @@ body.editing .row-head{cursor:default}
   });
 
   /* ============================================================
-     PORTFOLIO — Figma 파일(portfolio_shinjihye)의 챕터 구조
-     슬라이드 76장을 8개 케이스로 묶었습니다.
-
-     [보는 방식 1] 이미지 (권장, 기본값)
-       Figma에서 각 챕터 프레임을 PNG 2x로 내보내
-       images/ 폴더에 넣고 cover·pages 에 경로를 적으세요.
-     [보는 방식 2] Figma 임베드
-       파일 공유를 '링크가 있는 모든 사용자 · 보기 가능'으로 바꾼 뒤
-       아래 USE_FIGMA_EMBED 를 true 로만 바꾸면 됩니다.
+     PORTFOLIO — 케이스 스터디 목록
+       embed : 독립 HTML 덱을 iframe 으로 (works/*.html)
+       imgs  : 덱 슬라이드 이미지를 이어서 표시
      ============================================================ */
-  var FIGMA_FILE = '16QqdXfMo6dS1rhvDBg414';
-  var FIGMA_NAME = 'portfolio_shinjihye';
-  var USE_FIGMA_EMBED = false;
 
   /* 덱 슬라이드는 pf04~pf75 로 연속되어 있어, 케이스별 구간만 지정하면 된다 */
   function pfRange(from, to){
@@ -1424,66 +1409,54 @@ body.editing .row-head{cursor:default}
   var PORTFOLIO = [
     { title:'물류 산업 리서치', note:'택배 물동량 추이 · 허브앤스포크 구조 분석',
       desc:'국내 택배 시장 물동량과 매출 추이를 분석해 허브-스포크 구조의 단계별 지연 원인을 짚고, 유닛 기반 모델과 TMS 모듈 맵으로 이어지는 도메인 리서치입니다.',
-      embed:'works/delivus-embed.html', cover:'images/delivus-cover.jpg', pages:8, body:'' },
-    { title:'라스트마일 배송 기사 앱', note:'필드 리서치 → 페르소나 → UX 개선 3건', node:'1:10976', pages:15,
+      embed:'works/delivus-embed.html', cover:'images/delivus-cover.jpg' },
+    { title:'라스트마일 배송 기사 앱', note:'필드 리서치 → 페르소나 → UX 개선 3건',
       desc:'당일 배송·반품을 처리하는 배송 기사용 앱. 필드 리서치로 페르소나를 정의하고, 상차 스캔·출입 정보·오프라인 업로드 세 가지 UX 문제를 개선했습니다.',
       body:'쿠팡 배송 현장 필드 리서치에서 출발해 고정형·플렉스 기사 페르소나를 정의하고, 상차 스캔·출입 정보·오프라인 업로드 세 가지 문제를 각각 문제·영향·해결·성과 구조로 정리했습니다. 다크 모드와 컬러 시스템까지 포함.',
       cover:'images/pf12.jpg', imgs:pfRange(12, 26) },
-    { title:'배송 관제 시스템 TMS', note:'클러스터링 재분류 문제 · 배차 관리', node:'1:14370', pages:10,
+    { title:'배송 관제 시스템 TMS', note:'클러스터링 재분류 문제 · 배차 관리',
       desc:'허브 재분류 문제를 해결하기 위해 운영자가 클러스터를 직접 편집할 수 있는 사전 플래닝 구조를 설계한 배송 관제 시스템. 배차 신청부터 실시간 관제까지 포함합니다.',
       body:'자동 분류가 당일 현장 상황을 반영하지 못해 허브에서 재분류가 발생하는 문제를 정의하고, 사전 플래닝 단계에서 운영자가 클러스터를 직접 편집할 수 있는 구조를 설계했습니다. 배차 신청·목록·폼 설정 화면 포함.',
       cover:'images/pf27.jpg', imgs:pfRange(27, 36) },
-    { title:'판매자 OMS 시스템', note:'제품 구조도 · 반품 플로우 · 로우코드', node:'1:17278', pages:12,
+    { title:'판매자 OMS 시스템', note:'제품 구조도 · 반품 플로우 · 로우코드',
       desc:'실시간 배송 추적과 통합 물류 관리를 축으로 제품 구조도와 반품 플로우를 설계한 판매자 시스템. 화면 정의서부터 로우코드 개발 프로세스까지 구현 과정을 담았습니다.',
       body:'실시간 배송 추적과 통합 물류 관리를 축으로 제품 구조도와 반품 플로우를 설계하고, 화면·기능 정의서까지 작성했습니다. 결과 내 검색 도입으로 서버 부하를 줄인 과정과 최소 커스텀 컴포넌트 시스템, 로우코드 개발 프로세스를 함께 담았습니다.',
       cover:'images/pf37.jpg', imgs:pfRange(37, 48) },
     { title:'Vuddy — 상품·판매·정산·채팅·미디어', note:'도메인 설계 · 커머스 · 정산 구조',
       desc:'팬 창작자 굿즈 커머스와 커뮤니티 플랫폼. 상품·판매·정산·채팅·미디어 전 도메인의 정책과 화면을 설계해 창작자가 수익과 관계를 예측할 수 있게 만들었습니다.',
-      embed:'works/vuddy-embed.html', cover:'images/vuddy-cover.jpg', pages:33, body:'' },
+      embed:'works/vuddy-embed.html', cover:'images/vuddy-cover.jpg' },
     { title:'세포 마켓 — 2차 창작자 도입', note:'PM · 정책 설계 · 채널 · 정산',
       desc:'크리에이터 IP를 활용해 팬이 직접 상품을 만들어 파는 2차 창작 오픈마켓. IP 권한 구조부터 입점 심사, 정산 분기, 구매자 보호까지 신뢰가 필요한 지점을 설계했습니다.',
-      embed:'works/sepo-embed.html', cover:'images/sepo1.jpg', pages:16, body:'' },
-    { title:'신규 AI 서비스 — 런칭 기획', note:'Samantha · 0140am · 2026', role:'Product Manager', node:null, pages:0,
+      embed:'works/sepo-embed.html', cover:'images/sepo1.jpg' },
+    { title:'신규 AI 서비스 — 런칭 기획', note:'Samantha · 0140am · 2026', role:'Product Manager',
       desc:'대화는 사라져도 관계는 남도록 설계한 AI 인터랙티브 스토리 채팅 서비스. 기억·컨텍스트 정책, 콘텐츠 검열, 크리에이터 생태계까지 0-to-1 전 과정을 기획했습니다.',
-      embed:'works/samantha-embed.html', gradient:'linear-gradient(135deg,#2E6BFF,#0F1420)',
-      body:'', cover:'images/samantha-cover.jpg', imgs:[] },
-    { title:'CREAM 셀럽 영상 메시지', note:'경쟁사 분석 · 요청–녹화–전달 플로우', node:'1:19090', pages:6,
+      embed:'works/samantha-embed.html', cover:'images/samantha-cover.jpg', imgs:[] },
+    { title:'CREAM 셀럽 영상 메시지', note:'경쟁사 분석 · 요청–녹화–전달 플로우',
       desc:'팬이 셀럽에게 1:1 영상 메시지를 요청하는 플랫폼. Cameo·CelebVM 경쟁사 분석으로 차별화 전략을 세우고 요청–녹화–전달 양방향 플로우를 설계했습니다.',
       body:'Cameo·CelebVM 경쟁사 분석으로 차별화 전략을 세우고, 팬이 멤버를 골라 1:1 영상 메시지를 요청하면 셀럽이 24~48시간 내 녹화·업로드하는 양방향 플로우를 설계했습니다.',
       cover:'images/pf49.jpg', imgs:pfRange(49, 54) },
-    { title:'FANLINK 팬 콘텐츠 거래', note:'아티스트 콘텐츠 · 팬 커뮤니티', node:'1:20268', pages:5,
+    { title:'FANLINK 팬 콘텐츠 거래', note:'아티스트 콘텐츠 · 팬 커뮤니티',
       desc:'아티스트 콘텐츠를 거래하고 팬 커뮤니티로 이어지는 플랫폼. 아티스트와 팬 양쪽의 동기를 정리하고 거래 참여 화면을 설계했습니다.',
       body:'아티스트 콘텐츠를 거래하고 팬 커뮤니티로 이어지는 플랫폼 기획. 아티스트와 팬 양쪽의 동기를 정리하고 거래 참여 화면을 설계했습니다.',
       cover:'images/pf55.jpg', imgs:pfRange(55, 59) },
-    { title:'LEMONBOX 맞춤 비타민', note:'브랜드 정의 · 코디 신청 · 컴포넌트 시스템', node:'1:21508', pages:10,
+    { title:'LEMONBOX 맞춤 비타민', note:'브랜드 정의 · 코디 신청 · 컴포넌트 시스템',
       desc:'"비타민에도 취향을 담을 수 있을까"라는 질문에서 시작한 브랜드 정의부터 컬러·컴포넌트 시스템, 코디 신청 화면까지 이어지는 BX 디자인 프로젝트입니다.',
       body:'"비타민에도 취향을 담을 수 있을까"라는 질문에서 시작한 브랜드 정의부터, 건강기능식품 시장 규모 분석, 구매 의사결정 단계별 서비스 전략, 컬러·컴포넌트 시스템, 코디 신청 화면까지 이어집니다.',
       cover:'images/pf60.jpg', imgs:pfRange(60, 69) },
-    { title:'21Challenge 셀프메디케이션', note:'21일 습관 형성 · 제품 구조도', node:'1:24097', pages:6,
+    { title:'21Challenge 셀프메디케이션', note:'21일 습관 형성 · 제품 구조도',
       desc:'새로운 행동이 습관이 되는 21일을 축으로 한 헬스케어 플랫폼. 제품 구조도부터 진행 중인 챌린지·결과 확인 화면까지 설계했습니다.',
       body:'새로운 행동이 습관이 되는 21일을 축으로 한 헬스케어 플랫폼. 비즈니스 개요와 제품 구조도, 진행 중인 챌린지·결과 확인 화면을 설계했습니다.',
       cover:'images/pf70.jpg', imgs:pfRange(70, 75) }
   ];
 
-  function figmaLink(node){
-    return 'https://www.figma.com/design/' + FIGMA_FILE + '/' + FIGMA_NAME +
-           '?node-id=' + node.replace(':', '-');
-  }
-
   var reel = document.getElementById('reel');
   if (reel) {
     PORTFOLIO.forEach(function(item, i){
-      var n = String(i + 1).padStart(2, '0');
-      var label = item.pages ? item.pages + ' pages' : '자료 준비 중';
-      var thumb = item.cover
-        ? '<img src="' + item.cover + '" alt="' + item.title + ' 대표 이미지" loading="lazy">'
-        : '<span class="ph">Case ' + n + '<br>' + label + '</span>';
-      var thumbStyle = (!item.cover && item.gradient) ? ' style="background:' + item.gradient + '"' : '';
       var b = document.createElement('button');
       b.className = 'reel-item';
       b.innerHTML =
-        '<span class="thumb"' + thumbStyle + '>' + thumb +
-          '<span class="cnt">' + n + (item.pages ? ' / ' + item.pages + 'P' : '') + '</span>' +
+        '<span class="thumb">' +
+          '<img src="' + item.cover + '" alt="' + item.title + ' 대표 이미지" loading="lazy">' +
           '<span class="open">View ↗</span>' +
         '</span>' +
         '<h3>' + item.title + '</h3>' +
@@ -1524,11 +1497,9 @@ body.editing .row-head{cursor:default}
     var item = PORTFOLIO[i];
     lastFocus = document.activeElement;
     document.getElementById('vTitle').textContent = item.title;
-    document.getElementById('vMeta').textContent = item.note +
-      (item.role ? ' · ' + item.role : '') + (item.pages ? ' · ' + item.pages + ' pages' : '');
+    document.getElementById('vMeta').textContent = item.note + (item.role ? ' · ' + item.role : '');
     var link = document.getElementById('vLink');
     if (item.embed){ link.href = item.embed; link.textContent = '전체화면 ↗'; link.hidden = false; }
-    else if (item.node){ link.href = figmaLink(item.node); link.textContent = 'Figma ↗'; link.hidden = false; }
     else link.hidden = true;
 
     returnDoc();
@@ -1553,10 +1524,6 @@ body.editing .row-head{cursor:default}
         f.style.height = '1200px';
         vInner.appendChild(f);
       }
-    } else if (USE_FIGMA_EMBED){
-      vInner.innerHTML = '<iframe src="https://embed.figma.com/design/' + FIGMA_FILE + '/' + FIGMA_NAME +
-        '?node-id=' + item.node.replace(':', '-') + '&embed-host=share" allowfullscreen title="' +
-        item.title + '"></iframe>';
     } else if (item.imgs && item.imgs.length){
       vInner.innerHTML = item.imgs.map(function(src, n){
         return '<img src="' + src + '" alt="' + item.title + ' ' + (n+1) + '페이지" loading="lazy">';
@@ -1567,12 +1534,6 @@ body.editing .row-head{cursor:default}
         docHome = document.getElementById('pfDocs');
         doc.hidden = false;
         vInner.appendChild(doc);
-        for (var k = 1; k <= Math.min(item.pages || 0, 3); k++){
-          var ph = document.createElement('div');
-          ph.className = 'ph-page';
-          ph.textContent = 'Page ' + String(k).padStart(2,'0') + ' / ' + item.pages;
-          vInner.appendChild(ph);
-        }
       }
     }
     viewer.classList.add('on');
