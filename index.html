@@ -1414,22 +1414,29 @@ body.editing .row-head{cursor:default}
   var FIGMA_NAME = 'portfolio_shinjihye';
   var USE_FIGMA_EMBED = false;
 
+  /* 덱 슬라이드는 pf04~pf75 로 연속되어 있어, 케이스별 구간만 지정하면 된다 */
+  function pfRange(from, to){
+    var out = [];
+    for (var n = from; n <= to; n++) out.push('images/pf' + String(n).padStart(2, '0') + '.jpg');
+    return out;
+  }
+
   var PORTFOLIO = [
     { title:'물류 산업 리서치', note:'택배 물동량 추이 · 허브앤스포크 구조 분석',
       desc:'국내 택배 시장 물동량과 매출 추이를 분석해 허브-스포크 구조의 단계별 지연 원인을 짚고, 유닛 기반 모델과 TMS 모듈 맵으로 이어지는 도메인 리서치입니다.',
       embed:'works/delivus-embed.html', cover:'images/delivus-cover.jpg', pages:8, body:'' },
-    { title:'라스트마일 배송 기사 앱', note:'필드 리서치 → 페르소나 → UX 개선 3건', node:'1:10976', pages:14,
+    { title:'라스트마일 배송 기사 앱', note:'필드 리서치 → 페르소나 → UX 개선 3건', node:'1:10976', pages:15,
       desc:'당일 배송·반품을 처리하는 배송 기사용 앱. 필드 리서치로 페르소나를 정의하고, 상차 스캔·출입 정보·오프라인 업로드 세 가지 UX 문제를 개선했습니다.',
       body:'쿠팡 배송 현장 필드 리서치에서 출발해 고정형·플렉스 기사 페르소나를 정의하고, 상차 스캔·출입 정보·오프라인 업로드 세 가지 문제를 각각 문제·영향·해결·성과 구조로 정리했습니다. 다크 모드와 컬러 시스템까지 포함.',
-      cover:'images/pf12.jpg', imgs:[] },
+      cover:'images/pf12.jpg', imgs:pfRange(12, 26) },
     { title:'배송 관제 시스템 TMS', note:'클러스터링 재분류 문제 · 배차 관리', node:'1:14370', pages:10,
       desc:'허브 재분류 문제를 해결하기 위해 운영자가 클러스터를 직접 편집할 수 있는 사전 플래닝 구조를 설계한 배송 관제 시스템. 배차 신청부터 실시간 관제까지 포함합니다.',
       body:'자동 분류가 당일 현장 상황을 반영하지 못해 허브에서 재분류가 발생하는 문제를 정의하고, 사전 플래닝 단계에서 운영자가 클러스터를 직접 편집할 수 있는 구조를 설계했습니다. 배차 신청·목록·폼 설정 화면 포함.',
-      cover:'images/pf27.jpg', imgs:[] },
+      cover:'images/pf27.jpg', imgs:pfRange(27, 36) },
     { title:'판매자 OMS 시스템', note:'제품 구조도 · 반품 플로우 · 로우코드', node:'1:17278', pages:12,
       desc:'실시간 배송 추적과 통합 물류 관리를 축으로 제품 구조도와 반품 플로우를 설계한 판매자 시스템. 화면 정의서부터 로우코드 개발 프로세스까지 구현 과정을 담았습니다.',
       body:'실시간 배송 추적과 통합 물류 관리를 축으로 제품 구조도와 반품 플로우를 설계하고, 화면·기능 정의서까지 작성했습니다. 결과 내 검색 도입으로 서버 부하를 줄인 과정과 최소 커스텀 컴포넌트 시스템, 로우코드 개발 프로세스를 함께 담았습니다.',
-      cover:'images/pf37.jpg', imgs:[] },
+      cover:'images/pf37.jpg', imgs:pfRange(37, 48) },
     { title:'Vuddy — 상품·판매·정산·채팅·미디어', note:'도메인 설계 · 커머스 · 정산 구조',
       desc:'팬 창작자 굿즈 커머스와 커뮤니티 플랫폼. 상품·판매·정산·채팅·미디어 전 도메인의 정책과 화면을 설계해 창작자가 수익과 관계를 예측할 수 있게 만들었습니다.',
       embed:'works/vuddy-embed.html', cover:'images/vuddy-cover.jpg', pages:33, body:'' },
@@ -1443,19 +1450,19 @@ body.editing .row-head{cursor:default}
     { title:'CREAM 셀럽 영상 메시지', note:'경쟁사 분석 · 요청–녹화–전달 플로우', node:'1:19090', pages:6,
       desc:'팬이 셀럽에게 1:1 영상 메시지를 요청하는 플랫폼. Cameo·CelebVM 경쟁사 분석으로 차별화 전략을 세우고 요청–녹화–전달 양방향 플로우를 설계했습니다.',
       body:'Cameo·CelebVM 경쟁사 분석으로 차별화 전략을 세우고, 팬이 멤버를 골라 1:1 영상 메시지를 요청하면 셀럽이 24~48시간 내 녹화·업로드하는 양방향 플로우를 설계했습니다.',
-      cover:'images/pf49.jpg', imgs:[] },
+      cover:'images/pf49.jpg', imgs:pfRange(49, 54) },
     { title:'FANLINK 팬 콘텐츠 거래', note:'아티스트 콘텐츠 · 팬 커뮤니티', node:'1:20268', pages:5,
       desc:'아티스트 콘텐츠를 거래하고 팬 커뮤니티로 이어지는 플랫폼. 아티스트와 팬 양쪽의 동기를 정리하고 거래 참여 화면을 설계했습니다.',
       body:'아티스트 콘텐츠를 거래하고 팬 커뮤니티로 이어지는 플랫폼 기획. 아티스트와 팬 양쪽의 동기를 정리하고 거래 참여 화면을 설계했습니다.',
-      cover:'images/pf55.jpg', imgs:[] },
+      cover:'images/pf55.jpg', imgs:pfRange(55, 59) },
     { title:'LEMONBOX 맞춤 비타민', note:'브랜드 정의 · 코디 신청 · 컴포넌트 시스템', node:'1:21508', pages:10,
       desc:'"비타민에도 취향을 담을 수 있을까"라는 질문에서 시작한 브랜드 정의부터 컬러·컴포넌트 시스템, 코디 신청 화면까지 이어지는 BX 디자인 프로젝트입니다.',
       body:'"비타민에도 취향을 담을 수 있을까"라는 질문에서 시작한 브랜드 정의부터, 건강기능식품 시장 규모 분석, 구매 의사결정 단계별 서비스 전략, 컬러·컴포넌트 시스템, 코디 신청 화면까지 이어집니다.',
-      cover:'images/pf60.jpg', imgs:[] },
+      cover:'images/pf60.jpg', imgs:pfRange(60, 69) },
     { title:'21Challenge 셀프메디케이션', note:'21일 습관 형성 · 제품 구조도', node:'1:24097', pages:6,
       desc:'새로운 행동이 습관이 되는 21일을 축으로 한 헬스케어 플랫폼. 제품 구조도부터 진행 중인 챌린지·결과 확인 화면까지 설계했습니다.',
       body:'새로운 행동이 습관이 되는 21일을 축으로 한 헬스케어 플랫폼. 비즈니스 개요와 제품 구조도, 진행 중인 챌린지·결과 확인 화면을 설계했습니다.',
-      cover:'images/pf70.jpg', imgs:[] }
+      cover:'images/pf70.jpg', imgs:pfRange(70, 75) }
   ];
 
   function figmaLink(node){
@@ -1525,7 +1532,9 @@ body.editing .row-head{cursor:default}
     else link.hidden = true;
 
     returnDoc();
-    viewer.classList.toggle('wide', !!item.embed);
+    /* 임베드 덱과 슬라이드 이미지는 전체 페이지라 넓은 페인이 필요하다 */
+    var isFullPage = !!item.embed || !!(item.imgs && item.imgs.length);
+    viewer.classList.toggle('wide', isFullPage);
     if (item.embed){
       var minW = 1200, w = viewer.clientWidth;
       if (w < minW){
