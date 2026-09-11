@@ -1644,6 +1644,7 @@ body.editing .row-head{cursor:default}
     docHome = card;
     doc.hidden = false;
     vInner.appendChild(doc);
+    viewer.classList.remove('wide');  /* 앞서 연 케이스의 wide 가 남지 않도록 */
     viewer.classList.add('on');
     document.getElementById('scrim').classList.add('on');
     document.body.classList.add('locked');
@@ -1661,6 +1662,7 @@ body.editing .row-head{cursor:default}
     docHome = home || null;
     doc.hidden = false;
     vInner.appendChild(doc);
+    viewer.classList.remove('wide');  /* 앞서 연 케이스의 wide 가 남지 않도록 */
     viewer.classList.add('on');
     document.getElementById('scrim').classList.add('on');
     document.body.classList.add('locked');
@@ -1668,16 +1670,11 @@ body.editing .row-head{cursor:default}
     document.getElementById('vClose').focus();
   };
 
+  /* 한 번의 클릭에 핸들러가 둘 다 걸리면 openProject 가 두 번 돈다. 두 번째
+     실행 때는 본문이 이미 vInner 로 옮겨진 뒤라 querySelector 가 null 이 되고,
+     폴백이 카드 설명문으로 본문을 덮어쓴다. 그래서 위임 핸들러 하나만 둔다. */
   document.addEventListener('click', function(ev){
     var card = ev.target.closest && ev.target.closest('#pgrid .card');
-    if (!card) return;
-    if (card.dataset.cs) return;
-    if (document.body.classList.contains('editing') && ev.target.closest('[contenteditable], .blkctl')) return;
-    openProject(card);
-  });
-  var gridEl = document.getElementById('pgrid');
-  if (gridEl) gridEl.addEventListener('click', function(ev){
-    var card = ev.target.closest && ev.target.closest('.card');
     if (!card || viewer.classList.contains('on')) return;
     if (card.dataset.cs) return;
     if (document.body.classList.contains('editing') && ev.target.closest('[contenteditable], .blkctl')) return;
