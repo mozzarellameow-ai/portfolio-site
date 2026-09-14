@@ -1,0 +1,1673 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vuddy Creator Studio — Product Portfolio (CS 01–16) (embed)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--lime:#D0F727;--tint:#F7FBE6;--edge:#B4DC1E;--bg:#F4F4F2;--box:#FFF;
+--line:#E4E4E0;--ink:#111;--g1:#3A3A38;--g6:#7A7A76;--g9:#A8A8A4;--neg:#8C2F39;--dk:#16181A;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{margin:0;padding:0;background:#F4F4F2;overflow-x:hidden}
+body{font-family:Pretendard,-apple-system,sans-serif;font-variant-numeric:tabular-nums;
+display:flex;flex-direction:column;align-items:center;gap:0}
+.wrap{width:100%;display:flex;justify-content:center}
+.stage{width:1920px;height:1080px;position:relative;flex:none;transform-origin:top center;transform:scale(var(--s,1))}
+.fr{position:absolute;inset:0;background:var(--bg);overflow:hidden}
+.fr.cov{background:var(--dk)}
+.rl{position:absolute;top:82px;height:1px;background:var(--ink)}
+.rl.a{left:100px;width:280px}.rl.b{left:540px;width:1280px}
+.tko{position:absolute;left:100px;top:100px;width:400px;font-size:28px;font-weight:700;letter-spacing:-.02em}
+.ten{position:absolute;left:100px;top:143px;width:400px;font-size:14.5px;font-weight:600;color:var(--g6)}
+.hl{position:absolute;left:540px;top:100px;width:1280px;font-size:50px;font-weight:700;line-height:1.3;letter-spacing:-.035em}
+.hl em{font-style:normal;background:var(--lime);padding:0 7px}
+.ds{position:absolute;left:540px;top:250px;width:1280px;font-size:16.5px;font-weight:500;color:var(--g1);line-height:1.7}
+.ds b{color:var(--ink);font-weight:700}
+.bx{position:absolute;background:var(--box);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.bx.hi{background:var(--tint);border-color:var(--edge)}
+.bx.dk{background:var(--dk);border:0}
+.bx.gh{background:var(--bg)}
+.pd{padding:26px 30px}
+.cap{font-size:11px;font-weight:700;color:var(--g6);letter-spacing:.13em}
+.cap.lm{color:#8FA02A}
+.cap.ng{color:#A8686F}
+.bt{font-size:17px;font-weight:700;color:var(--ink)}
+.sm{font-size:13.5px;color:var(--g1);font-weight:500;line-height:1.7}
+.sm b{color:var(--ink);font-weight:700}
+.mut{font-size:12.5px;color:var(--g6);font-weight:500;line-height:1.6}
+.sb{background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:15px 20px}
+.sb .k{font-size:15.5px;font-weight:700;color:var(--ink)}
+.sb .v{font-size:12.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.5}
+.tr{display:flex;align-items:center;border-bottom:1px solid var(--line)}
+.tr.hd{border-bottom:1px solid var(--ink)}
+.tr.hd div{font-size:12.5px;font-weight:700;color:var(--ink)}
+.tr.mk{background:var(--tint)}
+.tr div{padding:0 22px;font-size:13.5px;color:var(--g1);font-weight:500;line-height:1.45}
+.tr div.k{font-weight:700;color:var(--ink)}
+.tr div.dim{color:var(--g9)}
+.cp{display:inline-flex;align-items:center;background:var(--bg);border:1px solid var(--line);
+border-radius:3px;padding:7px 15px;font-size:13.5px;color:var(--g1);font-weight:600;white-space:nowrap}
+.cp.on{background:var(--lime);border-color:var(--edge);color:#000;font-weight:700}
+.cp.no{background:#F2ECEC;border-color:#DCC9CB;color:var(--neg)}
+.cp.s{padding:5px 11px;font-size:12px}
+.cp.dk{background:var(--dk);border-color:var(--dk);color:#fff}
+.st{background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:13px 17px;flex:1}
+.st .n{font-size:11.5px;font-weight:700;color:var(--g6)}
+.st .t{font-size:14.5px;font-weight:700;color:var(--ink);margin-top:6px}
+.st .d{font-size:11.5px;color:var(--g6);font-weight:500;margin-top:5px;line-height:1.45}
+.stat{font-size:40px;font-weight:700;color:var(--ink);letter-spacing:-.03em}
+.stat em{font-style:normal;background:var(--lime);padding:0 6px}
+.pgn{position:absolute;right:100px;bottom:44px;font-size:11.5px;color:var(--g9);font-weight:700;letter-spacing:.1em}
+.pgn.w{color:#5C6459}
+.chk{position:absolute;left:100px;bottom:42px;font-size:11px;color:var(--g9);font-weight:600}
+.arrow{display:flex;align-items:center;justify-content:center;color:#C6C6C2;font-size:13px}
+/* 버린 안 / 고른 안 */
+.opt{border:1px solid var(--line);border-radius:3px;padding:15px 18px;background:var(--bg)}
+.opt.pick{background:var(--tint);border-color:var(--edge)}
+.opt .lb{font-size:10.5px;font-weight:700;letter-spacing:.09em;color:var(--g9)}
+.opt.pick .lb{color:#8FA02A}
+.opt .t{font-size:14.5px;font-weight:700;color:var(--ink);margin-top:7px;line-height:1.45}
+.opt .d{font-size:11.5px;color:var(--g6);font-weight:500;margin-top:7px;line-height:1.55}
+.opt.drop .t{color:var(--g6);text-decoration:line-through;text-decoration-color:#C6C6C2}
+
+/* ── 스튜디오 화면 목업 (실제 화면 구조 재현) ── */
+.adm{width:1560px;height:700px;background:#F7F8FA;display:flex;font-family:Pretendard;
+  transform-origin:top left;color:#111;font-variant-numeric:tabular-nums}
+.adm *{box-sizing:border-box}
+.adm .anav{width:228px;background:#fff;border-right:1px solid #E8EAEE;padding:18px 0;flex:none}
+.adm .anav .lg{font-size:18px;font-weight:800;color:#111;padding:0 20px 20px;letter-spacing:-.03em}
+.adm .anav .m{font-size:12.5px;font-weight:600;color:#4A4A46;padding:9px 20px;display:flex;align-items:center;justify-content:space-between}
+.adm .anav .m.on{background:var(--tint);color:#111;font-weight:700;box-shadow:inset 3px 0 0 var(--edge)}
+.adm .anav .m .cv{color:#C6C6C2;font-size:9px}
+.adm .anav .m.sub{padding-left:42px;font-size:11.5px;font-weight:500;color:#7A7A76}
+.adm .anav .m.sub.on{font-weight:700;color:#111}
+.adm .anav .ft{margin-top:18px;padding-top:14px;border-top:1px solid #F0F0EE}
+.adm .anav .ft div{font-size:11.5px;font-weight:500;color:#9A9A96;padding:7px 20px}
+.adm .amain{flex:1;display:flex;flex-direction:column;min-width:0}
+.adm .atop{height:46px;background:#fff;border-bottom:1px solid #E8EAEE;display:flex;align-items:center;
+  justify-content:flex-end;padding:0 24px}
+.adm .atop .u{font-size:11.5px;color:#9A9A96;font-weight:600}
+.adm .abody{flex:1;padding:22px 26px;overflow:hidden}
+.adm .ah{display:flex;align-items:center;justify-content:space-between}
+.adm .ah .t{font-size:19px;font-weight:700;letter-spacing:-.02em}
+.adm .acount{font-size:12px;font-weight:600;color:#7A7A76;margin-top:9px}
+.adm .acount b{color:#111;font-weight:700}
+.adm .abtn{background:#111;color:#D0F727;border-radius:4px;padding:8px 17px;font-size:11.5px;font-weight:700}
+.adm .abtn.gh{background:#fff;color:#3A3A38;border:1px solid #E4E4E0}
+.adm .afil{background:#fff;border:1px solid #E8EAEE;border-radius:5px;margin-top:13px}
+.adm .afr{display:flex;align-items:center;gap:14px;padding:11px 16px;border-bottom:1px solid #F2F3F5}
+.adm .afr:last-child{border-bottom:0}
+.adm .afr .lb{width:64px;flex:none;font-size:11px;font-weight:700;color:#9A9A96}
+.adm .achk,.adm .ardo{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#3A3A38}
+.adm .achk i{width:12px;height:12px;border-radius:2px;background:#111;display:block;position:relative;flex:none}
+.adm .achk i::after{content:"";position:absolute;left:3.5px;top:1px;width:4px;height:7px;
+  border:1.6px solid #D0F727;border-top:0;border-left:0;transform:rotate(45deg)}
+.adm .achk.off i{background:#fff;border:1px solid #C6C6C2}
+.adm .achk.off i::after{display:none}
+.adm .ardo i{width:12px;height:12px;border-radius:50%;border:1.5px solid #C6C6C2;display:block;position:relative;flex:none}
+.adm .ardo.on i{border-color:#111}
+.adm .ardo.on i::after{content:"";position:absolute;inset:2.5px;border-radius:50%;background:#111}
+.adm .afld{flex:1;height:28px;border:1px solid #E4E4E0;border-radius:4px;background:#fff;
+  display:flex;align-items:center;padding:0 10px;font-size:11px;color:#C0C0BC;font-weight:500}
+.adm .atb{background:#fff;border:1px solid #E8EAEE;border-radius:5px;margin-top:13px;overflow:hidden}
+.adm .atb .hd{display:flex;height:34px;border-bottom:1px solid #E8EAEE;background:#FBFBFC}
+.adm .atb .hd div{font-size:10px;font-weight:700;color:#7A7A76;display:flex;align-items:center;padding:0 12px}
+.adm .atb .r{display:flex;height:44px;border-bottom:1px solid #F4F5F7}
+.adm .atb .r:last-child{border-bottom:0}
+.adm .atb .r div{font-size:11.5px;color:#3A3A38;display:flex;align-items:center;padding:0 12px;font-weight:500}
+.adm .atb .r .k{font-weight:700;color:#111}
+.adm .abg{display:inline-block;font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:3px;white-space:nowrap}
+.adm .g1{background:#F0F0EE;color:#6A6A66}
+.adm .g2{background:#111;color:#D0F727}
+.adm .g3{background:#F4FBDA;color:#5F6E1E;border:1px solid #D0F727}
+.adm .g4{background:#F7ECED;color:#8C2F39}
+.adm .alnk{font-size:11px;font-weight:700;color:#5F6E1E;white-space:nowrap}
+.adm .adim{color:#C6C6C2!important;font-weight:500}
+.adm .atog{width:30px;height:17px;border-radius:9px;background:#111;position:relative;display:inline-block;flex:none}
+.adm .atog::after{content:"";position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#fff}
+.adm .atog.off{background:#D8D8D4}
+.adm .atog.off::after{right:auto;left:2px}
+.adm .num{justify-content:flex-end!important}
+.adm .thumb{width:28px;height:28px;border-radius:4px;flex:none;background:#EDEDEA;
+  background-image:repeating-linear-gradient(45deg,rgba(0,0,0,.045) 0 1px,transparent 1px 7px)}
+.adm .av{width:18px;height:18px;border-radius:50%;flex:none;background:#DFE3D8}
+.adm .apg{display:flex;justify-content:center;gap:5px;padding:14px 0 2px}
+.adm .apg span{font-size:10.5px;font-weight:600;color:#9A9A96;width:18px;height:18px;
+  display:flex;align-items:center;justify-content:center;border-radius:3px}
+.adm .apg span.on{background:#111;color:#fff;font-weight:700}
+
+/* ── 다크 프레임 ── */
+.fr.dk2{background:var(--dk)}
+.fr.dk2 .rl{background:#3A4038}
+.fr.dk2 .tko{color:#fff}
+.fr.dk2 .ten{color:#7C8479}
+.fr.dk2 .hl{color:#fff}
+.fr.dk2 .ds{color:#B6BEB2}
+.fr.dk2 .ds b{color:#fff}
+.fr.dk2 .pgn,.fr.dk2 .chk{color:#5C6459}
+.big{font-size:72px;font-weight:700;color:var(--lime);letter-spacing:-.04em;line-height:1}
+.big.sm2{font-size:56px}
+.biglb{font-size:15.5px;font-weight:700;color:#fff;margin-top:12px}
+.bigsub{font-size:12px;font-weight:500;color:#7C8479;margin-top:6px;line-height:1.5}
+
+/* ── 애니메이션 ── */
+.rise{opacity:0;transform:translateY(10px)}
+.play .rise{animation:up .6s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+ .rise{animation:none!important;opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ══ CS 01 · 커버 ══ -->
+<div class="wrap" id="cs-01"><div class="stage"><div class="fr cov">
+ <div style="position:absolute;left:100px;top:86px;font-size:20px;font-weight:700;color:var(--lime);letter-spacing:.02em">Vuddy Creator Studio</div>
+ <div style="position:absolute;left:100px;top:180px;width:1300px;font-size:62px;font-weight:700;color:#fff;line-height:1.28;letter-spacing:-.04em">
+   크리에이터에게<br><em style="font-style:normal;background:var(--lime);color:#000;padding:0 10px">되돌릴 수 없는 버튼</em>은<br>주지 않았습니다</div>
+ <div style="position:absolute;left:100px;top:440px;width:1200px;font-size:17px;font-weight:500;color:#9AA396">
+   창작자용 판매 · 이행 · 정산 운영 도구 · LEVVELS</div>
+
+ <div style="position:absolute;left:100px;top:600px;font-size:13px;font-weight:700;color:#6E7A6C;letter-spacing:.12em">CONTENTS</div>
+ <div style="position:absolute;left:100px;top:636px;width:1320px;display:flex;flex-wrap:wrap;gap:0">
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Studio Overview</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Problem</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Scope</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Menu Growth</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Information Architecture</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Registration Frame</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Type Branching</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Sale State</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Order Granularity</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· State Machine</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Production Request</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Digital Goods</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Domain Schema</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Link Resolver</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Revenue</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Settlement Cycle</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Expansion</div>
+   <div style="width:190px;font-size:14px;color:#B6BEB2;font-weight:500;padding:5px 0">· Retrospective</div>
+ </div>
+
+ <div style="position:absolute;left:0;right:0;bottom:0;background:var(--lime);padding:26px 100px 30px">
+   <div style="font-size:11px;font-weight:700;color:#4A5A0E;letter-spacing:.13em">PROJECT INFORMATION</div>
+   <div style="display:flex;margin-top:16px;gap:0">
+     <div style="width:230px"><div style="font-size:11.5px;font-weight:700;color:#5F6E1E">작업 기간</div><div style="font-size:13.5px;font-weight:600;color:#111;margin-top:6px;line-height:1.5">2024.10 ~ 2026.08</div></div>
+     <div style="width:190px"><div style="font-size:11.5px;font-weight:700;color:#5F6E1E">역할</div><div style="font-size:13.5px;font-weight:600;color:#111;margin-top:6px;line-height:1.5">Product Manager</div></div>
+     <div style="width:330px"><div style="font-size:11.5px;font-weight:700;color:#5F6E1E">작업 범위</div><div style="font-size:13.5px;font-weight:600;color:#111;margin-top:6px;line-height:1.5">스튜디오 전 메뉴 정책 · 화면 기획 100%</div></div>
+     <div style="width:330px"><div style="font-size:11.5px;font-weight:700;color:#5F6E1E">사용 지식</div><div style="font-size:13.5px;font-weight:600;color:#111;margin-top:6px;line-height:1.5">어드민 IA, 상태 설계, 권한 설계, 운영 문서화</div></div>
+     <div style="flex:1"><div style="font-size:11.5px;font-weight:700;color:#5F6E1E">산출물</div><div style="font-size:13.5px;font-weight:600;color:#111;margin-top:6px;line-height:1.5">메뉴별 정책서 · 스펙 보드 · 크리에이터 가이드</div></div>
+   </div>
+ </div>
+ <div class="pgn w" style="bottom:auto;top:86px">VUDDY STUDIO</div>
+</div></div></div>
+
+<!-- ══ CS 02 · 서비스 개요 ══ -->
+<div class="wrap" id="cs-02"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">서비스 개요</div><div class="ten">Studio Overview</div>
+ <div class="hl">되돌리는 일은<br>스튜디오에 넣지 않았습니다</div>
+ <div class="ds">같은 주문을 세 개의 면이 봅니다. 무엇을 어느 면에 둘지를 기능이 아니라 <b>되돌릴 수 있는가</b>로 갈랐습니다. 크리에이터에게는 앞으로 보내는 버튼만 주고, 뒤집는 처리는 운영자에게 남겼습니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:1720px;height:236px"><div style="padding:24px 30px">
+   <div class="cap">THREE SURFACES · 같은 주문을 보는 세 개의 면</div>
+   <div style="display:flex;gap:0;margin-top:18px;align-items:stretch">
+     <div class="rise" style="animation-delay:.1s;flex:1;background:#fff;border:1px solid var(--line);border-radius:3px;padding:16px 20px">
+       <div class="cap">BUYER · 버디</div>
+       <div style="font-size:15px;font-weight:700;color:#111;margin-top:8px">사는 면</div>
+       <div style="font-size:12px;color:var(--g6);font-weight:500;margin-top:8px;line-height:1.55">탐색 · 구매 · 수령 · 구매 확정</div>
+     </div>
+     <div class="arrow" style="width:40px">▶</div>
+     <div class="rise" style="animation-delay:.25s;flex:1.3;background:var(--tint);border:1px solid var(--edge);border-radius:3px;padding:16px 20px">
+       <div class="cap lm">CREATOR · 스튜디오 · 이 프로젝트</div>
+       <div style="font-size:15px;font-weight:700;color:#111;margin-top:8px">파는 면 · 앞으로만 보낸다</div>
+       <div style="font-size:12px;color:var(--g6);font-weight:500;margin-top:8px;line-height:1.55">채널 · 판매 등록 · 주문 진행 · 제작 요청 · 지급 · 정산 정보</div>
+     </div>
+     <div class="arrow" style="width:40px">▶</div>
+     <div class="rise" style="animation-delay:.4s;flex:1;background:var(--dk);border-radius:3px;padding:16px 20px">
+       <div style="font-size:11px;font-weight:700;color:#7C8479;letter-spacing:.13em">OPERATOR · 어드민</div>
+       <div style="font-size:15px;font-weight:700;color:#fff;margin-top:8px">되돌리는 면</div>
+       <div style="font-size:12px;color:#8B948A;font-weight:500;margin-top:8px;line-height:1.55">심사 · 결제 취소 · 환불 · 정산 확정</div>
+     </div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:100px;top:690px;width:1050px;height:288px"><div style="padding:22px 30px">
+   <div class="cap">권한 경계 · 무엇을 크리에이터에게 줄 것인가</div>
+   <div class="tr hd" style="height:36px;margin-top:12px">
+     <div style="flex:1">동작</div><div style="width:200px">스튜디오</div><div style="width:200px">어드민</div>
+   </div>
+   <div class="tr" style="height:40px"><div style="flex:1">주문 상태 진행 · 출고 · 지급</div>
+     <div style="width:200px"><span class="cp s on">가능</span></div><div class="dim" style="width:200px">—</div></div>
+   <div class="tr" style="height:40px"><div style="flex:1">이행 전 주문 취소</div>
+     <div style="width:200px"><span class="cp s">가능</span></div><div style="width:200px"><span class="cp s">가능</span></div></div>
+   <div class="tr" style="height:40px"><div style="flex:1">결제 취소 · 환불</div>
+     <div style="width:200px"><span class="cp s no">불가</span></div><div style="width:200px"><span class="cp s on">전담</span></div></div>
+   <div class="tr" style="height:40px;border-bottom:0"><div style="flex:1">정산 정보 승인 · 정산 확정</div>
+     <div style="width:200px"><span class="cp s no">불가</span></div><div style="width:200px"><span class="cp s on">전담</span></div></div>
+ </div></div>
+
+ <div class="bx" style="left:1170px;top:690px;width:650px;height:288px"><div class="pd">
+   <div class="cap">이 경계의 대가</div>
+   <div class="sm" style="margin-top:13px">크리에이터가 환불을 직접 못 하니 <b>운영자를 거치는 대기 시간</b>이 생깁니다. 그럼에도 넘기지 않은 이유는, 잘못 누른 비용을 <b>구매자가 대신 치르기 때문</b>입니다.</div>
+   <div class="sm" style="margin-top:14px;color:var(--g6)">대신 스튜디오에 상태 변경 이력을 남겨, 문의가 오면 크리에이터가 직접 근거를 확인할 수 있게 했습니다.</div>
+ </div></div>
+
+ <div class="pgn">CS 02</div>
+</div></div></div>
+
+<!-- ══ CS 03 · 문제 정의 ══ -->
+<div class="wrap" id="cs-03"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">문제 정의</div><div class="ten">Problem</div>
+ <div class="hl">‘제작 시작’은<br>시스템이 볼 수 없습니다</div>
+ <div class="ds">취소를 언제까지 받을지는 <b>크리에이터가 제작을 시작했는지</b>에 달려 있습니다. 그런데 그 시점은 시스템 밖에서 일어납니다. 관측할 수 없는 사건을 기준으로 쓸 수 없어서, 시간으로 경계를 대신 그었습니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:846px;height:372px"><div class="pd">
+   <div class="cap">전제를 바꾸면 달라지는 것</div>
+   <div style="margin-top:18px">
+     <div class="opt drop">
+       <div class="lb">버린 안</div>
+       <div class="t">제작 시작 버튼을 크리에이터가 누른다</div>
+       <div class="d">가장 정확한 방법입니다. 그런데 안 누르면 취소 구간이 영원히 열려 있고, 누르라고 알림을 보내면 <b style="color:#111">버튼 누르는 일 자체가 업무</b>가 됩니다. 만드는 사람에게 관리 업무를 하나 더 얹는 셈입니다.</div>
+     </div>
+     <div class="opt pick" style="margin-top:14px">
+       <div class="lb">고른 안</div>
+       <div class="t">시간이 경계를 대신 긋는다</div>
+       <div class="d">부정확하지만 <b style="color:#111">누구도 잊지 않고 구매자에게 설명 가능한</b> 경계입니다. 제작 착수 여부와 정확히 일치하지는 않는 대신, 양쪽 모두 언제까지 취소할 수 있는지를 미리 압니다.</div>
+     </div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:100px;top:818px;width:846px;height:160px"><div style="padding:20px 30px">
+   <div class="cap">자동 전이 시간값</div>
+   <div style="display:flex;gap:12px;margin-top:12px">
+     <div class="st"><div class="n">실물 · 결제 완료</div><div class="t">2일</div><div class="d">이후 상품 준비중 · 구매자 취소 막힘</div></div>
+     <div class="st"><div class="n">커스텀 · 제작 대기</div><div class="t">24시간</div><div class="d">이후 제작중으로 자동 전이</div></div>
+     <div class="st"><div class="n">디지털 · 베이직</div><div class="t">즉시</div><div class="d">결제와 동시에 지급 완료</div></div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:974px;top:440px;width:846px;height:538px"><div class="pd">
+   <div class="cap">사고가 날 수 있는 자리를 먼저 셌습니다</div>
+   <div class="sm" style="margin-top:13px;color:var(--g6)">되돌릴 수 없는 동작만 추려 보니 셋이었습니다. 셋 다 각각 다른 방식으로 막았습니다.</div>
+   <div style="margin-top:18px">
+     <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)">
+       <div style="font-size:12px;font-weight:700;color:var(--g9);width:26px;flex:none">01</div>
+       <div style="flex:1">
+         <div style="font-size:14.5px;font-weight:700;color:#111">디지털 파일 전송</div>
+         <div style="font-size:12.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.6">보내는 순간 구매 확정이 찍히고 환불 사유에서 빠집니다 → <b style="color:#111">전송 버튼에만 확인 팝업</b></div>
+       </div>
+     </div>
+     <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)">
+       <div style="font-size:12px;font-weight:700;color:var(--g9);width:26px;flex:none">02</div>
+       <div style="flex:1">
+         <div style="font-size:14.5px;font-weight:700;color:#111">퍼스널 파일 재사용</div>
+         <div style="font-size:12.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.6">맞춤 제작이라 해놓고 같은 파일이 여러 명에게 가면 <b style="color:#111">상품 설명이 거짓이 됩니다</b></div>
+       </div>
+     </div>
+     <div style="display:flex;gap:14px;padding:16px 0">
+       <div style="font-size:12px;font-weight:700;color:var(--g9);width:26px;flex:none">03</div>
+       <div style="flex:1">
+         <div style="font-size:14.5px;font-weight:700;color:#111">판매 중인 상품 삭제</div>
+         <div style="font-size:12.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.6">주문 · 제작 요청 · 정산이 상품 ID에 묶여 있습니다 → <b style="color:#111">삭제 대신 상태 3종</b></div>
+       </div>
+     </div>
+   </div>
+   <div class="sm" style="margin-top:18px;color:var(--g6)">세 가지 모두 <b>경고 문구가 아니라 구조</b>로 막았습니다. 문구는 읽히지 않지만 잠긴 버튼은 눌리지 않습니다.</div>
+ </div></div>
+
+ <div class="pgn">CS 03</div>
+</div></div></div>
+<!-- ══ CS 04 · 설계 범위 ══ -->
+<div class="wrap" id="cs-04"><div class="stage"><div class="fr dk2">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">설계 범위</div><div class="ten">Scope</div>
+ <div class="hl">아홉 개 메뉴,<br>일곱 개 상품 타입</div>
+ <div class="ds">스튜디오에서 제가 정의한 정책의 범위입니다. <b>성과 수치가 아니라 설계 규모</b>이고, 뒤의 열다섯 장은 이 숫자들이 어떻게 서로 묶여 있는지를 다룹니다.</div>
+
+ <div class="rise" style="position:absolute;left:100px;top:470px;width:430px">
+   <div class="big">9</div><div class="biglb">메뉴 · 하위 9</div>
+   <div class="bigsub">채널 · 판매 · 이행 · 수익 네 축 아래</div></div>
+ <div class="rise" style="animation-delay:.1s;position:absolute;left:530px;top:470px;width:430px">
+   <div class="big">7</div><div class="biglb">상품 타입</div>
+   <div class="bigsub">실물 2 · 디지털 5 · 등록 화면은 하나</div></div>
+ <div class="rise" style="animation-delay:.2s;position:absolute;left:960px;top:470px;width:430px">
+   <div class="big">4</div><div class="biglb">주문 유형</div>
+   <div class="bigsub">실물 · 베이직 · 커스텀 · 가챠</div></div>
+ <div class="rise" style="animation-delay:.3s;position:absolute;left:1390px;top:470px;width:430px">
+   <div class="big">3</div><div class="biglb">제작 요청 분류</div>
+   <div class="bigsub">베이직 · 퍼스널 · 커스텀</div></div>
+
+ <div style="position:absolute;left:100px;top:700px;width:1720px;height:1px;background:#2A2F2B"></div>
+
+ <div class="rise" style="animation-delay:.4s;position:absolute;left:100px;top:744px;width:560px">
+   <div class="big sm2">6</div><div class="biglb">판매 상태</div>
+   <div class="bigsub">노출 여부 2종과 독립으로 조합</div></div>
+ <div class="rise" style="animation-delay:.5s;position:absolute;left:660px;top:744px;width:560px">
+   <div class="big sm2">4</div><div class="biglb">지급 상태</div>
+   <div class="bigsub">상태마다 노출 버튼이 갈림</div></div>
+ <div class="rise" style="animation-delay:.6s;position:absolute;left:1220px;top:744px;width:600px">
+   <div class="big sm2">3</div><div class="biglb">버디카드 종류</div>
+   <div class="bigsub">포토 · 비디오 · 오디오 · 타입 2종과 조합</div></div>
+
+ <div class="chk">공개된 크리에이터 가이드에서 확인 가능한 범위입니다</div>
+ <div class="pgn">CS 04</div>
+</div></div></div>
+
+
+<!-- ══ CS 05 · 구조 설계 ① · 메뉴 성장 ══ -->
+<div class="wrap" id="cs-05"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">구조 설계 ①</div><div class="ten">Menu Growth</div>
+ <div class="hl">메뉴는 다섯에서 아홉이 됐지만<br>축은 넷 그대로입니다</div>
+ <div class="ds">운영 기간 동안 메뉴가 두 배 가까이 늘었습니다. 늘어난 것을 <b>새 축으로 받지 않고 기존 네 축 아래에 넣는 것</b>을 규칙으로 삼았습니다. 축이 늘면 크리에이터가 화면을 다시 배워야 하기 때문입니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:1720px;height:352px"><div style="padding:22px 30px">
+   <div class="cap">OBSERVED VERSIONS · 스튜디오 사이드 메뉴의 세 시점</div>
+   <div style="display:flex;gap:0;margin-top:16px;align-items:stretch">
+
+     <div class="rise" style="animation-delay:.1s;width:330px;flex:none;border:1px solid var(--line);border-radius:3px;overflow:hidden">
+       <div style="background:var(--bg);padding:11px 16px;border-bottom:1px solid var(--line)">
+         <div class="cap">초기 · 메뉴 5</div></div>
+       <div style="padding:12px 16px">
+         <div style="font-size:12.5px;font-weight:600;color:var(--g1);line-height:2">대시보드<br>마이 채널<br>포스트 관리<br>주문 관리<br>수익 관리</div>
+       </div>
+     </div>
+
+     <div class="arrow" style="width:44px">▶</div>
+
+     <div class="rise" style="animation-delay:.25s;width:330px;flex:none;border:1px solid var(--line);border-radius:3px;overflow:hidden">
+       <div style="background:var(--bg);padding:11px 16px;border-bottom:1px solid var(--line)">
+         <div class="cap">확장기 · 메뉴 6</div></div>
+       <div style="padding:12px 16px">
+         <div style="font-size:12.5px;font-weight:600;color:var(--g1);line-height:2">마이 채널<br>디지털 굿즈 관리<br><b style="color:#111">판매 관리</b> · 하위 3<br>주문 관리<br>제작 요청 관리<br>수익 관리</div>
+       </div>
+     </div>
+
+     <div class="arrow" style="width:44px">▶</div>
+
+     <div class="rise" style="animation-delay:.4s;flex:1;border:1px solid var(--edge);background:var(--tint);border-radius:3px;overflow:hidden">
+       <div style="background:var(--lime);padding:11px 16px">
+         <div style="font-size:11px;font-weight:700;color:#4A5A0E;letter-spacing:.13em">현재 · 메뉴 9</div></div>
+       <div style="padding:12px 16px;display:flex;gap:24px">
+         <div style="font-size:12.5px;font-weight:600;color:var(--g1);line-height:2">마이 채널<br>디지털 굿즈 관리<br><b style="color:#111">판매 관리</b> · 하위 3<br><b style="color:#111">가챠 관리</b><br><b style="color:#111">컬렉션 관리</b></div>
+         <div style="font-size:12.5px;font-weight:600;color:var(--g1);line-height:2"><b style="color:#111">주문 관리</b> · 하위 4<br>제작 요청 관리 · 하위 2<br>수익 관리<br><b style="color:#111">방송 연동 관리</b></div>
+       </div>
+     </div>
+   </div>
+
+   <div style="display:flex;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)">
+     <div style="width:180px"><div class="cap">사라진 것</div></div>
+     <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">초기에 있던 <b style="color:#111">대시보드와 포스트 관리</b>가 현재 구성에는 없습니다. 늘어난 메뉴는 전부 기존 네 축 아래로 들어갔고, 축은 한 번도 추가되지 않았습니다.</div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:100px;top:806px;width:1720px;height:172px"><div style="padding:20px 30px">
+   <div class="cap">FOUR AXES · 늘어난 메뉴가 들어간 자리</div>
+   <div style="display:flex;gap:12px;margin-top:14px">
+     <div class="st"><div class="n">채널</div><div class="t">누가 파는가</div><div class="d">마이 채널 · <b style="color:#111">＋컬렉션 관리</b></div></div>
+     <div class="st"><div class="n">판매</div><div class="t">무엇을 파는가</div><div class="d">판매 관리 · <b style="color:#111">＋가챠 관리</b></div></div>
+     <div class="st"><div class="n">이행</div><div class="t">어떻게 주는가</div><div class="d">주문 · 제작 요청 · 디지털 굿즈</div></div>
+     <div class="st"><div class="n">수익</div><div class="t">얼마를 받는가</div><div class="d">수익 관리 · <b style="color:#111">＋방송 연동 관리</b></div></div>
+   </div>
+ </div></div>
+
+ <div class="chk">사이드 메뉴 구성은 공개된 크리에이터 가이드의 화면 기준입니다</div>
+ <div class="pgn">CS 05</div>
+</div></div></div>
+
+<!-- ══ CS 06 · 구조 설계 ② · IA ══ -->
+<div class="wrap" id="cs-06"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">구조 설계 ②</div><div class="ten">Information Architecture</div>
+ <div class="hl">한 표에 다 넣으면<br>절반이 빈칸이 됩니다</div>
+ <div class="ds">판매도 주문도 목록 하나에 유형 필터를 다는 쪽이 만들기 쉬웠습니다. 그런데 <b>유형마다 필요한 열이 다릅니다.</b> 한 표에 다 넣으면 대부분의 행에서 절반이 빈칸이 됩니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:880px;height:538px"><div class="pd">
+   <div class="cap">두 안의 비교</div>
+   <div style="margin-top:16px">
+     <div class="opt drop">
+       <div class="lb">버린 안</div>
+       <div class="t">목록 하나 ＋ 유형 필터</div>
+       <div class="d">메뉴가 단순해지고 구현도 가볍습니다. 대신 실물에만 있는 <b style="color:#111">옵션 · 교환권 제작 현황</b>, 커스텀에만 있는 <b style="color:#111">요청 상세 · 연결할 디지털 굿즈</b>가 같은 표에 들어가 대부분 빈칸으로 남습니다.</div>
+     </div>
+     <div class="opt pick" style="margin-top:14px">
+       <div class="lb">고른 안</div>
+       <div class="t">타입별 하위 메뉴 · 표도 따로</div>
+       <div class="d">주문 관리는 <b style="color:#111">실물 · 베이직 · 커스텀 · 가챠</b> 넷으로, 판매 관리는 <b style="color:#111">실물 · 베이직 · 커스텀</b> 셋으로 나눴습니다. 각 표가 자기 유형에 필요한 열만 가집니다.</div>
+     </div>
+   </div>
+   <div style="display:flex;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)">
+     <div style="width:150px"><div class="cap">치른 비용</div></div>
+     <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1);line-height:1.6">메뉴가 아홉 개가 됐고, 한 주문에 여러 유형이 섞이면 <b style="color:#111">두 메뉴를 오가야 합니다</b>. 대신 각 화면에서 무엇을 봐야 하는지가 분명해졌습니다.</div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:1000px;top:440px;width:820px;height:538px"><div style="padding:26px 30px;height:100%">
+   <div class="cap">STUDIO IA · 9메뉴 · 하위 9</div>
+   <div style="margin-top:16px;display:flex;gap:26px">
+     <div style="flex:1">
+       <div style="font-size:14px;font-weight:700;color:#111;padding:9px 0;border-bottom:1px solid var(--line)">마이 채널</div>
+       <div style="font-size:14px;font-weight:700;color:#111;padding:9px 0;border-bottom:1px solid var(--line)">디지털 굿즈 관리</div>
+       <div style="font-size:14px;font-weight:700;color:#111;padding:9px 0">판매 관리</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;padding:0 0 9px 12px;border-bottom:1px solid var(--line);line-height:1.75">실물 판매<br>디지털 판매 · 베이직<br>디지털 판매 · 커스텀</div>
+       <div style="font-size:14px;font-weight:700;color:#111;padding:9px 0;border-bottom:1px solid var(--line)">가챠 관리</div>
+       <div style="font-size:14px;font-weight:700;color:#111;padding:9px 0;border-bottom:1px solid var(--line)">컬렉션 관리</div>
+     </div>
+     <div style="flex:1">
+       <div style="font-size:14px;font-weight:700;color:#111;padding:9px 0">주문 관리</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;padding:0 0 9px 12px;border-bottom:1px solid var(--line);line-height:1.75">실물 주문<br>디지털 주문 · 베이직<br>디지털 주문 · 커스텀<br>가챠 주문</div>
+       <div style="font-size:14px;font-weight:700;color:#111;padding:9px 0">제작 요청 관리</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;padding:0 0 9px 12px;border-bottom:1px solid var(--line);line-height:1.75">베이직 · 퍼스널<br>커스텀</div>
+       <div style="font-size:14px;font-weight:700;color:#111;padding:9px 0;border-bottom:1px solid var(--line)">수익 관리</div>
+       <div style="font-size:14px;font-weight:700;color:#111;padding:9px 0;border-bottom:1px solid var(--line)">방송 연동 관리</div>
+     </div>
+   </div>
+   <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:12px;align-items:center">
+     <div class="cap" style="width:120px">별도 메뉴 없음</div>
+     <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1);line-height:1.55">배송은 <b style="color:#111">실물 주문 안의 상태 전이</b>로 처리합니다. 배송만 따로 보는 화면을 두면 같은 주문을 두 곳에서 관리하게 됩니다.</div>
+   </div>
+ </div></div>
+
+ <div class="pgn">CS 06</div>
+</div></div></div>
+
+<!-- ══ CS 07 · 판매 설계 ① ══ -->
+<div class="wrap" id="cs-07"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">판매 설계 ①</div><div class="ten">Registration Frame</div>
+ <div class="hl">타입은 일곱인데<br>등록 화면은 하나입니다</div>
+ <div class="ds">상품 타입은 일곱인데 등록 화면은 하나입니다. 공통 골격을 고정하고 <b>추가 입력 · 이행 연결 · 검증</b> 세 자리만 타입별로 갈아 끼웁니다. 새 타입이 생겨도 크리에이터는 같은 화면을 씁니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:1050px;height:250px"><div style="padding:26px 30px;height:100%">
+   <div class="cap">TWO LAYERS · 판매 페이지 1 : 상품 N</div>
+   <div class="rise" style="animation-delay:.15s;display:flex;gap:14px;margin-top:16px;align-items:stretch">
+     <div style="width:330px;flex:none;background:var(--dk);border-radius:3px;padding:16px 20px">
+       <div style="font-size:10.5px;font-weight:700;letter-spacing:.09em;color:#7C8479">LAYER 1</div>
+       <div style="font-size:16.5px;font-weight:700;color:#fff;margin-top:6px">판매 페이지</div>
+       <div style="font-size:11.5px;color:#8B948A;font-weight:500;margin-top:7px;line-height:1.55">구매자가 들어오는 단위<br>노출 · 판매 기간을 가짐</div>
+       <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:12px">
+         <span style="font-size:10.5px;font-weight:600;color:#B6BEB2;background:#22262A;border-radius:2px;padding:4px 8px">대표 이미지</span>
+         <span style="font-size:10.5px;font-weight:600;color:#B6BEB2;background:#22262A;border-radius:2px;padding:4px 8px">추가 이미지 ≤10</span>
+         <span style="font-size:10.5px;font-weight:600;color:#B6BEB2;background:#22262A;border-radius:2px;padding:4px 8px">판매 이름 ≤50자</span>
+         <span style="font-size:10.5px;font-weight:600;color:#B6BEB2;background:#22262A;border-radius:2px;padding:4px 8px">판매 설명</span>
+         <span style="font-size:10.5px;font-weight:600;color:#B6BEB2;background:#22262A;border-radius:2px;padding:4px 8px">판매 기간</span>
+         <span style="font-size:10.5px;font-weight:600;color:#B6BEB2;background:#22262A;border-radius:2px;padding:4px 8px">노출 여부</span>
+       </div>
+     </div>
+     <div class="arrow" style="width:26px">▶</div>
+     <div style="flex:1;background:var(--tint);border:1px solid var(--edge);border-radius:3px;padding:16px 20px">
+       <div class="cap lm">LAYER 2 · N개</div>
+       <div style="font-size:16.5px;font-weight:700;color:#111;margin-top:6px">굿즈 · 상품</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:7px;line-height:1.55">주문 · 재고 · 정산이 걸리는 단위<br>옵션과 수량은 이 층에서 관리</div>
+       <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:12px">
+         <span class="cp s">굿즈 이름 ≤50자</span><span class="cp s">판매 가격</span>
+         <span class="cp s">판매 수량</span><span class="cp s">구매 제한</span><span class="cp s">옵션</span>
+       </div>
+     </div>
+   </div>
+
+ </div></div>
+
+ <div class="bx" style="left:100px;top:694px;width:1050px;height:284px"><div style="padding:24px 30px">
+   <div style="margin-top:0">
+     <div class="cap">등록 · 수정 · 삭제</div>
+     <div class="tr hd" style="height:36px;margin-top:11px">
+       <div style="width:290px">시점</div><div style="width:150px">상품 추가</div><div style="width:150px">상품 삭제</div><div style="flex:1">판매 페이지 삭제</div>
+     </div>
+     <div class="tr" style="height:48px">
+       <div class="k" style="width:290px">판매 시작 전</div>
+       <div style="width:150px"><span class="cp s on">가능</span></div>
+       <div style="width:150px"><span class="cp s on">가능</span></div>
+       <div style="flex:1"><span class="cp s no">불가</span></div>
+     </div>
+     <div class="tr" style="height:48px;border-bottom:0">
+       <div class="k" style="width:290px">판매 진행 중</div>
+       <div style="width:150px"><span class="cp s on">가능</span></div>
+       <div style="width:150px"><span class="cp s no">불가</span></div>
+       <div style="flex:1"><span class="cp s no">불가</span></div>
+     </div>
+   </div>
+
+   <div style="display:flex;margin-top:20px;padding-top:14px;border-top:1px solid var(--line)">
+     <div style="width:150px"><div class="cap">왜 삭제 불가</div></div>
+     <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">주문 · 제작 요청 · 정산 내역이 모두 상품 ID에 묶여 있습니다. 지우면 <b style="color:#111">과거 주문의 근거가 사라집니다</b>. 시작 전에도 막은 이유는, 등록 직후 결제가 들어오는 경우를 화면이 구분하지 못하기 때문입니다.</div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:1170px;top:440px;width:650px;height:538px"><div class="pd">
+   <div class="cap">공통 골격이 버텨 준 범위</div>
+   <div class="sm" style="margin-top:13px;color:var(--g6)">운영 중 타입이 늘어날 때마다 등록 화면을 새로 만들지 않고 분기만 추가했습니다.</div>
+   <div style="margin-top:18px">
+     <div style="display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)">
+       <div style="flex:1;font-size:13.5px;font-weight:600;color:var(--g1)">실물 · 크리에이터 굿즈</div><span class="cp s">기준 타입</span></div>
+     <div style="display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)">
+       <div style="flex:1;font-size:13.5px;font-weight:600;color:var(--g1)">실물 · 버디 오리지널</div><span class="cp s">계약 확인 추가</span></div>
+     <div style="display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)">
+       <div style="flex:1;font-size:13.5px;font-weight:600;color:var(--g1)">디지털 · 베이직 · 퍼스널</div><span class="cp s">미디어 연결 추가</span></div>
+     <div style="display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)">
+       <div style="flex:1;font-size:13.5px;font-weight:600;color:var(--g1)">디지털 · 커스텀</div><span class="cp s">제작 질문 추가</span></div>
+     <div style="display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)">
+       <div style="flex:1;font-size:13.5px;font-weight:600;color:var(--g1)">클래스</div><span class="cp s">회차 일정 추가</span></div>
+     <div style="display:flex;align-items:center;padding:12px 0">
+       <div style="flex:1;font-size:13.5px;font-weight:600;color:var(--g1)">가챠</div><span class="cp s no">폼 분리</span></div>
+   </div>
+   <div class="sm" style="margin-top:18px;color:var(--g6)">가챠만 공통 폼에서 뺐습니다. 확률은 <b>판매 시작 후 수정 불가</b>인데, 같은 화면에 두면 수정 가능한 항목과 잠긴 항목이 섞여 보입니다.</div>
+ </div></div>
+
+ <div class="pgn">CS 07</div>
+</div></div></div>
+
+<!-- ══ CS 08 · 판매 설계 ② · 타입 분기 ══ -->
+<div class="wrap" id="cs-08"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">판매 설계 ②</div><div class="ten">Type Branching</div>
+ <div class="hl">일곱 타입에서 갈리는 자리는<br>세 곳뿐입니다</div>
+ <div class="ds">타입별로 다른 건 <b>추가 입력 · 이행이 걸리는 곳 · 검증</b> 셋입니다. 나머지는 전부 같습니다. 이 표가 개발과 합의한 분기 명세이자, 새 타입이 들어올 때 채워야 할 칸이 됩니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:1720px;height:438px"><div style="padding:20px 30px;height:100%">
+   <div class="cap">BRANCH TABLE · 타입별로 달라지는 세 자리</div>
+   <div class="tr hd" style="height:38px;margin-top:10px">
+     <div style="width:250px">상품 타입</div><div style="width:150px">판매 단위</div>
+     <div style="flex:1">타입별 추가 입력</div><div style="width:330px">이행이 걸리는 곳</div><div style="width:330px">검증 · 제약</div>
+   </div>
+   <div class="tr" style="height:47px">
+     <div class="k" style="width:250px">실물 · 크리에이터 굿즈</div><div style="width:150px">굿즈 + 옵션</div>
+     <div style="flex:1">굿즈 종류 · 판매 방식 · 옵션 · 배송비</div>
+     <div style="width:330px">주문 관리 · 실물 주문</div><div style="width:330px">판매 중 상품 삭제 불가</div>
+   </div>
+   <div class="tr" style="height:47px">
+     <div class="k" style="width:250px">실물 · 버디 오리지널</div><div style="width:150px">굿즈 + 옵션</div>
+     <div style="flex:1">＋ 사전 계약 확인 · 예약 판매 기간</div>
+     <div style="width:330px">주문 관리 · 실물 주문</div><div style="width:330px">계약 없으면 종류 선택 불가</div>
+   </div>
+   <div class="tr mk" style="height:47px">
+     <div class="k" style="width:250px">디지털 · 베이직</div><div style="width:150px">버디카드 묶음</div>
+     <div style="flex:1">미디어 굿즈 N개 연결</div>
+     <div style="width:330px">제작 요청 · <b style="color:#111">자동 연결</b></div><div style="width:330px">지급 전까지만 교체 가능</div>
+   </div>
+   <div class="tr mk" style="height:47px">
+     <div class="k" style="width:250px">디지털 · 퍼스널</div><div style="width:150px">버디카드 묶음</div>
+     <div style="flex:1">구매자 요청 수집 항목</div>
+     <div style="width:330px">제작 요청 · <b style="color:#111">수동 연결</b></div><div style="width:330px">미디어 1:1 고정 · 재사용 불가</div>
+   </div>
+   <div class="tr mk" style="height:47px">
+     <div class="k" style="width:250px">디지털 · 커스텀</div><div style="width:150px">단독 판매</div>
+     <div style="flex:1">주문 제작 질문 <b style="color:#111">최소 1개 필수</b></div>
+     <div style="width:330px">제작 요청 · 연결 후 전송</div><div style="width:330px">전송 즉시 구매 확정</div>
+   </div>
+   <div class="tr" style="height:47px">
+     <div class="k" style="width:250px">가챠</div><div style="width:150px">카드 세트</div>
+     <div style="flex:1">가챠 종류 · 카드별 확률 · 최대 출현 수량</div>
+     <div style="width:330px">주문 관리 · 가챠 주문</div><div style="width:330px"><b style="color:#111">확률 합 100%</b> · 소수점 2자리</div>
+   </div>
+   <div class="tr" style="height:47px;border-bottom:0">
+     <div class="k" style="width:250px">클래스</div><div style="width:150px">회차</div>
+     <div style="flex:1">회차 일정</div>
+     <div style="width:330px">회차 종료 시 확정</div><div class="dim" style="width:330px">별도 제작 단계 없음</div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:100px;top:894px;width:1720px;height:84px"><div style="display:flex;height:100%">
+   <div style="width:846px;padding:15px 30px;border-right:1px solid var(--line)">
+     <div class="cap">공통 제약 · 타입과 무관</div>
+     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+       <span class="cp s">대표 이미지 10MB</span><span class="cp s">추가 이미지 ≤10</span>
+       <span class="cp s">판매 이름 ≤50자</span><span class="cp s">굿즈 이름 ≤50자</span><span class="cp s">구매 제한 토글</span>
+     </div>
+   </div>
+   <div style="flex:1;padding:15px 30px">
+     <div class="cap">빈칸이 곧 미결 사항</div>
+     <div style="font-size:13px;font-weight:600;color:var(--g1);line-height:1.5;margin-top:9px">새 타입 논의가 들어오면 이 표의 네 칸부터 채웁니다. 채우지 못하는 칸이 있으면 <b style="color:#111">아직 정해지지 않은 정책</b>이라는 뜻입니다.</div>
+   </div>
+ </div></div>
+
+ <div class="pgn">CS 08</div>
+</div></div></div>
+
+<!-- ══ CS 09 · 판매 설계 ③ · 판매 상태 ══ -->
+<div class="wrap" id="cs-09"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">판매 설계 ③</div><div class="ten">Sale State</div>
+ <div class="hl">"지우고 싶다" 안에<br>의도가 셋 있었습니다</div>
+ <div class="ds">"팔던 걸 내리고 싶은데 지울 수가 없다"는 문의가 들어왔습니다. 실제로 필요했던 건 삭제가 아니라 <b>더 이상 팔리지 않게 하는 것</b>이었고, 그 안에 서로 다른 의도 셋이 섞여 있었습니다.</div>
+
+ <div class="bx" style="left:100px;top:447px;width:560px;height:314px"><div class="pd">
+   <div class="cap">의도를 셋으로 갈랐습니다</div>
+   <div style="margin-top:15px">
+     <div style="background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:13px 17px">
+       <div style="font-size:14px;font-weight:700;color:#111">노출 Off</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.5">목록에서 빠지되 링크로는 열림 · 방송 QR 전용 판매</div>
+     </div>
+     <div style="background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:13px 17px;margin-top:10px">
+       <div style="font-size:14px;font-weight:700;color:#111">판매 중지</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.5">결제만 막음 · 기존 주문의 이행은 그대로 진행</div>
+     </div>
+     <div style="background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:13px 17px;margin-top:10px">
+       <div style="font-size:14px;font-weight:700;color:#111">판매 종료</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.5">기간 만료로 자동 전환 · 되돌리려면 기간 수정</div>
+     </div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:100px;top:774px;width:560px;height:204px"><div class="pd">
+   <div class="cap">두 축은 독립입니다</div>
+   <div style="display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap">
+     <span class="cp s on">판매 중</span><span style="color:var(--g9);font-size:12px">＋</span>
+     <span class="cp s">노출 Off</span><span class="arrow" style="width:auto">▶</span>
+     <span style="font-size:12.5px;font-weight:700;color:#111">링크를 아는 사람만 구매</span>
+   </div>
+   <div class="sm" style="margin-top:14px;color:var(--g6)">판매 상태는 기간과 재고가 정하고, 노출 여부는 크리에이터가 정합니다. 크리에이터가 직접 바꾸는 상태는 <b>판매 중지 하나뿐</b>입니다.</div>
+ </div></div>
+
+ <div class="mock" style="position:absolute;left:680px;top:447px;width:1140px;height:531px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#F7F8FA">
+  <div class="adm" style="transform:scale(.7308);width:1560px;height:726px">
+   <div class="anav">
+     <div class="lg">Vuddy</div>
+     <div class="m">마이 채널</div>
+     <div class="m">디지털 굿즈 관리</div>
+     <div class="m on">판매 관리 <span class="cv">▲</span></div>
+     <div class="m sub on">실물 판매</div>
+     <div class="m sub">디지털 판매 · 베이직</div>
+     <div class="m sub">디지털 판매 · 커스텀</div>
+     <div class="m">가챠 관리 <span class="cv">▼</span></div>
+     <div class="m">컬렉션 관리 <span class="cv">▼</span></div>
+     <div class="m">주문 관리 <span class="cv">▼</span></div>
+     <div class="m">제작 요청 관리 <span class="cv">▼</span></div>
+     <div class="m">수익 관리</div>
+     <div class="m">방송 연동 관리</div>
+     <div class="ft"><div>공지사항</div><div>크리에이터 가이드</div><div>고객센터</div></div>
+   </div>
+   <div class="amain">
+     <div class="atop"><div class="u">vuddy.io/lumina ⧉</div></div>
+     <div class="abody">
+       <div class="ah"><div class="t">판매 관리 - 실물 판매</div><div class="abtn">＋ 판매 등록</div></div>
+       <div class="acount"><b>999,999</b>개의 판매</div>
+       <div class="afil">
+         <div class="afr"><div class="lb">판매 상태</div>
+           <span class="achk"><i></i>전체</span><span class="achk"><i></i>판매 예정</span><span class="achk"><i></i>판매 중</span>
+           <span class="achk"><i></i>판매 종료</span><span class="achk"><i></i>판매 중지</span><span class="achk"><i></i>전체 품절</span></div>
+         <div class="afr"><div class="lb">노출 여부</div>
+           <span class="achk"><i></i>전체</span><span class="achk"><i></i>노출 On</span><span class="achk"><i></i>노출 Off</span></div>
+       </div>
+       <div class="atb">
+         <div class="hd"><div style="width:74px">ID</div><div style="flex:1">판매 이름</div>
+           <div style="width:104px">판매 상태</div><div style="width:92px">노출 여부</div>
+           <div style="width:84px">판매</div><div style="width:100px">댓글 관리</div>
+           <div style="width:104px">지급용 QR</div><div style="width:126px">판매 금액</div><div style="width:196px">판매 기간</div></div>
+         <div class="r"><div class="k" style="width:74px">2355</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>겨울 일러스트 아크릴 스탠드</div>
+           <div style="width:104px"><span class="abg g3">판매중</span></div>
+           <div style="width:92px"><span class="atog off"></span></div>
+           <div style="width:84px"><span class="alnk">자세히 ›</span></div><div style="width:100px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:104px"><span class="abg g1">⧉ 복사</span></div>
+           <div class="num" style="width:126px">₩18,000</div><div style="width:196px">2024.12.01 – 12.14</div></div>
+         <div class="r"><div class="k" style="width:74px">2354</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>버디 오리지널 머플러</div>
+           <div style="width:104px"><span class="abg g3">판매중</span></div>
+           <div style="width:92px"><span class="atog"></span></div>
+           <div style="width:84px"><span class="alnk">자세히 ›</span></div><div style="width:100px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:104px"><span class="abg g1">⧉ 복사</span></div>
+           <div class="num" style="width:126px">₩42,000</div><div style="width:196px">2024.12.05 – 12.25</div></div>
+         <div class="r"><div class="k" style="width:74px">2353</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>방송 한정 키링</div>
+           <div style="width:104px"><span class="abg g3">판매중</span></div>
+           <div style="width:92px"><span class="atog off"></span></div>
+           <div style="width:84px"><span class="alnk">자세히 ›</span></div><div style="width:100px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:104px"><span class="abg g2">⧉ 복사</span></div>
+           <div class="num" style="width:126px">₩9,500</div><div style="width:196px">2024.12.09 – 12.10</div></div>
+         <div class="r"><div class="k" style="width:74px">2352</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>포토카드 세트 A</div>
+           <div style="width:104px"><span class="abg g4">전체 품절</span></div>
+           <div style="width:92px"><span class="atog"></span></div>
+           <div style="width:84px"><span class="alnk">자세히 ›</span></div><div style="width:100px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:104px"><span class="abg g1">⧉ 복사</span></div>
+           <div class="num" style="width:126px">₩12,000</div><div style="width:196px">2024.11.20 – 12.04</div></div>
+         <div class="r"><div class="k" style="width:74px">2351</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>가을 엽서 세트</div>
+           <div style="width:104px"><span class="abg g1">판매 종료</span></div>
+           <div style="width:92px"><span class="atog"></span></div>
+           <div style="width:84px"><span class="alnk">자세히 ›</span></div><div style="width:100px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:104px"><span class="abg g1">⧉ 복사</span></div>
+           <div class="num" style="width:126px">₩6,000</div><div style="width:196px">2024.10.01 – 10.31</div></div>
+         <div class="r"><div class="k" style="width:74px">2350</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>비주 Fly High 앨범 패키지</div>
+           <div style="width:104px"><span class="abg g4">판매 중지</span></div>
+           <div style="width:92px"><span class="atog off"></span></div>
+           <div style="width:84px"><span class="alnk">자세히 ›</span></div><div style="width:100px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:104px"><span class="abg g1">⧉ 복사</span></div>
+           <div class="num" style="width:126px">₩33,000</div><div style="width:196px">2024.09.01 – 09.30</div></div>
+       </div>
+       <div class="apg"><span class="on">1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>›</span></div>
+     </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="chk">화면은 Vuddy 크리에이터 가이드에 공개된 것을 동일 구조로 재현한 목업이며, 수치와 구매자명은 더미입니다</div>
+ <div class="pgn">CS 09</div>
+</div></div></div>
+
+<!-- ══ CS 10 · 이행 설계 ① · 주문 단위 ══ -->
+<div class="wrap" id="cs-10"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">이행 설계 ①</div><div class="ten">Order Granularity</div>
+ <div class="hl">한 번의 결제,<br>목록에는 세 줄</div>
+ <div class="ds">한 번의 결제에 상품 셋이 담기면 목록에 <b>세 줄</b>로 나옵니다. 주문 단위로 묶으면 대표 상태 하나를 골라야 하는데, 무엇을 고르든 나머지 둘은 틀린 표시가 됩니다.</div>
+
+ <div class="bx" style="left:100px;top:447px;width:560px;height:306px"><div class="pd">
+   <div class="cap">한 주문, 세 개의 상태</div>
+   <div style="margin-top:14px;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:15px 17px">
+     <div style="font-size:12px;font-weight:700;color:var(--g6)">주문 ORD-24120901 · 1회 결제</div>
+     <div style="display:flex;align-items:center;gap:9px;margin-top:11px">
+       <span class="cp s" style="flex:1">아크릴 스탠드</span><span class="cp s on">배송 대기</span></div>
+     <div style="display:flex;align-items:center;gap:9px;margin-top:8px">
+       <span class="cp s" style="flex:1">포토카드 세트</span><span class="cp s">상품 준비중</span></div>
+     <div style="display:flex;align-items:center;gap:9px;margin-top:8px">
+       <span class="cp s" style="flex:1">베이직 디지털</span><span class="cp s">지급 완료</span></div>
+   </div>
+   <div class="sm" style="margin-top:14px;color:var(--g6)">정산도 같은 이유로 주문이 아니라 <b>주문 아이템</b>에 붙습니다. 한 상품이 늦어도 나머지 정산이 같이 밀리지 않도록.</div>
+ </div></div>
+
+ <div class="bx" style="left:100px;top:762px;width:560px;height:216px"><div class="pd">
+   <div class="cap">목록 공통 기능 · 여섯</div>
+   <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
+     <span class="cp s">주문 건수</span><span class="cp s">검색 4종</span><span class="cp s">상태 필터 중복</span>
+     <span class="cp s">CSV 다운로드</span><span class="cp s">구매자 메모</span><span class="cp s">상태 변경</span>
+   </div>
+   <div class="sm" style="margin-top:14px;color:var(--g6)">검색은 <b>판매 이름 · 상품 이름 · 구매자 · 주문 번호</b> 중 하나를 고르는 방식입니다. 통합 검색으로 두면 닉네임과 상품명이 섞여 원하는 건을 못 찾습니다.</div>
+ </div></div>
+
+ <div class="mock" style="position:absolute;left:680px;top:447px;width:1140px;height:531px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#F7F8FA">
+  <div class="adm" style="transform:scale(.7308);width:1560px;height:726px">
+   <div class="anav">
+     <div class="lg">Vuddy</div>
+     <div class="m">마이 채널</div>
+     <div class="m">디지털 굿즈 관리</div>
+     <div class="m">판매 관리 <span class="cv">▼</span></div>
+     <div class="m">가챠 관리 <span class="cv">▼</span></div>
+     <div class="m">컬렉션 관리 <span class="cv">▼</span></div>
+     <div class="m on">주문 관리 <span class="cv">▲</span></div>
+     <div class="m sub on">실물 주문</div>
+     <div class="m sub">디지털 주문 · 베이직</div>
+     <div class="m sub">디지털 주문 · 커스텀</div>
+     <div class="m sub">가챠 주문</div>
+     <div class="m">제작 요청 관리 <span class="cv">▼</span></div>
+     <div class="m">수익 관리</div>
+     <div class="m">방송 연동 관리</div>
+   </div>
+   <div class="amain">
+     <div class="atop"><div class="u">vuddy.io/lumina ⧉</div></div>
+     <div class="abody">
+       <div class="ah"><div class="t">주문 관리 - 실물 주문</div><div class="abtn gh">⤓ CSV 다운로드</div></div>
+       <div class="acount"><b>999,999</b>개의 주문 아이템 · 결제 일시 최신순</div>
+       <div class="afil">
+         <div class="afr"><div class="lb">검색</div>
+           <span class="ardo on"><i></i>판매 이름</span><span class="ardo"><i></i>상품 이름</span>
+           <span class="ardo"><i></i>구매자</span><span class="ardo"><i></i>주문 번호</span>
+           <div class="afld">검색어를 입력해 주세요</div><div class="abtn">검색</div></div>
+         <div class="afr"><div class="lb">주문 상태</div>
+           <span class="achk"><i></i>전체</span><span class="achk"><i></i>결제 완료</span><span class="achk"><i></i>상품 준비중</span>
+           <span class="achk"><i></i>배송중</span><span class="achk"><i></i>구매 확정</span><span class="achk"><i></i>주문 취소</span></div>
+       </div>
+       <div class="atb">
+         <div class="hd"><div style="width:136px">주문 번호</div><div style="flex:1">판매 이름</div>
+           <div style="width:168px">상품 이름</div><div style="width:110px">상태</div>
+           <div style="width:124px">구매자</div><div style="width:106px">교환권 제작</div>
+           <div style="width:56px">수량</div><div style="width:110px">결제 금액</div><div style="width:104px">결제 일시</div></div>
+         <div class="r"><div class="k" style="width:136px">2024112712535…</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>겨울 일러스트 아크릴 스탠드</div>
+           <div style="width:168px">A 아크릴</div><div style="width:110px"><span class="abg g2">상품 준비중</span></div>
+           <div style="width:124px;gap:6px"><span class="av"></span>하루</div><div style="width:106px">1 / 1</div>
+           <div class="num" style="width:56px">1</div><div class="num" style="width:110px">₩21,000</div><div style="width:104px">12.09 12:12</div></div>
+         <div class="r"><div class="k" style="width:136px">2024112712535…</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>포토카드 세트 A</div>
+           <div style="width:168px">—</div><div style="width:110px"><span class="abg g1">결제 완료</span></div>
+           <div style="width:124px;gap:6px"><span class="av"></span>하루</div><div style="width:106px">0 / 2</div>
+           <div class="num" style="width:56px">2</div><div class="num" style="width:110px">₩24,000</div><div style="width:104px">12.09 12:12</div></div>
+         <div class="r"><div class="k" style="width:136px">2024112712488…</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>버디 오리지널 머플러</div>
+           <div style="width:168px">그레이</div><div style="width:110px"><span class="abg g3">배송중</span></div>
+           <div style="width:124px;gap:6px"><span class="av"></span>별밤</div><div class="adim" style="width:106px">—</div>
+           <div class="num" style="width:56px">1</div><div class="num" style="width:110px">₩45,000</div><div style="width:104px">12.07 09:41</div></div>
+         <div class="r"><div class="k" style="width:136px">2024112712401…</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>캐릭터 키링 2종</div>
+           <div style="width:168px">B 키링</div><div style="width:110px"><span class="abg g3">구매 확정</span></div>
+           <div style="width:124px;gap:6px"><span class="av"></span>코코</div><div style="width:106px">2 / 2</div>
+           <div class="num" style="width:56px">2</div><div class="num" style="width:110px">₩19,000</div><div style="width:104px">12.05 18:03</div></div>
+         <div class="r"><div class="k" style="width:136px">2024112712377…</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>가을 엽서 세트</div>
+           <div style="width:168px">—</div><div style="width:110px"><span class="abg g4">주문 취소</span></div>
+           <div style="width:124px;gap:6px"><span class="av"></span>윤슬</div><div class="adim" style="width:106px">—</div>
+           <div class="num" style="width:56px">1</div><div class="num" style="width:110px">₩9,000</div><div style="width:104px">12.03 11:20</div></div>
+         <div class="r"><div class="k" style="width:136px">2024112712344…</div>
+           <div style="flex:1;gap:10px"><span class="thumb"></span>겨울 일러스트 아크릴 스탠드</div>
+           <div style="width:168px">B 아크릴</div><div style="width:110px"><span class="abg g3">구매 확정</span></div>
+           <div style="width:124px;gap:6px"><span class="av"></span>네온</div><div style="width:106px">1 / 1</div>
+           <div class="num" style="width:56px">1</div><div class="num" style="width:110px">₩21,000</div><div style="width:104px">12.01 20:55</div></div>
+       </div>
+       <div class="apg"><span class="on">1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>›</span></div>
+     </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="chk">화면은 Vuddy 크리에이터 가이드에 공개된 것을 동일 구조로 재현한 목업이며, 수치와 구매자명은 더미입니다</div>
+ <div class="pgn">CS 10</div>
+</div></div></div>
+
+<!-- ══ CS 11 · 이행 설계 ② · 상태 머신 ══ -->
+<div class="wrap" id="cs-11"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">이행 설계 ②</div><div class="ten">State Machine</div>
+ <div class="hl">되돌리는 전이는<br>아예 만들지 않았습니다</div>
+ <div class="ds">세 갈래 상태 머신 어디에도 <b>뒤로 가는 화살표가 없습니다.</b> 잘못 눌러 배송중으로 보냈다면 되돌리는 대신 운영자가 주문을 취소하고, 그 과정이 이력으로 남아 구매자 문의의 근거가 됩니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:1720px;height:400px"><div style="padding:22px 30px;height:100%">
+   <div class="cap">STATE TRANSITION · 라임 = 취소 가능 경계</div>
+
+   <div class="rise" style="animation-delay:.15s;display:flex;align-items:center;margin-top:14px;height:104px;border-bottom:1px solid var(--line)">
+     <div style="width:200px;flex:none">
+       <div style="font-size:14.5px;font-weight:700;color:#111">실물</div>
+       <div style="font-size:11.5px;color:var(--g9);font-weight:600;margin-top:4px">크리에이터 굿즈 · 오리지널</div></div>
+     <div style="flex:1;display:flex;align-items:center">
+       <div style="text-align:center"><span class="cp s">결제 완료</span></div>
+       <div style="flex:1;text-align:center;padding:0 6px"><div style="font-size:10.5px;font-weight:700;color:#8FA02A">2일 후 자동 · 수동 가능</div><div style="height:1px;background:var(--line);margin-top:6px;position:relative"><span style="position:absolute;right:-2px;top:-5px;color:#C6C6C2;font-size:11px">▶</span></div></div>
+       <div style="text-align:center"><span class="cp s on">상품 준비중</span></div>
+       <div style="flex:1;text-align:center;padding:0 6px"><div style="font-size:10.5px;font-weight:700;color:var(--g9)">운송장 등록</div><div style="height:1px;background:var(--line);margin-top:6px;position:relative"><span style="position:absolute;right:-2px;top:-5px;color:#C6C6C2;font-size:11px">▶</span></div></div>
+       <div style="text-align:center"><span class="cp s">배송중</span></div>
+       <div style="flex:1;text-align:center;padding:0 6px"><div style="font-size:10.5px;font-weight:700;color:var(--g9)">수령 · 기간 경과</div><div style="height:1px;background:var(--line);margin-top:6px;position:relative"><span style="position:absolute;right:-2px;top:-5px;color:#C6C6C2;font-size:11px">▶</span></div></div>
+       <div style="text-align:center"><span class="cp s dk">구매 확정</span></div>
+     </div>
+     <div style="width:220px;flex:none;text-align:right;font-size:11.5px;font-weight:600;color:var(--g6);line-height:1.5">준비중 진입 전까지<br>구매자 · 크리에이터 취소 가능</div>
+   </div>
+
+   <div class="rise" style="animation-delay:.28s;display:flex;align-items:center;height:104px;border-bottom:1px solid var(--line)">
+     <div style="width:200px;flex:none">
+       <div style="font-size:14.5px;font-weight:700;color:#111">디지털 · 베이직</div>
+       <div style="font-size:11.5px;color:var(--g9);font-weight:600;margin-top:4px">퍼스널 · 가챠 포함</div></div>
+     <div style="flex:1;display:flex;align-items:center">
+       <div style="text-align:center"><span class="cp s">결제 완료</span></div>
+       <div style="width:220px;text-align:center;padding:0 6px"><div style="font-size:10.5px;font-weight:700;color:#8FA02A">즉시 지급</div><div style="height:1px;background:var(--line);margin-top:6px;position:relative"><span style="position:absolute;right:-2px;top:-5px;color:#C6C6C2;font-size:11px">▶</span></div></div>
+       <div style="text-align:center"><span class="cp s dk">상품 지급 완료</span></div>
+       <div style="flex:1"></div>
+     </div>
+     <div style="width:220px;flex:none;text-align:right;font-size:11.5px;font-weight:600;color:var(--g6);line-height:1.5">액세스 전까지만 취소<br>취소 처리는 운영자</div>
+   </div>
+
+   <div class="rise" style="animation-delay:.41s;display:flex;align-items:center;height:104px">
+     <div style="width:200px;flex:none">
+       <div style="font-size:14.5px;font-weight:700;color:#111">디지털 · 커스텀</div>
+       <div style="font-size:11.5px;color:var(--g9);font-weight:600;margin-top:4px">주문 제작</div></div>
+     <div style="flex:1;display:flex;align-items:center">
+       <div style="text-align:center"><span class="cp s on">상품 제작 대기</span></div>
+       <div style="flex:1;text-align:center;padding:0 6px"><div style="font-size:10.5px;font-weight:700;color:#8FA02A">24시간 후 자동 · 수동 가능</div><div style="height:1px;background:var(--line);margin-top:6px;position:relative"><span style="position:absolute;right:-2px;top:-5px;color:#C6C6C2;font-size:11px">▶</span></div></div>
+       <div style="text-align:center"><span class="cp s">상품 제작중</span></div>
+       <div style="flex:1;text-align:center;padding:0 6px"><div style="font-size:10.5px;font-weight:700;color:var(--g9)">굿즈 연결 · 전송</div><div style="height:1px;background:var(--line);margin-top:6px;position:relative"><span style="position:absolute;right:-2px;top:-5px;color:#C6C6C2;font-size:11px">▶</span></div></div>
+       <div style="text-align:center"><span class="cp s dk">지급 완료 · 구매 확정</span></div>
+       <div style="flex:1"></div>
+     </div>
+     <div style="width:220px;flex:none;text-align:right;font-size:11.5px;font-weight:600;color:var(--g6);line-height:1.5">제작 대기 24시간 동안만<br>구매자 취소 가능</div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:100px;top:854px;width:846px;height:124px"><div style="padding:18px 30px">
+   <div class="cap">배송은 실물 주문 안에서 끝납니다</div>
+   <div style="display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap">
+     <span class="cp s">출고 대상 조회</span><span class="arrow" style="width:auto">▸</span>
+     <span class="cp s">운송장 등록</span><span class="arrow" style="width:auto">▸</span>
+     <span class="cp s">배송 추적 연동</span><span class="arrow" style="width:auto">▸</span>
+     <span class="cp s on">상태 자동 전환</span>
+   </div>
+   <div style="font-size:12px;color:var(--g6);font-weight:500;line-height:1.5;margin-top:11px">배송 전용 메뉴를 두지 않아, 같은 주문을 두 화면에서 관리하는 일이 없습니다.</div>
+ </div></div>
+
+ <div class="bx" style="left:974px;top:854px;width:846px;height:124px"><div style="padding:18px 30px">
+   <div class="cap">되돌리기 대신 남긴 것</div>
+   <div style="font-size:13px;font-weight:600;color:var(--g1);line-height:1.6;margin-top:10px">모든 상태 변경에 <b style="color:#111">누가 · 언제 · 무엇에서 무엇으로</b>를 기록합니다. 되돌리는 버튼이 없으면 크리에이터가 답할 수 없게 되는데, 이력이 그 자리를 대신합니다. 분쟁 시 CS가 쓰는 화면도 같은 기록입니다.</div>
+ </div></div>
+
+ <div class="pgn">CS 11</div>
+</div></div></div>
+
+<!-- ══ CS 12 · 이행 설계 ③ · 제작 요청 ══ -->
+<div class="wrap" id="cs-12"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">이행 설계 ③</div><div class="ten">Production Request</div>
+ <div class="hl">검수로 막지 않고<br>연결 자체를 잠갔습니다</div>
+ <div class="ds">맞춤 제작이라고 해놓고 같은 파일이 여러 명에게 가면 <b>상품 설명이 거짓이 됩니다.</b> 실수가 아니라 표시의 문제라서 검수로 잡을 게 아니라 애초에 불가능해야 했습니다. 연결하는 순간 그 미디어를 전용으로 고정했습니다.</div>
+
+ <div class="bx" style="left:100px;top:447px;width:560px;height:320px"><div class="pd">
+   <div class="cap">세 종류의 연결 방식</div>
+   <div style="margin-top:14px">
+     <div style="border:1px solid var(--line);border-radius:3px;padding:9px 17px">
+       <div style="display:flex;align-items:center;gap:9px">
+         <div style="font-size:14px;font-weight:700;color:#111">베이직</div><span class="cp s">자동 연결</span></div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:5px;line-height:1.5">등록 때 지정한 미디어가 이미 붙어 들어옴</div>
+     </div>
+     <div style="border:1px solid var(--edge);background:var(--tint);border-radius:3px;padding:9px 17px;margin-top:10px">
+       <div style="display:flex;align-items:center;gap:9px">
+         <div style="font-size:14px;font-weight:700;color:#111">퍼스널</div><span class="cp s on">1:1 고정</span></div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:5px;line-height:1.5">연결하면 전용 · <b style="color:#111">다른 교환권에 못 씀</b></div>
+     </div>
+     <div style="border:1px solid var(--line);border-radius:3px;padding:9px 17px;margin-top:10px">
+       <div style="display:flex;align-items:center;gap:9px">
+         <div style="font-size:14px;font-weight:700;color:#111">커스텀</div><span class="cp s">선등록 후 연결</span></div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:5px;line-height:1.5">먼저 등록해야 연결 가능 · 전송이 곧 구매 확정</div>
+     </div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:100px;top:779px;width:560px;height:199px"><div class="pd">
+   <div class="cap">지급 상태에 따라 버튼이 갈립니다</div>
+   <div style="margin-top:11px">
+     <div style="display:flex;align-items:center;padding:4px 0;border-bottom:1px solid var(--line)">
+       <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1)">제작 대기 · 제작중</div><span class="cp s">연결하기</span></div>
+     <div style="display:flex;align-items:center;padding:4px 0;border-bottom:1px solid var(--line)">
+       <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1)">지급 완료</div><span class="cp s">디지털 굿즈 보기</span></div>
+     <div style="display:flex;align-items:center;padding:4px 0">
+       <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1)">주문 취소</div><span class="cp s no">비활성</span></div>
+   </div>
+ </div></div>
+
+ <div class="mock" style="position:absolute;left:680px;top:447px;width:1140px;height:531px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#F7F8FA">
+  <div class="adm" style="transform:scale(.7308);width:1560px;height:726px">
+   <div class="anav">
+     <div class="lg">Vuddy</div>
+     <div class="m">마이 채널</div>
+     <div class="m">디지털 굿즈 관리</div>
+     <div class="m">판매 관리 <span class="cv">▼</span></div>
+     <div class="m">가챠 관리 <span class="cv">▼</span></div>
+     <div class="m">컬렉션 관리 <span class="cv">▼</span></div>
+     <div class="m">주문 관리 <span class="cv">▼</span></div>
+     <div class="m on">제작 요청 관리 <span class="cv">▲</span></div>
+     <div class="m sub">베이직 · 퍼스널</div>
+     <div class="m sub on">커스텀</div>
+     <div class="m">수익 관리</div>
+     <div class="m">방송 연동 관리</div>
+     <div class="ft"><div>공지사항</div><div>크리에이터 가이드</div><div>고객센터</div></div>
+   </div>
+   <div class="amain">
+     <div class="atop"><div class="u">vuddy.io/lumina ⧉</div></div>
+     <div class="abody">
+       <div class="ah"><div class="t">제작 요청 관리 - 커스텀</div></div>
+       <div class="acount"><b>999,999</b>건의 제작 요청</div>
+       <div class="afil">
+         <div class="afr"><div class="lb">검색</div>
+           <span class="ardo on"><i></i>판매 이름</span><span class="ardo"><i></i>상품 이름</span>
+           <span class="ardo"><i></i>구매자</span><span class="ardo"><i></i>주문 번호</span>
+           <div class="afld">검색어를 입력해 주세요</div><div class="abtn">검색</div></div>
+         <div class="afr"><div class="lb">기간</div>
+           <div style="width:120px;height:28px;border:1px solid #E4E4E0;border-radius:4px;background:#fff;display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#3A3A38">주문 일시 ▾</div>
+           <div class="afld" style="max-width:190px">2025.01.01</div>
+           <div class="afld" style="max-width:190px">2025.12.31</div></div>
+         <div class="afr"><div class="lb">지급 상태</div>
+           <span class="achk"><i></i>전체</span><span class="achk"><i></i>제작 대기</span>
+           <span class="achk"><i></i>지급 완료</span><span class="achk"><i></i>주문 취소</span></div>
+       </div>
+       <div class="atb">
+         <div class="hd"><div style="width:136px">주문 번호</div><div style="width:96px">요청 상세</div>
+           <div style="width:108px">지급 상태</div><div style="width:152px">연결할 디지털 굿즈</div>
+           <div style="flex:1">판매 이름</div><div style="width:132px">구매자</div>
+           <div style="width:126px">주문 일시</div><div style="width:126px">지급 일시</div></div>
+         <div class="r"><div class="k" style="width:136px">2025050308…</div>
+           <div style="width:96px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:108px"><span class="abg g3">지급 완료</span></div>
+           <div style="width:152px"><span class="alnk">디지털 굿즈 보기 ›</span></div>
+           <div style="flex:1">루미 1st 앨범 기념 굿즈</div>
+           <div style="width:132px;gap:6px"><span class="av"></span>sadwolf227</div>
+           <div style="width:126px">05.03 08:14</div><div style="width:126px">05.03 14:01</div></div>
+         <div class="r"><div class="k" style="width:136px">2025050308…</div>
+           <div style="width:96px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:108px"><span class="abg g1">제작 대기</span></div>
+           <div style="width:152px"><span class="abg g2">연결하기 ›</span></div>
+           <div style="flex:1">루미 1st 앨범 기념 굿즈</div>
+           <div style="width:132px;gap:6px"><span class="av"></span>whiterabb4554</div>
+           <div style="width:126px">05.03 08:14</div><div class="adim" style="width:126px">—</div></div>
+         <div class="r"><div class="k" style="width:136px">2025050308…</div>
+           <div style="width:96px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:108px"><span class="abg g1">제작 대기</span></div>
+           <div style="width:152px"><span class="abg g2">연결하기 ›</span></div>
+           <div style="flex:1">루미 1st 앨범 기념 굿즈</div>
+           <div style="width:132px;gap:6px"><span class="av"></span>beautifulmouse112</div>
+           <div style="width:126px">05.03 08:14</div><div class="adim" style="width:126px">—</div></div>
+         <div class="r"><div class="k" style="width:136px">2025050308…</div>
+           <div style="width:96px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:108px"><span class="abg g4">주문 취소</span></div>
+           <div class="adim" style="width:152px">연결하기 ›</div>
+           <div style="flex:1">루미 1st 앨범 기념 굿즈</div>
+           <div style="width:132px;gap:6px"><span class="av"></span>lazymeercat616</div>
+           <div style="width:126px">05.03 08:14</div><div class="adim" style="width:126px">—</div></div>
+         <div class="r"><div class="k" style="width:136px">2025050308…</div>
+           <div style="width:96px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:108px"><span class="abg g4">주문 취소</span></div>
+           <div class="adim" style="width:152px">연결하기 ›</div>
+           <div style="flex:1">루미 1st 앨범 기념 굿즈</div>
+           <div style="width:132px;gap:6px"><span class="av"></span>yellowmouse215</div>
+           <div style="width:126px">05.03 08:14</div><div class="adim" style="width:126px">—</div></div>
+         <div class="r"><div class="k" style="width:136px">2025050308…</div>
+           <div style="width:96px"><span class="alnk">자세히 ›</span></div>
+           <div style="width:108px"><span class="abg g3">지급 완료</span></div>
+           <div style="width:152px"><span class="alnk">디지털 굿즈 보기 ›</span></div>
+           <div style="flex:1">루미 1st 앨범 기념 굿즈</div>
+           <div style="width:132px;gap:6px"><span class="av"></span>angryswan732</div>
+           <div style="width:126px">05.02 21:09</div><div style="width:126px">05.03 09:30</div></div>
+       </div>
+       <div class="apg"><span class="on">1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>›</span></div>
+     </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="chk">화면은 Vuddy 크리에이터 가이드에 공개된 것을 동일 구조로 재현한 목업이며, 수치와 구매자명은 더미입니다</div>
+ <div class="pgn">CS 12</div>
+</div></div></div>
+
+<!-- ══ CS 13 · 자산 설계 ══ -->
+<div class="wrap" id="cs-13"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">자산 설계</div><div class="ten">Digital Goods</div>
+ <div class="hl">카드 한 장에<br>파일이 두 개 있습니다</div>
+ <div class="ds">버디카드는 <b>컬렉션에 진열되는 겉면</b>과 <b>구매자가 받는 원본</b>이 다릅니다. 하나로 합치면 미보유 상태에서 원본이 노출되거나, 진열용으로 원본 화질을 낮춰야 합니다. 등록을 두 번 받는 대신 두 문제를 다 없앴습니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:1160px;height:538px"><div style="padding:26px 30px;height:100%">
+   <div class="cap">REGISTRATION PIPELINE · 카드 한 장이 만들어지는 순서</div>
+   <div class="rise" style="animation-delay:.15s;display:flex;gap:0;margin-top:18px;align-items:stretch">
+     <div style="flex:1;background:#fff;border:1px solid var(--line);border-radius:3px;padding:15px 17px">
+       <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--g9)">STEP 1</div>
+       <div style="font-size:14.5px;font-weight:700;color:#111;margin-top:6px">카드 종류</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:8px;line-height:1.5">포토 · 비디오 · 오디오</div>
+     </div>
+     <div class="arrow" style="width:30px">▶</div>
+     <div style="flex:1;background:#fff;border:1px solid var(--line);border-radius:3px;padding:15px 17px">
+       <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--g9)">STEP 2 · 원본</div>
+       <div style="font-size:14.5px;font-weight:700;color:#111;margin-top:6px">미디어 원본</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:8px;line-height:1.5">구매자가 받는 실제 파일<br>최대 200MB</div>
+     </div>
+     <div class="arrow" style="width:30px">▶</div>
+     <div style="flex:1;background:var(--tint);border:1px solid var(--edge);border-radius:3px;padding:15px 17px">
+       <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;color:#8FA02A">STEP 3 · 겉면</div>
+       <div style="font-size:14.5px;font-weight:700;color:#111;margin-top:6px">버디카드 이미지</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:8px;line-height:1.5">컬렉션에 진열되는 면<br>원본과 별도 등록</div>
+     </div>
+     <div class="arrow" style="width:30px">▶</div>
+     <div style="flex:1;background:#fff;border:1px solid var(--line);border-radius:3px;padding:15px 17px">
+       <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--g9)">STEP 4</div>
+       <div style="font-size:14.5px;font-weight:700;color:#111;margin-top:6px">타입 · 효과</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:8px;line-height:1.5">스탠다드 · 시그니처<br>필터 · 요소 · 미리보기</div>
+     </div>
+   </div>
+
+   <div style="display:flex;gap:12px;margin-top:20px">
+     <div style="flex:1;border:1px solid var(--line);border-radius:3px;padding:15px 18px">
+       <div class="cap">카드 타입</div>
+       <div style="font-size:13.5px;font-weight:700;color:#111;margin-top:10px">스탠다드</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:4px;line-height:1.5">메시지를 함께 담는 기본 카드</div>
+       <div style="font-size:13.5px;font-weight:700;color:#111;margin-top:10px">시그니처</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:4px;line-height:1.5">메시지와 서명이 들어가는 프리미엄</div>
+     </div>
+     <div style="flex:1;border:1px solid var(--line);border-radius:3px;padding:15px 18px">
+       <div class="cap">편집 도구</div>
+       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:11px">
+         <span class="cp s">배경 삭제</span><span class="cp s">일반 필터</span>
+         <span class="cp s on">AI 필터 Beta</span><span class="cp s">글리터</span><span class="cp s">랜티큘러</span>
+       </div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:11px;line-height:1.5">우측 실시간 미리보기로 결과를 보며 조정</div>
+     </div>
+     <div style="flex:1;border:1px solid var(--line);border-radius:3px;padding:15px 18px">
+       <div class="cap">보관함 필터</div>
+       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:11px">
+         <span class="cp s">카드 타입</span><span class="cp s">미디어 타입</span>
+       </div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:11px;line-height:1.5">축 두 개만 두고 검색은 넣지 않았습니다 · 카드는 이름보다 그림으로 찾습니다</div>
+     </div>
+   </div>
+
+   <div style="display:flex;margin-top:20px;padding-top:14px;border-top:1px solid var(--line)">
+     <div style="width:170px"><div class="cap">겉면이 따로라서</div></div>
+     <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">컬렉션의 미보유 노출 3방식 — <b style="color:#111">숨김 · 블러 · 흑백</b> — 이 전부 겉면에만 적용됩니다. 원본을 건드리지 않고 구현되고, 흑백 처리 때문에 화질을 희생할 일도 없습니다.</div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:1280px;top:440px;width:540px;height:318px"><div class="pd">
+   <div class="cap">미디어 타입이 정해지는 시점</div>
+   <div class="sm" style="margin-top:13px">등록할 때가 아니라 <b>교환권에 연결할 때</b> 베이직인지 퍼스널인지가 정해집니다.</div>
+   <div style="margin-top:18px">
+     <div style="background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:14px 17px">
+       <div style="font-size:13px;font-weight:700;color:#111">등록 직후</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.5">타입 없음 · 어느 교환권에나 붙을 수 있음</div>
+     </div>
+     <div style="text-align:center;color:#C6C6C2;font-size:13px;padding:7px 0">▼</div>
+     <div style="background:var(--tint);border:1px solid var(--edge);border-radius:3px;padding:14px 17px">
+       <div style="font-size:13px;font-weight:700;color:#111">퍼스널로 한 번 연결</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.5">그 순간부터 전용 · 다른 교환권에 연결 불가</div>
+     </div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:1280px;top:770px;width:540px;height:208px"><div class="pd">
+   <div class="cap">이 잠금이 대신한 것</div>
+   <div class="sm" style="margin-top:12px;color:var(--g6)">원래는 "퍼스널 파일을 재사용하지 마세요"라는 <b>가이드 문구</b>로 두려 했습니다. 문구는 바쁜 날 읽히지 않습니다. 같은 규칙을 <b>연결 제약</b>으로 옮기니 지킬지 말지를 고민할 일이 없어졌습니다.</div>
+ </div></div>
+
+ <div class="pgn">CS 13</div>
+</div></div></div>
+<!-- ══ CS 14 · 데이터 설계 ① · 도메인 스키마 ══ -->
+<div class="wrap" id="cs-14"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">데이터 설계 ①</div><div class="ten">Domain Schema</div>
+ <div class="hl">제약을 문서가 아니라<br>스키마에 적었습니다</div>
+ <div class="ds">앞의 규칙들은 가이드 문장으로 두면 바쁜 날 읽히지 않습니다. <b>지켜야 할 것을 전부 필드와 제약으로 내렸습니다.</b> 퍼스널 미디어의 재사용 금지도 운영 규칙이 아니라 컬럼 하나로 존재합니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:1720px;height:538px"><div style="padding:20px 30px">
+   <div class="cap">ENTITY RELATION · 판매 정의 → 주문 → 이행 자산</div>
+   <svg viewBox="0 0 1660 388" width="100%" style="margin-top:12px;display:block">
+     <defs>
+       <marker id="sar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+         <path d="M0,1 L9,5 L0,9 z" fill="#A8A8A4"/>
+       </marker>
+     </defs>
+     <g transform="translate(0,0)">
+       <rect width="370" height="145" rx="3" fill="#fff" stroke="#E4E4E0"/>
+       <path d="M0,3 a3,3 0 0 1 3,-3 h364 a3,3 0 0 1 3,3 v27 h-370 z" fill="#16181A"/>
+       <text x="14" y="20" font-size="13" font-weight="700" fill="#fff">SALE</text>
+       <text x="356" y="20" font-size="10" font-weight="700" fill="#7C8479" text-anchor="end">판매</text>
+       <text x="14" y="45" font-size="11.5" font-weight="600" fill="#111">sale_id</text>
+       <text x="356" y="45" font-size="10.5" fill="#A8A8A4" text-anchor="end">PK</text>
+       <rect x="7" y="51" width="356" height="19" fill="#F7FBE6"/>
+       <text x="14" y="66" font-size="11.5" font-weight="700" fill="#111">product_class</text>
+       <text x="356" y="66" font-size="10.5" fill="#7A7A76" text-anchor="end">실물 · 디지털</text>
+       <rect x="7" y="72" width="356" height="19" fill="#F7FBE6"/>
+       <text x="14" y="87" font-size="11.5" font-weight="700" fill="#111">sale_type</text>
+       <text x="356" y="87" font-size="10.5" fill="#7A7A76" text-anchor="end">7종</text>
+       <text x="14" y="108" font-size="11.5" font-weight="600" fill="#111">sale_status</text>
+       <text x="356" y="108" font-size="10.5" fill="#A8A8A4" text-anchor="end">기간 · 재고가 결정</text>
+       <text x="14" y="129" font-size="11.5" font-weight="600" fill="#111">exposure</text>
+       <text x="356" y="129" font-size="10.5" fill="#A8A8A4" text-anchor="end">크리에이터가 결정</text>
+       </g>
+     <g transform="translate(430,0)">
+       <rect width="370" height="124" rx="3" fill="#fff" stroke="#E4E4E0"/>
+       <path d="M0,3 a3,3 0 0 1 3,-3 h364 a3,3 0 0 1 3,3 v27 h-370 z" fill="#16181A"/>
+       <text x="14" y="20" font-size="13" font-weight="700" fill="#fff">ITEM</text>
+       <text x="356" y="20" font-size="10" font-weight="700" fill="#7C8479" text-anchor="end">굿즈 · 상품</text>
+       <text x="14" y="45" font-size="11.5" font-weight="600" fill="#111">item_id</text>
+       <text x="356" y="45" font-size="10.5" fill="#A8A8A4" text-anchor="end">PK</text>
+       <text x="14" y="66" font-size="11.5" font-weight="600" fill="#111">sale_id</text>
+       <text x="356" y="66" font-size="10.5" fill="#A8A8A4" text-anchor="end">FK</text>
+       <text x="14" y="87" font-size="11.5" font-weight="600" fill="#111">price · stock</text>
+       <text x="356" y="87" font-size="10.5" fill="#A8A8A4" text-anchor="end">가격 · 재고</text>
+       <text x="14" y="108" font-size="11.5" font-weight="600" fill="#111">option</text>
+       <text x="356" y="108" font-size="10.5" fill="#A8A8A4" text-anchor="end">옵션</text>
+       </g>
+     <g transform="translate(860,0)">
+       <rect width="370" height="124" rx="3" fill="#fff" stroke="#E4E4E0"/>
+       <path d="M0,3 a3,3 0 0 1 3,-3 h364 a3,3 0 0 1 3,3 v27 h-370 z" fill="#16181A"/>
+       <text x="14" y="20" font-size="13" font-weight="700" fill="#fff">ORDER_ITEM</text>
+       <text x="356" y="20" font-size="10" font-weight="700" fill="#7C8479" text-anchor="end">주문 아이템</text>
+       <text x="14" y="45" font-size="11.5" font-weight="600" fill="#111">order_item_id</text>
+       <text x="356" y="45" font-size="10.5" fill="#A8A8A4" text-anchor="end">PK</text>
+       <text x="14" y="66" font-size="11.5" font-weight="600" fill="#111">item_id</text>
+       <text x="356" y="66" font-size="10.5" fill="#A8A8A4" text-anchor="end">FK</text>
+       <rect x="7" y="72" width="356" height="19" fill="#F7FBE6"/>
+       <text x="14" y="87" font-size="11.5" font-weight="700" fill="#111">status</text>
+       <text x="356" y="87" font-size="10.5" fill="#7A7A76" text-anchor="end">단방향 전이</text>
+       <text x="14" y="108" font-size="11.5" font-weight="600" fill="#111">confirmed_at</text>
+       <text x="356" y="108" font-size="10.5" fill="#A8A8A4" text-anchor="end">구매 확정</text>
+       </g>
+     <g transform="translate(430,230)">
+       <rect width="370" height="145" rx="3" fill="#fff" stroke="#E4E4E0"/>
+       <path d="M0,3 a3,3 0 0 1 3,-3 h364 a3,3 0 0 1 3,3 v27 h-370 z" fill="#16181A"/>
+       <text x="14" y="20" font-size="13" font-weight="700" fill="#fff">EXCHANGE_TICKET</text>
+       <text x="356" y="20" font-size="10" font-weight="700" fill="#7C8479" text-anchor="end">교환권</text>
+       <text x="14" y="45" font-size="11.5" font-weight="600" fill="#111">ticket_id</text>
+       <text x="356" y="45" font-size="10.5" fill="#A8A8A4" text-anchor="end">PK</text>
+       <text x="14" y="66" font-size="11.5" font-weight="600" fill="#111">order_item_id</text>
+       <text x="356" y="66" font-size="10.5" fill="#A8A8A4" text-anchor="end">FK</text>
+       <rect x="7" y="72" width="356" height="19" fill="#F7FBE6"/>
+       <text x="14" y="87" font-size="11.5" font-weight="700" fill="#111">ticket_type</text>
+       <text x="356" y="87" font-size="10.5" fill="#7A7A76" text-anchor="end">베이직 · 퍼스널</text>
+       <rect x="7" y="93" width="356" height="19" fill="#F7FBE6"/>
+       <text x="14" y="108" font-size="11.5" font-weight="700" fill="#111">media_id</text>
+       <text x="356" y="108" font-size="10.5" fill="#7A7A76" text-anchor="end">FK · NULL 허용</text>
+       <text x="14" y="129" font-size="11.5" font-weight="600" fill="#111">granted_at</text>
+       <text x="356" y="129" font-size="10.5" fill="#A8A8A4" text-anchor="end">지급 시각</text>
+       </g>
+     <g transform="translate(860,230)">
+       <rect width="370" height="145" rx="3" fill="#fff" stroke="#E4E4E0"/>
+       <path d="M0,3 a3,3 0 0 1 3,-3 h364 a3,3 0 0 1 3,3 v27 h-370 z" fill="#16181A"/>
+       <text x="14" y="20" font-size="13" font-weight="700" fill="#fff">MEDIA</text>
+       <text x="356" y="20" font-size="10" font-weight="700" fill="#7C8479" text-anchor="end">디지털 굿즈</text>
+       <text x="14" y="45" font-size="11.5" font-weight="600" fill="#111">media_id</text>
+       <text x="356" y="45" font-size="10.5" fill="#A8A8A4" text-anchor="end">PK</text>
+       <text x="14" y="66" font-size="11.5" font-weight="600" fill="#111">card_type</text>
+       <text x="356" y="66" font-size="10.5" fill="#A8A8A4" text-anchor="end">스탠다드 · 시그니처</text>
+       <rect x="7" y="72" width="356" height="19" fill="#F7FBE6"/>
+       <text x="14" y="87" font-size="11.5" font-weight="700" fill="#111">source_file</text>
+       <text x="356" y="87" font-size="10.5" fill="#7A7A76" text-anchor="end">원본 · 구매자가 받음</text>
+       <rect x="7" y="93" width="356" height="19" fill="#F7FBE6"/>
+       <text x="14" y="108" font-size="11.5" font-weight="700" fill="#111">card_image</text>
+       <text x="356" y="108" font-size="10.5" fill="#7A7A76" text-anchor="end">겉면 · 컬렉션 진열</text>
+       <rect x="7" y="114" width="356" height="19" fill="#F7FBE6"/>
+       <text x="14" y="129" font-size="11.5" font-weight="700" fill="#111">media_type</text>
+       <text x="356" y="129" font-size="10.5" fill="#7A7A76" text-anchor="end">NULL → 베이직 · 퍼스널</text>
+       </g>
+     <g transform="translate(1290,230)">
+       <rect width="370" height="145" rx="3" fill="#fff" stroke="#E4E4E0"/>
+       <path d="M0,3 a3,3 0 0 1 3,-3 h364 a3,3 0 0 1 3,3 v27 h-370 z" fill="#16181A"/>
+       <text x="14" y="20" font-size="13" font-weight="700" fill="#fff">PRODUCTION_REQUEST</text>
+       <text x="356" y="20" font-size="10" font-weight="700" fill="#7C8479" text-anchor="end">제작 요청 · 커스텀</text>
+       <text x="14" y="45" font-size="11.5" font-weight="600" fill="#111">request_id</text>
+       <text x="356" y="45" font-size="10.5" fill="#A8A8A4" text-anchor="end">PK</text>
+       <text x="14" y="66" font-size="11.5" font-weight="600" fill="#111">order_item_id</text>
+       <text x="356" y="66" font-size="10.5" fill="#A8A8A4" text-anchor="end">FK</text>
+       <text x="14" y="87" font-size="11.5" font-weight="600" fill="#111">request_detail</text>
+       <text x="356" y="87" font-size="10.5" fill="#A8A8A4" text-anchor="end">구매자 요청</text>
+       <text x="14" y="108" font-size="11.5" font-weight="600" fill="#111">media_id</text>
+       <text x="356" y="108" font-size="10.5" fill="#A8A8A4" text-anchor="end">FK · 연결 후 전송</text>
+       <text x="14" y="129" font-size="11.5" font-weight="600" fill="#111">pay_status</text>
+       <text x="356" y="129" font-size="10.5" fill="#A8A8A4" text-anchor="end">4종</text>
+       </g>
+
+     <g transform="translate(1290,0)">
+       <rect width="370" height="197" rx="3" fill="#F7FBE6" stroke="#B4DC1E"/>
+       <text x="16" y="26" font-size="10.5" font-weight="700" fill="#8FA02A" letter-spacing="1.3">CONSTRAINTS</text>
+       <text x="16" y="52" font-size="13.5" font-weight="700" fill="#111">문서가 아니라 데이터가 막는 것</text>
+       <text x="16" y="78" font-size="11" font-weight="600" fill="#3A3A38">· media_type 은 등록 시 NULL</text>
+       <text x="26" y="95" font-size="11" font-weight="500" fill="#7A7A76">연결하는 순간 확정된다</text>
+       <text x="16" y="119" font-size="11" font-weight="700" fill="#111">· 퍼스널로 확정된 media_id 는</text>
+       <text x="26" y="136" font-size="11" font-weight="700" fill="#111">다른 ticket 에 연결 불가</text>
+       <text x="16" y="160" font-size="11" font-weight="600" fill="#3A3A38">· granted_at 이 있으면</text>
+       <text x="26" y="177" font-size="11" font-weight="500" fill="#7A7A76">media_id 수정 불가</text>
+     </g>
+
+     <path d="M370,72 H424" stroke="#A8A8A4" stroke-width="1" marker-end="url(#sar)"/>
+     <text x="397" y="65" font-size="10" font-weight="700" fill="#A8A8A4" text-anchor="middle">1:N</text>
+     <path d="M800,62 H854" stroke="#A8A8A4" stroke-width="1" marker-end="url(#sar)"/>
+     <text x="827" y="55" font-size="10" font-weight="700" fill="#A8A8A4" text-anchor="middle">1:N</text>
+
+     <path d="M1045,124 V210" stroke="#A8A8A4" stroke-width="1" fill="none"/>
+     <path d="M1045,210 H615 V224" stroke="#A8A8A4" stroke-width="1" fill="none" marker-end="url(#sar)"/>
+     <text x="700" y="204" font-size="10" font-weight="700" fill="#A8A8A4" text-anchor="middle">1:N · 베이직 · 퍼스널</text>
+     <path d="M1045,210 H1475 V224" stroke="#A8A8A4" stroke-width="1" fill="none" marker-end="url(#sar)"/>
+     <text x="1215" y="204" font-size="10" font-weight="700" fill="#A8A8A4" text-anchor="middle">1:1 · 커스텀</text>
+
+     <path d="M800,300 H854" stroke="#A8A8A4" stroke-width="1" marker-end="url(#sar)"/>
+     <text x="827" y="293" font-size="10" font-weight="700" fill="#8FA02A" text-anchor="middle">N:1</text>
+     <path d="M1284,318 H1234" stroke="#A8A8A4" stroke-width="1" marker-end="url(#sar)"/>
+     <text x="1259" y="311" font-size="10" font-weight="700" fill="#A8A8A4" text-anchor="middle">N:1</text>
+   </svg>
+
+   <div style="display:flex;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)">
+     <div style="width:200px"><div class="cap">한 줄이 대신한 것</div></div>
+     <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">퍼스널 오배송을 막는 규칙은 원래 가이드 문장이었습니다. <b style="color:#111">media_type 컬럼 하나</b>로 옮기고 나서는 지킬지 말지를 판단할 일이 없어졌습니다. 검수 절차도, 경고 문구도 필요하지 않습니다.</div>
+   </div>
+ </div></div>
+
+ <div class="pgn">CS 14</div>
+</div></div></div>
+
+<!-- ══ CS 15 · 데이터 설계 ② · 연결 판정 ══ -->
+<div class="wrap" id="cs-15"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">데이터 설계 ②</div><div class="ten">Link Resolver</div>
+ <div class="hl">막는 대신<br>목록에서 뺐습니다</div>
+ <div class="ds">연결할 수 없는 미디어를 보여주고 누르면 막는 방식은, 크리에이터가 <b>왜 안 되는지를 매번 다시 배우게</b> 합니다. 선택지 자체에서 빼면 물어볼 일이 생기지 않습니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:560px;height:538px"><div class="pd">
+   <div class="cap">판정에 쓰는 값 · 넷</div>
+   <div class="sb" style="margin-top:16px"><div class="k">ticket_type</div><div class="v">베이직 · 퍼스널 · 커스텀 요청</div></div>
+   <div class="sb" style="margin-top:11px"><div class="k">media.media_type</div><div class="v">NULL · 베이직 · 퍼스널</div></div>
+   <div class="sb" style="margin-top:11px"><div class="k">granted_at</div><div class="v">지급 완료 여부</div></div>
+   <div class="sb" style="margin-top:11px"><div class="k">order_item.status</div><div class="v">주문 취소 여부</div></div>
+   <div class="sm" style="margin-top:22px;color:var(--g6)">넷 다 <b>서버가 이미 알고 있는 값</b>입니다. 크리에이터에게 아무것도 묻지 않고 목록을 만들 수 있습니다.</div>
+ </div></div>
+
+ <div class="bx" style="left:680px;top:440px;width:1140px;height:538px"><div style="padding:26px 30px;height:100%">
+   <div class="cap">DECISION TABLE · 어떤 미디어가 목록에 뜨는가</div>
+   <div class="tr hd" style="height:38px;margin-top:13px">
+     <div style="width:170px">교환권 · 요청</div><div style="flex:1">미디어 상태</div>
+     <div style="width:130px">지급 여부</div><div style="width:150px">판정</div><div style="width:210px">화면</div>
+   </div>
+   <div class="tr" style="height:60px">
+     <div class="k" style="width:170px">베이직</div><div style="flex:1">등록 때 지정된 미디어가 이미 연결됨</div>
+     <div style="width:130px">미지급</div><div style="width:150px"><span class="cp s on">교체 가능</span></div>
+     <div style="width:210px">연결하기</div>
+   </div>
+   <div class="tr" style="height:60px">
+     <div class="k" style="width:170px">베이직</div><div style="flex:1">〃</div>
+     <div style="width:130px"><b style="color:#111">지급 완료</b></div><div style="width:150px"><span class="cp s no">잠김</span></div>
+     <div style="width:210px">디지털 굿즈 보기</div>
+   </div>
+   <div class="tr mk" style="height:60px">
+     <div class="k" style="width:170px">퍼스널</div><div style="flex:1">media_type 이 <b style="color:#111">NULL</b></div>
+     <div style="width:130px">미지급</div><div style="width:150px"><span class="cp s on">연결 가능</span></div>
+     <div style="width:210px">연결하기 · 연결 시 퍼스널로 확정</div>
+   </div>
+   <div class="tr mk" style="height:60px">
+     <div class="k" style="width:170px">퍼스널</div><div style="flex:1">media_type 이 <b style="color:#111">이미 퍼스널</b></div>
+     <div class="dim" style="width:130px">무관</div><div style="width:150px"><span class="cp s no">불가</span></div>
+     <div style="width:210px"><b style="color:#111">목록에 뜨지 않음</b></div>
+   </div>
+   <div class="tr" style="height:60px">
+     <div class="k" style="width:170px">커스텀</div><div style="flex:1">디지털 굿즈 관리에 등록된 미디어</div>
+     <div style="width:130px">미지급</div><div style="width:150px"><span class="cp s on">연결 가능</span></div>
+     <div style="width:210px">연결하기 → 전송 확인</div>
+   </div>
+   <div class="tr" style="height:60px;border-bottom:0">
+     <div class="k" style="width:170px">전체</div><div style="flex:1">무관</div>
+     <div style="width:130px"><b style="color:#111">주문 취소</b></div><div style="width:150px"><span class="cp s no">불가</span></div>
+     <div style="width:210px">버튼 비활성</div>
+   </div>
+
+   <div style="display:flex;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)">
+     <div style="width:170px"><div class="cap">네 번째 행이 핵심</div></div>
+     <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1);line-height:1.6">이미 퍼스널로 쓰인 미디어는 <b style="color:#111">에러를 띄우는 게 아니라 후보 목록에서 빠집니다.</b> 크리에이터는 고를 수 없다는 사실조차 알 필요가 없고, 오배송은 화면에서 발생 자체가 불가능해집니다.</div>
+   </div>
+ </div></div>
+
+ <div class="pgn">CS 15</div>
+</div></div></div>
+
+
+<!-- ══ CS 16 · 정산 설계 ① ══ -->
+<div class="wrap" id="cs-16"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">정산 설계 ①</div><div class="ten">Revenue Registration</div>
+ <div class="hl">저장했다고<br>정산 대상이 되지 않습니다</div>
+ <div class="ds">정산 정보는 운영자 승인을 거쳐야 효력이 생깁니다. 저장 후 "완료"만 띄우면 크리에이터는 <b>지급일이 되어서야</b> 자기가 대상이 아니었다는 걸 알게 됩니다. 그래서 입력 상태와 승인 상태를 화면에서 분리했습니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:880px;height:538px"><div style="padding:26px 30px;height:100%">
+   <div class="cap">SETTLEMENT INFO · 사업자 유형 3분기</div>
+   <div style="display:flex;gap:8px;margin-top:13px">
+     <span class="cp s" style="flex:1;justify-content:center">개인</span>
+     <span class="cp s" style="flex:1;justify-content:center">개인사업자</span>
+     <span class="cp s on" style="flex:1;justify-content:center">법인사업자</span>
+   </div>
+   <div class="tr hd" style="height:36px;margin-top:16px">
+     <div style="width:140px">입력 블록</div><div style="flex:1">항목</div><div style="width:110px">개인</div><div style="width:110px">사업자</div>
+   </div>
+   <div class="tr" style="height:74px">
+     <div class="k" style="width:140px">신청자 정보</div>
+     <div style="flex:1">이름 · 국적 · 거주 국가 · 전화번호 · 이메일<br>법인명 · 사업자 번호 · 주소</div>
+     <div style="width:110px"><span class="cp s">5</span></div><div style="width:110px"><span class="cp s on">8</span></div>
+   </div>
+   <div class="tr" style="height:52px">
+     <div class="k" style="width:140px">정산 계좌</div>
+     <div style="flex:1">은행 · 계좌 번호 · 예금주 명</div>
+     <div style="width:110px"><span class="cp s">3</span></div><div style="width:110px"><span class="cp s">3</span></div>
+   </div>
+   <div class="tr" style="height:66px;border-bottom:0">
+     <div class="k" style="width:140px">인증</div>
+     <div style="flex:1">통장 사본 · 사업자 등록증<br><span style="color:var(--g9)">jpeg · png · pdf · 15MB 이하</span></div>
+     <div style="width:110px"><span class="cp s">1</span></div><div style="width:110px"><span class="cp s on">2</span></div>
+   </div>
+   <div style="display:flex;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)">
+     <div style="width:140px"><div class="cap">미성년자</div></div>
+     <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1);line-height:1.6">보호자 동의서가 필수입니다. 개인은 본인 인증을, 사업자는 서류를 씁니다 — <b style="color:#111">돈을 받을 자격</b>을 확인하는 단계라 유형마다 검증 수단이 다릅니다.</div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:1000px;top:440px;width:820px;height:268px"><div class="pd">
+   <div class="cap">상태를 둘로 나눈 뒤</div>
+   <div style="margin-top:15px">
+     <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)">
+       <span class="cp s" style="width:120px;justify-content:center">미입력</span>
+       <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1)">수익 창출 시작하기 버튼 노출</div></div>
+     <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)">
+       <span class="cp s" style="width:120px;justify-content:center">입력 완료</span>
+       <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1)">＂심사 중＂ 표시 · <b style="color:#111">아직 정산 대상 아님을 명시</b></div></div>
+     <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)">
+       <span class="cp s" style="width:120px;justify-content:center">반려</span>
+       <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1)">사유 노출 · <b style="color:#111">해당 필드만 재입력</b></div></div>
+     <div style="display:flex;align-items:center;gap:10px;padding:8px 0">
+       <span class="cp s on" style="width:120px;justify-content:center">승인 완료</span>
+       <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1)">이때부터 정산 대상 · 정산 내역 노출</div></div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:1000px;top:720px;width:820px;height:258px"><div class="pd">
+   <div class="cap">업로드에서 막히는 경우</div>
+   <div style="margin-top:12px">
+     <div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px solid var(--line)">
+       <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1)">권한 거부</div><span class="cp s">설정 이동 안내 후 재시도</span></div>
+     <div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px solid var(--line)">
+       <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1)">용량 초과</div><span class="cp s">업로드 전 차단 · 압축 안내</span></div>
+     <div style="display:flex;align-items:center;padding:5px 0">
+       <div style="flex:1;font-size:12.5px;font-weight:600;color:var(--g1)">형식 불일치</div><span class="cp s">jpeg · png · pdf 외 거부</span></div>
+   </div>
+   <div class="sm" style="margin-top:12px;color:var(--g6)">서류 업로드는 실패 경로가 성공 경로보다 많습니다. 스펙 보드에서 <b>예외 케이스 칸을 비우지 못하게</b> 한 이유가 이런 화면 때문입니다.</div>
+ </div></div>
+
+ <div class="pgn">CS 16</div>
+</div></div></div>
+
+<!-- ══ CS 17 · 정산 설계 ② ══ -->
+<div class="wrap" id="cs-17"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">정산 설계 ②</div><div class="ten">Settlement Cycle</div>
+ <div class="hl">0원이 나오는 이유가<br>셋입니다</div>
+ <div class="ds">정산 금액이 0원으로 보이는 경우가 셋인데, 크리에이터가 해야 할 일은 각각 다릅니다. 같은 0원으로 두면 <b>기다리면 되는 사람과 지금 뭘 해야 하는 사람</b>이 구분되지 않습니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:1050px;height:538px"><div style="padding:26px 30px;height:100%">
+   <div class="cap">WHY ZERO · 0원의 세 가지 이유</div>
+   <div class="tr hd" style="height:36px;margin-top:13px">
+     <div style="width:230px">사유</div><div style="flex:1">화면에 쓰는 문구</div><div style="width:220px">크리에이터가 할 일</div>
+   </div>
+   <div class="tr" style="height:74px">
+     <div class="k" style="width:230px">정산 정보 미승인</div>
+     <div style="flex:1">정산 정보가 심사 중입니다<br><span style="color:var(--g9)">정산금은 쌓이고 다음 회차로 이월</span></div>
+     <div style="width:220px"><span class="cp s on">기다리거나 보완</span></div>
+   </div>
+   <div class="tr" style="height:74px">
+     <div class="k" style="width:230px">전월 거래 0원</div>
+     <div style="flex:1">이번 달 정산 대상 거래가 없습니다<br><span style="color:var(--g9)">인보이스 미생성</span></div>
+     <div style="width:220px"><span class="cp s">없음</span></div>
+   </div>
+   <div class="tr" style="height:74px;border-bottom:0">
+     <div class="k" style="width:230px">지원금 미달</div>
+     <div style="flex:1">선지급 지원금에 아직 못 미칩니다<br><span style="color:var(--g9)">0원 인보이스 · 미달분 이월</span></div>
+     <div style="width:220px"><span class="cp s">없음 · 계약 확인</span></div>
+   </div>
+   <div style="display:flex;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)">
+     <div style="width:180px"><div class="cap">한 줄을 세 줄로</div></div>
+     <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">개발 입장에서는 "금액 0이면 0원 표시" 한 줄이면 끝납니다. 세 사유를 분기하면 <b style="color:#111">상태를 세 개 더 내려받아야</b> 합니다. 그만큼을 더 들인 이유는, 0원 문의가 CS에서 가장 답하기 어려운 문의였기 때문입니다.</div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:1170px;top:440px;width:650px;height:220px"><div style="padding:22px 30px">
+   <div class="cap">정산 대상 조건 · 둘 다 필요</div>
+   <div style="display:flex;gap:10px;margin-top:14px;align-items:stretch">
+     <div style="flex:1;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:14px 16px">
+       <div style="font-size:13.5px;font-weight:700;color:#111">① 승인된 채널</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:7px;line-height:1.5">운영자 승인을 받은 정산 정보</div>
+     </div>
+     <div style="width:28px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--g9)">＋</div>
+     <div style="flex:1;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:14px 16px">
+       <div style="font-size:13.5px;font-weight:700;color:#111">② 0원 초과</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:7px;line-height:1.5">전월 판매 수익이 0원을 넘을 것</div>
+     </div>
+   </div>
+   <div class="sm" style="margin-top:12px;color:var(--g6)">주문 단위로 판정하므로 <b>한 주문의 상품이 전부 구매 확정</b>이어야 합니다.</div>
+ </div></div>
+
+ <div class="bx" style="left:1170px;top:672px;width:650px;height:178px"><div style="padding:20px 30px">
+   <div class="cap">SETTLEMENT CYCLE</div>
+   <div style="display:flex;align-items:center;margin-top:16px">
+     <div style="flex:1;text-align:center">
+       <div style="font-size:14px;font-weight:700;color:#111">당월 1일~말일</div>
+       <div style="font-size:11px;color:var(--g6);font-weight:500;margin-top:5px">판매 발생</div></div>
+     <div class="arrow" style="width:26px">▶</div>
+     <div style="flex:1;text-align:center">
+       <div style="font-size:14px;font-weight:700;color:#111">익월 1일</div>
+       <div style="font-size:11px;color:var(--g6);font-weight:500;margin-top:5px">금액 확정</div></div>
+     <div class="arrow" style="width:26px">▶</div>
+     <div style="flex:1;text-align:center">
+       <div style="font-size:14px;font-weight:700;color:#111">익월 20일 이후</div>
+       <div style="font-size:11px;color:var(--g6);font-weight:500;margin-top:5px">계좌 송금</div></div>
+   </div>
+   <div class="sm" style="margin-top:12px;color:var(--g6)"><b>구매 확정된 주문만</b> 대상이라, 배송이 다음 달로 넘어가면 정산도 한 달 밀립니다.</div>
+ </div></div>
+
+ <div class="bx" style="left:1170px;top:862px;width:650px;height:116px"><div style="padding:18px 30px">
+   <div class="cap">제품 밖의 문제를 안으로 들였습니다</div>
+   <div style="font-size:12.5px;font-weight:600;color:var(--g1);line-height:1.55;margin-top:10px">판매가 일정 규모를 넘으면 <b style="color:#111">사업자 등록과 통신판매업 신고</b>가 필요해지는데 크리에이터 대부분이 이 기준을 모릅니다. 기준과 절차를 가이드로 만들어 스튜디오에서 바로 닿게 했습니다.</div>
+ </div></div>
+
+ <div class="pgn">CS 17</div>
+</div></div></div>
+
+<!-- ══ CS 18 · 확장 ══ -->
+<div class="wrap" id="cs-18"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">확장</div><div class="ten">Collection · Gacha · Live</div>
+ <div class="hl">셋 다 따라야 할 규칙이<br>먼저 있었습니다</div>
+ <div class="ds">세 기능 모두 우리가 정할 수 있는 것보다 <b>따라야 하는 것이 먼저</b> 있었습니다. 컬렉션은 디지털 굿즈 구조를, 가챠는 확률 고지 의무를, 방송 연동은 방송 소프트웨어의 규격을 그대로 받았습니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:1720px;height:306px"><div style="padding:24px 30px">
+   <div class="cap">따른 규칙과, 그래서 화면이 한 일</div>
+   <div style="display:flex;gap:14px;margin-top:16px;align-items:stretch">
+     <div class="rise" style="animation-delay:.1s;flex:1;border:1px solid var(--line);border-radius:3px;overflow:hidden">
+       <div style="background:var(--bg);padding:12px 18px;border-bottom:1px solid var(--line)">
+         <div style="font-size:15px;font-weight:700;color:#111">컬렉션</div>
+         <div style="font-size:11px;color:var(--g6);font-weight:600;margin-top:4px">따른 규칙 · 겉면과 원본의 분리</div></div>
+       <div style="padding:14px 18px">
+         <div style="font-size:12.5px;font-weight:600;color:var(--g1);line-height:1.6">미보유 노출 <b style="color:#111">숨김 · 블러 · 흑백</b> 셋을 모두 겉면에만 적용해 구현했습니다.</div>
+         <div style="font-size:12px;color:var(--g6);font-weight:500;line-height:1.55;margin-top:10px">등록된 컬렉션이 있으면 메뉴를 끌 수 없습니다 — 끄는 순간 구매자가 모은 카드의 진열장이 사라지기 때문입니다.</div>
+       </div>
+     </div>
+     <div class="rise" style="animation-delay:.22s;flex:1;border:1px solid var(--line);border-radius:3px;overflow:hidden">
+       <div style="background:var(--bg);padding:12px 18px;border-bottom:1px solid var(--line)">
+         <div style="font-size:15px;font-weight:700;color:#111">가챠</div>
+         <div style="font-size:11px;color:var(--g6);font-weight:600;margin-top:4px">따른 규칙 · 확률 고지 의무</div></div>
+       <div style="padding:14px 18px">
+         <div style="font-size:12.5px;font-weight:600;color:var(--g1);line-height:1.6">확률은 <b style="color:#111">잠그는 것이 기능</b>입니다. 등록 시 합계 100%를 검증하고 시작 후 수정을 막습니다.</div>
+         <div style="display:flex;align-items:center;gap:5px;margin-top:10px;flex-wrap:wrap">
+           <span class="cp s">판매 정보</span><span class="arrow" style="width:auto">▸</span>
+           <span class="cp s">가챠권</span><span class="arrow" style="width:auto">▸</span>
+           <span class="cp s">등급 · 확률 · 리워드</span></div>
+         <div style="font-size:12px;color:var(--g6);font-weight:500;line-height:1.55;margin-top:10px">종류를 크리에이터 가챠와 버디 오리지널로 나눠 <b style="color:#111">정산 규칙이 갈리게</b> 했습니다.</div>
+       </div>
+     </div>
+     <div class="rise" style="animation-delay:.34s;flex:1;border:1px solid var(--edge);background:var(--tint);border-radius:3px;overflow:hidden">
+       <div style="background:var(--lime);padding:12px 18px">
+         <div style="font-size:15px;font-weight:700;color:#111">방송 연동</div>
+         <div style="font-size:11px;color:#5F6E1E;font-weight:600;margin-top:4px">따른 규칙 · 브라우저 소스 규격</div></div>
+       <div style="padding:14px 18px">
+         <div style="font-size:12.5px;font-weight:600;color:var(--g1);line-height:1.6">시청자를 앱으로 찾아 들어오게 하면 흐름이 끊깁니다. 방송 화면에 바로 얹는 <b style="color:#111">위젯 4종</b>을 스튜디오에서 만들게 했습니다.</div>
+         <div style="display:flex;gap:5px;margin-top:10px;flex-wrap:wrap">
+           <span class="cp s">판매 QR</span><span class="cp s">리액션</span><span class="cp s">룰렛</span><span class="cp s on">대리 가챠</span></div>
+         <div style="font-size:12px;color:var(--g6);font-weight:500;line-height:1.55;margin-top:10px">위치 · 크기는 크리에이터가 자기 방송 도구에서 정합니다.</div>
+       </div>
+     </div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:100px;top:760px;width:846px;height:218px"><div style="padding:22px 30px">
+   <div class="cap">메뉴를 가로지르는 설정 둘</div>
+   <div style="display:flex;align-items:center;gap:7px;margin-top:12px;flex-wrap:wrap">
+     <span class="cp s">판매 관리 · QR 열</span><span style="color:var(--g9);font-size:12px">＝</span>
+     <span class="cp s">방송 연동 · 판매 QR</span>
+   </div>
+   <div style="display:flex;align-items:center;gap:7px;margin-top:8px;flex-wrap:wrap">
+     <span class="cp s">가챠 관리 · 대리 가챠 허용</span><span class="arrow" style="width:auto">▸</span>
+     <span class="cp s on">방송 연동 · 대리 가챠 위젯</span>
+   </div>
+   <div style="font-size:12.5px;font-weight:600;color:var(--g1);line-height:1.55;margin-top:13px">둘 다 <b style="color:#111">한 메뉴에서 정한 값이 다른 메뉴의 화면을 바꿉니다.</b> QR은 방송 직전 상품이 자주 바뀌어 판매 목록에도 열을 냈고, 대리 가챠는 허용 여부가 가챠 등록에서 정해져야 위젯이 뜹니다.</div>
+ </div></div>
+
+ <div class="bx" style="left:974px;top:760px;width:846px;height:218px"><div style="padding:22px 30px">
+   <div class="cap">룰렛은 가챠와 반대로 만들었습니다</div>
+   <div style="display:flex;gap:12px;margin-top:13px">
+     <div style="flex:1;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:12px 15px">
+       <div style="font-size:12.5px;font-weight:700;color:#111">가챠 · 확률 고정</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.5">유료 · 고지 의무 있음<br>재고가 줄어도 확률 불변</div>
+     </div>
+     <div style="flex:1;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:12px 15px">
+       <div style="font-size:12.5px;font-weight:700;color:#111">룰렛 · 확률 재분배</div>
+       <div style="font-size:11.5px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.5">무상 · 고지 의무 없음<br>당첨 항목은 0%로 내리고 재분배</div>
+     </div>
+   </div>
+   <div style="font-size:12.5px;font-weight:600;color:var(--g1);line-height:1.6;margin-top:13px">같은 확률 기능인데 규칙이 정반대입니다. <b style="color:#111">지켜야 할 법이 있느냐</b>가 갈랐습니다.</div>
+ </div></div>
+
+ <div class="pgn">CS 18</div>
+</div></div></div>
+
+<!-- ══ CS 19 · 회고 ══ -->
+<div class="wrap" id="cs-19"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">회고</div><div class="ten">Retrospective</div>
+ <div class="hl">문구로 막으려던 것을<br>구조로 옮긴 프로젝트였습니다</div>
+ <div class="ds">스튜디오는 지표가 잘 잡히지 않는 제품입니다. 대신 <b>어떤 문의가 들어오는가</b>가 바뀌는 것으로 설계가 통했는지를 봤습니다.</div>
+
+ <div class="bx" style="left:100px;top:440px;width:846px;height:538px"><div class="pd">
+   <div class="cap">확인된 것</div>
+   <div style="margin-top:14px">
+     <div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)">
+       <div style="font-size:12px;font-weight:700;color:var(--g9);width:26px;flex:none">01</div>
+       <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">자동 전이를 기본으로 두니 <b style="color:#111">방치된 주문이 멈추지 않습니다.</b> 며칠 접속하지 않아도 구매자 쪽 흐름이 계속 굴러갑니다.</div>
+     </div>
+     <div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)">
+       <div style="font-size:12px;font-weight:700;color:var(--g9);width:26px;flex:none">02</div>
+       <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">삭제를 막고 상태 셋을 준 뒤 <b style="color:#111">"왜 안 지워지냐"가 "어떤 걸 눌러야 하냐"로</b> 바뀌었습니다. 같은 문의량이어도 답하기 쉬운 문의가 됐습니다.</div>
+     </div>
+     <div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)">
+       <div style="font-size:12px;font-weight:700;color:var(--g9);width:26px;flex:none">03</div>
+       <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">퍼스널 미디어 1:1 고정으로 오배송이 <b style="color:#111">구조적으로 불가능</b>해졌습니다. 검수로 막을 일을 데이터 제약으로 옮긴 사례입니다.</div>
+     </div>
+     <div style="display:flex;gap:14px;padding:14px 0">
+       <div style="font-size:12px;font-weight:700;color:var(--g9);width:26px;flex:none">04</div>
+       <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">메뉴가 다섯에서 아홉으로 늘 때까지 <b style="color:#111">등록 화면을 새로 만들지 않았습니다.</b> 공통 골격 ＋ 세 자리 분기가 일곱 타입까지 버텼습니다.</div>
+     </div>
+   </div>
+ </div></div>
+
+ <div class="bx" style="left:974px;top:440px;width:846px;height:538px"><div class="pd">
+   <div class="cap">아직 모르는 것</div>
+   <div style="margin-top:14px">
+     <div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)">
+       <div style="font-size:12px;font-weight:700;color:var(--g9);width:26px;flex:none">01</div>
+       <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">문의 유형이 바뀐 건 관찰했지만 <b style="color:#111">건수가 줄었는지는 수치로 확인하지 못했습니다.</b> CS 채널이 분리돼 집계 기준을 맞추지 못했습니다.</div>
+     </div>
+     <div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)">
+       <div style="font-size:12px;font-weight:700;color:var(--g9);width:26px;flex:none">02</div>
+       <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">자동 전이 시간값 <b style="color:#111">2일과 24시간이 적절한지</b>는 검증하지 못했습니다. 초기에 정한 값을 그대로 쓰고 있고, 수동 변경 비율을 계측하면 답이 나올 자리입니다.</div>
+     </div>
+     <div style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)">
+       <div style="font-size:12px;font-weight:700;color:var(--g9);width:26px;flex:none">03</div>
+       <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">방송 연동은 <b style="color:#111">브라우저 소스 설정에서 얼마나 이탈하는지</b> 모릅니다. 스튜디오 밖에서 일어나는 일이라 계측 지점이 없습니다.</div>
+     </div>
+     <div style="display:flex;gap:14px;padding:14px 0">
+       <div style="font-size:12px;font-weight:700;color:var(--g9);width:26px;flex:none">04</div>
+       <div style="flex:1;font-size:13px;font-weight:600;color:var(--g1);line-height:1.6">메뉴가 아홉 개가 됐습니다. <b style="color:#111">신규 크리에이터가 어디서 멈추는지</b>는 온보딩 계측을 붙이지 않아 아직 답하지 못합니다.</div>
+     </div>
+   </div>
+ </div></div>
+
+ <div class="pgn">CS 19</div>
+</div></div></div>
+
+<script>
+function vw(){return document.documentElement.clientWidth||window.innerWidth;}
+function post(){try{parent.postMessage({type:'deck:height',deck:'cs',
+  height:document.documentElement.scrollHeight},'*');}catch(e){}}
+function fit(){var s=Math.min(vw()/1920,1);
+document.querySelectorAll('.stage').forEach(function(e){e.style.setProperty('--s',s)});
+document.querySelectorAll('.wrap').forEach(function(e){e.style.height=(1080*s)+'px'});
+post();}
+fit();window.addEventListener('resize',fit);window.addEventListener('load',fit);
+if(window.ResizeObserver){new ResizeObserver(fit).observe(document.documentElement);}
+if(location.hash){var t=document.querySelector(location.hash);
+  if(t)setTimeout(function(){t.scrollIntoView();},60);}
+window.addEventListener('message',function(e){
+  if(e.data&&e.data.type==='deck:goto'){var el=document.getElementById(e.data.id);
+    if(el)el.scrollIntoView({behavior:'smooth'});}});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+ if(e.isIntersecting){e.target.classList.add('play');io.unobserve(e.target);}});},{threshold:.25});
+document.querySelectorAll('.fr').forEach(function(f){io.observe(f)});
+</script>
+</body>
+</html>
