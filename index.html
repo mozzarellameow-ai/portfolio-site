@@ -391,6 +391,10 @@ body.locked{overflow:hidden}
 .v-inner{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(14px,2vw,28px)}
 .viewer.wide .v-scroll{padding-left:0;padding-right:0}
 .viewer.wide .v-inner{max-width:none}
+/* 넓은 페인에서도 글은 읽기 좋은 폭을 유지하고, 화면 캡처만 폭을 다 쓴다 */
+.viewer.wide .v-inner .proj-doc{max-width:none;padding:0 clamp(20px,4vw,44px)}
+.viewer.wide .v-inner .proj-doc>:not(figure){max-width:42em}
+.viewer.wide .v-inner .proj-doc figure{margin-left:0;margin-right:0}
 .v-inner img{width:100%;display:block;border:1px solid var(--line);background:var(--pane)}
 .v-inner iframe{width:100%;aspect-ratio:16/9;border:1px solid var(--line);background:var(--pane)}
 .v-inner iframe.embed-frame{aspect-ratio:auto;display:block;width:100%;border:0;background:none}
@@ -1715,6 +1719,12 @@ body.editing .row-head{cursor:default}
       desc:'팬 창작자 굿즈 커머스와 커뮤니티 플랫폼. 상품·판매·정산·채팅·미디어 전 도메인의 정책과 화면을 설계해 창작자가 수익과 관계를 예측할 수 있게 만들었습니다.',
       tags:['Commerce','Settlement','Back-office'],
       embed:'works/vuddy-embed.html', cover:'images/vuddy-cover.jpg' },
+    { title:'Vuddy 크리에이터 스튜디오', note:'백오피스 · 판매·주문·제작·정산',
+      desc:'크리에이터가 굿즈를 등록하고 팔고 정산받는 백오피스 전체. 실물·디지털·가챠로 갈리는 판매 유형마다 상태와 예외를 어디까지 다르게 둘지가 설계의 핵심이었습니다.',
+      tags:['Back-office','Commerce','Settlement'],
+      cover:'images/studio-cover.jpg', wide:true,
+      body:'<p>크리에이터가 굿즈를 등록하고 팔고 정산받는 <b>백오피스 전체</b>를 설계했습니다. 판매 유형이 실물·디지털·가챠로 갈리고 각각 제작과 배송 경로가 달라서, 메뉴를 나누는 일보다 <b>유형별로 상태와 예외를 어디까지 다르게 둘지</b> 정하는 일이 더 컸습니다.</p><h5>메뉴 구조</h5><table><tr><th>메뉴</th><th>역할</th></tr><tr><td>마이 채널</td><td>채널 생성과 프로필 — 입력값이 서비스의 크리에이터 소개 페이지로 그대로 나감</td></tr><tr><td>디지털 굿즈 관리</td><td>미디어 원본 등록과 버디 카드 제작(타입·배경 삭제·필터·요소 추가·미리보기)</td></tr><tr><td>판매 관리</td><td>실물 / 디지털(베이직) / 디지털(커스텀) 3종의 판매 등록과 현황</td></tr><tr><td>가챠 관리</td><td>가챠권 등록, 등급·확률·리워드 구성, 대리 가챠 허용 설정</td></tr><tr><td>컬렉션 관리</td><td>카드 묶음 단위 구성</td></tr><tr><td>주문 관리</td><td>실물 / 디지털(베이직) / 디지털(커스텀) / 가챠권 유형별 주문</td></tr><tr><td>제작 요청 관리</td><td>베이직 / 퍼스널 / 커스텀 제작 요청 처리</td></tr><tr><td>수익 관리</td><td>정산 정보 입력과 승인, 정산 대상 판정</td></tr><tr><td>방송 연동 관리</td><td>판매 QR · 리액션 · 룰렛 · 대리가챠 위젯 송출</td></tr></table><figure><img src="images/studio/studio-order.jpg" alt="주문 관리 화면" loading="lazy"><figcaption>주문 관리 — 유형별 메뉴가 갈리고, 검색·상태 필터·CSV 내려받기가 공통으로 붙습니다</figcaption></figure><h5>주문을 건이 아니라 아이템 단위로</h5><p>한 번의 주문에 상품 세 개가 담겼다면 주문 목록에 <b>세 줄</b>이 뜹니다. 주문 건 단위로 묶으면 화면은 깔끔하지만, 상품마다 제작·배송·취소가 따로 움직이는 구조에서는 어느 상품이 어디까지 갔는지 알 수 없게 됩니다. 정산도 상품 단위로 끊기기 때문에 <b>행을 늘리고 대신 상태를 정확히 보는 쪽</b>을 택했습니다.</p><h5>취소 가능한 구간을 시간으로 고정</h5><p>결제 완료 상태는 <b>2일 뒤 자동으로 상품 준비중으로 넘어갑니다.</b> 그 전까지는 구매자도 크리에이터도 취소할 수 있고, 넘어간 뒤에는 구매자 취소가 막힙니다. 크리에이터가 제작을 시작한 뒤에 취소가 들어오면 손실이 생기는데, \'제작 시작\'은 시스템이 알 수 없는 시점이라 <b>시간으로 경계를 대신 그었습니다.</b></p><figure><img src="images/studio/studio-sell-physical.jpg" alt="실물 판매 관리 화면" loading="lazy"><figcaption>판매 관리 — 판매 상태 6종과 노출 On/Off를 따로 둬 &lsquo;파는 중인가&rsquo;와 &lsquo;보이는가&rsquo;를 분리했습니다</figcaption></figure><h5>제작 요청 — 세 갈래로 나눈 이유</h5><table><tr><th>분류</th><th>처리 방식</th></tr><tr><td>베이직</td><td>판매 등록 때 지정한 미디어가 자동 연결. 지급 전까지만 교체 가능</td></tr><tr><td>퍼스널</td><td>요청을 보고 미디어를 1:1로 연결. <b>한 번 연결되면 다른 교환권에 재사용 불가</b></td></tr><tr><td>커스텀</td><td>고객이 쓴 요구사항을 읽고 제작해 전송</td></tr></table><p>퍼스널을 재사용 못 하게 막은 게 핵심입니다. 맞춤 제작이라고 해놓고 같은 파일이 여러 명에게 가면 상품 설명이 거짓이 되기 때문입니다. 베이직은 반대로 자동 연결해 손이 가지 않게 했습니다.</p><figure><img src="images/studio/studio-production.jpg" alt="제작 요청 관리 화면" loading="lazy"><figcaption>제작 요청 관리 — 지급 상태에 따라 버튼이 [연결하기] / [디지털 굿즈 보기]로 갈립니다</figcaption></figure><h5>가챠 — 확률을 고정값으로</h5><p>가챠 등록은 판매 정보 → 가챠권 → 구성(등급·확률·리워드) 순서로 진행됩니다. 확률은 등록 시점에 입력한 값으로 고정하고, 크리에이터 가챠와 계약 기반 <b>버디 오리지널 가챠</b>를 종류로 나눠 정산 규칙이 갈리도록 했습니다. 대리 가챠 허용 여부도 여기서 정해져 방송 위젯과 연결됩니다.</p><figure><img src="images/studio/studio-gacha.jpg" alt="가챠 관리 화면" loading="lazy"><figcaption>가챠 관리 — 등급과 확률, 리워드, 배송지까지 한 흐름에서 구성합니다</figcaption></figure><h5>방송을 판매 도구로</h5><p>라이브 중에 시청자가 앱을 찾아 들어오게 하면 흐름이 끊깁니다. 그래서 크리에이터가 방송 화면에 직접 띄울 수 있는 <b>판매 QR · 리액션 · 룰렛 · 대리가챠 위젯</b>을 스튜디오에서 생성하도록 했습니다. 룰렛은 확률을, 리액션은 문구와 재고 문구를 직접 설정합니다.</p><figure><img src="images/studio/studio-broadcast.jpg" alt="방송 연동 관리 화면" loading="lazy"><figcaption>방송 연동 관리 — OBS에 얹는 위젯을 스튜디오에서 만들고 설정합니다</figcaption></figure><h5>정산 — 두 조건과 사업자 3분기</h5><p>정산 대상은 <b>정산 정보가 승인된 채널</b>이면서 <b>정산 금액이 0원을 넘는</b> 경우로 한정했고, 구매 확정된 주문만 대상에 넣었습니다. 이번 달 수익은 다음 달 20일 이후 지급됩니다. 입력 항목은 개인 · 개인사업자 · 법인사업자로 나뉘고 사업자는 등록증과 통장 사본을 함께 받습니다.</p><p>판매가 일정 규모를 넘으면 사업자 등록과 통신판매업 신고가 필요해지는데, 크리에이터 대부분이 이 기준을 모릅니다. 그래서 <b>기준과 절차를 가이드로 따로 만들어</b> 스튜디오에서 바로 닿게 했습니다.</p><figure><img src="images/studio/studio-revenue.jpg" alt="수익 관리 화면" loading="lazy"><figcaption>수익 관리 — 정산 정보 입력과 승인 상태를 한 화면에서 확인합니다</figcaption></figure><h5>남은 화면</h5><figure><img src="images/studio/studio-digital-goods.jpg" alt="디지털 굿즈 관리 화면" loading="lazy"><figcaption>디지털 굿즈 관리 — 원본 등록과 버디 카드 제작</figcaption></figure><figure><img src="images/studio/studio-channel.jpg" alt="마이 채널 화면" loading="lazy"><figcaption>마이 채널 — 여기 입력한 내용이 서비스의 크리에이터 소개로 나갑니다</figcaption></figure><p class="src">화면은 Vuddy 크리에이터 가이드에 공개된 것이며, 표시된 수치와 구매자명은 더미 데이터입니다.</p>',
+      imgs:[] },
     { title:'세포 마켓 — 2차 창작자 도입', note:'PM · 정책 설계 · 채널 · 정산',
       desc:'크리에이터 IP를 활용해 팬이 직접 상품을 만들어 파는 2차 창작 오픈마켓. IP 권한 구조부터 입점 심사, 정산 분기, 구매자 보호까지 신뢰가 필요한 지점을 설계했습니다.',
       tags:['Marketplace','Back-office','Settlement'],
@@ -1764,12 +1774,12 @@ body.editing .row-head{cursor:default}
       }; })(i));
       reel.appendChild(b);
 
-      /* 케이스 본문 — embed 항목은 뷰어가 따로 있으므로 스킵 */
-      if (!item.embed) {
+      /* 케이스 본문 — embed 항목은 뷰어가 따로 있으므로 스킵.
+         body 가 마크업이면 그대로, 한 문단이면 <p> 로 감싼다 */
+      if (!item.embed && item.body) {
         var doc = document.createElement('div');
         doc.className = 'proj-doc'; doc.hidden = true;
-        doc.innerHTML = '<p>' + item.body + '</p>' +
-          '<ul class="did"><li>페이지 이미지를 넣으면 이 아래에 이어서 표시</li></ul>';
+        doc.innerHTML = /^\s*</.test(item.body) ? item.body : '<p>' + item.body + '</p>';
         doc.dataset.pf = i;
         document.getElementById('pfDocs').appendChild(doc);
       }
@@ -1801,7 +1811,7 @@ body.editing .row-head{cursor:default}
 
     returnDoc();
     /* 임베드 덱과 슬라이드 이미지는 전체 페이지라 넓은 페인이 필요하다 */
-    var isFullPage = !!item.embed || !!(item.imgs && item.imgs.length);
+    var isFullPage = !!item.embed || !!item.wide || !!(item.imgs && item.imgs.length);
     viewer.classList.toggle('wide', isFullPage);
     if (item.embed){
       var minW = 1200, w = viewer.clientWidth;
@@ -1821,16 +1831,20 @@ body.editing .row-head{cursor:default}
         f.style.height = '1200px';
         vInner.appendChild(f);
       }
-    } else if (item.imgs && item.imgs.length){
-      vInner.innerHTML = item.imgs.map(function(src, n){
-        return '<img src="' + src + '" alt="' + item.title + ' ' + (n+1) + '페이지" loading="lazy">';
-      }).join('');
     } else {
+      /* 본문과 이미지를 함께 쓸 수 있다 — 설명을 먼저 두고 그 아래에 화면을 잇는다 */
       var doc = document.querySelector('#pfDocs .proj-doc[data-pf="' + i + '"]');
       if (doc){
         docHome = document.getElementById('pfDocs');
         doc.hidden = false;
         vInner.appendChild(doc);
+      }
+      if (item.imgs && item.imgs.length){
+        var wrap = document.createElement('div');
+        wrap.innerHTML = item.imgs.map(function(src, n){
+          return '<img src="' + src + '" alt="' + item.title + ' ' + (n+1) + '페이지" loading="lazy">';
+        }).join('');
+        while (wrap.firstChild) vInner.appendChild(wrap.firstChild);
       }
     }
     viewer.classList.add('on');
