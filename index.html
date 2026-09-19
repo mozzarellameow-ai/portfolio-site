@@ -1727,10 +1727,6 @@ body.editing .row-head{cursor:default}
       desc:'크리에이터가 굿즈를 등록하고 팔고 정산받는 백오피스 전체. 실물·디지털·가챠로 갈리는 판매 유형마다 상태와 예외를 어디까지 다르게 둘지가 설계의 핵심이었습니다.',
       tags:['Back-office','Commerce','Settlement'],
       embed:'works/studio-embed.html', cover:'images/studio-cover.jpg' },
-    { title:'세포 마켓 — 2차 창작자 도입', note:'PM · 정책 설계 · 채널 · 정산',
-      desc:'크리에이터 IP를 활용해 팬이 직접 상품을 만들어 파는 2차 창작 오픈마켓. IP 권한 구조부터 입점 심사, 정산 분기, 구매자 보호까지 신뢰가 필요한 지점을 설계했습니다.',
-      tags:['Marketplace','Back-office','Settlement'],
-      embed:'works/sepo-embed.html', cover:'images/sepo1.jpg' },
     { title:'신규 AI 서비스 — 런칭 기획', note:'Samantha · 0140am · 2026', role:'Product Manager',
       desc:'대화는 사라져도 관계는 남도록 설계한 AI 인터랙티브 스토리 채팅 서비스. 기억·컨텍스트 정책, 콘텐츠 검열, 크리에이터 생태계까지 0-to-1 전 과정을 기획했습니다.',
       tags:['AI','LLM','Safety Policy'],
@@ -1788,7 +1784,7 @@ body.editing .row-head{cursor:default}
     });
   }
 
-  /* 임베드 케이스 덱(Samantha/세포마켓/Vuddy)이 자기 콘텐츠 높이를 postMessage로 알려주면 iframe 높이에 반영 */
+  /* 임베드 케이스 덱이 자기 콘텐츠 높이를 postMessage로 알려주면 iframe 높이에 반영 */
   window.addEventListener('message', function(e){
     if (!e.data || e.data.type !== 'deck:height') return;
     var f = document.getElementById('embedFrame');
