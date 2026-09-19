@@ -59,11 +59,7 @@ svg{display:block;overflow:visible}
 .dm{font:600 13px Pretendard,sans-serif}
 .dn{font:700 16px Pretendard,sans-serif}
 
-@media (prefers-reduced-motion:no-preference){
- .rv{opacity:0;transform:translateY(18px);
-  transition:opacity .62s cubic-bezier(.2,.7,.25,1),transform .62s cubic-bezier(.2,.7,.25,1)}
- .rv.on{opacity:1;transform:none}
-}
+.bfill,.bfy,.arc,.dot,.rise,.tlfill,.rv{animation:none!important;opacity:1!important;transform:none!important;transition:none!important;stroke-dashoffset:var(--do)!important}
 </style></head>
 <body>
 
@@ -592,21 +588,6 @@ if(location.hash){var t=document.querySelector(location.hash);
 window.addEventListener('message',function(e){
   if(e.data&&e.data.type==='deck:goto'){var el=document.getElementById(e.data.id);
     if(el)el.scrollIntoView({behavior:'smooth'});}});
-(function(){
-  var rv=[].slice.call(document.querySelectorAll('.rv'));
-  if(!('IntersectionObserver' in window)||
-     window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    rv.forEach(function(e){e.classList.add('on')});return;}
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(en){
-      if(!en.isIntersecting)return;
-      var fr=en.target.closest('.fr');
-      var sib=fr?[].slice.call(fr.querySelectorAll('.rv')):[en.target];
-      setTimeout(function(){en.target.classList.add('on')},Math.max(0,sib.indexOf(en.target))*100);
-      io.unobserve(en.target);
-    });
-  },{threshold:.1,rootMargin:'0px 0px -6% 0px'});
-  rv.forEach(function(e){io.observe(e)});
-})();
+
 </script>
 </body></html>
