@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>딜리버스 백오피스 — 분류 클러스터 플랜 · 실시간 관제</title>
+<meta name="description" content="TMS 화면 정의서 SPEC-CLS-001~009 · SPEC-MON-001~008을 그대로 구현한 동작 프로토타입">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+ --pri:#1E4FA3;--pri-w:#ECF2FB;--pri-d:#173D7F;--edge:#B9CDEB;
+ --bg:#F4F6F9;--line:#E3E7EE;--ink:#10151D;--g1:#3A4351;--g6:#767F8D;--g9:#A5ACB8;
+ --ok:#1E9E86;--warn:#C8811F;--neg:#C24A3A;--neg-w:#FDF2F0;--neg-e:#E6C4BD;
+ --nav:#101722;--r:6px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ font-variant-numeric:tabular-nums;font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
+
+/* ── 레이아웃 ── */
+.app{display:grid;grid-template-columns:214px 1fr;height:100vh;min-height:0}
+.col{display:flex;flex-direction:column;min-width:0;min-height:0}
+
+/* ── 좌측 네비 ── */
+.nav{background:var(--nav);color:#fff;overflow:auto;padding-bottom:20px}
+.brand{display:flex;align-items:center;gap:9px;padding:15px 16px;border-bottom:1px solid #1E2836}
+.brand i{width:20px;height:20px;border-radius:5px;background:linear-gradient(135deg,#3B7BD8,#1E4FA3);display:block}
+.brand b{font-size:13.5px;font-weight:700;letter-spacing:-.01em}
+.nav .grp{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#5B6779;padding:16px 16px 6px}
+.nav a{display:flex;align-items:center;justify-content:space-between;gap:6px;
+ padding:7px 16px;font-size:12.5px;color:#9CA7B6;text-decoration:none;font-weight:500;border-left:2px solid transparent}
+.nav a:hover{color:#E6EBF2;background:#161F2C}
+.nav a[aria-current=page]{color:#fff;font-weight:700;background:#17233A;border-left-color:#3B7BD8}
+.nav a em{font-style:normal;font-size:9.5px;font-weight:700;color:#5B6779;
+ border:1px solid #2A3648;border-radius:3px;padding:0 4px}
+
+/* ── 상단바 ── */
+.top{height:54px;flex:none;background:#fff;border-bottom:1px solid var(--line);
+ display:flex;align-items:center;gap:12px;padding:0 18px}
+.top .srch{flex:1;max-width:430px;height:32px;border:1px solid var(--line);border-radius:var(--r);
+ background:var(--bg);display:flex;align-items:center;padding:0 11px;color:var(--g9);font-size:12.5px;font-weight:500}
+.top .env{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--warn);
+ border:1px solid #EBD6B4;background:#FDF7EC;border-radius:4px;padding:3px 7px}
+.top .who{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--g1)}
+.top .who i{width:26px;height:26px;border-radius:50%;background:var(--pri-w);border:1px solid var(--edge);
+ display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:700;color:var(--pri)}
+.ghost{background:#fff;border:1px solid var(--line);border-radius:var(--r);
+ padding:5px 10px;font-size:12px;font-weight:700;color:var(--g1)}
+.ghost:hover{border-color:var(--edge);color:var(--pri)}
+
+/* ── 본문 ── */
+.view{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 336px;min-height:0}
+.view[hidden]{display:none}
+.work{display:flex;flex-direction:column;gap:11px;min-width:0;min-height:0;padding:15px 16px;overflow:auto}
+.side{border-left:1px solid var(--line);background:#fff;padding:15px;overflow:auto;min-height:0}
+.hd{display:flex;align-items:baseline;gap:9px}
+.hd h1{margin:0;font-size:17px;font-weight:800;letter-spacing:-.02em}
+.hd .sub{font-size:11.5px;font-weight:600;color:var(--g9)}
+.hd .rt{margin-left:auto;display:flex;gap:6px;align-items:center}
+
+/* ── KPI ── */
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
+.kpi .k{font-size:10.5px;font-weight:700;letter-spacing:.07em;color:var(--g6);
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .v{font-size:22px;font-weight:800;letter-spacing:-.025em;margin-top:3px}
+.kpi .s{font-size:10.5px;font-weight:600;color:var(--g9);margin-top:1px}
+.kpi.alert{border-color:var(--neg-e);background:var(--neg-w)}
+.kpi.alert .k,.kpi.alert .v{color:var(--neg)}
+.kpi.live .v{transition:color .16s}
+.kpi.flash .v{color:var(--pri)}
+
+/* ── 지도 ── */
+.map{position:relative;flex:1;min-height:320px;border:1px solid var(--line);
+ border-radius:var(--r);overflow:hidden;background:#E9EEF3}
+.map svg.base{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.toolbar{position:absolute;left:9px;top:9px;z-index:4;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.chip{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:5px;
+ padding:5px 9px;font-size:11.5px;font-weight:700;color:var(--g1);white-space:nowrap}
+.chip:hover{border-color:var(--edge)}
+.chip[aria-pressed=true]{background:var(--pri);border-color:var(--pri);color:#fff}
+.chip[disabled]{opacity:.45;cursor:not-allowed}
+.toolbar .dv{width:1px;height:18px;background:var(--edge);margin:0 3px}
+.hint{position:absolute;left:9px;bottom:9px;z-index:4;background:rgba(255,255,255,.94);
+ border:1px solid var(--line);border-radius:5px;padding:5px 9px;font-size:11px;font-weight:600;color:var(--g6)}
+.selcard{position:absolute;right:9px;top:9px;z-index:4;width:196px;background:#fff;
+ border:1px solid var(--edge);border-radius:var(--r);padding:10px 11px;box-shadow:0 6px 18px rgba(16,21,29,.1)}
+.selcard .t{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--pri)}
+.selcard .row{display:flex;justify-content:space-between;font-size:11.5px;font-weight:600;color:var(--g1);margin-top:5px}
+.selcard .row b{font-weight:800;color:var(--ink)}
+.selcard .tn{font-size:10.5px;font-weight:700;color:#3B7BD8;margin-top:2px;letter-spacing:.01em}
+.vtx{cursor:grab}
+.vtx:active{cursor:grabbing}
+.map.locked .vtx{cursor:not-allowed}
+
+/* ── 사이드 ── */
+.sh{font-size:11px;font-weight:800;letter-spacing:.09em;color:var(--g6);
+ display:flex;align-items:center;justify-content:space-between;margin:0 0 8px}
+.sh + .sh{margin-top:16px}
+.facets{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.facet{border:1px solid var(--line);border-radius:var(--r);padding:8px 9px;max-height:150px;overflow:auto}
+.facet .fh{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--g6);margin-bottom:5px}
+.facet label{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--g1);padding:3px 0;cursor:pointer}
+.facet input{accent-color:var(--pri);margin:0;width:13px;height:13px}
+.btns{display:flex;gap:5px;flex-wrap:wrap}
+.btn{background:var(--pri);border:1px solid var(--pri);color:#fff;border-radius:5px;
+ padding:6px 11px;font-size:12px;font-weight:700}
+.btn:hover{background:var(--pri-d)}
+.btn.g{background:#fff;color:var(--g1);border-color:var(--line)}
+.btn.g:hover{border-color:var(--edge);color:var(--pri)}
+.btn.d{background:#fff;color:var(--neg);border-color:var(--neg-e)}
+.btn[disabled]{opacity:.42;cursor:not-allowed;background:#fff;color:var(--g9);border-color:var(--line)}
+.tbl{width:100%;border-collapse:collapse;font-size:11.5px}
+.tbl th{text-align:left;font-size:10px;font-weight:800;letter-spacing:.07em;color:var(--g6);
+ border-bottom:1px solid var(--ink);padding:0 6px 5px 0;white-space:nowrap}
+.tbl td{border-bottom:1px solid var(--line);padding:7px 6px 7px 0;font-weight:600;color:var(--g1);white-space:nowrap}
+.tbl tr[data-in="1"] td{background:var(--pri-w)}
+.tbl tr.sel td{box-shadow:inset 2px 0 0 var(--pri)}
+.tbl tbody tr{cursor:pointer}
+.tbl tbody tr:hover td{background:#F7F9FC}
+.pill{display:inline-block;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:800;letter-spacing:.02em}
+.pill.Black{background:#22252B;color:#fff}
+.pill.Blue{background:#3B7BD8;color:#fff}
+.pill.White{background:#fff;color:var(--g1);border:1px solid var(--g9)}
+.pill.Yellow{background:#F0B429;color:#3B2B00}
+.note{font-size:10.5px;font-weight:600;color:var(--g9);margin-top:7px;line-height:1.55}
+.banner{display:flex;align-items:flex-start;gap:8px;border:1px solid var(--edge);background:var(--pri-w);
+ border-radius:var(--r);padding:9px 11px;font-size:11.5px;font-weight:600;color:var(--pri-d);line-height:1.55}
+.banner b{font-weight:800}
+.banner.done{border-color:#BFE3DA;background:#EDF8F5;color:#12715F}
+
+/* ── 관제 ── */
+.drvs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.drv{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:9px 11px;text-align:left;width:100%}
+.drv:hover{border-color:var(--edge)}
+.drv[aria-selected=true]{border-color:var(--pri);box-shadow:inset 2px 0 0 var(--pri)}
+.drv.alert{border-color:var(--neg-e);background:var(--neg-w)}
+.drv .n{display:flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700;color:var(--ink)}
+.drv .n em{font-style:normal;background:#22252B;color:#fff;border-radius:2px;padding:1px 5px;font-size:9.5px;font-weight:800}
+.drv .n em.Blue{background:#3B7BD8}
+.drv .n u{text-decoration:none;background:#F5C84B;color:#3B2B00;border-radius:2px;padding:1px 5px;font-size:9.5px;font-weight:800}
+.drv .n span{margin-left:auto;font-size:10.5px;font-weight:700;color:var(--g9)}
+.drv .d{font-size:11px;font-weight:600;color:var(--g6);margin-top:4px}
+.drv.alert .d{color:var(--neg);font-weight:700}
+.drv .f{display:flex;border-top:1px solid #F0F2F6;margin-top:7px;padding-top:6px;gap:8px}
+.drv .f div{flex:1}
+.drv .f .fk{font-size:9.5px;font-weight:700;letter-spacing:.05em;color:var(--g9)}
+.drv .f .fv{font-size:12px;font-weight:800;color:var(--g1);margin-top:1px}
+.drv.alert .f .fv{color:var(--neg)}
+.unit{border-bottom:1px solid var(--line);padding:8px 0}
+.unit .u1{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;color:var(--g1)}
+.unit .u1 b{flex:1;font-weight:700}
+.unit .st{font-size:10.5px;font-weight:800}
+.unit .st.done{color:var(--ok)}
+.unit .st.ing{color:var(--pri)}
+.unit .st.fail{color:var(--neg)}
+.box{border:1px solid var(--edge);background:#F6F9FE;border-radius:5px;padding:8px 9px;margin-top:6px;
+ font-size:11px;font-weight:600;color:var(--g1);line-height:1.6}
+.box .door{font-weight:800;color:var(--pri)}
+.box .mask{font-weight:800;color:var(--g9);letter-spacing:.08em}
+.box .why{font-size:10px;font-weight:700;color:var(--g9);margin-top:4px}
+.log{font-size:11px;font-weight:600;color:var(--g1);border-bottom:1px solid var(--line);padding:7px 0}
+.log span{color:var(--g9);font-weight:700;font-size:10px;display:block}
+
+/* ── 모달 ── */
+.scrim{position:fixed;inset:0;background:rgba(16,21,29,.42);display:grid;place-items:center;z-index:40}
+.scrim[hidden]{display:none}
+.modal{width:420px;max-width:92vw;background:#fff;border-radius:9px;padding:20px 22px;
+ box-shadow:0 22px 60px rgba(16,21,29,.3)}
+.modal h2{margin:0;font-size:16px;font-weight:800;letter-spacing:-.02em}
+.modal p{margin:6px 0 0;font-size:12px;font-weight:600;color:var(--g6);line-height:1.6}
+.modal label{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--g6);margin:16px 0 6px}
+.modal select,.modal textarea{width:100%;border:1px solid var(--line);border-radius:5px;padding:8px 10px;
+ font:inherit;font-size:12.5px;font-weight:600;color:var(--ink);background:#fff;resize:none}
+.modal select:focus,.modal textarea:focus{outline:2px solid var(--edge);outline-offset:-1px}
+.modal .req{font-size:11px;font-weight:700;color:var(--neg);margin-top:7px}
+.modal .act{display:flex;justify-content:flex-end;gap:7px;margin-top:18px}
+
+/* ── 스펙 패널 ── */
+.specbtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--ink);color:#fff;
+ border:0;border-radius:20px;padding:9px 15px;font-size:12px;font-weight:700;box-shadow:0 6px 18px rgba(16,21,29,.25)}
+.spec{position:fixed;top:0;right:0;bottom:0;width:390px;max-width:92vw;background:#fff;z-index:41;
+ border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(16,21,29,.14);display:flex;flex-direction:column}
+.spec[hidden]{display:none}
+.spec .sph{display:flex;align-items:center;gap:8px;padding:15px 18px;border-bottom:1px solid var(--line)}
+.spec .sph h2{margin:0;font-size:14.5px;font-weight:800;letter-spacing:-.02em}
+.spec .spb{overflow:auto;padding:6px 18px 24px}
+.spec .it{border-bottom:1px solid var(--line);padding:11px 0;display:flex;gap:11px}
+.spec .it .id{font-size:10px;font-weight:800;color:var(--pri);width:104px;flex:none;letter-spacing:.02em;padding-top:2px}
+.spec .it .tx{font-size:12px;font-weight:600;color:var(--g1);line-height:1.6}
+.spec .it .tx b{color:var(--ink);font-weight:800}
+.spec .it .tx i{display:block;font-style:normal;font-size:10.5px;font-weight:700;color:var(--g9);margin-top:3px}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,14px);z-index:50;
+ background:var(--ink);color:#fff;border-radius:7px;padding:9px 15px;font-size:12px;font-weight:600;
+ opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media(max-width:1200px){
+ .view{grid-template-columns:minmax(0,1fr) 290px}
+ .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:900px){
+ .app{grid-template-columns:1fr}
+ .nav{display:none}
+ .view{grid-template-columns:minmax(0,1fr)}
+ .side{border-left:0;border-top:1px solid var(--line)}
+ .view{display:block;overflow:auto}
+ .work{overflow:visible}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+ <aside class="nav">
+  <div class="brand"><i></i><b>딜리버스 백오피스</b></div>
+  <div class="grp">배차 관리</div>
+  <a href="#" data-todo>배차 신청 조회</a>
+  <a href="#" data-todo>배차 목록</a>
+  <div class="grp">배송 관리</div>
+  <a href="#" data-go="monitor">실시간 관제</a>
+  <a href="#" data-todo>업무 현황 조회</a>
+  <a href="#" data-todo>물품 현황 조회</a>
+  <div class="grp">분류 · 경로</div>
+  <a href="#" data-go="cluster" aria-current="page">분류 클러스터 플랜</a>
+  <a href="#" data-todo>P · D 경로</a>
+  <div class="grp">주소 관리</div>
+  <a href="#" data-todo>대량 주소 업데이트</a>
+  <a href="#" data-todo>주소 조회</a>
+  <div class="grp">자원 관리</div>
+  <a href="#" data-todo>라이더 관리</a>
+  <a href="#" data-todo>유닛 관리</a>
+ </aside>
+
+ <div class="col">
+  <header class="top">
+   <div class="srch">박스 ID, 송장번호, 기사명, 연락처로 검색</div>
+   <span class="env">PROTOTYPE · 더미 데이터</span>
+   <div class="who"><i>신</i>신지혜 · 운영기획</div>
+  </header>
+
+  <!-- ══════════ 분류 클러스터 플랜 ══════════ -->
+  <section class="view" id="v-cluster">
+   <div class="work">
+    <div class="hd">
+     <h1>분류 클러스터 플랜</h1>
+     <span class="sub">SCR-CLS-001 · 2026-09-21 회차 3</span>
+     <div class="rt"><button class="ghost" id="cls-reset">초기 상태로</button></div>
+    </div>
+
+    <div id="cls-banner"></div>
+
+    <div class="kpis" id="cls-kpis"></div>
+
+    <div class="map" id="cls-map">
+     <div class="toolbar">
+      <button class="chip" data-layer="zip" aria-pressed="false">집코드 레이어</button>
+      <button class="chip" data-layer="region" aria-pressed="false">지역 레이어</button>
+      <button class="chip" data-layer="coord" aria-pressed="false">좌표 레이어</button>
+      <span class="dv"></span>
+      <button class="chip" id="cls-edit" aria-pressed="true">폴리곤 편집</button>
+     </div>
+     <svg class="base" id="cls-svg" viewBox="0 0 700 400" preserveAspectRatio="xMidYMid meet"></svg>
+     <div class="selcard" id="cls-sel"></div>
+     <div class="hint" id="cls-hint">꼭지점을 끌어 경계를 고칩니다 · 레이어는 기본으로 모두 꺼져 있습니다</div>
+    </div>
+   </div>
+
+   <aside class="side">
+    <div class="sh">범위 좁히기</div>
+    <div class="facets">
+     <div class="facet"><div class="fh">SECTOR ID</div><div id="fc-sector"></div></div>
+     <div class="facet"><div class="fh">SECTOR ALIAS</div><div id="fc-alias"></div></div>
+    </div>
+    <div class="note" id="fc-note"></div>
+
+    <div class="sh">플랜 <span class="btns">
+      <button class="btn g" id="b-merge" disabled>플랜 병합</button>
+      <button class="btn g" id="b-move" disabled>물품 이동</button>
+      <button class="btn" id="b-create">+ 플랜 생성</button></span></div>
+    <table class="tbl">
+     <thead><tr><th style="width:38%">CLUSTER ID</th><th>CHUTE</th><th>ITEMS</th><th>TYPE</th></tr></thead>
+     <tbody id="cls-rows"></tbody>
+    </table>
+    <div class="note" id="cls-count"></div>
+    <div class="note">CLUSTER ID는 소터의 CHUTE ID와 1:1입니다. 지도에서 바꾼 경계가 물품이 떨어지는 슈트를 바꿉니다.</div>
+   </aside>
+  </section>
+
+  <!-- ══════════ 실시간 관제 ══════════ -->
+  <section class="view" id="v-monitor" hidden>
+   <div class="work">
+    <div class="hd">
+     <h1>실시간 관제</h1>
+     <span class="sub">SCR-MON-001 · 마지막 수신 12초 전</span>
+     <div class="rt"><button class="ghost" id="mon-recenter">지도 초기화</button></div>
+    </div>
+
+    <div class="kpis" id="mon-kpis"></div>
+
+    <div class="map" id="mon-map" style="min-height:250px;flex:none;height:250px">
+     <svg class="base" id="mon-svg" viewBox="0 0 700 250" preserveAspectRatio="xMidYMid meet"></svg>
+     <div class="hint">실선 = 실제 이동 · 점선 = 계획 경로 · 이탈은 두 선이 갈라져 보입니다</div>
+    </div>
+
+    <div class="hd" style="margin-top:2px">
+     <h1 style="font-size:14px">기사 조회</h1>
+     <div class="rt" id="mon-filter">
+      <button class="chip" data-f="all">전체</button>
+      <button class="chip" data-f="ing" aria-pressed="true">운행중</button>
+      <button class="chip" data-f="done">운행 완료</button>
+     </div>
+    </div>
+    <div class="drvs" id="mon-drvs"></div>
+   </div>
+
+   <aside class="side">
+    <div class="sh">기사 정보 <span class="note" style="margin:0">선택 고정</span></div>
+    <div id="mon-pin"></div>
+
+    <div class="sh">유닛 박스 <span class="btns">
+      <button class="btn g" data-act="reassign">기사 재배차</button></span></div>
+    <div id="mon-units"></div>
+
+    <div class="sh">변경 이력</div>
+    <div id="mon-log"><div class="note">아직 없습니다. 상태 변경과 재배차는 사유를 남겨야 처리됩니다.</div></div>
+   </aside>
+  </section>
+ </div>
+</div>
+
+<button class="specbtn" id="spec-open">스펙 대조 보기</button>
+
+<div class="spec" id="spec-panel" hidden>
+ <div class="sph"><h2>화면 정의서 대조</h2>
+  <button class="ghost" style="margin-left:auto" id="spec-close">닫기</button></div>
+ <div class="spb" id="spec-body"></div>
+</div>
+
+<div class="scrim" id="scrim" hidden>
+ <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
+  <h2 id="m-title">상태 변경</h2>
+  <p id="m-desc"></p>
+  <label for="m-reason">변경 사유 <span style="color:var(--neg)">필수</span></label>
+  <select id="m-reason"></select>
+  <label for="m-memo">메모 (선택)</label>
+  <textarea id="m-memo" rows="2" placeholder="분쟁 시 근거로 남습니다"></textarea>
+  <div class="req" id="m-req">사유를 고르기 전에는 처리할 수 없습니다.</div>
+  <div class="act">
+   <button class="btn g" id="m-cancel">취소</button>
+   <button class="btn" id="m-ok" disabled>처리</button>
+  </div>
+ </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){
+ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var nf=function(n){return n.toLocaleString('ko-KR')};
+
+var toastEl=$('#toast'),tt;
+function toast(m){toastEl.textContent=m;toastEl.classList.add('on');
+ clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('on')},2200)}
+
+/* ══════════════════════════════════════════════
+   1. 분류 클러스터 플랜  (SPEC-CLS-001 ~ 009)
+   ══════════════════════════════════════════════ */
+
+var TYPE={Black:{f:'#22252B',t:'#fff'},Blue:{f:'#3B7BD8',t:'#fff'},
+ White:{f:'#FFFFFF',t:'#22252B',s:'#8E9AAA'},Yellow:{f:'#F0B429',t:'#3B2B00'}};
+
+var CLUSTERS=[
+ {id:'C-서초A11',chute:'A11',sector:'서초',alias:'서초001',x:196,y:222,items:90,type:'Blue',cont:3},
+ {id:'C-서초A12',chute:'A12',sector:'서초',alias:'서초002',x:262,y:206,items:100,type:'Blue',cont:4},
+ {id:'C-서초A13',chute:'A13',sector:'서초',alias:'서초003',x:106,y:316,items:45,type:'Black',cont:2},
+ {id:'C-방배D02',chute:'D02',sector:'방배',alias:'방배001',x:238,y:276,items:78,type:'Blue',cont:3},
+ {id:'C-방배D03',chute:'D03',sector:'방배',alias:'방배002',x:150,y:124,items:33,type:'Yellow',cont:1},
+ {id:'C-강남B07',chute:'B07',sector:'강남',alias:'강남001',x:320,y:248,items:47,type:'Blue',cont:2},
+ {id:'C-강남B08',chute:'B08',sector:'강남',alias:'강남002',x:386,y:222,items:38,type:'White',cont:2},
+ {id:'C-강남B09',chute:'B09',sector:'강남',alias:'강남003',x:470,y:252,items:29,type:'Yellow',cont:1},
+ {id:'C-송파R33',chute:'C31',sector:'송파',alias:'송파001',x:410,y:300,items:61,type:'White',cont:3},
+ {id:'C-송파R34',chute:'C32',sector:'송파',alias:'송파002',x:300,y:322,items:55,type:'Blue',cont:2},
+ {id:'C-송파R35',chute:'C33',sector:'송파',alias:'송파003',x:352,y:150,items:44,type:'Black',cont:2},
+ {id:'C-잠실E01',chute:'E01',sector:'잠실',alias:'잠실001',x:524,y:150,items:38,type:'Black',cont:2},
+ {id:'C-잠실E02',chute:'E02',sector:'잠실',alias:'잠실002',x:592,y:176,items:42,type:'Black',cont:2},
+ {id:'C-잠실E03',chute:'E03',sector:'잠실',alias:'잠실003',x:620,y:310,items:51,type:'White',cont:2}
+];
+CLUSTERS.forEach(function(c,i){
+ c.tn=['2010349810'+(5920+i*37),'2010349810'+(5430+i*53)];
+});
+
+var POLY0=[[150,196],[438,178],[470,330],[196,352]];
+var S={poly:POLY0.map(function(p){return p.slice()}),
+ layers:{zip:false,region:false,coord:false},
+ edit:true,locked:false,sector:[],alias:[],row:null};
+
+var svg=$('#cls-svg'),mapEl=$('#cls-map');
+
+/* 지적도 느낌의 배경 — 같은 시드면 항상 같은 모양 */
+function blocks(w,h,seed,n){
+ var s=seed,rnd=function(){s=(s*1103515245+12345)%2147483648;return s/2147483648};
+ var o='<g fill="#E1E7EE">';
+ for(var i=0;i<n;i++){
+  var bw=16+rnd()*58,bh=12+rnd()*36,x=rnd()*(w-bw),y=rnd()*(h-bh);
+  o+='<rect x="'+x.toFixed(0)+'" y="'+y.toFixed(0)+'" width="'+bw.toFixed(0)
+   +'" height="'+bh.toFixed(0)+'" rx="2"/>';
+ }
+ return o+'</g>';
+}
+
+function inside(pt,poly){
+ var x=pt[0],y=pt[1],ok=false;
+ for(var i=0,j=poly.length-1;i<poly.length;j=i++){
+  var xi=poly[i][0],yi=poly[i][1],xj=poly[j][0],yj=poly[j][1];
+  if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi)) ok=!ok;
+ }
+ return ok;
+}
+function visible(c){
+ return (!S.sector.length||S.sector.indexOf(c.sector)>-1)
+     && (!S.alias.length ||S.alias.indexOf(c.alias)>-1);
+}
+function picked(){return CLUSTERS.filter(function(c){
+ return visible(c)&&inside([c.x,c.y],S.poly)})}
+
+/* ── SPEC-CLS-001 : 레이어는 기본 전부 꺼짐 ── */
+function layerSVG(){
+ var o='';
+ if(S.layers.coord){
+  o+='<g stroke="#C6D2DE" stroke-width="1" opacity=".9">';
+  for(var x=50;x<700;x+=50) o+='<path d="M'+x+',0 L'+x+',400"/>';
+  for(var y=50;y<400;y+=50) o+='<path d="M0,'+y+' L700,'+y+'"/>';
+  o+='</g><g fill="#93A2B3" font-size="8" font-weight="700">';
+  for(var x2=50;x2<700;x2+=100) o+='<text x="'+(x2+3)+'" y="12">127.0'+(x2/100)+'E</text>';
+  o+='</g>';
+ }
+ if(S.layers.zip){
+  var zips=[['M40,90 L200,70 L230,190 L70,210 Z','06541'],
+            ['M230,190 L200,70 L400,60 L430,180 Z','06612'],
+            ['M70,210 L230,190 L260,350 L100,368 Z','05510'],
+            ['M260,350 L230,190 L430,180 L460,340 Z','05836'],
+            ['M430,180 L400,60 L660,80 L668,230 Z','05288']];
+  o+='<g>';
+  zips.forEach(function(z){
+   o+='<path d="'+z[0]+'" fill="#3B7BD8" fill-opacity=".07" stroke="#9FBCE3" stroke-width="1.4"/>';
+  });
+  o+='</g><g fill="#7C93AE" font-size="9.5" font-weight="800">'
+   +'<text x="96" y="140">06541</text><text x="290" y="128">06612</text>'
+   +'<text x="128" y="290">05510</text><text x="318" y="278">05836</text>'
+   +'<text x="520" y="150">05288</text></g>';
+ }
+ if(S.layers.region){
+  o+='<g stroke="#8CA2BA" stroke-width="1.8" stroke-dasharray="9 6" fill="none">'
+   +'<path d="M255,0 L280,400"/><path d="M0,236 L700,214"/></g>'
+   +'<g fill="#667C94" font-size="11" font-weight="800" opacity=".85">'
+   +'<text x="120" y="40">서초구</text><text x="330" y="40">강남구</text>'
+   +'<text x="120" y="392">동작구</text><text x="330" y="392">송파구</text></g>';
+ }
+ return o;
+}
+
+function drawCluster(){
+ var pts=S.poly.map(function(p){return p.join(',')}).join(' ');
+ var sel=picked(),selIds={};
+ sel.forEach(function(c){selIds[c.id]=1});
+
+ var o='';
+ /* 배경 */
+ o+='<rect width="700" height="400" fill="#EDF1F5"/>';
+ o+=blocks(700,400,20210510,54);
+ o+='<path d="M486,296 q44,-42 100,-22 q30,46 -16,78 q-58,14 -84,-56 Z" fill="#D8E7D5"/>';
+ o+='<path d="M0,150 Q180,120 330,168 T700,140" stroke="#BFD4E6" stroke-width="17" fill="none"/>';
+ o+='<g stroke="#FCFDFE" stroke-width="7" fill="none" opacity=".95">'
+  +'<path d="M60,0 L110,400"/><path d="M240,0 L268,400"/><path d="M430,0 L446,400"/>'
+  +'<path d="M600,0 L618,400"/><path d="M0,60 L700,44"/><path d="M0,268 L700,286"/>'
+  +'<path d="M0,340 L700,352"/></g>'
+  +'<g stroke="#D4DCE5" stroke-width="1" fill="none">'
+  +'<path d="M60,0 L110,400"/><path d="M240,0 L268,400"/><path d="M430,0 L446,400"/>'
+  +'<path d="M600,0 L618,400"/><path d="M0,60 L700,44"/><path d="M0,268 L700,286"/>'
+  +'<path d="M0,340 L700,352"/></g>';
+ o+=layerSVG();
+
+ /* 폴리곤 */
+ o+='<polygon points="'+pts+'" fill="#E4564B" fill-opacity=".14" stroke="'
+  +(S.locked?'#1E9E86':'#D63B2E')+'" stroke-width="2.6" stroke-dasharray="'
+  +(S.locked?'0':'7 5')+'"/>';
+
+ /* SPEC-CLS-003 : 색=컨테이너 타입, 숫자=물품 수 */
+ CLUSTERS.forEach(function(c){
+  var vis=visible(c),t=TYPE[c.type];
+  o+='<g opacity="'+(vis?1:.18)+'">'
+   +'<circle cx="'+c.x+'" cy="'+c.y+'" r="'+(selIds[c.id]?14:12)+'" fill="'+t.f+'"'
+   +(t.s?' stroke="'+t.s+'" stroke-width="1.5"':'')
+   +(selIds[c.id]?' stroke="#fff" stroke-width="2.4"':'')+'/>'
+   +'<text x="'+c.x+'" y="'+(c.y+4)+'" text-anchor="middle" font-size="10.5" font-weight="800" fill="'
+   +t.t+'">'+c.items+'</text></g>';
+ });
+
+ /* 꼭지점 핸들 */
+ if(S.edit&&!S.locked){
+  S.poly.forEach(function(p,i){
+   o+='<circle class="vtx" data-i="'+i+'" cx="'+p[0]+'" cy="'+p[1]+'" r="8" '
+    +'fill="#fff" stroke="#D63B2E" stroke-width="2.6"/>';
+  });
+ }
+ svg.innerHTML=o;
+ paintSel(sel);
+ paintKpi(sel);
+ paintRows();
+}
+
+/* ── SPEC-CLS-004 : 선택 즉시 집계 + 송장번호 역추적 ── */
+function paintSel(sel){
+ var items=0,cont=0,tn=[];
+ sel.forEach(function(c){items+=c.items;cont+=c.cont;tn=tn.concat(c.tn)});
+ $('#cls-sel').innerHTML=
+  '<div class="t">POLYGON</div>'
+  +'<div class="row"><span>Sector</span><b>'+sel.length+'</b></div>'
+  +'<div class="row"><span>Shipping item</span><b>'+nf(items)+'</b></div>'
+  +'<div class="row"><span>Shipping Container</span><b>'+cont+'</b></div>'
+  +'<div class="t" style="margin-top:9px">TRACKINGNUMBER</div>'
+  +(tn.length?tn.slice(0,3).map(function(n){return '<div class="tn">'+n+'</div>'}).join('')
+    :'<div class="tn" style="color:var(--g9)">묶인 물품 없음</div>')
+  +(tn.length>3?'<div class="tn" style="color:var(--g9)">외 '+(tn.length-3)+'건</div>':'');
+}
+
+/* ── SPEC-CLS-005 : 상단 집계는 편집과 같은 트랜잭션에서 갱신 ── */
+function paintKpi(sel){
+ var all=CLUSTERS.filter(visible);
+ var allItems=all.reduce(function(a,c){return a+c.items},0);
+ var items=sel.reduce(function(a,c){return a+c.items},0);
+ var by={Black:0,Blue:0,White:0,Yellow:0};
+ sel.forEach(function(c){by[c.type]+=c.items});
+ var cards=[
+  ['선택 클러스터',sel.length,'조회 '+all.length+'개 중'],
+  ['선택 물품',nf(items),'조회 '+nf(allItems)+'건 중'],
+  ['BLACK',nf(by.Black),'컨테이너 타입'],
+  ['BLUE',nf(by.Blue),'컨테이너 타입'],
+  ['WHITE',nf(by.White),'컨테이너 타입'],
+  ['YELLOW',nf(by.Yellow),'컨테이너 타입']
+ ];
+ var box=$('#cls-kpis');
+ box.innerHTML=cards.map(function(c){
+  return '<div class="kpi live"><div class="k">'+c[0]+'</div><div class="v">'+c[1]
+   +'</div><div class="s">'+c[2]+'</div></div>'}).join('');
+ $$('.kpi',box).forEach(function(e){
+  e.classList.add('flash');setTimeout(function(){e.classList.remove('flash')},170)});
+}
+
+/* ── SPEC-CLS-007 : CLUSTER ID ↔ CHUTE ID 1:1 ── */
+function paintRows(){
+ var sel={};picked().forEach(function(c){sel[c.id]=1});
+ var list=CLUSTERS.filter(visible).sort(function(a,b){
+  return (sel[b.id]?1:0)-(sel[a.id]?1:0)||a.id.localeCompare(b.id)});
+ $('#cls-rows').innerHTML=list.map(function(c){
+  return '<tr data-id="'+c.id+'" data-in="'+(sel[c.id]?1:0)+'"'
+   +(S.row===c.id?' class="sel"':'')+'>'
+   +'<td><i style="display:inline-block;width:5px;height:5px;border-radius:50%;margin-right:7px;'
+   +'vertical-align:1px;background:'+(sel[c.id]?'var(--pri)':'transparent')+'"></i>'+c.id+'</td>'
+   +'<td>'+c.chute+'</td><td>'+c.items+'</td>'
+   +'<td><span class="pill '+c.type+'">'+c.type+'</span></td></tr>'}).join('');
+ $('#cls-count').textContent=list.length+' results · 폴리곤에 묶인 '+Object.keys(sel).length+'개';
+ var n=Object.keys(sel).length;
+ $('#b-merge').disabled=S.locked||n<2;
+ $('#b-move').disabled=S.locked||n<1;
+ $('#b-create').disabled=S.locked;
+}
+
+/* ── SPEC-CLS-006 : Sector ID · alias 다중 선택 ── */
+function buildFacets(){
+ var sec=[],ali=[];
+ CLUSTERS.forEach(function(c){
+  if(sec.indexOf(c.sector)<0)sec.push(c.sector);
+  if(ali.indexOf(c.alias)<0)ali.push(c.alias)});
+ function box(arr,key,el){
+  $(el).innerHTML=arr.map(function(v){
+   return '<label><input type="checkbox" data-k="'+key+'" value="'+v+'">'+v+'</label>'}).join('');
+ }
+ box(sec,'sector','#fc-sector');box(ali,'alias','#fc-alias');
+ $('.facets').addEventListener('change',function(e){
+  var i=e.target;if(!i.dataset.k)return;
+  var k=i.dataset.k,arr=S[k];
+  var at=arr.indexOf(i.value);
+  if(i.checked&&at<0)arr.push(i.value);
+  if(!i.checked&&at>-1)arr.splice(at,1);
+  S.row=null;drawCluster();noteFacet();
+ });
+ noteFacet();
+}
+function noteFacet(){
+ var n=S.sector.length+S.alias.length;
+ $('#fc-note').textContent=n
+  ? '선택 '+n+'개 · 지도와 아래 목록에 동시에 적용됩니다.'
+  : '아무것도 고르지 않으면 전체를 봅니다. 선택은 지도와 목록에 동시에 적용됩니다.';
+}
+
+/* ── SPEC-CLS-002 : 꼭지점 드래그 편집 (새로 그리지 않음) ── */
+var drag=null;
+function toSVG(ev){
+ var p=svg.createSVGPoint();
+ var t=ev.touches?ev.touches[0]:ev;
+ p.x=t.clientX;p.y=t.clientY;
+ var m=svg.getScreenCTM();
+ if(!m)return null;
+ var q=p.matrixTransform(m.inverse());
+ return [Math.max(4,Math.min(696,q.x)),Math.max(4,Math.min(396,q.y))];
+}
+function down(ev){
+ if(S.locked||!S.edit)return;
+ var t=ev.target;
+ if(!t.classList||!t.classList.contains('vtx'))return;
+ ev.preventDefault();
+ drag=+t.dataset.i;
+}
+function move(ev){
+ if(drag===null)return;
+ var q=toSVG(ev);if(!q)return;
+ ev.preventDefault();
+ S.poly[drag]=[Math.round(q[0]),Math.round(q[1])];
+ drawCluster();                     /* 지도 · 집계 · 목록을 같은 호출에서 갱신 */
+}
+function up(){drag=null}
+svg.addEventListener('mousedown',down);
+svg.addEventListener('touchstart',down,{passive:false});
+window.addEventListener('mousemove',move);
+window.addEventListener('touchmove',move,{passive:false});
+window.addEventListener('mouseup',up);
+window.addEventListener('touchend',up);
+
+$('.toolbar').addEventListener('click',function(e){
+ var b=e.target.closest('.chip');if(!b)return;
+ if(b.dataset.layer){
+  S.layers[b.dataset.layer]=!S.layers[b.dataset.layer];
+  b.setAttribute('aria-pressed',String(S.layers[b.dataset.layer]));
+  drawCluster();
+  var on=Object.keys(S.layers).filter(function(k){return S.layers[k]});
+  $('#cls-hint').textContent=on.length
+   ? '레이어 '+on.length+'개 켜짐 · 전부 켜면 판단이 어려워 기본값은 모두 꺼짐입니다'
+   : '꼭지점을 끌어 경계를 고칩니다 · 레이어는 기본으로 모두 꺼져 있습니다';
+ }
+ if(b.id==='cls-edit'){
+  if(S.locked){toast('확정된 플랜은 편집할 수 없습니다');return}
+  S.edit=!S.edit;b.setAttribute('aria-pressed',String(S.edit));drawCluster();
+ }
+});
+
+$('#cls-rows').addEventListener('click',function(e){
+ var tr=e.target.closest('tr');if(!tr)return;
+ S.row=(S.row===tr.dataset.id)?null:tr.dataset.id;
+ paintRows();
+ var c=CLUSTERS.filter(function(x){return x.id===S.row})[0];
+ if(c)toast(c.id+' → 슈트 '+c.chute+' · 물품 '+c.items+'건');
+});
+
+/* ── SPEC-CLS-008 / 009 : 확정 전에만 병합·이동, 생성은 소터 전송 ── */
+$('#b-merge').addEventListener('click',function(){
+ toast('선택한 '+picked().length+'개 플랜을 병합했습니다 (확정 전에만 가능)')});
+$('#b-move').addEventListener('click',function(){
+ toast('물품 이동 대상 '+picked().length+'개 플랜 · 확정 전에만 가능합니다')});
+$('#b-create').addEventListener('click',function(){
+ var sel=picked();
+ if(!sel.length){toast('폴리곤에 묶인 클러스터가 없습니다');return}
+ S.locked=true;
+ var items=sel.reduce(function(a,c){return a+c.items},0);
+ $('#cls-banner').innerHTML='<div class="banner done"><div>'
+  +'<b>PLAN-20260921-03 소터 전송 완료</b> · 클러스터 '+sel.length+'개 / 물품 '+nf(items)+'건<br>'
+  +'편집 창이 닫혔습니다. 이 시점부터 경계 수정 · 플랜 병합 · 물품 이동은 막힙니다.</div></div>';
+ $('#cls-hint').textContent='확정된 플랜입니다 · 편집은 다음 회차에 다시 열립니다';
+ drawCluster();
+ toast('소터로 전송했습니다 · 되돌리기는 여기서 끝납니다');
+});
+$('#cls-reset').addEventListener('click',function(){
+ S.poly=POLY0.map(function(p){return p.slice()});
+ S.locked=false;S.edit=true;S.row=null;
+ S.sector=[];S.alias=[];
+ $$('.facets input').forEach(function(i){i.checked=false});
+ $('#cls-edit').setAttribute('aria-pressed','true');
+ $('#cls-banner').innerHTML='';
+ $('#cls-hint').textContent='꼭지점을 끌어 경계를 고칩니다 · 레이어는 기본으로 모두 꺼져 있습니다';
+ noteFacet();drawCluster();
+});
+
+buildFacets();drawCluster();
+
+/* ══════════════════════════════════════════════
+   2. 실시간 관제  (SPEC-MON-001 ~ 008)
+   ══════════════════════════════════════════════ */
+
+var DRIVERS=[
+ {id:'B3094',name:'정지호',ph:'010-3224-2432',gr:'S',ty:'Black',veh:'자동차',dist:24.31,
+  done:24,total:44,el:'01:21:45',state:'ing',
+  plan:'M46,52 L150,74 L232,120 L318,152 L404,186',
+  act :'M46,52 L150,74 L232,120 L300,146',pos:[300,146]},
+ {id:'B2871',name:'김민호',ph:'010-1433-1393',gr:'B',ty:'Black',veh:'이륜차',dist:18.02,
+  done:30,total:57,el:'01:04:12',state:'ing',
+  plan:'M82,196 L178,180 L268,202 L356,190',
+  act :'M82,196 L178,180 L252,196',pos:[252,196]},
+ {id:'B3140',name:'박상훈',ph:'010-2020-1123',gr:'S',ty:'Blue',veh:'자동차',dist:27.63,
+  done:53,total:65,el:'02:08:30',state:'ing',
+  plan:'M420,44 L498,74 L556,118 L618,166',
+  act :'M420,44 L498,74 L546,108',pos:[546,108]},
+ {id:'B3301',name:'오경수',ph:'010-9906-3359',gr:'C',ty:'Blue',veh:'자동차',dist:31.08,
+  done:37,total:52,el:'02:41:08',state:'ing',late:22,
+  plan:'M132,118 L246,106 L352,92 L462,80',
+  act :'M132,118 L246,106 L318,158 L386,196',pos:[386,196]},
+ {id:'B2990',name:'이현우',ph:'010-7781-0042',gr:'A',ty:'Black',veh:'이륜차',dist:15.44,
+  done:61,total:61,el:'03:12:00',state:'done',
+  plan:'M520,196 L590,180 L646,150',act:'M520,196 L590,180 L646,150',pos:[646,150]},
+ {id:'B3155',name:'최다은',ph:'010-3311-8890',gr:'B',ty:'Blue',veh:'이륜차',dist:9.12,
+  done:12,total:40,el:'00:48:20',state:'ing',
+  plan:'M60,120 L118,146 L182,142',act:'M60,120 L104,138',pos:[104,138]}
+];
+
+var UNITS={
+ B3094:[
+  {id:'강남서초999-A24L',eta:'24:33',st:'done',addr:'서울특별시 송파구 도곡로 450, 101호',tn:'20103498105920',door:'#32058*'},
+  {id:'강남서초999-A25L',eta:'24:41',st:'ing', addr:'서울특별시 송파구 도곡로 450, 902호',tn:'20103498105430',door:'#11904*'},
+  {id:'강남서초999-A26L',eta:'25:02',st:'ing', addr:'서울특별시 강남구 논현로 32, 501호',tn:'20103498106118',door:'#77213*'},
+  {id:'강남서초999-A27L',eta:'25:20',st:'fail',addr:'서울특별시 강남구 논현로 32, 지하 1층',tn:'20103498106204',door:'#77213*'}
+ ]
+};
+function unitsOf(id){
+ if(UNITS[id])return UNITS[id];
+ var d=DRIVERS.filter(function(x){return x.id===id})[0],out=[],i;
+ var DONG=['강남구 논현로','송파구 도곡로','서초구 방배로'];
+ for(i=0;i<3;i++)out.push({id:d.id+'-U0'+(i+1),eta:'2'+(4+i)+':1'+i,
+  st:i===0?'done':'ing',addr:'서울특별시 '+DONG[i]+' '+(100+i*7)+', '+(i+2)+'0'+i+'호',
+  tn:'2010349810'+(7000+i*13),door:'#'+(20000+i*311)+'*'});
+ return out;
+}
+
+var M={filter:'ing',sel:'B3094',log:[]};
+var msvg=$('#mon-svg');
+
+/* ── SPEC-MON-001 : 개입 대상만 붉게 ── */
+function monKpi(){
+ var c=[['배송 대기','9,213',''],['배송 완료','8,540',''],['미배송','88','개입 대상'],
+        ['정상 운행','412',''],['운행 지연','23','개입 대상'],['평균 리드타임','4.2h','정차 시간 포함']];
+ $('#mon-kpis').innerHTML=c.map(function(k,i){
+  var al=(i===2||i===4)?' alert':'';
+  return '<div class="kpi'+al+'"><div class="k">'+k[0]+'</div><div class="v">'+k[1]
+   +'</div><div class="s">'+(k[2]||'&nbsp;')+'</div></div>'}).join('');
+}
+
+/* ── SPEC-MON-002 / 003 : 계획·실제 중첩, 지연은 색 + 라벨 ── */
+function monMap(){
+ var o='<rect width="700" height="250" fill="#EDF1F5"/>'
+  +blocks(700,250,20240202,42)
+  +'<path d="M0,96 Q190,70 340,110 T700,88" stroke="#BFD4E6" stroke-width="15" fill="none"/>'
+  +'<g stroke="#FCFDFE" stroke-width="6" fill="none" opacity=".95">'
+  +'<path d="M90,0 L124,250"/><path d="M300,0 L318,250"/><path d="M500,0 L516,250"/>'
+  +'<path d="M0,180 L700,196"/></g>'
+  +'<g stroke="#D4DCE5" stroke-width="1" fill="none">'
+  +'<path d="M90,0 L124,250"/><path d="M300,0 L318,250"/><path d="M500,0 L516,250"/>'
+  +'<path d="M0,180 L700,196"/></g>'
+  +'<g><circle cx="46" cy="52" r="7" fill="#22252B"/>'
+  +'<circle cx="46" cy="52" r="2.6" fill="#fff"/></g>';
+ DRIVERS.forEach(function(d){
+  var on=(M.sel===d.id),dim=on?1:(d.late?.92:.52);
+  var col=d.late?'#C24A3A':(d.state==='done'?'#1E9E86':'#3B58D4');
+  o+='<g opacity="'+dim+'">'
+   +'<path d="'+d.plan+'" stroke="#9AA8BC" stroke-width="2.2" stroke-dasharray="6 5" fill="none"'
+   +' stroke-linecap="round"/>'
+   +'<path d="'+d.act+'" stroke="'+col+'" stroke-width="3.4" fill="none"'
+   +' stroke-linecap="round" stroke-linejoin="round"/>'
+   +'<rect x="'+(d.pos[0]-7)+'" y="'+(d.pos[1]-6)+'" width="14" height="12" rx="2.5" fill="'+col+'"/>'
+   +'</g>';
+  if(d.late){
+   o+='<g><rect x="'+(d.pos[0]-14)+'" y="'+(d.pos[1]+9)+'" width="72" height="15" rx="3" fill="#C24A3A"/>'
+    +'<text x="'+(d.pos[0]+22)+'" y="'+(d.pos[1]+19.5)+'" text-anchor="middle" font-size="9.5"'
+    +' font-weight="800" fill="#fff">지연 '+d.late+'분</text></g>';
+  }
+ });
+ o+='<g fill="#7A8798" font-size="9" font-weight="700">'
+  +'<text x="30" y="44">허브 출발</text><text x="600" y="172">배송 완료</text></g>';
+ msvg.innerHTML=o;
+}
+
+/* ── SPEC-MON-004 / 005 : 기본 필터 운행중 · 처리·잔여·경과 한 줄 ── */
+function monList(){
+ var list=DRIVERS.filter(function(d){
+  return M.filter==='all'||(M.filter==='ing'?d.state==='ing':d.state==='done')});
+ $('#mon-drvs').innerHTML=list.map(function(d){
+  return '<button class="drv'+(d.late?' alert':'')+'" data-id="'+d.id+'"'
+   +' aria-selected="'+(M.sel===d.id)+'">'
+   +'<div class="n"><em class="'+d.ty+'">'+d.ty+'</em><u>'+d.gr+'</u>'+d.name
+   +' <span>'+d.ph+'</span></div>'
+   +'<div class="d">'+(d.late
+     ? '경로 이탈 · 예상 도착 '+d.late+'분 초과'
+     : '운행 거리 '+d.dist.toFixed(2)+'km · 기사 번호 '+d.id+' · '+d.veh)+'</div>'
+   +'<div class="f">'
+   +'<div><div class="fk">처리</div><div class="fv">'+d.done+'</div></div>'
+   +'<div><div class="fk">잔여</div><div class="fv">'+(d.total-d.done)+'</div></div>'
+   +'<div><div class="fk">경과</div><div class="fv">'+d.el+'</div></div>'
+   +'</div></button>'}).join('')
+  || '<div class="note">이 필터에 해당하는 기사가 없습니다.</div>';
+}
+
+/* ── SPEC-MON-006 / 007 : 선택 고정 · 출입 정보 마스킹 ── */
+function monSide(){
+ var d=DRIVERS.filter(function(x){return x.id===M.sel})[0];
+ if(!d){$('#mon-pin').innerHTML='<div class="note">기사를 고르면 여기에 고정됩니다.</div>';
+  $('#mon-units').innerHTML='';return}
+ $('#mon-pin').innerHTML='<div class="drv'+(d.late?' alert':'')+'" aria-selected="true">'
+  +'<div class="n"><em class="'+d.ty+'">'+d.ty+'</em><u>'+d.gr+'</u>'+d.name+'</div>'
+  +'<div class="d">'+d.ph+'<br>운행 거리 '+d.dist.toFixed(2)+'km · 기사 번호 '+d.id+'<br>운송 수단 '+d.veh+'</div>'
+  +'<div class="f"><div><div class="fk">처리</div><div class="fv">'+d.done+'</div></div>'
+  +'<div><div class="fk">잔여</div><div class="fv">'+(d.total-d.done)+'</div></div>'
+  +'<div><div class="fk">경과</div><div class="fv">'+d.el+'</div></div></div></div>';
+
+ $('#mon-units').innerHTML=unitsOf(d.id).map(function(u){
+  var lab={done:'배송 완료',ing:'배송중',fail:'미배송'}[u.st];
+  var open=(u.st==='ing');
+  return '<div class="unit"><div class="u1"><b>'+u.id+'</b><span>'+u.eta+'</span>'
+   +'<span class="st '+u.st+'">'+lab+'</span></div>'
+   +'<div class="box">주소 : '+esc(u.addr)+'<br>송장 번호 : '+u.tn+'<br>'
+   +'공동현관 출입 정보 : '+(open
+      ? '<span class="door">'+u.door+'</span>'
+      : '<span class="mask">#••••••</span>')+''
+   +'<div class="why">'+(open
+      ? '배송 단계에서만 열립니다'
+      : '완료 · 미배송 건은 보관 기간 정책에 따라 마스킹됩니다')+'</div>'
+   +'<div class="btns" style="margin-top:7px">'
+   +'<button class="btn g" data-act="status" data-u="'+u.id+'">상태 변경</button>'
+   +'<button class="btn g" data-act="photo">배송 완료 사진</button></div></div></div>'
+ }).join('');
+
+ $('#mon-log').innerHTML=M.log.length
+  ? M.log.map(function(l){return '<div class="log">'+esc(l.t)
+     +'<span>'+esc(l.r)+(l.m?' · '+esc(l.m):'')+' · '+l.at+'</span></div>'}).join('')
+  : '<div class="note">아직 없습니다. 상태 변경과 재배차는 사유를 남겨야 처리됩니다.</div>';
+}
+
+$('#mon-filter').addEventListener('click',function(e){
+ var b=e.target.closest('.chip');if(!b)return;
+ M.filter=b.dataset.f;
+ $$('.chip',this).forEach(function(c){c.setAttribute('aria-pressed',String(c===b))});
+ monList();
+});
+$('#mon-drvs').addEventListener('click',function(e){
+ var b=e.target.closest('.drv');if(!b)return;
+ M.sel=b.dataset.id;monList();monMap();monSide();
+});
+/* 지도 조작은 선택을 풀지 않습니다 (SPEC-MON-006) */
+$('#mon-recenter').addEventListener('click',function(){
+ monMap();toast('지도를 초기화했습니다 · 선택한 기사는 유지됩니다')});
+
+/* ── SPEC-MON-008 : 사유 없는 변경은 처리되지 않음 ── */
+var REASONS={
+ status:['고객 부재','주소 오류','파손 확인','수취 거부','출입 불가','기타'],
+ reassign:['경로 이탈','차량 고장','기사 요청','물량 초과','사고','기타']
+};
+var scrim=$('#scrim'),mOk=$('#m-ok'),mReason=$('#m-reason'),mMemo=$('#m-memo'),pending=null;
+function openModal(kind,target){
+ pending={kind:kind,target:target};
+ $('#m-title').textContent=kind==='status'?'배송 상태 변경':'기사 재배차';
+ $('#m-desc').textContent=kind==='status'
+  ? target+' 의 배송 상태를 바꿉니다.'
+  : (DRIVERS.filter(function(d){return d.id===M.sel})[0]||{}).name+' 기사의 잔여 물량을 다른 기사에게 넘깁니다.';
+ mReason.innerHTML='<option value="">— 사유를 고르세요 —</option>'
+  +REASONS[kind].map(function(r){return '<option>'+r+'</option>'}).join('');
+ mMemo.value='';mOk.disabled=true;$('#m-req').style.visibility='visible';
+ scrim.hidden=false;mReason.focus();
+}
+mReason.addEventListener('change',function(){
+ mOk.disabled=!mReason.value;
+ $('#m-req').style.visibility=mReason.value?'hidden':'visible';
+});
+$('#m-cancel').addEventListener('click',function(){scrim.hidden=true;pending=null});
+scrim.addEventListener('click',function(e){if(e.target===scrim){scrim.hidden=true;pending=null}});
+document.addEventListener('keydown',function(e){
+ if(e.key==='Escape'){if(!scrim.hidden){scrim.hidden=true;pending=null}
+  if(!$('#spec-panel').hidden)$('#spec-panel').hidden=true}});
+mOk.addEventListener('click',function(){
+ if(!pending||!mReason.value)return;
+ var now=new Date(),at=('0'+now.getHours()).slice(-2)+':'+('0'+now.getMinutes()).slice(-2);
+ M.log.unshift({t:(pending.kind==='status'?'상태 변경 · ':'재배차 · ')+(pending.target||M.sel),
+  r:mReason.value,m:mMemo.value.trim(),at:at});
+ scrim.hidden=true;pending=null;monSide();
+ toast('사유와 함께 기록했습니다 · 분쟁 시 근거로 남습니다');
+});
+document.addEventListener('click',function(e){
+ var b=e.target.closest('[data-act]');if(!b)return;
+ var a=b.dataset.act;
+ if(a==='status')openModal('status',b.dataset.u);
+ else if(a==='reassign')openModal('reassign',M.sel);
+ else if(a==='photo')toast('배송 완료 사진은 이 프로토타입에 포함하지 않았습니다');
+});
+
+monKpi();monMap();monList();monSide();
+
+/* ══════════ 화면 전환 · 스펙 패널 ══════════ */
+$('.nav').addEventListener('click',function(e){
+ var a=e.target.closest('a');if(!a)return;
+ e.preventDefault();
+ if(a.hasAttribute('data-todo')){toast('이 프로토타입에서는 구현하지 않은 메뉴입니다');return}
+ var v=a.dataset.go;
+ $$('.nav a').forEach(function(x){x.removeAttribute('aria-current')});
+ a.setAttribute('aria-current','page');
+ $('#v-cluster').hidden=(v!=='cluster');
+ $('#v-monitor').hidden=(v!=='monitor');
+ if(v==='cluster')drawCluster();else monMap();
+});
+
+var SPECS=[
+ ['SPEC-CLS-001','집코드 · 지역 · 좌표 레이어를 각각 켜고 끕니다. <b>기본은 전부 꺼진 상태</b>입니다.','지도 좌상단 레이어 칩 3개'],
+ ['SPEC-CLS-002','폴리곤은 새로 그리지 않고 <b>꼭지점을 끌어 수정</b>합니다.','빨간 꼭지점 핸들 드래그'],
+ ['SPEC-CLS-003','핀 색은 컨테이너 타입, 숫자는 물품 수입니다. <b>범례 없이 읽힙니다</b>.','지도 핀'],
+ ['SPEC-CLS-004','폴리곤에 묶인 Sector · 물품 · 컨테이너를 즉시 집계하고 <b>송장번호까지 역추적</b>합니다.','지도 우상단 POLYGON 카드'],
+ ['SPEC-CLS-005','상단 집계는 편집과 <b>같은 트랜잭션에서 갱신</b>합니다. 지도와 숫자가 어긋나면 편집을 신뢰할 수 없습니다.','드래그 중 KPI 6개가 함께 변합니다'],
+ ['SPEC-CLS-006','Sector ID와 alias를 다중 선택해 범위를 좁힙니다. <b>지도와 목록에 동시 적용</b>됩니다.','우측 체크박스 두 열'],
+ ['SPEC-CLS-007','CLUSTER ID는 소터의 <b>CHUTE ID와 1:1</b>입니다. 행을 누르면 매핑이 보입니다.','우측 플랜 테이블'],
+ ['SPEC-CLS-008','플랜 병합 · 물품 이동은 <b>확정 전에만</b> 가능합니다.','플랜 생성 후 두 버튼이 잠깁니다'],
+ ['SPEC-CLS-009','플랜 생성이 <b>소터 전송 트리거</b>입니다. 누르는 순간 편집 창이 닫힙니다.','+ 플랜 생성'],
+ ['SPEC-MON-001','미배송 · 운행 지연만 <b>붉은색으로 분리</b>합니다. 나머지는 참고값입니다.','상단 KPI 6개 중 2개'],
+ ['SPEC-MON-002','계획 경로(점선)와 실제 이동(실선)을 겹쳐 그립니다. <b>이탈은 선이 갈라지는 것</b>으로 보입니다.','오경수 기사 경로'],
+ ['SPEC-MON-003','지연 차량은 <b>색과 라벨을 함께</b> 바꿉니다. 색만 쓰면 색각 이상에서 구분되지 않습니다.','“지연 22분” 라벨'],
+ ['SPEC-MON-004','기본 필터는 <b>운행중</b>입니다. 완료 건까지 띄우면 개입 대상이 묻힙니다.','기사 조회 필터'],
+ ['SPEC-MON-005','처리 · 잔여 · 경과를 <b>한 줄에</b> 둡니다. 세 값을 같이 봐야 남은 시간 안에 끝날지가 판단됩니다.','기사 카드 하단'],
+ ['SPEC-MON-006','고른 기사는 우측에 고정됩니다. <b>지도를 조작해도 선택은 풀리지 않습니다</b>.','“지도 초기화”를 눌러도 유지'],
+ ['SPEC-MON-007','공동현관 출입 정보는 <b>배송 단계에서만</b> 노출하고 완료 후 마스킹합니다.','유닛 박스 카드'],
+ ['SPEC-MON-008','상태 변경과 재배차는 <b>사유 선택이 필수</b>입니다. 사유 없는 변경은 근거가 되지 못합니다.','처리 버튼이 잠겨 있습니다']
+];
+$('#spec-body').innerHTML=SPECS.map(function(s){
+ return '<div class="it"><div class="id">'+s[0]+'</div><div class="tx">'+s[1]
+  +'<i>'+s[2]+'</i></div></div>'}).join('');
+$('#spec-open').addEventListener('click',function(){$('#spec-panel').hidden=false});
+$('#spec-close').addEventListener('click',function(){$('#spec-panel').hidden=true});
+
+})();
+</script>
+</body>
+</html>
