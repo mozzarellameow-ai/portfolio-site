@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>배송 관제 TMS — 클러스터 플래닝과 실시간 관제 | Jihye Shin</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+
+:root{--lime:#D0F727;--tint:#F7FBE6;--edge:#B4DC1E;--bg:#F4F4F2;--box:#FFF;
+--line:#E4E4E0;--ink:#111;--g1:#3A3A38;--g6:#7A7A76;--g9:#A8A8A4;--neg:#8C2F39;--dk:#16181A;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{margin:0;padding:0;background:#F3F4F6;overflow-x:hidden}
+body{font-family:Pretendard,-apple-system,sans-serif;font-variant-numeric:tabular-nums;display:flex;flex-direction:column;align-items:center;gap:0}
+.wrap{width:100%;display:flex;justify-content:center}
+.stage{width:1920px;height:1080px;position:relative;flex:none;transform-origin:top center;transform:scale(var(--s,1))}
+.fr{position:absolute;inset:0;background:var(--bg);overflow:hidden}
+.fr.cov{background:var(--dk)}
+.rl{position:absolute;top:82px;height:1px;background:var(--ink)}
+.rl.a{left:100px;width:280px}.rl.b{left:540px;width:1280px}
+.tko{position:absolute;left:100px;top:100px;width:400px;font-size:28px;font-weight:700;letter-spacing:-.02em}
+.ten{position:absolute;left:100px;top:143px;width:400px;font-size:14.5px;font-weight:600;color:var(--g6)}
+.hl{position:absolute;left:540px;top:100px;width:1280px;font-size:50px;font-weight:700;line-height:1.3;letter-spacing:-.035em}
+.hl em{font-style:normal;background:var(--lime);padding:0 7px}
+.ds{position:absolute;left:540px;top:250px;width:1280px;font-size:16.5px;font-weight:500;color:var(--g1);line-height:1.7}
+.ds b{color:var(--ink);font-weight:700}
+.bx{position:absolute;background:var(--box);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.bx.hi{background:var(--tint);border-color:var(--edge)}
+.bx.dk{background:var(--dk);border:0}
+.bx.gh{background:var(--bg)}
+.pd{padding:26px 30px}
+.cap{font-size:11px;font-weight:700;color:var(--g6);letter-spacing:.13em}
+.cap.lm{color:#8FA02A}
+.bt{font-size:17px;font-weight:700;color:var(--ink)}
+.sm{font-size:14px;color:var(--g1);font-weight:500;line-height:1.7}
+.sm b{color:var(--ink);font-weight:700}
+.mut{font-size:14px;color:var(--g6);font-weight:500;line-height:1.6}
+.sb{background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:15px 20px}
+.sb .k{font-size:15.5px;font-weight:700;color:var(--ink)}
+.sb .v{font-size:14px;color:var(--g6);font-weight:500;margin-top:6px;line-height:1.5}
+.tr{display:flex;align-items:center;border-bottom:1px solid var(--line)}
+.tr.hd{border-bottom:1px solid var(--ink)}
+.tr.hd div{font-size:14px;font-weight:700;color:var(--ink)}
+.tr.mk{background:var(--tint)}
+.tr div{padding:0 22px;font-size:14px;color:var(--g1);font-weight:500;line-height:1.45}
+.tr div.k{font-weight:700;color:var(--ink)}
+.tr div.dim{color:var(--g9)}
+.cp{display:inline-flex;align-items:center;background:var(--bg);border:1px solid var(--line);
+border-radius:3px;padding:7px 15px;font-size:14px;color:var(--g1);font-weight:600}
+.cp.on{background:var(--lime);border-color:var(--edge);color:#000;font-weight:700}
+.cp.no{background:#F2ECEC;border-color:#DCC9CB;color:var(--neg)}
+.cp.s{padding:5px 11px;font-size:14px}
+.st{background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:13px 17px;flex:1}
+.st .n{font-size:14px;font-weight:700;color:var(--g6)}
+.st .t{font-size:14.5px;font-weight:700;color:var(--ink);margin-top:6px}
+.st .d{font-size:14px;color:var(--g6);font-weight:500;margin-top:5px;line-height:1.45}
+.qb{position:absolute;background:var(--box);border:1px solid var(--line);border-radius:4px;display:flex}
+.qb .bar{width:4px;background:var(--lime);flex:none;margin:24px 0}
+.qb .t{font-size:16.5px;font-weight:700;color:var(--ink)}
+.qb .d{font-size:14px;color:var(--g1);font-weight:500;line-height:1.7;margin-top:10px}
+.qb .d b{color:var(--ink);font-weight:700}
+.stat{font-size:40px;font-weight:700;color:var(--ink);letter-spacing:-.03em}
+.stat em{font-style:normal;background:var(--lime);padding:0 6px}
+.pgn{position:absolute;right:100px;bottom:44px;font-size:11.5px;color:var(--g9);font-weight:700;letter-spacing:.1em}
+.pgn.w{color:#5C6459}
+.chk{position:absolute;left:100px;bottom:42px;font-size:11px;color:var(--g9);font-weight:600}
+svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
+.vl{font-size:14px;font-weight:700;letter-spacing:.1em;fill:#A8A8A4}
+.vk{font-size:14px;font-weight:700;fill:#111}
+.vd{font-size:14px;font-weight:500;fill:#7A7A76}
+.vn{font-size:15px;font-weight:700;fill:#111;letter-spacing:-.01em}
+.gx{position:absolute}
+.bfill{transform-origin:left center;transform:scaleX(0)}
+.play .bfill{animation:grow 1.1s cubic-bezier(.2,.75,.3,1) forwards}
+.bfy{transform-origin:top center;transform:scaleY(0)}
+.play .bfy{animation:growY 1.1s cubic-bezier(.2,.75,.3,1) forwards}
+@keyframes growY{to{transform:scaleY(1)}}
+@keyframes grow{to{transform:scaleX(1)}}
+.dot{opacity:0;transform:scale(.4);transform-origin:center}
+.play .dot{animation:pop .45s cubic-bezier(.3,1.4,.5,1) forwards}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+.rise{opacity:0;transform:translateY(10px)}
+.play .rise{animation:up .6s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.tl{position:absolute;height:2px;background:var(--line)}
+.tlfill{position:absolute;height:2px;background:var(--ink);transform-origin:left;transform:scaleX(0)}
+.play .tlfill{animation:grow 1.2s cubic-bezier(.2,.75,.3,1) forwards}
+.tik{position:absolute;width:1px;background:var(--line)}
+@media (prefers-reduced-motion:reduce){
+ .bfill,.bfy,.dot,.rise,.tlfill{animation:none!important;opacity:1!important;transform:none!important}}
+
+/* ── TMS 토큰 오버라이드 ── */
+:root{--lime:#1E4FA3;--tint:#ECF2FB;--edge:#B9CDEB;--bg:#F4F6F9;--box:#FFF;
+--line:#E3E7EE;--ink:#10151D;--g1:#3A4351;--g6:#767F8D;--g9:#A5ACB8;--neg:#8C2F39;--dk:#0A0E15;}
+.hl em,.stat em{color:#fff}
+.cp.on{color:#fff}
+.cap.lm{color:#1E4FA3}
+.vl{fill:#A5ACB8}.vk{fill:#10151D}.vd{fill:#767F8D}.vn{fill:#10151D}
+
+/* ── 덱 전용 ── */
+.flow{position:absolute;display:flex;align-items:stretch}
+.node{background:#fff;border:1px solid var(--line);border-radius:4px;padding:13px 16px;flex:1;min-width:0}
+.node.b{background:var(--tint);border-color:var(--edge)}
+.node.no{background:#F2ECEC;border-color:#DCC9CB}
+.node .nk{font-size:14px;font-weight:700;color:var(--ink)}
+.node .nv{font-size:13.5px;font-weight:600;color:var(--g6);margin-top:5px;line-height:1.45}
+.arw{flex:none;width:26px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--g9);font-weight:700}
+.warn{background:#FCF1F1;border:1px solid #E6CDCF;border-radius:4px}
+.warn .wk{font-size:11px;font-weight:700;color:var(--neg);letter-spacing:.12em}
+.axis{background:var(--dk);border-radius:4px;padding:20px 24px}
+.axis .ak{font-size:11px;font-weight:700;letter-spacing:.13em;color:#8FA8CF}
+.axis .av{font-size:15px;font-weight:700;color:#fff;margin-top:8px;line-height:1.5}
+.axis .ad{font-size:13.5px;font-weight:500;color:#A8B4C6;margin-top:7px;line-height:1.55}
+.chip{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:3px;
+ padding:6px 12px;font-size:13.5px;font-weight:600;color:var(--g1);margin:0 6px 7px 0}
+.chip.on{background:var(--tint);border-color:var(--edge);color:#1E4FA3;font-weight:700}
+
+/* ── 화면 목업 ── */
+.mk{position:absolute;background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden;
+ box-shadow:0 22px 44px -26px rgba(16,21,29,.28)}
+.mk-bar{height:30px;background:#EEF1F5;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 12px;gap:6px}
+.mk-dot{width:8px;height:8px;border-radius:50%;background:#CDD3DC}
+.mk-url{margin-left:10px;font-size:10.5px;color:var(--g6);font-weight:600;background:#fff;
+ border:1px solid #DFE3EA;border-radius:3px;padding:3px 10px}
+.mk-body{display:flex;height:calc(100% - 30px)}
+.mk-side{width:142px;background:#fff;border-right:1px solid var(--line);padding:11px 0;flex:none}
+.mk-logo{display:flex;align-items:center;gap:6px;padding:0 12px 10px;border-bottom:1px solid #F0F2F6;margin-bottom:8px}
+.mk-logo i{width:17px;height:17px;border-radius:4px;background:#4A5BD4;display:block}
+.mk-logo span{font-size:9.5px;font-weight:700;color:var(--ink)}
+.mk-g{font-size:9px;font-weight:700;color:var(--g9);padding:8px 12px 4px;letter-spacing:.02em}
+.mk-i{font-size:9.5px;font-weight:600;color:var(--g1);padding:4.5px 12px}
+.mk-i.on{background:#EEF2FC;color:#2B44B8;font-weight:700;border-left:2px solid #4A5BD4;padding-left:10px}
+.mk-main{flex:1;min-width:0;display:flex;flex-direction:column;background:#FAFBFD}
+.mk-top{height:26px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 12px;background:#fff}
+.mk-srch{font-size:9px;color:var(--g9);font-weight:600}
+.mk-kpi{display:flex;gap:7px;padding:9px 11px}
+.mk-k{flex:1;background:#fff;border:1px solid var(--line);border-radius:4px;padding:7px 9px}
+.mk-k .kk{font-size:8.5px;font-weight:700;color:var(--g6)}
+.mk-k .kv{font-size:13px;font-weight:700;color:var(--ink);margin-top:2px;letter-spacing:-.02em}
+.mk-k.al .kv{color:#C24A3A}
+.mk-map{flex:1;position:relative;margin:0 11px 11px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#E8EDF2}
+.mk-tools{position:absolute;left:8px;top:8px;display:flex;gap:4px;z-index:3}
+.mk-t{background:#fff;border:1px solid #DFE3EA;border-radius:3px;padding:3px 7px;font-size:8.5px;font-weight:700;color:var(--g1)}
+.mk-t.on{background:#4A5BD4;border-color:#4A5BD4;color:#fff}
+.mk-card{position:absolute;background:#fff;border:1px solid var(--line);border-radius:4px;padding:8px 10px;z-index:3}
+.mk-card .ck{font-size:8.5px;font-weight:700;color:var(--ink);letter-spacing:.06em}
+.mk-card .cr{font-size:8.5px;color:var(--g1);font-weight:600;margin-top:3px}
+.mk-rt{width:232px;border-left:1px solid var(--line);background:#fff;flex:none;padding:10px 11px;overflow:hidden}
+.mk-sec{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.mk-chk{border:1px solid var(--line);border-radius:3px;padding:6px 7px}
+.mk-chk .h{font-size:8.5px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.mk-chk .r{font-size:8.5px;color:var(--g1);font-weight:600;padding:2px 0;display:flex;gap:4px;align-items:center}
+.mk-chk .r i{width:7px;height:7px;border:1px solid #4A5BD4;background:#4A5BD4;border-radius:2px;display:block;flex:none}
+.mk-th{display:flex;font-size:8px;font-weight:700;color:var(--g6);border-bottom:1px solid var(--ink);padding-bottom:4px;margin-top:9px}
+.mk-tr{display:flex;font-size:8.5px;color:var(--g1);font-weight:600;padding:4.5px 0;border-bottom:1px solid #F0F2F6}
+.mk-pill{background:#E7EEFB;color:#2B44B8;border-radius:2px;padding:1px 5px;font-size:8px;font-weight:700}
+.mk-btn{background:#4A5BD4;color:#fff;border-radius:3px;padding:3px 8px;font-size:8.5px;font-weight:700;display:inline-block}
+.mk-btn.g{background:#fff;color:var(--g1);border:1px solid #DFE3EA}
+.mk-drv{background:#fff;border:1px solid var(--line);border-radius:4px;padding:8px 10px;margin-bottom:6px}
+.mk-drv .n{font-size:9px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:5px}
+.mk-drv .n em{font-style:normal;background:#22252B;color:#fff;border-radius:2px;padding:1px 5px;font-size:7.5px}
+.mk-drv .n u{text-decoration:none;background:#F5C84B;color:#3B2B00;border-radius:2px;padding:1px 4px;font-size:7.5px}
+.mk-drv .d{font-size:8.5px;color:var(--g6);font-weight:600;margin-top:4px;line-height:1.5}
+.mk-drv .f{display:flex;justify-content:space-between;border-top:1px solid #F0F2F6;margin-top:6px;padding-top:5px;font-size:8.5px;font-weight:700;color:var(--g1)}
+.num{position:absolute;width:21px;height:21px;border-radius:50%;background:#1E4FA3;color:#fff;
+ font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:6;
+ box-shadow:0 0 0 2.5px #fff,0 2px 6px rgba(0,0,0,.22)}
+.spec{display:flex;align-items:flex-start;border-bottom:1px solid var(--line);padding:9px 0}
+.spec .sn{width:34px;flex:none;font-size:13px;font-weight:700;color:#1E4FA3}
+.spec .sr{flex:1;font-size:13.5px;color:var(--g1);font-weight:500;line-height:1.5;padding-right:16px}
+.spec .sr b{color:var(--ink);font-weight:700}
+.spec .si{width:132px;flex:none;font-size:11.5px;color:var(--g9);font-weight:700;letter-spacing:.02em}
+.spec.hd{border-bottom:1px solid var(--ink);padding-bottom:6px}
+.spec.hd div{font-size:11px;font-weight:700;color:var(--ink);letter-spacing:.1em}
+
+/* grid 컨테이너 안의 박스는 흐름 배치 */
+[style*="display:grid"] > .bx,[style*="display:grid"] > div > .bx,
+[style*="display:grid"] > .qb,.mk-body .bx{position:relative!important;left:auto!important;top:auto!important}
+.ft{display:flex;gap:15px;padding:18px 0;border-bottom:1px solid var(--line)}
+.ft.last{border:0}
+.ft .fn{width:23px;height:23px;flex:none;border-radius:50%;background:#1E4FA3;color:#fff;font-size:11.5px;
+ font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.ft .ftt{font-size:17.5px;font-weight:700;color:var(--ink);letter-spacing:-.012em}
+.ft .ftd{font-size:14px;font-weight:500;line-height:1.58;color:var(--g1);margin-top:6px}
+.ft .ftd b{color:var(--ink);font-weight:700}
+.shot{position:absolute;border-radius:9px;overflow:hidden;box-shadow:0 18px 44px rgba(16,21,29,.13),0 0 0 1px var(--edge)}
+.shot > .inr{position:relative;width:1120px;height:576px;transform-origin:0 0}
+.draft{position:absolute;left:100px;bottom:42px;font-size:11px;color:var(--neg);font-weight:700;letter-spacing:.04em}
+</style></head>
+<body>
+<!-- ══ TMS 01 · 표지 ══ -->
+<div class="wrap" id="tms-01"><div class="stage"><div class="fr cov">
+ <div style="position:absolute;left:100px;top:150px;width:860px;z-index:2">
+  <div style="font-size:15px;font-weight:700;letter-spacing:.14em;color:#8FA8CF">DELIVUS · 2021.10 — 2024.02</div>
+  <div style="font-size:62px;font-weight:700;line-height:1.24;letter-spacing:-.035em;color:#fff;margin-top:22px">
+   배송 관제 시스템 TMS<br><span style="color:#8FA8CF">클러스터 플래닝과 실시간 관제</span></div>
+  <div style="font-size:17px;font-weight:600;color:#A8B4C6;margin-top:26px;line-height:1.7;max-width:760px">
+   자동 분류가 당일 현장을 모르는 탓에 허브에서 재분류가 반복됐습니다.<br>
+   알고리즘을 더 정교하게 만드는 길 대신, 소터로 보내기 직전에 운영자가 고칠 수 있게 했습니다.</div>
+ </div>
+ <div style="position:absolute;left:1000px;top:150px;width:820px;height:600px;z-index:1">
+  <div style="position:absolute;right:0;top:0;width:700px;height:571px;overflow:hidden;border-radius:8px;
+   transform:rotate(-1.2deg);box-shadow:0 48px 96px -34px rgba(0,0,0,.88),0 0 0 1px rgba(160,190,240,.16)">
+   <img src="../images/pf31.jpg" alt="클러스터 플래닝 편집 화면" loading="lazy"
+    style="position:absolute;left:-501px;top:-352px;width:1656px;max-width:none;display:block"></div>
+  <div style="position:absolute;left:0;bottom:0;width:540px;height:441px;overflow:hidden;border-radius:7px;
+   transform:rotate(1.4deg);box-shadow:0 40px 84px -26px rgba(0,0,0,.9),0 0 0 1px rgba(160,190,240,.22)">
+   <img src="../images/pf34.jpg" alt="실시간 관제 화면" loading="lazy"
+    style="position:absolute;left:-386px;top:-271px;width:1277px;max-width:none;display:block"></div>
+ </div>
+ <div style="position:absolute;left:100px;bottom:120px;width:1720px;border-top:1px solid rgba(255,255,255,.14);padding-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px">
+  <div><div style="font-size:11px;font-weight:700;letter-spacing:.13em;color:#6C7A90">작업 기간</div>
+   <div style="font-size:14px;font-weight:600;color:#D6DEE9;margin-top:10px;line-height:1.75">
+    2021.10 — 12 · MVP PWA 출시<br>2022.02 — 06 · MVP 유지보수<br>2022.09 — 12 · v2.0 Retool<br>2024.01 — 02 · v3.0 PWA</div></div>
+  <div><div style="font-size:11px;font-weight:700;letter-spacing:.13em;color:#6C7A90">역할 · 유닛</div>
+   <div style="font-size:14px;font-weight:600;color:#D6DEE9;margin-top:10px;line-height:1.75">
+    Product Manager<br>PM 1인 · FE 1인 · BE 1인<br>정책 · 화면 기획 전담</div></div>
+  <div><div style="font-size:11px;font-weight:700;letter-spacing:.13em;color:#6C7A90">다룬 범위</div>
+   <div style="font-size:14px;font-weight:600;color:#D6DEE9;margin-top:10px;line-height:1.75">
+    클러스터 플래닝 · 경로 관리<br>실시간 관제 · 배차<br>운영 백오피스 15개 도메인</div></div>
+  <div><div style="font-size:11px;font-weight:700;letter-spacing:.13em;color:#6C7A90">이해관계자</div>
+   <div style="font-size:14px;font-weight:600;color:#D6DEE9;margin-top:10px;line-height:1.75">
+    판매자 · 간선기사 · 물류 운영자<br>라스트마일 기사 · 최종 고객<br>5개 군</div></div>
+ </div>
+ <div class="pgn w">TMS 01</div>
+</div></div></div>
+
+<!-- ══ TMS 02 · 문제 정의 ══ -->
+<div class="wrap" id="tms-02"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">문제 정의</div><div class="ten">Problem</div>
+ <div class="hl">모든 지연이<br><em>한 지점에서</em> 갈라져 나왔습니다</div>
+ <div class="ds">허브앤스포크는 구간마다 분류를 반복합니다. 그중 <b>자동 분류가 당일 현장을 반영하지 못한 날</b>에는
+  허브에서 사람이 다시 분류했고, 그날의 모든 지연이 여기서 시작됐습니다.</div>
+
+ <div class="flow" style="left:100px;top:398px;width:1720px;height:104px">
+  <div class="node"><div class="nk">상품 접수</div><div class="nv">셀러 출고</div></div><div class="arw">▸</div>
+  <div class="node"><div class="nk">대리점 집하</div><div class="nv">보관 공간 부족</div></div><div class="arw">▸</div>
+  <div class="node no"><div class="nk">허브 자동 분류</div><div class="nv">전일 기준 클러스터</div></div><div class="arw">▸</div>
+  <div class="node no"><div class="nk">허브 재분류</div><div class="nv">사람이 다시 품</div></div><div class="arw">▸</div>
+  <div class="node"><div class="nk">상차 · 간선</div><div class="nv">적재 순서 고정</div></div><div class="arw">▸</div>
+  <div class="node"><div class="nk">라스트마일</div><div class="nv">미배송 · 오배송</div></div>
+ </div>
+ <div style="position:absolute;left:100px;top:516px;font-size:13px;color:var(--g6);font-weight:600">붉은 두 칸이 이 프로젝트가 다룬 구간입니다</div>
+
+ <div class="bx" style="left:100px;top:570px;width:840px;height:300px"><div class="pd">
+  <div class="cap">원인</div>
+  <div class="bt" style="margin:12px 0 14px;font-size:22px">정확도 문제가 아니었습니다</div>
+  <div class="sm">자동 분류는 전날까지의 데이터로 돌아갑니다. 그런데 당일 아침에야 정해지는 것들이 있습니다 —
+   <b>그날의 물량, 출근한 기사 수, 차량 가용 대수</b>. 파이프라인 어디에도 이 값이 들어갈 자리가 없었습니다.<br><br>
+   알고리즘을 아무리 정교하게 만들어도 <b>당일 정보가 입력되지 않는 한</b> 같은 일이 반복됩니다.</div>
+ </div></div>
+
+ <div class="bx hi" style="left:980px;top:570px;width:840px;height:300px"><div class="pd">
+  <div class="cap lm">그때까지의 대응</div>
+  <div class="bt" style="margin:12px 0 14px;font-size:22px">오류가 나면 개발자를 불렀습니다</div>
+  <div class="sm">분류 오류가 발생하면 <b>개발자가 테이블을 직접 수정</b>해 대응했습니다.
+   요청하고 기다리는 시간이 붙고, 수정 과정에서 새 오류가 생겼습니다.<br><br>
+   현장은 이미 상차를 시작했는데 고치는 사람은 자리에 없는 구조였습니다.</div>
+ </div></div>
+ <div class="chk">허브앤스포크 구조 분석은 딜리버스 서비스 리서치에서 이어집니다</div>
+ <div class="pgn">TMS 02</div>
+</div></div></div>
+
+<!-- ══ TMS 03 · 판단 ══ -->
+<div class="wrap" id="tms-03"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">판단</div><div class="ten">Key Decision</div>
+ <div class="hl">고치는 사람을 개발자에서<br><em>운영자로</em> 옮겼습니다</div>
+ <div class="ds">두 갈래가 있었습니다. 자동 분류를 더 똑똑하게 만들거나, 사람이 고칠 수 있게 하거나.
+  <b>예외가 남는 한 누군가는 손으로 고쳐야 한다</b>는 점에서 두 번째를 골랐습니다.</div>
+
+ <div class="bx" style="left:100px;top:400px;width:555px;height:340px"><div class="pd">
+  <div class="cap">버린 안</div>
+  <div class="bt" style="margin:12px 0 12px">분류 알고리즘을 정교하게</div>
+  <div class="sm">당일 변수를 모델에 넣어 자동 분류 정확도를 올리는 방향입니다.
+   그런데 변수는 매일 새로 생기고, 정확도를 99%로 올려도 <b>남은 1%는 여전히 사람이 품습니다.</b>
+   고치는 경로를 만들지 않으면 개선분만큼 예외가 다시 쌓입니다.</div>
+ </div></div>
+
+ <div class="bx hi" style="left:683px;top:400px;width:555px;height:340px"><div class="pd">
+  <div class="cap lm">고른 안</div>
+  <div class="bt" style="margin:12px 0 12px">소터로 보내기 전에 편집권을</div>
+  <div class="sm">자동 분류 결과를 지도에 올려 보여주고, 운영자가 클러스터를 직접 고쳐
+   확정한 뒤 소터로 넘깁니다. 자동 생성은 <b>초안</b>이 되고 확정은 사람이 합니다.<br><br>
+   <b>편집하려면 먼저 보여야 합니다.</b> 그래서 편집 기능보다 시각화가 먼저였습니다.</div>
+ </div></div>
+
+ <div class="bx" style="left:1266px;top:400px;width:554px;height:340px"><div class="pd">
+  <div class="cap">치른 비용</div>
+  <div class="bt" style="margin:12px 0 12px">운영 단계가 하나 늘었습니다</div>
+  <div class="sm">소터 전송 전에 사람이 확인하는 시간이 생깁니다. 분류 품질이
+   <b>운영자의 숙련도에 묶이고</b>, 잘못 편집하면 그 책임도 운영자에게 갑니다.<br><br>
+   대신 개발 요청 대기와 테이블 직접 수정은 경로에서 사라졌습니다.</div>
+ </div></div>
+
+ <div class="qb" style="left:100px;top:780px;width:1720px;height:150px">
+  <div class="bar"></div>
+  <div class="pd" style="padding:24px 28px">
+   <div class="t">자동화를 포기한 것이 아닙니다</div>
+   <div class="d">자동 분류는 그대로 돌고, 데이터 기반 상·하차 경로 자동 생성도 그 위에 얹었습니다.
+    바뀐 것은 <b>결과를 확정하는 권한이 어디에 있는가</b> 하나입니다.</div>
+  </div>
+ </div>
+ <div class="pgn">TMS 03</div>
+</div></div></div>
+
+<!-- ══ TMS 04 · 시점 ══ -->
+<div class="wrap" id="tms-04"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">시점 선택</div><div class="ten">Where to Intervene</div>
+ <div class="hl">되돌릴 수 있는<br><em>마지막 지점</em>에 창을 냈습니다</div>
+ <div class="ds">개입 지점은 하나만 고를 수 있었습니다. 너무 이르면 당일 정보가 아직 없고,
+  너무 늦으면 <b>물리적으로 되돌릴 수 없습니다.</b></div>
+
+ <div style="position:absolute;left:100px;top:420px;width:1720px">
+  <div class="tl" style="left:0;top:58px;width:1720px"></div>
+  <div class="tlfill" style="left:0;top:58px;width:1720px"></div>
+  <div style="display:flex;justify-content:space-between;position:relative">
+   <div style="width:300px"><div class="node" style="border:0;background:transparent;padding:0">
+    <div class="nk">주문 마감</div><div class="nv">당일 물량 확정</div></div></div>
+   <div style="width:300px"><div class="node" style="border:0;background:transparent;padding:0">
+    <div class="nk">자동 분류</div><div class="nv">클러스터 초안 생성</div></div></div>
+   <div style="width:320px"><div class="node b" style="padding:13px 16px">
+    <div class="nk" style="color:#1E4FA3">편집 창 · 이 프로젝트</div><div class="nv">운영자가 클러스터 확정</div></div></div>
+   <div style="width:300px;text-align:right"><div class="node" style="border:0;background:transparent;padding:0">
+    <div class="nk">소터 전송</div><div class="nv">물리 분류 시작</div></div></div>
+   <div style="width:300px;text-align:right"><div class="node" style="border:0;background:transparent;padding:0">
+    <div class="nk">상차 · 출발</div><div class="nv">현장 대응만 가능</div></div></div>
+  </div>
+ </div>
+
+ <div class="bx" style="left:100px;top:620px;width:840px;height:250px"><div class="pd">
+  <div class="cap">더 이르면</div>
+  <div class="bt" style="margin:12px 0 12px">고칠 근거가 아직 없습니다</div>
+  <div class="sm">그날의 물량과 가용 기사 수가 확정되기 전에는 무엇을 고쳐야 할지 판단할 자료가 없습니다.
+   편집 창을 앞당기면 <b>추측으로 고치게 됩니다.</b></div>
+ </div></div>
+ <div class="bx" style="left:980px;top:620px;width:840px;height:250px"><div class="pd">
+  <div class="cap">더 늦으면</div>
+  <div class="bt" style="margin:12px 0 12px">몸으로 해결해야 합니다</div>
+  <div class="sm">소터가 물품을 슈트로 떨어뜨린 뒤에는 되돌리는 비용이 급격히 올라갑니다.
+   허브에서 다시 줄을 세우거나, 현장에서 재분류하는 수밖에 없습니다.</div>
+ </div></div>
+ <div class="chk">목표는 처음부터 “현장에서의 대응을 최소화”하는 것이었습니다</div>
+ <div class="pgn">TMS 04</div>
+</div></div></div>
+
+<!-- ══ TMS 05 · 이해관계자 ══ -->
+<div class="wrap" id="tms-05"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">이해관계자</div><div class="ten">Stakeholders</div>
+ <div class="hl">고치고 싶은 사람과<br>안 바뀌길 바라는 사람이 <em>같은 화면</em>을 봅니다</div>
+ <div class="ds">TMS는 운영자 한 명을 위한 도구가 아닙니다. 네 역할이 같은 클러스터를 보는데
+  <b>원하는 것이 서로 반대</b>입니다. 편집권을 열면 이 충돌이 바로 드러납니다.</div>
+
+ <div style="position:absolute;left:100px;top:392px;width:1720px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
+  <div class="bx hi"><div class="pd" style="padding:22px 24px">
+   <div class="cap lm">경력 12년</div><div class="bt" style="margin:10px 0 12px">분류 관리자</div>
+   <div class="sm" style="font-size:13.5px">분류 계획을 세우고 문제에 대응합니다.<br><br>
+    <b>막히는 곳</b> 계획을 세워도 수정이 어렵고, 진행 상황이 실시간으로 안 보입니다.<br><br>
+    <b>원하는 것</b> 플랜을 직접 고치는 기능</div></div></div>
+  <div class="bx"><div class="pd" style="padding:22px 24px">
+   <div class="cap">경력 7년</div><div class="bt" style="margin:10px 0 12px">파트너 스케줄 관리자</div>
+   <div class="sm" style="font-size:13.5px">경로를 최적화하고 지연에 대응합니다.<br><br>
+    <b>막히는 곳</b> 긴급 상황에서 경로를 바꾸기 어렵습니다.<br><br>
+    <b>원하는 것</b> 경로 생성·수정·삭제와 기사 알림</div></div></div>
+  <div class="bx"><div class="pd" style="padding:22px 24px">
+   <div class="cap">경력 18년</div><div class="bt" style="margin:10px 0 12px">관제 관리자</div>
+   <div class="sm" style="font-size:13.5px">모든 경로와 차량 상태를 봅니다.<br><br>
+    <b>막히는 곳</b> 여러 경로와 차량을 동시에 보기 어렵습니다.<br><br>
+    <b>원하는 것</b> 이탈·지연·사고 즉시 알림</div></div></div>
+  <div class="bx warn"><div class="pd" style="padding:22px 24px">
+   <div class="wk">이 역할이 반대편</div><div class="bt" style="margin:10px 0 12px">현장 분류 작업자</div>
+   <div class="sm" style="font-size:13.5px">경력 5년. 슈트 앞에서 몸으로 분류합니다.<br><br>
+    <b>막히는 곳</b> 플랜을 이해하기 어렵고, <b>변경 사항을 제때 못 받습니다.</b><br><br>
+    <b>원하는 것</b> 바뀌지 않는 명확한 지침</div></div></div>
+ </div>
+
+ <div class="qb" style="left:100px;top:790px;width:1720px;height:160px">
+  <div class="bar"></div>
+  <div class="pd" style="padding:24px 28px">
+   <div class="t">편집권을 열면 현장이 흔들립니다</div>
+   <div class="d">앞의 셋은 “고칠 수 있게 해달라”고 하고, 마지막 한 명은 “정해진 대로 하게 해달라”고 합니다.
+    그래서 편집을 무제한으로 열지 않고 <b>확정 시점을 두었습니다</b> — 확정 전에는 자유롭게 고치고,
+    확정 뒤에는 <b>바뀐 부분만</b> 현장 지침으로 내려갑니다. 현장이 보는 플랜은 하루에 한 번만 바뀝니다.</div>
+  </div>
+ </div>
+ <div class="draft">※ 확정 시점 운영 규칙은 당시 문서 기준으로 재확인이 필요합니다</div>
+ <div class="pgn">TMS 05</div>
+</div></div></div>
+
+<!-- ══ TMS 06 · 도메인 경계 ══ -->
+<div class="wrap" id="tms-06"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">제품 구조</div><div class="ten">Domain Map</div>
+ <div class="hl">15개 도메인을<br><em>네 축</em>으로 묶었습니다</div>
+ <div class="ds">백오피스 메뉴가 늘어날수록 어디에 무엇을 넣을지가 매번 논쟁이 됩니다.
+  <b>무엇을 바꾸는 화면인가</b>를 기준으로 축을 넷으로 고정하고, 새 메뉴는 그 아래에만 붙였습니다.</div>
+
+ <div style="position:absolute;left:100px;top:392px;width:1720px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
+  <div class="axis"><div class="ak">거래를 받는다</div><div class="av">배차 · 셀러<br>운송사 · 프로모션</div>
+   <div class="ad">배차 신청 내역 · 진행 내역 · 배차 폼 설정 · 운송사 스케줄 · 셀러 엑셀/송장 설정 · 수수료</div></div>
+  <div class="axis" style="background:#12306B"><div class="ak" style="color:#A9C4EC">물건을 옮긴다</div><div class="av">배송 · 분류<br>라우트 · 박스</div>
+   <div class="ad">업무/물품 조회 · 분류 조회 · 픽업 라우트 · 드롭 라우트 · 박스 조회</div></div>
+  <div class="axis"><div class="ak">자원을 관리한다</div><div class="av">라이더 · 유닛<br>스탭 · 테스터</div>
+   <div class="ad">라이더 조회/제한 · 유닛 조회 · 수수료 설정 · 스탭 샵 변경 · 테스터 계정</div></div>
+  <div class="axis"><div class="ak">기준을 정한다</div><div class="av">주소 · 지역<br>푸시</div>
+   <div class="ad">대량 주소 등록 · 주소/맵핑 검색 · 주소 유틸 · 지역 등록 · 지역우편 · 알림톡 템플릿</div></div>
+ </div>
+
+ <div class="bx" style="left:100px;top:640px;width:1100px;height:300px"><div class="pd">
+  <div class="cap">경계 규칙</div>
+  <div class="bt" style="margin:12px 0 14px">기준정보는 읽기만, 이행은 거래를 되묻지 않습니다</div>
+  <div class="sm">주소와 지역은 모든 축이 참조하지만 이행 도메인에서 고치지 않습니다.
+   주소 하나를 배송 화면에서 바꾸면 그 주소를 쓰는 다른 배차까지 흔들리기 때문입니다.
+   <b>바꾸는 자리를 한 곳으로 모으고 나머지는 읽기만</b> 하도록 나눴습니다.<br><br>
+   배송·분류·라우트는 이미 만들어진 배차를 실행할 뿐, 배차 조건 자체를 되돌리지 않습니다.
+   되돌리는 일은 배차 축에서만 일어납니다.</div>
+ </div></div>
+
+ <div class="bx hi" style="left:1240px;top:640px;width:580px;height:300px"><div class="pd">
+  <div class="cap lm">규모</div>
+  <div style="margin-top:18px"><div class="stat"><em>15</em> 도메인</div>
+   <div class="sm" style="margin-top:10px">하위 기능 35개</div></div>
+  <div style="margin-top:26px;border-top:1px solid var(--edge);padding-top:20px">
+   <div class="sm">배송 각 단계의 이벤트를 <b>판매자 · 간선기사 · 물류 운영자 · 라스트마일 기사 · 최종 고객</b>
+    다섯 군이 같은 시점에 보도록 설계했습니다.</div></div>
+ </div></div>
+ <div class="draft">※ 네 축 분류는 당시 구조도를 지금 기준으로 다시 묶은 것입니다</div>
+ <div class="pgn">TMS 06</div>
+</div></div></div>
+
+<!-- ══ TMS 07 · 클러스터 편집 ══ -->
+<div class="wrap" id="tms-07"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">클러스터 플래닝</div><div class="ten">Cluster Editing</div>
+ <div class="hl">고치게 하려면<br>먼저 <em>보이게</em> 해야 했습니다</div>
+ <div class="ds">편집 기능보다 시각화가 먼저였습니다. 운영자가 무엇이 잘못됐는지 화면에서 찾지 못하면
+  편집권은 쓰이지 않습니다. <b>오류를 눈으로 검출하는 것</b>이 이 화면의 첫 번째 일입니다.</div>
+
+ <div style="position:absolute;left:100px;top:392px;width:1720px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+  <div class="bx"><div class="pd">
+   <div class="cap">01 · 보기</div><div class="bt" style="margin:10px 0 12px">데이터 레이어 3종</div>
+   <div class="sm">집코드 · 지역 · 좌표 레이어를 켜고 끄며 필요한 범위만 띄웁니다.
+    전부 켜면 아무것도 안 보이고, 전부 끄면 판단할 근거가 없습니다.</div>
+   <div style="margin-top:14px"><span class="chip on">집코드</span><span class="chip on">지역</span><span class="chip">좌표</span><span class="chip">플랜 그룹</span></div></div></div>
+  <div class="bx"><div class="pd">
+   <div class="cap">02 · 구별</div><div class="bt" style="margin:10px 0 12px">색이 곧 분류 정보</div>
+   <div class="sm">클러스터를 지역별 색으로 칠해 경계가 어긋난 구역을 한눈에 찾게 했습니다.
+    팝업에서 그 구역에 묶인 지역 정보를 바로 확인합니다.</div>
+   <div style="margin-top:14px"><span class="chip">Black 243</span><span class="chip">Blue 420</span><span class="chip">White 398</span><span class="chip">Yellow 131</span></div></div></div>
+  <div class="bx hi"><div class="pd">
+   <div class="cap lm">03 · 고치기</div><div class="bt" style="margin:10px 0 12px">폴리곤 꼭지점 편집</div>
+   <div class="sm">구역을 지우고 다시 그리는 대신 <b>꼭지점을 끌어 모양만 조정</b>합니다.
+    매일 반복되는 작업이라 조작 횟수를 줄이는 것이 그대로 작업 시간이 됩니다.</div>
+   <div style="margin-top:14px"><span class="chip on">폴리곤 그리기</span><span class="chip">플랜 병합</span><span class="chip">물품 이동</span></div></div></div>
+ </div>
+
+ <div class="bx" style="left:100px;top:660px;width:1060px;height:280px"><div class="pd">
+  <div class="cap">편집 단위</div>
+  <div class="bt" style="margin:12px 0 14px">지도에서 고친 것이 슈트까지 내려갑니다</div>
+  <div class="flow" style="position:relative;width:100%;height:78px;margin-top:6px">
+   <div class="node"><div class="nk">Sector</div><div class="nv">서초001 · 잠실 · 송파</div></div><div class="arw">▸</div>
+   <div class="node"><div class="nk">Cluster ID</div><div class="nv">C-송파R33</div></div><div class="arw">▸</div>
+   <div class="node"><div class="nk">Chute ID</div><div class="nv">C31</div></div><div class="arw">▸</div>
+   <div class="node b"><div class="nk">Container</div><div class="nv">유닛 박스 · 기사 배정</div></div>
+  </div>
+  <div class="sm" style="margin-top:16px">지도 위 폴리곤이 소터의 슈트 번호와 이어져 있어,
+   운영자가 경계를 바꾸면 <b>그 물품이 떨어지는 슈트가 바뀝니다.</b> 화면과 현장이 같은 식별자를 씁니다.</div>
+ </div></div>
+
+ <div class="bx" style="left:1180px;top:660px;width:640px;height:280px"><div class="pd">
+  <div class="cap">한 화면의 규모</div>
+  <div style="margin-top:16px">
+   <div class="led"><span class="lk">Total Cluster</span><span class="lv">1,242</span></div>
+   <div class="led"><span class="lk">Sector</span><span class="lv">3</span></div>
+   <div class="led"><span class="lk">Shipping item</span><span class="lv">1,320</span></div>
+   <div class="led"><span class="lk">Shipping Container</span><span class="lv">26</span></div>
+  </div>
+  <div class="mut" style="margin-top:14px;font-size:13px">폴리곤 하나를 선택했을 때 표시되는 값입니다</div>
+ </div></div>
+ <div class="pgn">TMS 07</div>
+</div></div></div>
+
+<!-- ══ TMS 08 · 성과 ══ -->
+<div class="wrap" id="tms-08"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">성과</div><div class="ten">Outcome</div>
+ <div class="hl">수동 수정 시간이 절반으로,<br>분류 오류율은 <em>0.1%</em>로</div>
+ <div class="ds">개발자를 기다려 테이블을 고치던 경로가 사라지면서 줄어든 시간입니다.
+  아래에 <b>무엇을 어떻게 셌는지</b>를 함께 적었습니다.</div>
+
+ <div style="position:absolute;left:100px;top:400px;width:1720px;display:grid;grid-template-columns:1fr 1fr;gap:28px">
+  <div class="bx hi"><div class="pd" style="padding:30px 34px">
+   <div class="cap lm">Manual work time reduction</div>
+   <div class="stat" style="font-size:56px;margin:14px 0 18px"><em>50%</em> 이상 단축</div>
+   <div class="sm"><b>정의</b> 자동 분류 결과를 수동으로 고치는 데 걸린 시간<br>
+    <b>기간</b> 편집 기능 도입 전후 비교<br>
+    <b>산출</b> 분류 작업 1회당 수정 소요 시간</div></div></div>
+  <div class="bx"><div class="pd" style="padding:30px 34px">
+   <div class="cap">Classification error rate</div>
+   <div class="stat" style="font-size:56px;margin:14px 0 18px">0.1%</div>
+   <div class="sm"><b>정의</b> 분류 결과가 실제 배송 구역과 어긋난 비율<br>
+    <b>기간</b> 도입 후 운영 기준<br>
+    <b>산출</b> 오분류 건수 ÷ 전체 분류 건수</div></div></div>
+ </div>
+
+ <div class="bx" style="left:100px;top:660px;width:1100px;height:280px"><div class="pd">
+  <div class="cap">문제 → 개선 → 성과</div>
+  <div style="margin-top:16px">
+   <div class="led"><span class="lk"><b>문제</b> 분류 오류를 개발자가 매번 대응, 테이블 직접 수정</span><span class="lv"></span></div>
+   <div class="led"><span class="lk"><b>영향</b> 즉각 대응 불가 · 재작업 증가 · 작업 효율 저하</span><span class="lv"></span></div>
+   <div class="led"><span class="lk"><b>개선</b> 데이터를 지도에 시각화하고 편집 기능 도입</span><span class="lv"></span></div>
+   <div class="led tot"><span class="lk"><b>성과</b> 수동 수정 시간 50%↓ · 분류 오류율 0.1%</span><span class="lv"></span></div>
+  </div>
+ </div></div>
+
+ <div class="bx warn" style="left:1240px;top:660px;width:580px;height:280px"><div class="pd">
+  <div class="wk">측정의 한계</div>
+  <div class="sm" style="margin-top:14px">같은 기간에 물동량이 늘었고 계절 변동도 섞여 있습니다.
+   두 수치 모두 <b>편집 기능만의 효과로 분리해 재지는 않았습니다.</b><br><br>
+   무엇보다 <b>어떤 클러스터를 왜 고쳤는지는 남기지 않았습니다.</b>
+   그래서 자동 분류를 개선할 근거로는 쓰지 못했습니다.</div>
+ </div></div>
+ <div class="draft">※ 정의·기간·산출 방식은 지금 기준으로 다시 적은 것입니다 — 원자료 대조가 필요합니다</div>
+ <div class="pgn">TMS 08</div>
+</div></div></div>
+
+<!-- ══ TMS 09 · 경로 ══ -->
+<div class="wrap" id="tms-09"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">경로 관리</div><div class="ten">Route Optimization</div>
+ <div class="hl">무엇을 아낄지는<br>알고리즘이 아니라 <em>그날 운영자가</em> 정합니다</div>
+ <div class="ds">최적 경로는 하나가 아닙니다. 시간을 아끼는 경로와 거리를 아끼는 경로가 다르고,
+  <b>둘 중 무엇이 급한지는 그날의 상황</b>입니다. 그래서 우선순위를 옵션으로 열었습니다.</div>
+
+ <div class="bx hi" style="left:100px;top:398px;width:840px;height:250px"><div class="pd">
+  <div class="cap lm">우선순위 선택</div>
+  <div class="bt" style="margin:12px 0 14px">최단 시간 · 최소 거리</div>
+  <div class="sm">기사 수가 모자란 날은 시간을, 유가와 차량 회전이 급한 날은 거리를 우선합니다.
+   시스템이 한쪽으로 고정하면 나머지 날에는 매번 손으로 되돌리게 됩니다.<br><br>
+   자동 생성은 <b>초안</b>이고 확정은 운영자가 합니다 — 클러스터 편집과 같은 구조입니다.</div>
+ </div></div>
+
+ <div class="bx" style="left:980px;top:398px;width:840px;height:250px"><div class="pd">
+  <div class="cap">계산에 쓰는 데이터</div>
+  <div style="margin-top:16px">
+   <div class="led"><span class="lk">실시간 교통 데이터</span><span class="lv">외부 수집</span></div>
+   <div class="led"><span class="lk">작업 관리 시스템</span><span class="lv">작업 세부 정보</span></div>
+   <div class="led"><span class="lk">과거 운행 데이터</span><span class="lv">작업 기간 · 실적</span></div>
+  </div>
+  <div class="mut" style="margin-top:12px;font-size:13px">세 소스를 합쳐 픽업·드롭 경로를 생성합니다</div>
+ </div></div>
+
+ <div class="bx" style="left:100px;top:678px;width:1720px;height:262px"><div class="pd">
+  <div class="cap">경로 상태를 색으로 구분합니다</div>
+  <div class="bt" style="margin:12px 0 16px">진행 대기 · 진행중 · 완료 · 지연</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px">
+   <div><div class="sb"><div class="k">Route Visualization</div>
+    <div class="v">좌표 색상으로 상태를 구분해 지도에 경로를 그립니다. 지연 경로가 먼저 눈에 들어옵니다.</div></div></div>
+   <div><div class="sb"><div class="k">Route List</div>
+    <div class="v">생성된 경로를 목록으로 보며 수정·추가하고 기사를 재배차합니다. 선택한 경로만 지도에 띄웁니다.</div></div></div>
+   <div><div class="sb"><div class="k">P · D 경로 분리</div>
+    <div class="v">픽업 라우트와 드롭 라우트를 나눠 관리합니다. 허브 기준으로 들어오는 흐름과 나가는 흐름이 다릅니다.</div></div></div>
+  </div>
+ </div></div>
+ <div class="pgn">TMS 09</div>
+</div></div></div>
+
+<!-- ══ TMS 10 · 관제 ══ -->
+<div class="wrap" id="tms-10"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">실시간 관제</div><div class="ten">Live Monitoring</div>
+ <div class="hl">리드타임은 달리는 시간이 아니라<br><em>서 있는 시간</em>에서 갈렸습니다</div>
+ <div class="ds">위치만 찍어서는 왜 늦는지 모릅니다. 출발·도착에 더해 <b>배송지간 체류 시간</b>을 재기 시작하면서
+  지연이 어느 구간에서 생기는지가 보였습니다.</div>
+
+ <div style="position:absolute;left:100px;top:392px;width:1720px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
+  <div class="bx"><div class="pd" style="padding:22px 24px"><div class="cap">01</div>
+   <div class="bt" style="margin:10px 0 10px">배송 출발</div><div class="sm" style="font-size:13.5px">상차를 마치고 허브를 떠난 시각</div></div></div>
+  <div class="bx"><div class="pd" style="padding:22px 24px"><div class="cap">02</div>
+   <div class="bt" style="margin:10px 0 10px">배송지별 도착</div><div class="sm" style="font-size:13.5px">각 배송지에 도달한 시각</div></div></div>
+  <div class="bx hi"><div class="pd" style="padding:22px 24px"><div class="cap lm">03 · 핵심</div>
+   <div class="bt" style="margin:10px 0 10px">배송지간 체류</div><div class="sm" style="font-size:13.5px">문 앞에 머문 시간. 공동현관·부재·엘리베이터가 여기 쌓입니다</div></div></div>
+  <div class="bx"><div class="pd" style="padding:22px 24px"><div class="cap">04</div>
+   <div class="bt" style="margin:10px 0 10px">완료까지 ETA</div><div class="sm" style="font-size:13.5px">남은 예상 시간. 관제가 개입할지 판단하는 기준</div></div></div>
+ </div>
+
+ <div class="bx" style="left:100px;top:620px;width:1100px;height:320px"><div class="pd">
+  <div class="cap">관제 화면이 하는 일 셋</div>
+  <div style="margin-top:18px">
+   <div class="sb" style="margin-bottom:12px"><div class="k">Realtime Dispatch</div>
+    <div class="v">운행 중 생긴 변수에 맞춰 기사를 추가 파견하거나 조정합니다. 수동 배차가 여기서 일어납니다.</div></div>
+   <div class="sb" style="margin-bottom:12px"><div class="k">Route Monitoring</div>
+    <div class="v">차량이 계획된 경로로 가고 있는지 추적합니다. 이탈하면 관제가 먼저 압니다.</div></div>
+   <div class="sb"><div class="k">Delivery Information</div>
+    <div class="v">유닛 박스와 물품 상태를 함께 추적합니다. 공동현관 출입 정보와 배송 완료 사진이 같은 화면에 붙습니다.</div></div>
+  </div>
+ </div></div>
+
+ <div class="bx" style="left:1240px;top:620px;width:580px;height:320px"><div class="pd">
+  <div class="cap">한 화면이 다루는 양</div>
+  <div style="margin-top:16px">
+   <div class="led"><span class="lk">배송 대기</span><span class="lv">9,213</span></div>
+   <div class="led"><span class="lk">미배송</span><span class="lv">88</span></div>
+   <div class="led"><span class="lk">기사별 처리</span><span class="lv">24 / 44</span></div>
+   <div class="led"><span class="lk">운행 거리</span><span class="lv">24.31 km</span></div>
+  </div>
+  <div class="mut" style="margin-top:14px;font-size:13px">기사 단위로 처리 건수와 잔여를 동시에 봅니다. 운행 지연은 별도 상태로 구분합니다.</div>
+ </div></div>
+ <div class="pgn">TMS 10</div>
+</div></div></div>
+
+<!-- ══ TMS 11 · 품질 ══ -->
+<div class="wrap" id="tms-11"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">개발 · 품질</div><div class="ten">Delivery Process</div>
+ <div class="hl">3인 유닛에서<br>기획자가 <em>QA까지</em> 맡았습니다</div>
+ <div class="ds">PM 1인, FE 1인, BE 1인. 테스터가 따로 없어서 기능 정의를 쓴 사람이 검증도 했습니다.
+  <b>쓴 사람이 검사하는 구조의 약점</b>은 뒤에 적었습니다.</div>
+
+ <div class="flow" style="left:100px;top:400px;width:1720px;height:112px">
+  <div class="node"><div class="nk">스프린트 계획</div><div class="nv">범위 결정 · 일정 산정</div></div><div class="arw">▸</div>
+  <div class="node"><div class="nk">기능 · 예외 정의</div><div class="nv">상세 정의 후 개발 착수</div></div><div class="arw">▸</div>
+  <div class="node b"><div class="nk">테스트 케이스</div><div class="nv">시나리오 · 예상 결과</div></div><div class="arw">▸</div>
+  <div class="node"><div class="nk">Stage · Beta 검증</div><div class="nv">명세대로 동작하는지</div></div><div class="arw">▸</div>
+  <div class="node"><div class="nk">Asana 버그 추적</div><div class="nv">제품 · 모듈 · 우선순위</div></div>
+ </div>
+
+ <div class="bx" style="left:100px;top:560px;width:840px;height:380px"><div class="pd">
+  <div class="cap">테스트 케이스에 넣은 것</div>
+  <div class="bt" style="margin:12px 0 14px">동작만 적으면 통과합니다</div>
+  <div class="sm">정상 흐름만 적은 명세는 개발도 QA도 쉽게 통과시킵니다.
+   그래서 케이스마다 아래 넷을 같이 적었습니다.</div>
+  <div style="margin-top:18px">
+   <div class="led"><span class="lk">상황별 동작</span><span class="lv">조건에 따라 무엇이 달라지는가</span></div>
+   <div class="led"><span class="lk">예외 케이스</span><span class="lv">실패했을 때 어디로 가는가</span></div>
+   <div class="led"><span class="lk">전제 조건</span><span class="lv">어떤 상태에서만 성립하는가</span></div>
+   <div class="led"><span class="lk">예상 결과</span><span class="lv">무엇을 보면 통과인가</span></div>
+  </div>
+ </div></div>
+
+ <div class="bx" style="left:980px;top:560px;width:840px;height:380px"><div class="pd">
+  <div class="cap">버그 리포트에 붙인 정보</div>
+  <div class="bt" style="margin:12px 0 14px">재현되지 않으면 고쳐지지 않습니다</div>
+  <div style="margin-top:6px">
+   <span class="chip">제품</span><span class="chip">모듈</span><span class="chip on">우선순위</span>
+   <span class="chip on">난이도</span><span class="chip on">환경</span><span class="chip">재현 절차</span>
+  </div>
+  <div class="sm" style="margin-top:18px">우선순위와 난이도를 같이 적으면 <b>무엇부터 고칠지가 회의 없이 정해집니다.</b>
+   환경(Stage · Beta)을 적는 이유는 재현되지 않는 리포트가 가장 오래 남기 때문입니다.<br><br>
+   4년간 v1 → v2(Retool) → v3로 넘어가는 동안 이 형식을 그대로 썼습니다.</div>
+ </div></div>
+ <div class="pgn">TMS 11</div>
+</div></div></div>
+
+<!-- ══ TMS 12 · 화면 정의서 · 클러스터 ══ -->
+<div class="wrap" id="tms-12"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">화면 미리보기</div><div class="ten">Screen Preview · 분류 클러스터 플랜</div>
+ <div class="hl">운영자가 지도에서<br><em>경계를 끌면</em> 슈트가 바뀝니다</div>
+ <div class="ds">매일 아침 여는 화면 하나에서 확인 · 수정 · 현장 전송이 끝납니다.</div>
+
+ <div class="shot" style="left:100px;top:346px;width:1267px;height:652px">
+  <div class="inr" style="transform:scale(1.13)">
+<div class="mk" style="left:0;top:0;width:1120px;height:576px">
+  <div class="mk-bar"><i class="mk-dot"></i><i class="mk-dot"></i><i class="mk-dot"></i>
+   <span class="mk-url">admin.delivus.kr / cluster / plan</span></div>
+  <div class="mk-body">
+   <div class="mk-side">
+    <div class="mk-logo"><i></i><span>딜리버스 백오피스</span></div>
+    <div class="mk-g">배차 관리</div>
+    <div class="mk-i">배차 신청 조회</div><div class="mk-i">배차 목록</div>
+    <div class="mk-g">배송 관리</div>
+    <div class="mk-i">업무 현황 조회</div><div class="mk-i">물품 현황 조회</div>
+    <div class="mk-g">분류 · 경로</div>
+    <div class="mk-i on">분류 클러스터 플랜</div><div class="mk-i">P · D 경로</div>
+    <div class="mk-g">주소 관리</div>
+    <div class="mk-i">대량 주소 업데이트</div><div class="mk-i">주소 조회</div>
+   </div>
+   <div class="mk-main">
+    <div class="mk-top"><span class="mk-srch">박스 ID, 송장번호, 기사명, 연락처로 검색</span></div>
+    <div class="mk-kpi">
+     <div class="mk-k"><div class="kk">TOTAL CLUSTER</div><div class="kv">1,242</div></div>
+     <div class="mk-k"><div class="kk">BLACK</div><div class="kv">243</div></div>
+     <div class="mk-k"><div class="kk">BLUE</div><div class="kv">420</div></div>
+     <div class="mk-k"><div class="kk">WHITE</div><div class="kv">398</div></div>
+     <div class="mk-k"><div class="kk">YELLOW</div><div class="kv">131</div></div>
+    </div>
+    <div class="mk-map">
+     <div class="mk-tools">
+      <span class="mk-t">집코드 레이어</span><span class="mk-t">지역 레이어</span>
+      <span class="mk-t on">폴리곤 그리기</span><span class="mk-t">좌표 레이어</span><span class="mk-t">플랜 그룹</span></div>
+     <svg viewBox="0 0 700 400" style="position:absolute;inset:0;width:100%;height:100%">
+      <rect width="700" height="400" fill="#E9EEF3"/>
+      <path d="M0,150 Q180,120 330,168 T700,140" stroke="#BFD4E6" stroke-width="17" fill="none"/>
+      <g stroke="#D7DEE6" stroke-width="2" fill="none">
+       <path d="M60,0 L110,400"/><path d="M240,0 L268,400"/><path d="M430,0 L446,400"/>
+       <path d="M600,0 L618,400"/><path d="M0,60 L700,44"/><path d="M0,268 L700,286"/><path d="M0,340 L700,352"/></g>
+      <path d="M150,196 L438,178 L470,330 L196,352 Z" fill="#E4564B" fill-opacity=".16"
+        stroke="#D63B2E" stroke-width="2.6" stroke-dasharray="7 5"/>
+      <g font-size="11" font-weight="700" fill="#fff" text-anchor="middle">
+       <g><circle cx="196" cy="222" r="12" fill="#2FB39A"/><text x="196" y="226">90</text></g>
+       <g><circle cx="262" cy="206" r="12" fill="#2FB39A"/><text x="262" y="210">100</text></g>
+       <g><circle cx="238" cy="276" r="12" fill="#2FB39A"/><text x="238" y="280">78</text></g>
+       <g><circle cx="320" cy="248" r="12" fill="#2FB39A"/><text x="320" y="252">47</text></g>
+       <g><circle cx="386" cy="222" r="12" fill="#E8913C"/><text x="386" y="226">38</text></g>
+       <g><circle cx="410" cy="300" r="12" fill="#E8913C"/><text x="410" y="304">61</text></g>
+       <g><circle cx="300" cy="322" r="12" fill="#2FB39A"/><text x="300" y="326">55</text></g>
+       <g><circle cx="524" cy="150" r="12" fill="#3B7BD8"/><text x="524" y="154">38</text></g>
+       <g><circle cx="592" cy="176" r="12" fill="#3B7BD8"/><text x="592" y="180">42</text></g>
+       <g><circle cx="106" cy="316" r="12" fill="#3B7BD8"/><text x="106" y="320">45</text></g></g>
+     </svg>
+     <div class="mk-card" style="right:9px;top:34px;width:146px">
+      <div class="ck">POLYGON</div>
+      <div class="cr">Sector : 3</div><div class="cr">Shipping item : 1,320</div><div class="cr">Shipping Container : 26</div>
+      <div class="ck" style="margin-top:7px;color:#2B44B8">TRACKINGNUMBER</div>
+      <div class="cr" style="color:#3B7BD8">20103498105920</div>
+      <div class="cr" style="color:#3B7BD8">20103498105430</div>
+     </div>
+    </div>
+   </div>
+   <div class="mk-rt">
+    <div class="mk-sec">
+     <div class="mk-chk"><div class="h">Sector ID</div>
+      <div class="r"><i></i>서초</div><div class="r"><i></i>잠실</div><div class="r"><i></i>송파</div>
+      <div class="r"><i></i>방배</div><div class="r"><i></i>강남</div></div>
+     <div class="mk-chk"><div class="h">Sector alias</div>
+      <div class="r"><i></i>서초001</div><div class="r"><i></i>서초002</div><div class="r"><i></i>서초003</div>
+      <div class="r"><i></i>서초004</div><div class="r"><i></i>서초005</div></div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:11px">
+     <span style="font-size:9.5px;font-weight:700;color:var(--ink)">P · 경로 조회</span>
+     <span><span class="mk-btn g">플랜 병합</span> <span class="mk-btn g">물품 이동</span> <span class="mk-btn">+ 플랜 생성</span></span>
+    </div>
+    <div class="mk-th"><div style="flex:1.5">CLUSTER ID</div><div style="flex:1">CHUTE</div><div style="flex:.8">ITEMS</div><div style="flex:1">TYPE</div></div>
+    <div class="mk-tr"><div style="flex:1.5">C-송파R33</div><div style="flex:1">C31</div><div style="flex:.8">52</div><div style="flex:1"><span class="mk-pill">Blue</span></div></div>
+    <div class="mk-tr"><div style="flex:1.5">C-송파R34</div><div style="flex:1">C32</div><div style="flex:.8">47</div><div style="flex:1"><span class="mk-pill">Blue</span></div></div>
+    <div class="mk-tr"><div style="flex:1.5">C-서초A11</div><div style="flex:1">A11</div><div style="flex:.8">61</div><div style="flex:1"><span class="mk-pill">Blue</span></div></div>
+    <div class="mk-tr"><div style="flex:1.5">C-강남B07</div><div style="flex:1">B07</div><div style="flex:.8">38</div><div style="flex:1"><span class="mk-pill">Blue</span></div></div>
+    <div class="mk-tr" style="border:0"><div style="flex:1.5">C-방배D02</div><div style="flex:1">D02</div><div style="flex:.8">44</div><div style="flex:1"><span class="mk-pill">Blue</span></div></div>
+    <div style="font-size:8.5px;color:var(--g9);font-weight:700;margin-top:7px">16 results · 01 / 02</div>
+   </div>
+  </div>
+ </div>
+ <div class="num" style="left:153px;top:117px">1</div>
+ <div class="num" style="left:278px;top:117px">2</div>
+ <div class="num" style="left:710px;top:144px">3</div>
+ <div class="num" style="left:936px;top:164px">4</div>
+  </div>
+ </div>
+
+ <div style="position:absolute;left:1417px;top:346px;width:403px">
+  <div class="cap lm">주요 기능</div>
+  <div style="margin-top:20px">
+ <div class="ft"><div class="fn">1</div><div><div class="ftt">레이어 토글</div>
+  <div class="ftd">집코드 · 지역 · 좌표를 따로 켭니다. <b>기본은 전부 꺼진 상태</b>입니다.</div></div></div>
+ <div class="ft"><div class="fn">2</div><div><div class="ftt">폴리곤 편집</div>
+  <div class="ftd">꼭지점을 끌어 경계를 고칩니다. 매일 반복하는 작업이라 새로 그리지 않게 했습니다.</div></div></div>
+ <div class="ft"><div class="fn">3</div><div><div class="ftt">즉시 집계</div>
+  <div class="ftd">묶인 Sector · 물품 · 컨테이너 수가 <b>편집과 같은 트랜잭션에서</b> 갱신됩니다.</div></div></div>
+ <div class="ft last"><div class="fn">4</div><div><div class="ftt">플랜 생성</div>
+  <div class="ftd">누르는 순간 소터로 전송됩니다. <b>되돌리기는 여기서 끝납니다.</b></div></div></div>
+  </div>
+ </div>
+ <div class="draft">※ 당시 운영 화면을 같은 구조로 다시 그린 것입니다 · 수치는 더미 값</div>
+ <div class="pgn">TMS 12</div>
+</div></div></div>
+
+<!-- ══ TMS 13 · 화면 정의서 · 관제 ══ -->
+<div class="wrap" id="tms-13"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">화면 미리보기</div><div class="ten">Screen Preview · 실시간 관제</div>
+ <div class="hl">관제는 보는 화면이 아니라<br><em>개입하는</em> 화면입니다</div>
+ <div class="ds">지연을 발견하는 데서 끝내지 않고, 같은 화면에서 재배차까지 이어집니다.</div>
+
+ <div class="shot" style="left:100px;top:346px;width:1267px;height:652px">
+  <div class="inr" style="transform:scale(1.13)">
+<div class="mk" style="left:0;top:0;width:1120px;height:576px">
+  <div class="mk-bar"><i class="mk-dot"></i><i class="mk-dot"></i><i class="mk-dot"></i>
+   <span class="mk-url">admin.delivus.kr / monitoring / live</span></div>
+  <div class="mk-body">
+   <div class="mk-side">
+    <div class="mk-logo"><i></i><span>딜리버스 백오피스</span></div>
+    <div class="mk-g">배차 관리</div>
+    <div class="mk-i">배차 신청 조회</div><div class="mk-i">배차 목록</div>
+    <div class="mk-g">배송 관리</div>
+    <div class="mk-i on">실시간 관제</div><div class="mk-i">물품 현황 조회</div>
+    <div class="mk-g">분류 · 경로</div>
+    <div class="mk-i">분류 클러스터 플랜</div><div class="mk-i">P · D 경로</div>
+    <div class="mk-g">자원 관리</div>
+    <div class="mk-i">라이더 관리</div><div class="mk-i">유닛 관리</div>
+   </div>
+   <div class="mk-main">
+    <div class="mk-top"><span class="mk-srch">박스 ID, 송장번호, 기사명, 연락처로 검색</span></div>
+    <div class="mk-kpi">
+     <div class="mk-k"><div class="kk">배송 대기</div><div class="kv">9,213</div></div>
+     <div class="mk-k"><div class="kk">배송 완료</div><div class="kv">8,540</div></div>
+     <div class="mk-k al"><div class="kk">미배송</div><div class="kv">88</div></div>
+     <div class="mk-k"><div class="kk">정상 운행</div><div class="kv">412</div></div>
+     <div class="mk-k al"><div class="kk">운행 지연</div><div class="kv">23</div></div>
+    </div>
+    <div class="mk-map" style="flex:none;height:186px">
+     <svg viewBox="0 0 700 250" style="position:absolute;inset:0;width:100%;height:100%">
+      <rect width="700" height="250" fill="#E9EEF3"/>
+      <path d="M0,96 Q190,70 340,110 T700,88" stroke="#BFD4E6" stroke-width="15" fill="none"/>
+      <g stroke="#D7DEE6" stroke-width="2" fill="none">
+       <path d="M90,0 L124,250"/><path d="M300,0 L318,250"/><path d="M500,0 L516,250"/><path d="M0,180 L700,196"/></g>
+      <path d="M148,58 L262,74 L286,152 L400,140 L438,196" stroke="#4A5BD4" stroke-width="3.4"
+        fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g><circle cx="148" cy="58" r="9" fill="#22252B"/><circle cx="438" cy="196" r="9" fill="#2FB39A"/></g>
+      <g fill="#4A5BD4"><rect x="280" y="146" width="13" height="10" rx="2"/><rect x="394" y="134" width="13" height="10" rx="2"/></g>
+      <g fill="#C24A3A"><rect x="556" y="104" width="13" height="10" rx="2"/></g>
+      <g fill="#7A8798" font-size="9" font-weight="700">
+       <text x="150" y="46">허브 출발</text><text x="404" y="216">배송 완료</text><text x="540" y="98">지연 1</text></g>
+     </svg>
+     <div class="mk-tools" style="left:auto;right:8px;bottom:8px;top:auto">
+      <span class="mk-t">BLACK</span><span class="mk-t">BLUE</span><span class="mk-t">WHITE</span>
+      <span class="mk-t on">이륜차</span><span class="mk-t on">사륜차</span></div>
+    </div>
+    <div style="padding:0 11px 11px;flex:1;min-height:0">
+     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="font-size:9.5px;font-weight:700;color:var(--ink)">기사 조회</span>
+      <span><span class="mk-btn g">전체</span> <span class="mk-btn">운행중</span> <span class="mk-btn g">운행 완료</span></span></div>
+     <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+      <div class="mk-drv"><div class="n"><em>Black</em><u>S</u>정지호 (010-3224-2432)</div>
+       <div class="d">운행 거리 24.31km · 기사 번호 B3094 · 자동차</div>
+       <div class="f"><span>수동 배차</span><span>24 / 44</span><span>01:21:45</span></div></div>
+      <div class="mk-drv"><div class="n"><em>Black</em><u>B</u>김민호 (010-1433-1393)</div>
+       <div class="d">운행 거리 18.02km · 기사 번호 B2871 · 이륜차</div>
+       <div class="f"><span>수동 배차</span><span>30 / 57</span><span>01:04:12</span></div></div>
+      <div class="mk-drv" style="margin:0"><div class="n"><em>Blue</em><u>S</u>박상훈 (010-2020-1123)</div>
+       <div class="d">운행 거리 27.63km · 기사 번호 B3140 · 자동차</div>
+       <div class="f"><span>수동 배차</span><span>53 / 65</span><span>02:08:30</span></div></div>
+      <div class="mk-drv" style="margin:0;border-color:#E0C2BE;background:#FDF6F5"><div class="n"><em>Blue</em><u>C</u>오경수 (010-9906-3359)</div>
+       <div class="d" style="color:#C24A3A">경로 이탈 · 예상 도착 22분 초과</div>
+       <div class="f"><span style="color:#C24A3A">재배차 필요</span><span>37 / 52</span><span>02:41:08</span></div></div>
+     </div>
+    </div>
+   </div>
+   <div class="mk-rt">
+    <div style="font-size:9.5px;font-weight:700;color:var(--ink);margin-bottom:7px">기사 정보</div>
+    <div class="mk-drv"><div class="n"><em>Black</em><u>S</u>정지호 (010-3224-2432)</div>
+     <div class="d">운행 거리 24.31km<br>기사 번호 B3094<br>운송 수단 자동차</div>
+     <div class="f"><span>수동 배차</span><span>24 / 44</span><span>01:21:45</span></div></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin:10px 0 7px">
+     <span style="font-size:9.5px;font-weight:700;color:var(--ink)">유닛 박스</span>
+     <span class="mk-btn g">기사 재배차</span></div>
+    <div class="mk-tr" style="border-top:1px solid var(--line)"><div style="flex:1.6">강남서초999-A24L</div><div style="flex:.6">24:33</div><div style="flex:.9;color:#2FB39A">배송 완료</div></div>
+    <div style="border:1px solid var(--edge);background:#F6F9FE;border-radius:3px;padding:7px 8px;margin-top:5px">
+     <div style="font-size:8.5px;color:var(--g1);font-weight:600;line-height:1.55">
+      주소 : 서울특별시 송파구 도곡로 450, 101호<br>송장 번호 : 20103498105920<br>
+      <b style="color:#1E4FA3">공동현관 출입 정보 : #32058*</b></div>
+     <div style="margin-top:6px"><span class="mk-btn g">배송 완료 사진</span> <span class="mk-btn">상태 변경</span></div></div>
+    <div class="mk-tr"><div style="flex:1.6">강남서초999-A25L</div><div style="flex:.6">24:33</div><div style="flex:.9;color:#2FB39A">배송 완료</div></div>
+    <div class="mk-tr"><div style="flex:1.6">강남서초999-A26L</div><div style="flex:.6">24:33</div><div style="flex:.9;color:var(--g6)">배송중</div></div>
+   </div>
+  </div>
+ </div>
+ <div class="num" style="left:436px;top:56px">1</div>
+ <div class="num" style="left:460px;top:184px">2</div>
+ <div class="num" style="left:508px;top:414px">3</div>
+ <div class="num" style="left:890px;top:206px">4</div>
+  </div>
+ </div>
+
+ <div style="position:absolute;left:1417px;top:346px;width:403px">
+  <div class="cap lm">주요 기능</div>
+  <div style="margin-top:20px">
+ <div class="ft"><div class="fn">1</div><div><div class="ftt">개입 대상 분리</div>
+  <div class="ftd">미배송 · 운행 지연만 붉게 띄웁니다. 나머지 셋은 참고값입니다.</div></div></div>
+ <div class="ft"><div class="fn">2</div><div><div class="ftt">계획 대 실제</div>
+  <div class="ftd">두 경로를 같은 선 위에 겹칩니다. <b>이탈은 선이 갈라지는 것</b>으로 보입니다.</div></div></div>
+ <div class="ft"><div class="fn">3</div><div><div class="ftt">한 줄 판단</div>
+  <div class="ftd">처리 · 잔여 · 경과를 한 줄에 둡니다. 남은 시간 안에 끝날지가 바로 읽힙니다.</div></div></div>
+ <div class="ft last"><div class="fn">4</div><div><div class="ftt">현장 정보</div>
+  <div class="ftd">공동현관 출입 정보는 배송 중에만 열고 <b>완료 후 마스킹</b>합니다.</div></div></div>
+  </div>
+ </div>
+ <div class="draft">※ 당시 운영 화면을 같은 구조로 다시 그린 것입니다 · 수치와 연락처는 더미 값</div>
+ <div class="pgn">TMS 13</div>
+</div></div></div>
+
+<!-- ══ TMS 14 · 회고 ══ -->
+<div class="wrap" id="tms-14"><div class="stage"><div class="fr">
+ <div class="rl a"></div><div class="rl b"></div>
+ <div class="tko">회고</div><div class="ten">What I'd Do Differently</div>
+ <div class="hl">지금 다시 한다면<br><em>편집 로그</em>부터 남기겠습니다</div>
+ <div class="ds">2021년에 만든 것을 2026년 기준으로 다시 봅니다.
+  판단 자체는 지금도 같게 하겠지만, <b>측정을 붙이지 않은 것</b>이 가장 아쉽습니다.</div>
+
+ <div style="position:absolute;left:100px;top:392px;width:1720px;display:grid;grid-template-columns:1fr 1fr;gap:28px">
+  <div class="bx hi"><div class="pd" style="padding:28px 32px">
+   <div class="cap lm">그때 맞게 판단한 것</div>
+   <div style="margin-top:16px">
+    <div class="led"><span class="lk"><b>01</b> 정확도를 올리는 대신 고칠 경로를 만든 것</span></div>
+    <div class="led"><span class="lk"><b>02</b> 되돌릴 수 있는 마지막 지점을 고른 것</span></div>
+    <div class="led"><span class="lk"><b>03</b> 편집 기능보다 시각화를 먼저 둔 것</span></div>
+    <div class="led"><span class="lk"><b>04</b> 경로 우선순위를 사람이 고르게 한 것</span></div>
+   </div>
+   <div class="sm" style="margin-top:18px">같은 구조를 이후 Vuddy 정산과 AI 서비스 안전 정책에서도 썼습니다 —
+    <b>자동으로 돌리되 확정은 사람이 한다.</b></div></div></div>
+
+  <div class="bx warn"><div class="pd" style="padding:28px 32px">
+   <div class="wk">지금이라면 다르게 할 것</div>
+   <div style="margin-top:16px">
+    <div class="led"><span class="lk"><b>01</b> 어떤 클러스터를 왜 고쳤는지 로그로 남기기</span></div>
+    <div class="led"><span class="lk"><b>02</b> 편집률을 가드레일 지표로 함께 걸기</span></div>
+    <div class="led"><span class="lk"><b>03</b> 지표 정의를 문서에 고정하기</span></div>
+    <div class="led"><span class="lk"><b>04</b> 현장 작업자의 재작업 시간도 같이 재기</span></div>
+   </div>
+   <div class="sm" style="margin-top:18px">편집 로그가 없으니 <b>자동 분류를 개선할 입력이 만들어지지 않았습니다.</b></div></div></div>
+ </div>
+
+ <div class="qb" style="left:100px;top:706px;width:1720px;height:196px">
+  <div class="bar"></div>
+  <div class="pd" style="padding:28px 32px">
+   <div class="t">편집권을 열면 자동화가 멈춥니다</div>
+   <div class="d"><b>고친 내역이 시스템으로 돌아오지 않으면</b> 자동 분류는 첫날 그대로입니다.
+    편집 횟수가 매달 같다면 <b>같은 문제를 매일 손으로 막고 있다</b>는 뜻입니다.
+    지금이라면 북극성 지표를 <b>편집이 필요한 클러스터 비율</b>로 잡고,
+    그 값이 떨어지는지로 자동 분류의 개선을 보겠습니다.</div>
+  </div>
+ </div>
+ <div class="draft">※ 이 회고는 2026년 시점의 재해석입니다 — 당시 의사결정 기록이 아닙니다</div>
+ <div class="pgn">TMS 14</div>
+</div></div></div>
+
+<script>
+function vw(){return document.documentElement.clientWidth||window.innerWidth;}
+function post(){try{parent.postMessage({type:'deck:height',deck:'tms',
+  height:document.documentElement.scrollHeight},'*');}catch(e){}}
+function fit(){var s=Math.min(vw()/1920,1);
+document.querySelectorAll('.stage').forEach(function(e){e.style.setProperty('--s',s)});
+document.querySelectorAll('.wrap').forEach(function(e){e.style.height=(1080*s)+'px'});
+post();}
+fit();window.addEventListener('resize',fit);window.addEventListener('load',fit);
+if(window.ResizeObserver){new ResizeObserver(fit).observe(document.documentElement);}
+if(location.hash){var t=document.querySelector(location.hash);
+  if(t)setTimeout(function(){t.scrollIntoView();},60);}
+window.addEventListener('message',function(e){
+  if(e.data&&e.data.type==='tms:goto'){var el=document.getElementById(e.data.id);
+    if(el)el.scrollIntoView({behavior:'smooth'});}});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+ if(e.isIntersecting){e.target.classList.add('play');io.unobserve(e.target);}});},{threshold:.25});
+document.querySelectorAll('.fr').forEach(function(f){io.observe(f)});
+</script></body></html>

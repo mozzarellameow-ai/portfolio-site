@@ -6,6 +6,20 @@
 <title>Jihye Shin — Product Manager</title>
 <meta name="description" content="물류와 크리에이터 커머스에서 8년, 지금은 신규 AI 서비스를 만들고 있는 프로덕트 매니저 Jihye Shin의 포트폴리오.">
 <meta name="theme-color" content="#0A0A0A">
+<!-- 배포 주소가 다르면 아래 두 줄(canonical · og:url)만 바꾸면 됩니다 -->
+<link rel="canonical" href="https://mozzarellameow-ai.github.io/portfolio-site/">
+<meta property="og:url" content="https://mozzarellameow-ai.github.io/portfolio-site/">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Jihye Shin">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="Jihye Shin — Product Manager">
+<meta property="og:description" content="물류와 크리에이터 커머스에서 8년, 지금은 신규 AI 서비스를 만들고 있는 프로덕트 매니저. 정책까지 내려가 설계하고 지표로 확인합니다.">
+<meta property="og:image" content="https://mozzarellameow-ai.github.io/portfolio-site/images/profile.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jihye Shin — Product Manager">
+<meta name="twitter:description" content="물류와 크리에이터 커머스에서 8년, 지금은 신규 AI 서비스를 만들고 있는 프로덕트 매니저.">
+<meta name="twitter:image" content="https://mozzarellameow-ai.github.io/portfolio-site/images/profile.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0A0A'/%3E%3Ctext x='32' y='44' font-family='Helvetica,Arial,sans-serif' font-size='30' font-weight='700' fill='%23F2F2EE' text-anchor='middle'%3EJS%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,17 +28,17 @@
 <style>
 :root{
   --bg:#0A0A0A;
-  --fg:#FFFFFF;
+  --fg:#F2F2EE;
   --dim:#A5A5A1;
-  --tenure:#F5843F;      /* 근속 기간 전용 */
+  --tenure:#B8B4F0;      /* 근속 기간 전용 */
   --accent:#7EB4FF;      /* 레벨 뱃지 Advanced 등 */
-  --line:#242422;
-  --pane:#131312;
+  --line:#2A2A27;
+  --pane:#1A1A18;
   --body:#C8C8C4;        /* 본문 보조 텍스트 */
-  --faint:#686864;       /* 3차 텍스트 */
+  --faint:#8C8C86;       /* 3차 텍스트 */
   --inv-dim:#8A8A86;     /* 반전된 면 위의 보조 텍스트 */
   --inv-line:rgba(255,255,255,.14);
-  --scrim:rgba(10,10,10,.72);
+  --scrim:rgba(10,10,10,.78);
   --gut:clamp(16px,4vw,64px);
   color-scheme:dark;
 }
@@ -32,7 +46,7 @@
   --bg:#FFFFFF;
   --fg:#0B0B0B;
   --dim:#595955;
-  --tenure:#B4531A;
+  --tenure:#3F36AD;
   --accent:#2563EB;
   --line:#E4E4E0;
   --pane:#F7F7F5;
@@ -113,6 +127,7 @@ header .right{display:flex;align-items:center;gap:14px}
 
 .hero-sub{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;margin-top:6vh}
 .hero-sub .kr{font-size:clamp(19px,2.2vw,26px);font-weight:600;letter-spacing:-.02em;max-width:24em}
+.hero-name{display:contents;font:inherit;letter-spacing:inherit}
 .hero-sub .kr small{display:block;margin-top:8px;font-size:13.5px;font-weight:400;color:var(--dim);letter-spacing:0;max-width:34em;line-height:1.75}
 .scroll-cue{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;
   padding-top:14px;border-top:1px solid var(--line)}
@@ -211,7 +226,7 @@ section{padding-top:clamp(70px,10vw,140px)}
 .case h5{margin:0 0 14px;font-size:16px;font-weight:600;letter-spacing:-.02em;
   display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 12px}
 .case h5 .yrtag{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.10em;
-  text-transform:uppercase;color:var(--brand,var(--faint));font-weight:400;
+  text-transform:uppercase;color:var(--faint);font-weight:400;
   border:1px solid color-mix(in srgb,var(--brand,var(--line)) 70%,var(--line));padding:3px 8px;border-radius:99px}
 .did{margin:0}
 .did li{position:relative;padding:0 0 9px 15px;font-size:15px;line-height:1.8;color:var(--body)}
@@ -355,11 +370,11 @@ footer{padding-top:clamp(80px,11vw,150px);padding-bottom:36px}
 .tag{font-size:11.5px;font-weight:500;letter-spacing:-.01em;line-height:1.45;
   padding:3px 8px;border-radius:4px;white-space:nowrap;
   background:hsl(var(--th) 62% 58% / .16);color:hsl(var(--th) 68% 74%)}
-:root[data-theme="light"] .tag{background:hsl(var(--th) 72% 46% / .12);color:hsl(var(--th) 62% 33%)}
+:root[data-theme="light"] .tag{background:hsl(var(--th) 72% 46% / .12);color:hsl(var(--th) 64% 28%)}
 .tag.t-logistics{--th:214}   /* 물류 · 운영 */
 .tag.t-commerce {--th:36}    /* 커머스 · 정산 */
 .tag.t-ops      {--th:145}   /* 백오피스 · 운영 */
-.tag.t-ai       {--th:266}   /* AI · 데이터 */
+.tag.t-ai       {--th:288}   /* AI · 데이터 */
 .tag.t-community{--th:330}   /* 팬덤 · 커뮤니티 */
 .tag.t-health   {--th:170}   /* 헬스케어 */
 /* neutral 은 --th 가 없어 hsl() 이 무효가 되므로 두 테마 모두 따로 지정한다.
@@ -582,7 +597,7 @@ body.editing .row-head{cursor:default}
 .deck-lead{font-size:15px;line-height:1.8;color:var(--body);max-width:44em;margin-bottom:22px}
 .deck{
   background:color-mix(in srgb,var(--fg) 8%,var(--bg));border-radius:8px;
-  padding:clamp(14px,2vw,24px);margin-top:8px;
+  padding:clamp(14px,2vw,22px);margin-top:8px;
   display:grid;grid-template-columns:1fr;grid-template-rows:auto auto auto;
   gap:clamp(12px,2vw,24px)
 }
@@ -593,7 +608,7 @@ body.editing .row-head{cursor:default}
   overflow-x:auto;overflow-y:hidden;
   scroll-snap-type:x proximity;
   -webkit-overflow-scrolling:touch;
-  padding-bottom:8px;
+  padding-bottom:6px;
   scrollbar-width:thin;scrollbar-color:var(--line) transparent;
   /* 양끝을 살짝 흐리게 해 더 스크롤된다는 것을 알린다 */
   -webkit-mask-image:linear-gradient(to right,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);
@@ -627,12 +642,12 @@ body.editing .row-head{cursor:default}
 .deck-track{
   grid-column:1;grid-row:2;
   display:flex;flex-direction:column;gap:20px;overflow-y:auto;overflow-x:hidden;
-  height:clamp(280px,54vw,720px);
+  height:auto;aspect-ratio:16/9;
   scroll-snap-type:y mandatory;scroll-padding-top:0;
   scrollbar-width:none;-ms-overflow-style:none
 }
 .deck-track::-webkit-scrollbar{display:none}
-.slide{flex:none;width:100%;scroll-snap-align:start;margin:0;display:flex;flex-direction:column}
+.slide{flex:none;width:100%;scroll-snap-align:start;margin:0;display:flex;flex-direction:column;container-type:inline-size}
 .slide img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#0B0B0B;
   border:1px solid var(--line);border-radius:2px}
 .slide figcaption{display:flex;align-items:baseline;gap:12px;padding-top:12px}
@@ -649,12 +664,12 @@ body.editing .row-head{cursor:default}
   .slide figcaption span{white-space:normal}
 }
 
-.deck-bar{grid-column:1;grid-row:3;display:flex;align-items:center;gap:12px;margin-top:0}
+.deck-bar{display:flex;align-items:center;gap:12px;margin-top:0}
 .deck-bar button{width:38px;height:38px;border:1px solid var(--line);background:none;color:var(--fg);
   border-radius:50%;cursor:pointer;font-size:14px;transition:.2s;flex:none}
 .deck-bar button:hover:not(:disabled){background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .deck-bar button:disabled{opacity:.25;cursor:default}
-#deckPos{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--faint)}
+#deckPos{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--dim)}
 .deck-rail{flex:1;height:1px;background:var(--line);position:relative;min-width:40px}
 .deck-rail i{position:absolute;left:0;top:0;height:100%;background:var(--tenure);transition:width .3s}
 @media(max-width:720px){
@@ -693,6 +708,498 @@ body.editing .row-head{cursor:default}
   .reveal{opacity:1;transform:none}
 }
 
+
+/* ============================================================
+   DECK — 10장 요약 덱 슬라이드
+   캔버스는 16:9 컨테이너. 내부 치수는 전부 cqw 라서 폭만 따라 커진다.
+   1100px 아래에서는 비율을 풀고 px 로 쌓는다(16:9 안에서는 본문이 못 읽힌다).
+   ============================================================ */
+/* 덱 탭 — 요약 덱 / 전체 덱 */
+.deck{grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:auto auto auto;
+  column-gap:16px;row-gap:clamp(10px,1.4vw,18px)}
+.deck-tabs{grid-area:1/1;display:flex;gap:10px;align-items:center;padding:0;border:0}
+.deck-tabs .seg{display:inline-flex;gap:3px;padding:3px;border:1px solid var(--line);border-radius:9px;background:var(--pane)}
+.deck-tabs button{display:flex;align-items:baseline;gap:7px;text-align:left;padding:7px 13px;border:0;
+  border-radius:6px;background:none;color:var(--dim);cursor:pointer;font:inherit;transition:.18s;white-space:nowrap}
+.deck-tabs button .k{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);line-height:1}
+.deck-tabs button .v{font-size:13.5px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.deck-tabs button:hover{color:var(--fg)}
+.deck-tabs button:hover .k{color:var(--dim)}
+.deck-tabs button[aria-selected="true"]{background:var(--fg);color:var(--bg)}
+.deck-tabs button[aria-selected="true"] .k{color:var(--bg);opacity:.55}
+.deck-tabs button[aria-selected="true"] .v{color:var(--bg)}
+.deck-tabs .note{margin-left:auto;font-size:12.5px;color:var(--dim);letter-spacing:-.01em;padding-bottom:4px}
+.deck-fs{grid-area:1/3;align-self:center;margin:0;padding:8px 13px;border:1px solid var(--line);
+  border-radius:8px;background:var(--pane);color:var(--dim);font-size:12.5px;font-weight:600;
+  letter-spacing:-.01em;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.deck-fs:hover{border-color:var(--fg);color:var(--fg)}
+.deck-fs svg{width:13px;height:13px;flex:none}
+@media(max-width:760px){.deck-fs{display:none}}
+/* 전체화면 — 캔버스를 화면 폭까지 키워 본문 글자를 실제 크기로 */
+.deck:fullscreen{display:block;padding:0;background:var(--bg)}
+.deck:fullscreen .deck-tabs,.deck:fullscreen .deck-chapters,.deck:fullscreen .deck-bar{display:none}
+.deck:fullscreen .deck-track{height:100vh;aspect-ratio:auto;gap:0;scroll-snap-type:y mandatory}
+.deck:fullscreen .slide{height:100vh;justify-content:center}
+.deck:fullscreen .slide figcaption{display:none}
+.deck:fullscreen .slide{max-width:min(100vw,calc(100vh * 16 / 9))}
+.deck:fullscreen .sl-canvas{width:100%;border:0;border-radius:0}
+.deck:fullscreen .sl-hint{position:fixed;right:18px;bottom:16px;z-index:9;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;color:var(--faint);
+  background:var(--pane);border:1px solid var(--line);border-radius:6px;padding:6px 10px;opacity:.9}
+.deck-chapters{grid-area:1/2;align-self:center}
+.deck-track{grid-area:2/1/3/4}
+.deck-bar{grid-area:3/1/4/4}
+@media(max-width:1000px){
+  .deck{grid-template-columns:1fr;row-gap:12px}
+  .deck-tabs{grid-area:1/1}
+  .deck-chapters{grid-area:2/1}
+  .deck-track{grid-area:3/1/4/2}
+  .deck-bar{grid-area:4/1/5/2}
+  .deck-tabs .note{display:none}
+  .deck-tabs button{padding:7px 11px}
+  .deck-tabs button .v{font-size:12.5px}
+}
+
+/* 요약 덱일 때만 챕터 칩을 썸네일 대신 번호+라벨로 */
+.deck-chapters.txt button{flex-direction:row;align-items:center;gap:8px;width:auto;padding:7px 12px 7px 10px}
+.deck-chapters .ch-n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--dim);flex:0 0 auto}
+.deck-chapters button[aria-pressed="true"] .ch-n{color:var(--tenure)}
+.deck-chapters.txt .ch-label{padding:0;white-space:nowrap}
+.deck.d1 .slide figcaption{display:none}
+.deck.d1 .deck-track{gap:14px}
+.deck.d2 .deck-track{aspect-ratio:1.66/1}
+
+.sl-canvas{width:100%;aspect-ratio:16/9;background:var(--bg);
+  border:1px solid var(--line);border-radius:2px;overflow:hidden;position:relative;
+  padding:5.2cqw 5.2cqw 5.2cqw;display:flex;flex-direction:column}
+.sl-canvas:has(.sl-cover){padding:5.2cqw}
+.sl-canvas>.sl-tbl{flex:1 1 auto;min-height:0}
+.sl-canvas *{word-break:keep-all;overflow-wrap:break-word}
+.sl-canvas h3,.sl-canvas h4,.sl-h,.sl-dl,.sl-claim,.sl-sub,.sl-cta,.sl-spine .v{text-wrap:balance}
+.sl-canvas p,.sl-foot,.vz-cap,.sl-tbl .de,.sl-tbl .ai,.sl-dm .ow,.sl-cr .de{text-wrap:pretty}
+.sl-cell p,.sl-dec p,.sl-tr p,.sl-step p{text-wrap:balance}
+.vz-cap,.sl-ncap{max-width:48.168cqw}
+.sl-canvas b{color:var(--fg);font-weight:700}
+.sl-canvas em.h{font-style:normal;color:var(--tenure);font-weight:700}
+.sl-eb{position:absolute;left:5.2cqw;top:5.2cqw;width:20.8cqw;color:var(--fg)}
+.sl-eb::before{content:"";display:block;width:14.5cqw;height:2px;background:var(--fg);margin-bottom:1.338cqw;opacity:.9}
+.sl-eb b{display:block;font-size:1.2cqw;font-weight:700;letter-spacing:-.03em;line-height:1.3;color:var(--fg)}
+.sl-eb i{display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:0.862cqw;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--tenure);margin-top:0.714cqw;line-height:1.5}
+.sl-eb u{display:block;text-decoration:none;font-size:0.728cqw;color:var(--faint);line-height:1.72;margin-top:1.338cqw}
+.sl-h{font-size:2.708cqw;line-height:1.24;font-weight:800;color:var(--fg);letter-spacing:-.042em;
+  margin:0 0 0 22.9cqw}
+.sl-h em{font-style:normal;color:var(--tenure)}
+.sl-sub{font-size:1.095cqw;line-height:1.66;color:var(--dim);margin:1.516cqw 0 0 22.9cqw;font-weight:400;letter-spacing:-.012em}
+.sl-pg{position:absolute;right:5.2cqw;bottom:3cqw;font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;letter-spacing:.14em;color:var(--faint);opacity:.65}
+
+/* 표지 */
+.sl-cover{height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.sl-name{font-size:0.833cqw;font-weight:700;letter-spacing:.3em;color:var(--fg)}
+.sl-role{font-family:"IBM Plex Mono",monospace;font-size:0.833cqw;letter-spacing:.1em;color:var(--faint);margin-top:0.535cqw}
+.sl-claim{font-size:3.143cqw;line-height:1.2;font-weight:800;color:var(--fg);letter-spacing:-.05em}
+.sl-claim em{font-style:normal;color:var(--tenure)}
+.sl-claimsub{font-size:0.938cqw;line-height:1.62;color:var(--dim);margin:1.784cqw 0 0;max-width:55.304cqw;letter-spacing:-.014em}
+.sl-bot{display:flex;justify-content:space-between;align-items:flex-end;gap:2.854cqw}
+.sl-tags{display:flex;flex-wrap:wrap;gap:0.535cqw}
+.sl-tags .tag{font-size:0.833cqw;padding:0.268cqw 0.535cqw;border-radius:0.285cqw}
+.sl-cmeta{font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;color:var(--faint);text-align:right;line-height:1.7;flex:0 0 auto}
+.sl-cmeta b{display:block;font-size:0.833cqw}
+
+/* 카드 그리드 */
+.sl-grid{display:grid;gap:0.714cqw;background:none}
+.sl-sub + *,.sl-chead + *{margin-top:4.8cqw!important}
+.sl-cmeta2 + *{margin-top:2.9cqw!important}
+.sl-scope.row + *{margin-top:4.8cqw!important}
+.sl-grid.g3{grid-template-columns:repeat(3,1fr)}
+.sl-grid.g4{grid-template-columns:repeat(4,1fr)}
+.sl-grid.g5{grid-template-columns:repeat(5,1fr)}
+.sl-foot{margin-top:auto;padding-top:1.07cqw;
+  font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;letter-spacing:.05em;color:var(--faint)}
+.sl-cell{background:var(--pane);border-radius:0.624cqw;padding:1.962cqw 1.962cqw 1.962cqw}
+
+/* 숫자 */
+.sl-nums{margin-top:2.319cqw}
+.sl-ntag{font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.sl-big{font-size:1.357cqw;font-weight:800;color:var(--fg);letter-spacing:-.045em;line-height:1.1;margin-top:0.714cqw}
+.sl-big i{font-style:normal;font-size:1.2cqw;font-weight:700;color:var(--dim);letter-spacing:-.025em}
+.sl-big u{text-decoration:none;color:var(--tenure)}
+.sl-ncap{font-size:0.833cqw;line-height:1.55;color:var(--dim);margin-top:0.714cqw}
+.sl-nsrc{font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;color:var(--faint);margin-top:0.535cqw}
+.sl-note{font-size:0.6cqw;line-height:1.6;color:var(--faint);margin-top:1.427cqw;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:0.401cqw 1.427cqw}
+.sl-note i{font-family:"IBM Plex Mono",monospace;font-style:normal;font-size:0.6cqw;
+  letter-spacing:.14em;text-transform:uppercase;flex:0 0 auto}
+
+/* 방법 */
+.sl-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.427cqw;margin-top:1.784cqw;flex:1;padding-bottom:1.16cqw}
+.sl-step{display:flex;flex-direction:column;background:var(--pane);
+  border-radius:0.624cqw;padding:1.962cqw 1.962cqw 1.962cqw}
+.sl-step .n{font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;font-weight:500;letter-spacing:.13em;color:var(--faint)}
+.sl-step h4{font-size:1.042cqw;font-weight:700;color:var(--fg);margin:0.714cqw 0 0;line-height:1.4;letter-spacing:-.025em}
+.sl-step p{font-size:0.833cqw;line-height:1.64;color:var(--dim);margin:0.714cqw 0 0}
+.sl-step .q{font-size:0.833cqw;line-height:1.6;color:var(--dim);margin-top:auto;padding-top:0.892cqw}
+.sl-spine{background:var(--pane);padding:1.962cqw 2.141cqw;display:flex;gap:2.319cqw;align-items:center;border-radius:0.624cqw}
+.sl-spine .lead{flex:0 0 22.3cqw}
+.sl-spine .lead .k{font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.sl-spine .lead .v{font-size:1.2cqw;font-weight:800;color:var(--fg);line-height:1.4;margin-top:0.535cqw;letter-spacing:-.032em}
+.sl-spine .ex{display:grid;grid-template-columns:repeat(3,1fr);gap:1.784cqw;flex:1}
+.sl-spine .ex div{font-size:0.833cqw;color:var(--dim);line-height:1.6}
+.sl-spine .ex b{display:block;color:var(--fg);font-weight:700;font-size:0.833cqw;margin-bottom:0.268cqw}
+
+/* 케이스 */
+.sl-chead{display:block}
+.sl-cmeta2{display:grid;grid-template-columns:17cqw 17cqw minmax(0,1fr);gap:0 2.6cqw;align-items:start;
+  font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;color:var(--faint);line-height:1.6}
+.sl-cmeta2 b{color:var(--dim);font-weight:500}
+
+
+
+.sl-decs{margin-top:1.784cqw}
+.sl-dec .k{font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;letter-spacing:.13em;color:var(--faint)}
+.sl-dec h4{font-size:1.042cqw;font-weight:700;color:var(--fg);line-height:1.42;margin:0.714cqw 0 0;letter-spacing:-.025em}
+.sl-dec p{font-size:0.833cqw;line-height:1.66;color:var(--dim);margin:0.714cqw 0 0}
+.sl-res{margin-top:auto;padding-top:1.427cqw;border-top:1px solid var(--line);display:flex;gap:0}
+.sl-res .rl{flex:0 0 8.92cqw;font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding-top:0.268cqw}
+.sl-res .rv{flex:1;display:flex;flex-wrap:wrap;gap:0.535cqw 1.784cqw}
+.sl-res .rv span{font-size:0.833cqw;color:var(--dim)}
+
+/* 일하는 방식 */
+.sl-track{margin-top:1.784cqw}
+.sl-tr .yr{font-family:"IBM Plex Mono",monospace;font-size:1.2cqw;font-weight:500;color:var(--dim);letter-spacing:-.02em}
+.sl-tr .lb{font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:0.268cqw}
+.sl-tr h4{font-size:1.042cqw;font-weight:700;color:var(--fg);margin:0.892cqw 0 0;line-height:1.42;letter-spacing:-.025em}
+.sl-tr p{font-size:0.833cqw;line-height:1.62;color:var(--dim);margin:0.535cqw 0 0}
+.sl-tr .out{font-size:0.833cqw;color:var(--fg);font-weight:600;margin-top:0.714cqw;padding-top:0.714cqw;border-top:1px solid var(--line)}
+
+/* 경력 */
+.sl-car{margin-top:1.784cqw}
+.sl-cr{padding:1.427cqw 1.16cqw 1.16cqw}
+.sl-cr .co{font-size:0.833cqw;font-weight:800;color:var(--fg);letter-spacing:.01em}
+.sl-cr .pd{font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;color:var(--faint);margin-top:0.401cqw}
+.sl-cr .ro{font-size:1.042cqw;color:var(--dim);font-weight:600;margin-top:0.714cqw}
+.sl-cr .de{font-size:0.833cqw;color:var(--dim);line-height:1.6;margin-top:0.535cqw}
+.sl-cap{display:flex;flex-direction:column;justify-content:space-between;border-top:1px solid var(--line);padding-top:1.1cqw;margin-top:1.1cqw}
+.sl-cap .k{display:none;flex:0 0 8.92cqw;font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding-top:0.134cqw}
+.sl-cap .v{flex:1;font-size:0.728cqw;color:var(--dim);line-height:1.85}
+.sl-close{margin-top:auto;padding-top:1.784cqw;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;gap:2.854cqw}
+.sl-close .cta{font-size:1.2cqw;font-weight:800;color:var(--fg);letter-spacing:-.035em;line-height:1.4}
+.sl-close .cta span{display:block;font-size:0.728cqw;font-weight:400;color:var(--dim);margin-top:0.535cqw;line-height:1.7}
+.sl-close .ct{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:0.833cqw;color:var(--dim);line-height:1.8;flex:0 0 auto}
+.sl-close .ct b{display:block;color:var(--fg)}
+
+/* ---- 증거: 차트 ---- */
+.vz{margin-top:1.427cqw}
+.vz-h{display:flex;justify-content:space-between;align-items:baseline;gap:1.784cqw}
+.vz-h .t{font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.vz-h .v{font-size:0.833cqw;color:var(--dim)}
+.vz-h .v b{color:var(--fg);font-weight:700}
+.vz-cap{font-size:0.6cqw;line-height:1.6;color:var(--faint);margin-top:0.714cqw}
+
+/* 스택 바 — 단일 색상 램프(프롬프트 조립 순서) */
+.vz-stack{display:flex;gap:2px;margin-top:0.892cqw}
+.vz-stack .sg{height:1.873cqw;border-radius:2px;position:relative}
+.vz-stack .sg:first-child{border-radius:3px 2px 2px 3px}
+.vz-stack .sg:last-child{border-radius:2px 3px 3px 2px}
+.vz-legend{display:flex;gap:1.784cqw;margin-top:0.714cqw;flex-wrap:wrap}
+.vz-legend div{font-size:0.6cqw;color:var(--dim);display:flex;align-items:center;gap:0.401cqw}
+.vz-legend i{width:0.553cqw;height:0.553cqw;border-radius:2px;flex:0 0 auto}
+.vz-legend b{color:var(--fg);font-weight:600}
+
+/* 퍼널 — 기본은 중립, 병목 두 구간만 강조 */
+.vz-fun{margin-top:0.714cqw;display:flex;flex-direction:column;gap:0.401cqw}
+.vz-row{display:flex;align-items:center;gap:0.714cqw}
+.vz-row .lb{flex:0 0 9.812cqw;font-size:0.6cqw;color:var(--dim);text-align:right}
+.vz-row .bar{flex:1;height:1.204cqw;position:relative}
+.vz-row .bar i{display:block;height:100%;border-radius:0 3px 3px 0;background:color-mix(in srgb,var(--fg) 20%,transparent)}
+.vz-row .n{flex:0 0 4.817cqw;font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;color:var(--fg)}
+.vz-row .pc{flex:0 0 4.103cqw;font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;color:var(--faint);text-align:right}
+.vz-row.hot .bar i{background:var(--tenure)}
+.vz-row.hot .lb{color:var(--fg)}
+.vz-row.hot .pc{color:var(--tenure);font-weight:600}
+
+/* before / after 미니 바 (숫자 타일) */
+.vz-ba{margin-top:0.535cqw;display:flex;flex-direction:column;gap:0.268cqw}
+.vz-ba .l{display:flex;align-items:center;gap:0.401cqw}
+.vz-ba .l span{flex:0 0 2.944cqw;font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;color:var(--faint)}
+.vz-ba .l i{display:block;height:0.375cqw;border-radius:2px;background:color-mix(in srgb,var(--fg) 18%,transparent)}
+.vz-ba .l.on i{background:var(--tenure)}
+
+/* 필름스트립 — 실제 산출물 */
+.sl-film{margin-top:0.892cqw;display:grid;grid-template-columns:repeat(4,1fr);gap:0.892cqw}
+.sl-film figure{margin:0}
+.sl-film img{width:100%;aspect-ratio:16/9;object-fit:contain;object-position:center;display:block;border:1px solid var(--line);border-radius:0.401cqw;background:var(--pane)}
+.sl-film figcaption{font-size:0.6cqw;line-height:1.5;color:var(--faint);padding-top:0.401cqw}
+.sl-film figcaption b{display:block;color:var(--dim);font-weight:600;font-size:0.6cqw}
+
+/* 도메인 × 깊이 */
+.sl-dom{margin-top:1.784cqw}
+.sl-dm{padding:1.427cqw 1.16cqw 1.16cqw;display:flex;flex-direction:column}
+.sl-dm .nm{font-size:1.042cqw;font-weight:800;color:var(--fg);letter-spacing:-.02em;line-height:1.35}
+.sl-dm .pr{font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;color:var(--faint);margin-top:0.401cqw}
+.sl-dm .ow{font-size:0.833cqw;color:var(--dim);line-height:1.6;margin-top:0.714cqw}
+.sl-dm .ch{margin-top:auto;padding-top:0.714cqw;display:flex;flex-wrap:wrap;gap:0.268cqw}
+.sl-dm .ch span{font-size:0.6cqw;line-height:1.4;padding:0.134cqw 0.401cqw;border-radius:0.223cqw;border:1px solid var(--line);color:var(--dim)}
+.sl-know{margin-top:auto;padding-top:1.427cqw;display:flex;gap:0}
+.sl-know .k{flex:0 0 12.488cqw;font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);padding-top:0.134cqw}
+.sl-know .v{flex:1;font-size:0.728cqw;color:var(--dim);line-height:1.8}
+.sl-know .v b{color:var(--fg);font-weight:600}
+.v.rows{display:grid;gap:0.401cqw;line-height:1.6}
+.v.rows>div{display:grid;grid-template-columns:14.272cqw 1fr;gap:0 1.16cqw;align-items:baseline}
+.v.rows>div b{color:var(--fg);font-weight:600}
+.sl-cap .v.rows{gap:0.5cqw}
+.sl-cap .v.rows>div{grid-template-columns:22.9cqw 1fr;gap:0 0}
+
+/* 검수 로그 표 */
+.sl-tbl{border-top:1px solid var(--line);display:flex;flex-direction:column}
+.sl-tbl .r{flex:1 1 auto;display:grid;grid-template-columns:9.812cqw 1fr 1.35fr 11.596cqw;gap:1.427cqw;padding:0.892cqw 0;border-bottom:1px solid var(--line);align-items:center}
+.sl-tbl .r.hd{flex:0 0 auto;align-items:start}
+.sl-tbl.t3 .r{grid-template-columns:13cqw 17cqw minmax(0,1fr) 15cqw}
+.sl-tbl .r.hd{padding:0.535cqw 0;font-family:"IBM Plex Mono",monospace;font-size:0.728cqw;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.sl-tbl .r .it{font-size:1.042cqw;color:var(--fg);font-weight:700;line-height:1.45;letter-spacing:-.025em}
+.sl-tbl .r .ai{font-size:0.833cqw;color:var(--faint);line-height:1.6}
+.sl-tbl .r .de{font-size:0.833cqw;color:var(--dim);line-height:1.7}
+.sl-tbl .r .de b{color:var(--fg)}
+.sl-tbl .r .im{font-size:0.833cqw;color:var(--tenure);line-height:1.6;font-weight:600}
+.sl-chk{display:grid;grid-template-columns:repeat(4,1fr);gap:0.714cqw}
+.sl-chk div{background:var(--pane);border-radius:.7cqw;padding:1.8cqw 2cqw;font-size:0.728cqw;color:var(--dim);line-height:1.7}
+.sl-chk b{display:block;color:var(--fg);font-weight:700;font-size:1.042cqw;line-height:1.4;letter-spacing:-.025em;margin-bottom:0.8cqw}
+
+/* 프라임드라이브 밴드 */
+.sl-pd{display:flex;flex-direction:column}
+.sl-pd .hd{flex:0 0 auto;margin-bottom:1.2cqw}
+.sl-pd .hd .k{font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.sl-pd .hd .v{font-size:0.938cqw;font-weight:800;color:var(--fg);line-height:1.4;margin-top:0.401cqw;letter-spacing:-.025em}
+.sl-pd .st{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:0.714cqw;border:0;border-radius:0;padding:0;font-size:inherit}
+.sl-pd .st div{background:var(--pane);border-radius:.7cqw;padding:1.6cqw 1.8cqw;font-size:0.728cqw;color:var(--dim)}
+.sl-pd .st div b{display:block;font-family:"IBM Plex Mono",monospace;font-size:1.42cqw;color:var(--fg);font-weight:500;letter-spacing:-.02em;margin-bottom:0.4cqw}
+
+/* 데스크톱 전용 여백 보정 — 16:9 안에서 각 장이 정확히 맞도록 */
+@media(min-width:1101px){
+  .sl-nums .sl-cell{padding-top:1.427cqw;padding-bottom:1.427cqw}
+  .sl-dom{flex:1}
+  .sl-know{padding-top:1.427cqw}
+  .vz{margin-top:auto;padding-top:1.427cqw}
+  .vz-stack .sg{height:2.676cqw}
+  .sl-decs{margin-bottom:0.401cqw}
+  .sl-film + .sl-res{padding-top:1.16cqw}
+  .sl-tbl .r{padding:1.16cqw 0}
+  .sl-chk{margin-top:auto;padding-top:1.427cqw}
+}
+
+@media(max-width:1100px){
+  .deck-track{aspect-ratio:auto}
+  .deck.d1 .deck-track{height:min(78vh,700px);scroll-snap-type:y proximity}
+  .sl-canvas{aspect-ratio:auto;padding:22px 20px 32px}
+  .sl-h{font-size:22px;margin-top:10px}
+  .sl-sub{font-size:13px;margin-top:8px}
+  .sl-pg{right:20px;bottom:12px;font-size:10px}
+
+  .sl-cover{gap:26px;height:auto}
+  .sl-name{font-size:13px}
+  .sl-role{font-size:11px;margin-top:6px}
+  .sl-claim{font-size:30px}
+  .sl-claimsub{font-size:14px;margin-top:14px;max-width:none}
+  .sl-bot{flex-direction:column;align-items:flex-start;gap:14px}
+  .sl-cmeta{text-align:left;font-size:11px}
+  .sl-cmeta b{font-size:12px}
+  .sl-tags .tag{font-size:11px;padding:3px 8px;border-radius:4px}
+
+  .sl-grid.g3,.sl-grid.g4,.sl-grid.g5{grid-template-columns:1fr}
+  .sl-foot{margin-top:18px;padding-top:12px;font-size:10px}
+  .sl-cell{padding:18px 18px 17px;border-radius:10px}
+  .sl-grid{gap:10px}
+  .sl-nums,.sl-decs,.sl-track,.sl-car{margin-top:18px}
+  .sl-ntag{font-size:10px}
+  .sl-big{font-size:30px;margin-top:8px}
+  .sl-big i{font-size:17px}
+  .sl-ncap{font-size:13px;margin-top:8px}
+  .sl-nsrc{font-size:11px;margin-top:6px}
+  .sl-note{font-size:12px;margin-top:14px;gap:5px 14px}
+  .sl-note i{font-size:10px}
+  .v.rows{gap:11px;line-height:1.7}
+  .v.rows>div,.sl-cap .v.rows>div{display:block}
+  .v.rows>div b{display:block;margin-bottom:2px}
+
+  .sl-steps{grid-template-columns:1fr;gap:12px;padding-bottom:18px;margin-top:18px}
+  .sl-step{padding:18px;border-radius:10px}
+  .sl-spine{padding:18px;border-radius:10px}
+  .sl-step h4{font-size:16px;margin-top:8px}
+  .sl-step p{font-size:13px;margin-top:7px}
+  .sl-step .q{font-size:12.5px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+  .sl-spine{flex-direction:column;align-items:flex-start;gap:16px;padding:18px}
+  .sl-spine .lead{flex:none}
+  .sl-spine .lead .k{font-size:10px}
+  .sl-spine .lead .v{font-size:19px;margin-top:6px}
+  .sl-spine .ex{grid-template-columns:1fr;gap:12px}
+  .sl-spine .ex div{font-size:12.5px}
+  .sl-spine .ex b{font-size:13px;margin-bottom:2px}
+
+  .sl-chead{flex-direction:column;gap:14px}
+  .sl-cmeta2{text-align:left;font-size:11px;line-height:1.7}
+  .sl-chead .sl-cmeta2{flex:none;display:flex;gap:18px}
+  .sl-chead .sl-cmeta2 .kpi{flex:1;margin-bottom:0;padding-bottom:0;border-bottom:0}
+  .sl-eb{position:static;width:auto}
+  .sl-h,.sl-sub{margin-left:0!important}
+  .sl-sub + *,.sl-chead + *{margin-top:18px!important}
+  .sl-eb::before{width:48px;margin-bottom:12px}
+  .sl-eb b{font-size:19px} .sl-eb i{font-size:10.5px;margin-top:7px} .sl-eb u{font-size:12px;margin-top:11px}
+  .sl-cmeta2{position:static;width:auto;font-size:12px;margin-top:16px}
+  .sl-scope{margin-top:14px;gap:7px}
+  .sl-scope i{font-size:10px;flex:0 0 100%;margin:0}
+  .sl-scope span{font-size:12px;padding:5px 9px;border-radius:7px}
+  .sl-scope.row{margin-top:16px}
+  .sl-dec .k{font-size:10px}
+  .sl-dec h4{font-size:16px;margin-top:7px}
+  .sl-dec p{font-size:13px;margin-top:7px}
+  .sl-res{flex-direction:column;gap:10px;padding-top:16px}
+  .sl-res .rl{flex:none;font-size:10px}
+  .sl-res .rv{gap:8px 16px}
+  .sl-res .rv span{font-size:13px}
+
+  .sl-tr .yr{font-size:24px}
+  .sl-tr .lb{font-size:10px}
+  .sl-tr h4{font-size:16px;margin-top:8px}
+  .sl-tr p{font-size:13px;margin-top:7px}
+  .sl-tr .out{font-size:12.5px;margin-top:10px;padding-top:10px}
+
+  .sl-cr{padding:16px}
+  .sl-cr .co{font-size:14px}
+  .sl-cr .pd{font-size:11px}
+  .sl-cr .ro{font-size:12.5px;margin-top:7px}
+  .sl-cr .de{font-size:12.5px;margin-top:5px}
+  .sl-cap{flex-direction:column;gap:8px;margin-top:18px}
+  .sl-cap .k{flex:none;font-size:10px}
+  .sl-cap .v{font-size:13px;line-height:1.8}
+  .sl-close{flex-direction:column;align-items:flex-start;gap:16px;padding-top:18px}
+  .sl-close .cta{font-size:19px}
+  .sl-close .cta span{font-size:13px;margin-top:8px}
+  .sl-close .ct{text-align:left;font-size:12.5px}
+
+  .vz{padding-top:14px}
+  .vz-h{flex-direction:column;align-items:flex-start;gap:6px}
+  .vz-h .t{font-size:10px}
+  .vz-h .v{font-size:13px}
+  .vz-cap{font-size:12px;margin-top:10px}
+  .vz-stack .sg{height:22px}
+  .vz-legend{gap:14px}
+  .vz-legend div{font-size:12px;gap:6px}
+  .vz-legend i{width:9px;height:9px}
+  .vz-row .lb{flex:0 0 96px;font-size:12px}
+  .vz-row .bar{height:16px}
+  .vz-row .n{flex:0 0 52px;font-size:12px}
+  .vz-row .pc{flex:0 0 44px;font-size:12px}
+  .vz-ba .l span{flex:0 0 32px;font-size:10px}
+  .vz-ba .l i{height:5px}
+
+  .sl-film{grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+  .sl-film figcaption{font-size:11px;padding-top:6px}
+  .sl-film figcaption b{font-size:12px}
+  .sl-film + .sl-res{padding-top:16px}
+
+  .sl-dom{margin-top:18px}
+  .sl-dm{padding:16px}
+  .sl-dm .nm{font-size:15px}
+  .sl-dm .pr{font-size:11px}
+  .sl-dm .ow{font-size:12.5px;margin-top:10px}
+  .sl-dm .ch{padding-top:10px;gap:5px}
+  .sl-dm .ch span{font-size:11px;padding:3px 7px;border-radius:4px}
+  .sl-know{flex-direction:column;gap:8px;padding-top:18px}
+  .sl-know .k{flex:none;font-size:10px}
+  .sl-know .v{font-size:12.5px;line-height:1.85}
+
+  .sl-tbl{margin-top:18px}
+  .sl-tbl .r{grid-template-columns:1fr;gap:6px;padding:14px 0}
+  .sl-tbl .r.hd{display:none}
+  .sl-tbl .r .it{font-size:13px}
+  .sl-tbl .r .ai,.sl-tbl .r .de{font-size:12.5px}
+  .sl-tbl .r .im{font-size:12px}
+  .sl-chk{grid-template-columns:1fr;gap:10px;margin-top:16px}
+  .sl-chk div{font-size:12.5px}
+  .sl-chk b{font-size:13px}
+
+  .sl-pd{flex-direction:column;gap:14px;padding-top:18px}
+  .sl-pd .hd{flex:none}
+  .sl-pd .hd .k{font-size:10px}
+  .sl-pd .hd .v{font-size:17px}
+  .sl-pd .st{gap:12px 22px}
+  .sl-pd .st div{font-size:12.5px}
+  .sl-pd .st div b{font-size:19px}
+}
+
+/* 증거 밴드 — 차트 왼쪽, 실제 화면 오른쪽 */
+.sl-ev{margin-top:auto;padding-top:1.427cqw;display:grid;grid-template-columns:1.62fr 1fr;gap:1.784cqw;align-items:start}
+.sl-ev .vz{margin-top:0;padding-top:0}
+.sl-ev.big{margin-top:1.427cqw;flex:1;align-content:start;grid-template-columns:1fr 1.3fr}
+.sl-ev.big .sl-shots{gap:0.892cqw}
+.sl-ev.big .vz-stack .sg{height:2.854cqw}
+.sl-ev.big .sl-shots img{aspect-ratio:1.8/1}
+.sl-shots{display:grid;grid-template-columns:1fr 1fr;gap:0.714cqw}
+.sl-shots figure{margin:0}
+.sl-shots img{width:100%;aspect-ratio:1.8/1;object-fit:contain;object-position:center;display:block;
+  border:1px solid var(--line);border-radius:0.401cqw;background:var(--pane)}
+.sl-shots figcaption{font-size:0.6cqw;line-height:1.45;color:var(--faint);padding-top:0.401cqw}
+.sl-shots figcaption b{display:block;color:var(--dim);font-weight:600;font-size:0.6cqw;margin-bottom:0.134cqw}
+.sl-shots .src{grid-column:1/-1;font-family:"IBM Plex Mono",monospace;font-size:0.6cqw;color:var(--faint);opacity:.75}
+@media(max-width:1100px){
+  .sl-ev{display:block;margin-top:0;padding-top:0}
+  .sl-shots{margin-top:18px;gap:12px}
+  .sl-shots figcaption{font-size:11px;padding-top:6px}
+  .sl-shots figcaption b{font-size:12px}
+  .sl-shots .src{font-size:10px}
+}
+
+/* 도메인 카드 썸네일 — 어떤 제품이었는지 바로 보이게 */
+.sl-dm .shot{margin-top:0.714cqw;flex:1;display:flex;align-items:center}
+.sl-dm .shot img{width:100%;aspect-ratio:16/9;object-fit:contain;object-position:center;display:block;
+  border:1px solid var(--line);border-radius:0.401cqw;background:var(--pane)}
+@media(max-width:1100px){.sl-dm .shot{margin-top:12px}}
+
+/* 케이스 제목 위 도메인 전문성 라인 */
+.sl-scope{margin:0;display:flex;flex-wrap:wrap;align-content:flex-start;justify-content:flex-start;gap:0.5cqw;max-width:none}
+.sl-scope i{flex:0 0 100%;margin:0 0 0.55cqw;font-family:"IBM Plex Mono",monospace;font-style:normal;font-size:0.6cqw;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:0.134cqw}
+.sl-scope span{font-size:0.6cqw;line-height:1.4;color:var(--dim);font-weight:500;
+  background:var(--pane);border-radius:0.401cqw;padding:0.375cqw 0.714cqw}
+.sl-scope.row{order:8;margin-top:auto!important;padding-top:1.2cqw;border-top:1px solid var(--line);border-bottom:0;align-items:center}
+.sl-note,.sl-foot{order:9;margin-top:auto!important}
+.sl-scope.row i{flex:0 0 auto;margin:0 0.5cqw 0 0}
+.sl-scope.row i{flex:0 0 auto;margin:0 0.446cqw 0 0}
+@media(min-width:1101px){
+  .sl-film{margin-top:0.892cqw}
+  .sl-film figcaption{padding-top:0.401cqw}
+  .sl-film + .sl-res{padding-top:0.892cqw}
+}
+@media(max-width:1100px){.sl-dl{font-size:15px;margin-top:8px}}
+
+@media(min-width:1101px){
+  .sl-decs{margin-top:1.427cqw}
+  .sl-ev{padding-top:1.16cqw}
+}
+
+/* 케이스 헤더 대표 성과 */
+.sl-cmeta2 .kpi{display:block;max-width:none;margin:0;padding:0;border:0;
+  font-size:0.6cqw;color:var(--faint);line-height:1.45}
+.sl-cmeta2 .kpi b{display:block;font-family:"IBM Plex Mono",monospace;font-size:1.77cqw;font-weight:500;
+  color:var(--tenure);letter-spacing:-.03em;line-height:1;margin-bottom:0.268cqw}
+@media(max-width:1100px){
+  .sl-cmeta2 .kpi{font-size:11px;margin-bottom:10px;padding-bottom:9px}
+  .sl-cmeta2 .kpi b{font-size:28px;margin-bottom:4px}
+  .sl-cmeta2 .kpi + .kpi b{font-size:19px}
+}
+
+
+/* 모바일 — cqw 로 남아 3px 로 줄어들던 요소 보정 (뒤에 와야 이김) */
+@media(max-width:1100px){
+  .sl-scope{margin-top:14px;gap:7px}
+  .sl-scope i{font-size:10px;flex:0 0 100%;margin:0 0 2px}
+  .sl-scope span{font-size:12px;padding:5px 9px;border-radius:7px}
+  .sl-scope.row{margin-top:16px;margin-left:0}
+  .sl-step .n{font-size:10px}
+  .sl-cmeta2{display:block}
+  .sl-cmeta2 .kpi{max-width:none;margin-bottom:12px}
+}
 </style>
 </head>
 <body>
@@ -747,8 +1254,7 @@ body.editing .row-head{cursor:default}
 <!-- ============ HERO ============ -->
 <div id="top" class="hero wrap">
   <div class="hero-type">
-    <span class="line"><span>Jihye</span></span>
-    <span class="line"><span>Shin</span></span>
+    <h1 class="hero-name"><span class="line"><span>Jihye</span></span><span class="line"><span>Shin</span></span></h1>
     <p class="hero-role">Product Manager · Seoul</p>
   </div>
 
@@ -759,10 +1265,6 @@ body.editing .row-head{cursor:default}
     </div>
   </div>
 
-  <div class="scroll-cue">
-    <span class="guide">경력 5곳 · 케이스 8건 · 프로젝트 14건을 아래에서 볼 수 있습니다</span>
-    <span class="label">Scroll ↓</span>
-  </div>
 </div>
 
 <!-- ============ MARQUEE ============ -->
@@ -772,22 +1274,22 @@ body.editing .row-head{cursor:default}
   <div class="sec-head"><h2 class="en">About</h2><span class="label">01 / 소개</span></div>
   <div class="about reveal">
     <div>
-      <p class="claim">6년 이상의 스타트업 경험으로 <b>빠른 결정과 커뮤니케이션 역량</b>을 갖추고 있습니다. <span>디자이너로 시작해 PM으로, 도메인은 바뀌었지만 서비스를 처음부터 만드는 일을 해왔습니다.</span></p>
+      <p class="claim">8년의 스타트업 경험으로 <b>빠른 결정과 커뮤니케이션 역량</b>을 갖추고 있습니다. <span>디자이너로 시작해 PM으로, 도메인은 바뀌었지만 서비스를 처음부터 만드는 일을 해왔습니다.</span></p>
       <ul>
         <li><i>01</i>원격 4년+ — 원격 근무 환경 셋업·업무 프로세스 체계화, 화상 회의와 피드백 세션으로 생산성 유지</li>
         <li><i>02</i>넓은 도메인 — 예술, 엔터테인먼트, 헬스케어, 물류, 크리에이터 커머스 등 웹·모바일 서비스 제작</li>
-        <li><i>03</i>0-to-1 주도 — 아이디어 도출·문제 정의·MVP 기획·데이터 분석·테스트·모니터링까지 전 과정 리드</li>
+        <li><i>03</i>0→1 주도 — 아이디어 도출·문제 정의·MVP 기획·데이터 분석·테스트·모니터링까지 전 과정 리드</li>
         <li><i>04</i>데이터 역량 — SQL·BI·데이터 시각화 꾸준히 학습, Mixpanel·Amplitude·Redash 운용</li>
         <li><i>05</i>복수 프로덕트 — UX 설계와 품질 관리 책임, 시스템 구축 프로젝트 제안 경험</li>
         <li><i>06</i>구현까지 — HTML·CSS·JavaScript·DB 직접 구현 가능. Retool로 판매자 OMS v2·v3 직접 개발·배포</li>
-        <li><i>07</i>커뮤니케이션 허브 — 비즈니스·디자인·개발 지식 기반으로 팀 간 통역 역할 수행</li>
+        <li><i>07</i>커뮤니케이션 허브 — 비즈니스·디자인·개발을 같은 언어로 놓고 팀 간 합의를 빠르게 만듦</li>
         <li><i>08</i>애자일 메이커 — 3–5인 유닛에서 PM이자 메이커로 전문 스포츠팀 방식의 업무 수행</li>
       </ul>
     </div>
     <div class="about-right">
       <div class="profile-wrap">
-        <img class="profile-img" src="images/profile.jpg" alt="Shin Jihye">
-        <p class="profile-meta">Shin Jihye · Product Manager<br>Seoul, Korea<br>
+        <img class="profile-img" src="images/profile.jpg" alt="Jihye Shin">
+        <p class="profile-meta">Jihye Shin · Product Manager<br>Seoul, Korea<br>
           <a href="mailto:mozzarella.meow@gmail.com">mozzarella.meow@gmail.com</a>
         </p>
       </div>
@@ -805,7 +1307,7 @@ body.editing .row-head{cursor:default}
     <div class="row">
       <button class="row-head" aria-expanded="false">
         <span class="no">01</span>
-        <span class="co">Levvels<em>레벨스 · <b>Vuddy</b> 크리에이터 커머스, <b>신규 AI 서비스</b> 0-to-1 런칭</em>
+        <span class="co">Levvels<em>레벨스 · <b>Vuddy</b> 크리에이터 커머스, <b>신규 AI 서비스</b> 0→1 런칭</em>
           <span class="period"><span>2024.08 — 현재</span><i>·</i><b id="tenureNow">2년</b><i>·</i>정규</span>
         </span>
         <span class="role">Product Manager</span>
@@ -814,12 +1316,12 @@ body.editing .row-head{cursor:default}
       <div class="body"><div><div class="body-in">
         <div>
           <p class="tagline">두나무의 기술력과 하이브의 콘텐츠 제작 역량이 만나 설립된 회사. 크리에이터 플랫폼 <strong>Vuddy(버디)</strong>의 커머스·굿즈 기획으로 시작해 가챠, 팬 관리, 채팅, 커뮤니티로 범위를 넓혔고, 2026년부터는 미출시 상태인 신규 AI 서비스의 런칭 기획을 맡고 있습니다.</p>
-          <div class="chips"><span class="chip">0-to-1 런칭</span><span class="chip">신규 AI 서비스</span><span class="chip">크리에이터 커머스</span></div>
+          <div class="chips"><span class="chip">0→1 런칭</span><span class="chip">신규 AI 서비스</span><span class="chip">크리에이터 커머스</span></div>
         </div>
         <div>
 
                     <div class="case">
-            <h5>신규 AI 서비스 — 0-to-1 런칭 기획 <span class="yrtag">2026 — 현재</span></h5>
+            <h5>신규 AI 서비스 — 0→1 런칭 기획 <span class="yrtag">2026 — 현재</span></h5>
             <ul class="did">
               <li>미출시 신규 서비스의 런칭 전체 기획을 총괄 — 화면·플로우·정책 설계, 오픈 스펙 정의, QA 전략 수립</li>
               <li>대화 도메인의 컨텍스트·메모리 정책과 UGC 제작 도구를 설계하고, 콘텐츠 검열 엔진과 제재 정책의 기획 오너십 보유</li>
@@ -891,7 +1393,7 @@ body.editing .row-head{cursor:default}
               <li>v2·v3를 Retool로 직접 개발해 배포하고 유지보수 — 화주사 요구사항을 즉시 반영하기 위한 선택</li>
             </ul>
             <div class="outcome"><ul>
-              <li>2023년 Q1 대비 Q2 신규 계약율 50% 증가, 물동량 20% 증가</li>
+              <li>2023년 Q1 대비 Q2 신규 계약률 50% 증가, 물동량 20% 증가</li>
               <li>작업 단위당 소요 시간 25% 단축, 서버 요청 수 50% 감소, 검색 실패율 40% 감소</li>
             </ul></div>
           </div>
@@ -1021,7 +1523,7 @@ body.editing .row-head{cursor:default}
 
 <!-- ============ DECK ============ -->
 <section id="deck" class="wrap">
-  <div class="sec-head"><h2 class="en">Deck</h2></div>
+  <div class="sec-head"><h2 class="en">Deck</h2><span class="label">03 / 요약 덱</span></div>
 
   <div class="deck">
     <div class="deck-chapters" id="deckChapters"></div>
@@ -1037,12 +1539,7 @@ body.editing .row-head{cursor:default}
 
 <!-- ============ PORTFOLIO ============ -->
 <section id="portfolio" class="wrap">
-  <div class="sec-head"><h2 class="en">Portfolio</h2><span class="label">03 / 케이스 스터디</span></div>
-  <div class="reel-head">
-    <p class="label" style="max-width:34em;text-transform:none;letter-spacing:0;font-size:12.5px;line-height:1.7">
-      카드를 열면 전체 페이지를 이어서 볼 수 있습니다.
-    </p>
-  </div>
+  <div class="sec-head"><h2 class="en">Portfolio</h2><span class="label">04 / 케이스 스터디</span></div>
   <div class="reel" id="reel" aria-label="포트폴리오 케이스"></div>
 </section>
 
@@ -1089,13 +1586,13 @@ body.editing .row-head{cursor:default}
       <p class="adm-note" id="admEmpty" hidden>조건에 맞는 주문이 없습니다. 검색어를 지우거나 필터를 전체로 바꿔 보세요.</p>
     </div>
 
-    <div class="outcome">실제 시스템에서는 이 위에 대량 주문 업로드, 송장 출력, 알림톡 발송이 붙었 결과 내 검색을 도입해 서버 요청 수를 50%, 검색 실패율을 40% 줄였</div>
+    <div class="outcome">실제 시스템에서는 이 위에 대량 주문 업로드, 송장 출력, 알림톡 발송이 붙었습니다. 결과 내 검색을 도입해 서버 요청 수를 50%, 검색 실패율을 40% 줄였습니다.</div>
     <p class="fine">데이터는 구조를 보여주기 위한 예시이며 실제 고객 정보가 아닙니다.</p>
   </div>
 
   <!-- ② 지표 분석 -->
   <div class="proj-doc demo" data-demo="funnel">
-    <p>지표를 만든다는 건 숫자를 모으는 일이 아니라 <b>어디서 사람이 빠지는지 정의하고 그다음 무엇을 할지 정하는 일</b>입니다. 신규 AI 서비스 런칭 전에 설계한 전환 퍼널의 구조를 그대로 옮겼습니다. 각 단계를 눌러 보세요.</p>
+    <p>지표를 만든다는 건 숫자를 모으는 일이 아니라 <b>어디서 사람이 빠지는지 정의하고 그다음 무엇을 할지 정하는 일</b>입니다. 신규 AI 서비스 런칭 전에 설계한 전환 퍼널의 구조를 그대로 옮겼습니다. </p>
 
     <div class="fn">
       <div class="fn-tabs" id="fnTabs">
@@ -1106,7 +1603,7 @@ body.editing .row-head{cursor:default}
       <div class="fn-detail" id="fnDetail"></div>
     </div>
 
-    <div class="outcome">이 이벤트 스키마를 출시 전에 확정해 둔 덕분에, 런칭 직후부터 단계별 이탈을 근거로 개선 순서를 정할 수 있었</div>
+    <div class="outcome">이 이벤트 스키마를 출시 전에 확정해 둔 덕분에, 런칭 직후부터 단계별 이탈을 근거로 개선 순서를 정할 수 있었습니다.</div>
     <p class="fine">수치는 퍼널 구조와 판단 방식을 보여주기 위한 예시입니다.</p>
   </div>
 
@@ -1155,7 +1652,7 @@ body.editing .row-head{cursor:default}
       <div class="wf-spec" id="wfSpec"></div>
     </div>
 
-    <div class="outcome">이 정의서를 그대로 구현한 결과가 Development 항목의 어드민 데모입니다. 정의서 → 구현 → 지표까지 한 사람이 이어서 다뤘</div>
+    <div class="outcome">이 정의서를 그대로 구현한 결과가 Development 항목의 어드민 데모입니다. 정의서 → 구현 → 지표까지 한 사람이 이어서 다뤘습니다.</div>
     <p class="fine">실제 문서에는 각 항목마다 API 응답 조건과 문구 원본이 함께 붙습니다.</p>
   </div>
 
@@ -1188,7 +1685,7 @@ body.editing .row-head{cursor:default}
   </div>
 
   <div class="grid" id="pgrid">    <div class="card" role="button" tabindex="0" data-tags="Levvels Commerce Community" data-title="Vuddy 커머스 · 커뮤니티 기획">
-      <span class="no">L1 / VUDDY</span>
+      <span class="no">01 / VUDDY</span>
       <h3>Vuddy 커머스 · 커뮤니티 기획</h3>
       <p>크리에이터가 굿즈를 팔고 팬이 모이는 플랫폼에서 가챠·라이브·팬 등급·커뮤니티 네 갈래를 맡았습니다. 모두 구매 전환으로 이어지는 경로 위에 있습니다.</p>
       <div class="chips"><span class="chip">커머스</span><span class="chip">리텐션</span><span class="chip">전환</span></div>
@@ -1233,11 +1730,11 @@ body.editing .row-head{cursor:default}
           <li>장바구니 담기율, 결제 완료율, AOV, 게시글 → 댓글 전환율을 판단 축으로 설정</li>
         </ul>
 
-        <p>미출시·비공개 영역이 섞여 있어 화면은 싣지 않았습니다. 제품 전체 구조와 화면은 포트폴리오의 <b>Vuddy 케이스 스터디</b>에서 볼 수 있습니다.</p>
+        <p>미출시·비공개 영역이 섞여 있어 화면은 싣지 않았습니다.</p>
       </div>
     </div>
     <div class="card" role="button" tabindex="0" data-tags="Logistics Retool" data-notion="https://app.notion.com/67dbbe4479264f739fd9ec372fbd3ac9" data-title="비개발자의 로우코드 개발 — 물류 OMS 구축 후기">
-      <span class="no">04 / ESSAY</span>
+      <span class="no">02 / ESSAY</span>
       <h3>비개발자의 로우코드 개발 — 물류 OMS 구축 후기</h3>
       <p>Retool로 복잡한 시스템을 직접 구현하며 개발 의존도를 낮춘 과정. 로우코드가 물류 업계의 협업과 의사소통에 어떤 역할을 하는지에 대한 기록.</p>
       <div class="chips"><span class="chip">Retool</span><span class="chip">Database</span></div>
@@ -1279,8 +1776,8 @@ body.editing .row-head{cursor:default}
       <p>물류처럼 프로세스와 데이터가 복잡하게 얽힌 분야일수록 로우코드의 역할이 커집니다. 개발자 의존도를 낮추면서 동시에 업무 프로세스를 최적화할 수 있기 때문입니다. 복잡한 프로세스를 만들고 싶지만 개발 시간과 비용에 막혀 있다면, 로우코드는 비전문가도 시스템을 직접 만들고 팀 내부의 협업과 의사소통을 끌어올리는 수단이 됩니다.</p>
       <div class="outcome">개발자 리소스 투입 없이 v2·v3를 직접 개발·배포하고 유지보수까지 수행</div>
     </div></div>
-    <div class="card" role="button" tabindex="0" data-tags="Logistics Retool" data-notion="https://app.notion.com/b767c6c991414ef5b14b38eafb4c52d2" data-title="로우코드 개발 — WFA #1–4">
-      <span class="no">05 / WFA</span>
+    <div class="card" role="button" tabindex="0" data-tags="Retool" data-notion="https://app.notion.com/b767c6c991414ef5b14b38eafb4c52d2" data-title="로우코드 개발 — WFA #1–4">
+      <span class="no">03 / WFA</span>
       <h3>로우코드 개발 — WFA #1–4</h3>
       <p>로우코드 플랫폼으로 기능을 빠르게 구현하고 협업 속도를 높인 경험. 시간 단축, 효율 향상, 비용 절감으로 이어진 개발 방식의 전환.</p>
       <div class="chips"><span class="chip">Retool</span><span class="chip">HTML · CSS</span></div>
@@ -1311,7 +1808,7 @@ body.editing .row-head{cursor:default}
       <div class="outcome">API 신청부터 화면 구현까지 개발자 없이 단독 완성</div>
     </div></div>
     <div class="card" role="button" tabindex="0" data-tags="Logistics" data-notion="https://app.notion.com/befac17dcb6f400197c40da877b69460" data-title="실시간 배송 추적 웹앱 + 프로모션 기획">
-      <span class="no">06 / TRACKING</span>
+      <span class="no">04 / TRACKING</span>
       <h3>실시간 배송 추적 웹앱 + 프로모션 기획</h3>
       <p>배송 조회, 반품 접수, 실시간 알림을 담은 고객용 웹앱. 광고 배너 기반 추가 수익 모델과 KPI 중심 성과 측정 방식을 함께 설계.</p>
       <div class="chips"><span class="chip">PM</span><span class="chip">PWA</span></div>
@@ -1356,7 +1853,7 @@ body.editing .row-head{cursor:default}
       <div class="outcome">반품 리드타임 내 처리율 90%, 월평균 문의 50 → 30건, MAU 30% 상승</div>
     </div></div>
     <div class="card" role="button" tabindex="0" data-tags="Study" data-notion="https://app.notion.com/8eba684305f34273976d178f13499ebb" data-title="티메프 사태 정리 — PG사 / VAN사">
-      <span class="no">11 / STUDY</span>
+      <span class="no">05 / STUDY</span>
       <h3>티메프 사태 정리 — PG사 / VAN사</h3>
       <p>2024년 정산 지연 사태를 구조, 자금 관리, 내부 통제, 규제의 관점에서 정리. 결제 생태계에서 PG사와 VAN사가 하는 일을 함께 짚은 스터디.</p>
       <div class="chips"><span class="chip">이커머스</span><span class="chip">2024</span></div>
@@ -1402,10 +1899,10 @@ body.editing .row-head{cursor:default}
       <p>정산 지연 직전인 7월 6일 하루 카드 결제액은 <b>897억 1천만 원</b>(티몬 755억 3천만, 위메프 141억 8천만)이었습니다. 17~30일 일평균 결제액 167억 원과 비교하면 <b>약 5.4배</b>입니다. 대규모 프로모션으로 결제액이 급증한 직후 정산이 멈췄다는 뜻입니다.</p>
 
       <h5>정리하며</h5>
-      <p>이번 사태는 어느 하나의 원인이 아니라 구조·자금 관리·내부 통제·규제 공백이 겹친 결과입니다. 해결하려면 플랫폼의 투명한 자금 관리와 내부 통제 강화, 그리고 감독 체계 정비가 함께 가야 합니다. <b>정산은 기능이 아니라 신뢰의 문제</b>라는 점을 다시 확인한 사례였습니다.</p>
+      <p>이번 사태는 어느 하나의 원인이 아니라 구조·자금 관리·내부 통제·규제 공백이 겹친 결과입니다. 해결하려면 플랫폼의 투명한 자금 관리와 내부 통제 강화, 그리고 감독 체계 정비가 함께 가야 합니다. <b>정산이 곧 신뢰의 문제</b>라는 점을 다시 확인한 사례였습니다.</p>
     </div></div>
     <div class="card" role="button" tabindex="0" data-tags="Study" data-notion="https://app.notion.com/9bce4faff2bb451b9b5a323d7c403204" data-title="풀리모트 근무 도입 배경">
-      <span class="no">12 / REMOTE</span>
+      <span class="no">06 / REMOTE</span>
       <h3>풀리모트 근무 도입 배경</h3>
       <p>팬데믹 이후 게더타운과 원격 협업 툴을 도입한 과정. 스탠드업과 해피아워로 관계를 만들고, 팀원의 성향 차이를 고려한 리모트 운영 방식.</p>
       <div class="chips"><span class="chip">원격근무</span><span class="chip">2021</span></div>
@@ -1421,7 +1918,7 @@ body.editing .row-head{cursor:default}
       <h5>왜 게더타운이었나</h5>
       <p>팬데믹이 길어지면서 재택이 일상이 됐고, 딜리버스도 &ldquo;면대면이라야 소통이 된다&rdquo;는 전제를 버리고 여러 시도를 했습니다. 그중 하나가 게더타운이었습니다.</p>
       <figure><img src="images/notion/remote-gather.jpg" alt="게더타운 가상 오피스 화면" loading="lazy"><figcaption>게더타운 — 실제 공간처럼 대화에 들고 나는 방식</figcaption></figure>
-      <p>게더타운 외에도 아사나, 노션, 슬랙, 구글 워크스페이스를 함께 씁니다. 비대면에서 어떤 툴로 일할지 고민하는 것 자체가 중요한 일이라, 새 협업 툴을 찾아보고 장단점을 비교하며 계속 실험했습니다.</p>
+      <p>게더타운 외에도 아사나, 노션, 슬랙, 구글 워크스페이스를 함께 썼습니다. 비대면에서 어떤 툴로 일할지 고민하는 것 자체가 중요한 일이라, 새 협업 툴을 찾아보고 장단점을 비교하며 계속 실험했습니다.</p>
 
       <h5>가상 오피스에 담은 감성 소통</h5>
       <p>게더타운이 기존 화상회의와 다른 점은 <b>아바타를 통해 소통한다</b>는 것이었습니다. 내 모습이 어떻게 보일지 신경 쓰는 대신 좀 더 편하고 친근하게 대화하게 됩니다. 자동으로 연결·해지되는 통화, 화이트보드 같은 외부 연동, 공간을 원하는 대로 꾸미는 기능이 그 경험을 만듭니다.</p>
@@ -1430,18 +1927,18 @@ body.editing .row-head{cursor:default}
       <h5>시행착오 — 스탠드업을 없앤 이유</h5>
       <p>처음에는 매일 아침 게더타운에서 10~15분 스탠드업을 했습니다. 어제 한 일, 오늘 할 일, 막힌 지점을 짧게 나누고 길어질 것 같으면 필요한 사람끼리 따로 모였습니다. 아침이라 얼굴 없이 목소리로만 진행했습니다.</p>
       <figure><img src="images/notion/remote-standup.jpg" alt="게더타운에서 진행한 스탠드업 미팅" loading="lazy"><figcaption>게더타운 스탠드업 미팅</figcaption></figure>
-      <p>그런데 딜리버스는 자율 근무제를 권장하고, 팀원마다 아침형·저녁형이 뚜렷하게 갈립니다. 오전 스탠드업은 사실상 <b>출근 시간을 고정하는 장치</b>로 작동하고 있었습니다. 지금은 각자의 근무 시간을 존중하는 다른 방식으로 바꿨고, 오전에 게더로 출근하는 일은 자연스럽게 사라졌습니다.</p>
+      <p>그런데 딜리버스는 자율 근무제를 권장하고, 팀원마다 아침형·저녁형이 뚜렷하게 갈립니다. 오전 스탠드업은 사실상 <b>출근 시간을 고정하는 장치</b>로 작동하고 있었습니다. 이후 각자의 근무 시간을 존중하는 다른 방식으로 바꿨고, 오전에 게더로 출근하는 일은 자연스럽게 사라졌습니다.</p>
       <p>아무리 좋은 툴이라도 조직에 맞는 문화와 근무 환경을 만들지 못하면 결과가 좋을 수 없습니다. <b>적절하지 않다면 빠르게 결정하고 과감히 없애는 편</b>이 낫습니다. 참고로 해외에서 일하는 팀원이 있어 미팅 시간을 정할 때는 시차도 함께 고려했습니다.</p>
 
-      <h5>지금은 — 해피아워</h5>
-      <p>매주 금요일 30분, 게더타운에서 해피아워를 합니다. 업무만큼이나 팀원 간 관계와 팀의 멘탈 관리도 중요하기 때문입니다. 게임에서 지면 다음 주 테마를 준비하는 규칙이라 게임을 좋아하지 않는 사람도 자연스럽게 섞입니다.</p>
+      <h5>그 뒤로 — 해피아워</h5>
+      <p>매주 금요일 30분, 게더타운에서 해피아워를 했습니다. 업무만큼이나 팀원 간 관계와 팀의 멘탈 관리도 중요하기 때문입니다. 게임에서 지면 다음 주 테마를 준비하는 규칙이라 게임을 좋아하지 않는 사람도 자연스럽게 섞였습니다.</p>
 
       <h5>리모트에 실패하지 않으려면</h5>
       <p>재택은 장점만큼 단점도 큽니다. 개인의 만족도는 올라가지만 잘못하면 <b>24시간 퇴근이 없어집니다.</b> 그래서 계획이 필요합니다. 업무에 집중할 시간과 개인의 시간을 스스로 구분해야 하고, 팀도 소통 방법과 최소한의 규칙을 정해야 합니다. 관계도 마찬가지여서, 친해지려는 노력을 계획하지 않으면 팀이라는 감각이 잘 생기지 않습니다.</p>
       <p>팀원마다 외향적인 사람도 내향적인 사람도 있어 적응 속도와 방향이 다릅니다. 오래 걸리더라도 모두가 만족할 결과를 찾아야 하고, 결국 <b>같이 만들어야 합니다.</b></p>
     </div></div>
     <div class="card" role="button" tabindex="0" data-tags="Study" data-notion="https://app.notion.com/f07296721637431082280cc1ed32a670" data-title="탄소 중립 ESG 솔루션 기획">
-      <span class="no">13 / ESG</span>
+      <span class="no">07 / ESG</span>
       <h3>탄소 중립 ESG 솔루션 기획</h3>
       <p>건물 운영 단계의 탄소 배출 감축을 위한 비즈니스 모델. 스마트 난방 제어와 히트 펌프, 배출 관리 소프트웨어, 에너지 효율 컨설팅을 묶은 제안.</p>
       <div class="chips"><span class="chip">기획</span><span class="chip">2024</span></div>
@@ -1473,7 +1970,7 @@ body.editing .row-head{cursor:default}
       <p>성과는 탄소 배출 저감량, 시장 점유율과 매출 성장률, 신규 고객 수와 만족도, 파일럿 성공 사례 수로 측정합니다. 리스크로는 기술 개발 실패와 시장 진입 장벽, 경쟁사의 신기술 도입, 그리고 <b>정부 정책 변화</b>를 뒀습니다 — 인센티브에 기대는 모델이라 정책 리스크가 가장 큽니다.</p>
     </div></div>
     <div class="card" role="button" tabindex="0" data-tags="Study" data-notion="https://app.notion.com/fee519c5175943dd9c3ea4d46713bae2" data-title="O2O 그림 구독 · 경매 플랫폼">
-      <span class="no">14 / O2O</span>
+      <span class="no">08 / O2O</span>
       <h3>O2O 그림 구독 · 경매 플랫폼</h3>
       <p>예술 작품의 접근성을 높이고 작가에게 새로운 판로를 여는 플랫폼. 시장 분석과 사용자 흐름, 구독료·경매 수수료·스폰서십 수익 모델을 정리.</p>
       <div class="chips"><span class="chip">기획</span><span class="chip">O2O</span></div>
@@ -1542,7 +2039,7 @@ body.editing .row-head{cursor:default}
     <div class="cap-row"><div class="cap-title"><b class="en">AI Product</b><em class="cap-lv lv-a">Advanced</em></div><span>LLM 대화·메모리 정책, 콘텐츠 검열 엔진, AI 이미지 생성 기획 오너십. 라이브 커머스 SDK 연동.</span></div>
     <div class="cap-row has-demo" role="button" tabindex="0" data-demo="wire"><div class="cap-title"><b class="en">Design &amp; Wireframe</b><em class="cap-lv lv-x">Expert</em></div><span>Figma로 IA부터 화면 정의서까지. 프로덕트 디자이너로 3개 플랫폼을 출시한 경험.<i class="try">화면 정의서 열어보기 →</i></span></div>
     <div class="cap-row"><div class="cap-title"><b class="en">Development</b><em class="cap-lv">Intermediate</em></div><span>Retool로 판매자 OMS v2·v3를 직접 개발·배포. HTML, CSS, JavaScript, SQL.</span></div>
-    <div class="cap-row has-demo" role="button" tabindex="0" data-demo="funnel"><div class="cap-title"><b class="en">Data &amp; Analytics</b><em class="cap-lv">Beginner</em></div><span>Mixpanel·Amplitude 이벤트 스키마 설계, Redash 리포팅 구축, Airbridge 어트리뷰션.<i class="try">전환 퍼널 열어보기 →</i></span></div>
+    <div class="cap-row has-demo" role="button" tabindex="0" data-demo="funnel"><div class="cap-title"><b class="en">Data &amp; Analytics</b><em class="cap-lv">Intermediate</em></div><span>Mixpanel·Amplitude 이벤트 스키마 설계, Redash 리포팅 구축, Airbridge 어트리뷰션.<i class="try">전환 퍼널 열어보기 →</i></span></div>
     <div class="cap-row"><div class="cap-title"><b class="en">AI Tooling</b><em class="cap-lv">Intermediate</em></div><span>Claude, ChatGPT, Gemini — 기획서 초안, 데이터 조회, 화면 프로토타이핑에 상시 활용.</span></div>
     <div class="cap-row"><div class="cap-title"><b class="en">Graphic Design</b><em class="cap-lv">Intermediate</em></div><span>C4D와 Adobe. 브랜드 아이덴티티와 마케팅 콘텐츠 제작.</span></div>
   </div>
@@ -1594,10 +2091,14 @@ body.editing .row-head{cursor:default}
     tBtn.setAttribute('aria-label', mode === 'light' ? '어두운 테마로 전환' : '밝은 테마로 전환');
     if (tMeta) tMeta.setAttribute('content', mode === 'light' ? '#F2F2EF' : '#0A0A0A');
   }
-  /* 시스템 설정과 무관하게 항상 다크로 시작한다 — 라이트는 버튼으로 전환 */
-  applyTheme('dark');
+  /* 저장된 선택 > 시스템 설정 > 다크 순으로 시작한다 */
+  function savedTheme(){ try { return localStorage.getItem('theme'); } catch(e){ return null; } }
+  var sysLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  applyTheme(savedTheme() || (sysLight ? 'light' : 'dark'));
   tBtn.addEventListener('click', function(){
-    applyTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    applyTheme(next);
+    try { localStorage.setItem('theme', next); } catch(e){}
   });
 
   /* 재직 중인 회사의 근속 기간 자동 계산 */
@@ -1692,6 +2193,22 @@ body.editing .row-head{cursor:default}
   }
 
   var PORTFOLIO = [
+    { title:'신규 AI 서비스 — 런칭 기획', note:'신규 AI 서비스 · 미출시 · 2026', role:'Product Manager',
+      desc:'대화는 사라져도 관계는 남도록 설계한 AI 인터랙티브 스토리 채팅 서비스. 기억·컨텍스트 정책, 콘텐츠 검열, 크리에이터 생태계까지 0→1 전 과정을 기획했습니다.',
+      tags:['AI','LLM','Safety Policy'],
+      embed:'works/ai-service-embed.html', cover:'images/samantha-cover.jpg', imgs:[] },
+    { title:'Vuddy — 상품·판매·정산·채팅·미디어', note:'도메인 설계 · 커머스 · 정산 구조',
+      desc:'팬 크리에이터 굿즈 커머스와 커뮤니티 플랫폼. 상품·판매·정산·채팅·미디어 전 도메인의 정책과 화면을 설계해 크리에이터가 수익과 관계를 예측할 수 있게 만들었습니다.',
+      tags:['Commerce','Settlement','Back-office'],
+      embed:'works/vuddy-embed.html', cover:'images/vuddy-cover.jpg' },
+    { title:'Vuddy 크리에이터 스튜디오', note:'백오피스 · 판매·주문·제작·정산',
+      desc:'크리에이터가 굿즈를 등록하고 팔고 정산받는 백오피스 전체. 실물·디지털·가챠로 갈리는 판매 유형마다 상태와 예외를 어디까지 다르게 둘지가 설계의 핵심이었습니다.',
+      tags:['Back-office','Commerce','Settlement'],
+      embed:'works/studio-embed.html', cover:'images/studio-cover.jpg' },
+    { title:'프라임드라이브 — 시간제 수행기사 플랫폼', note:'사이드 기획 케이스 · 벤치마킹→도메인 설계→랜딩 구현 · 2026', role:'Product Manager',
+      desc:'레퍼런스 한 곳을 분해해 빈틈을 찾고 도메인 12개와 요금 구조를 세운 뒤, 랜딩과 신청 폼까지 직접 구현한 3일짜리 개인 기획 케이스입니다. AI에게 넘긴 일과 끝까지 쥐고 있던 판단을 함께 남겼습니다.',
+      tags:['AI','Automation','0→1'],
+      embed:'works/primedrive-embed.html', cover:'images/primedrive-cover.jpg', imgs:[] },
     { title:'물류 산업 리서치', note:'택배 물동량 추이 · 허브앤스포크 구조 분석',
       desc:'국내 택배 시장 물동량과 매출 추이를 분석해 허브-스포크 구조의 단계별 지연 원인을 짚고, 유닛 기반 모델과 TMS 모듈 맵으로 이어지는 도메인 리서치입니다.',
       tags:['Logistics','Market Research'],
@@ -1700,35 +2217,19 @@ body.editing .row-head{cursor:default}
       desc:'당일 배송·반품을 처리하는 배송 기사용 앱. 필드 리서치로 페르소나를 정의하고, 상차 스캔·출입 정보·오프라인 업로드 세 가지 UX 문제를 개선했습니다.',
       tags:['Last-mile','Logistics','Field Research'],
       cover:'images/pf12.jpg', imgs:pfRange(12, 26) },
-    { title:'배송 관제 시스템 TMS', note:'클러스터링 재분류 문제 · 배차 관리',
-      desc:'허브 재분류 문제를 해결하기 위해 운영자가 클러스터를 직접 편집할 수 있는 사전 플래닝 구조를 설계한 배송 관제 시스템. 배차 신청부터 실시간 관제까지 포함합니다.',
+    { title:'배송 관제 시스템 TMS', note:'클러스터 플래닝 · 실시간 관제 · 2021—2024',
+      desc:'자동 분류가 당일 현장을 반영하지 못해 허브에서 재분류가 반복됐습니다. 알고리즘을 정교하게 만드는 길 대신 소터 전송 직전에 운영자가 클러스터를 고치게 했습니다. 백오피스 15개 도메인과 실시간 관제까지 담았습니다.',
       tags:['TMS','Back-office','Dispatch'],
-      cover:'images/pf27.jpg', imgs:pfRange(27, 36) },
+      embed:'works/tms-embed.html', cover:'images/pf27.jpg' },
     { title:'판매자 OMS 시스템', note:'제품 구조도 · 반품 플로우 · 로우코드',
       desc:'실시간 배송 추적과 통합 물류 관리를 축으로 제품 구조도와 반품 플로우를 설계한 판매자 시스템. 화면 정의서부터 로우코드 개발 프로세스까지 구현 과정을 담았습니다.',
       tags:['OMS','Back-office','Fulfillment'],
       cover:'images/pf37.jpg', imgs:pfRange(37, 48) },
-    { title:'Vuddy — 상품·판매·정산·채팅·미디어', note:'도메인 설계 · 커머스 · 정산 구조',
-      desc:'팬 창작자 굿즈 커머스와 커뮤니티 플랫폼. 상품·판매·정산·채팅·미디어 전 도메인의 정책과 화면을 설계해 창작자가 수익과 관계를 예측할 수 있게 만들었습니다.',
-      tags:['Commerce','Settlement','Back-office'],
-      embed:'works/vuddy-embed.html', cover:'images/vuddy-cover.jpg' },
-    { title:'Vuddy 크리에이터 스튜디오', note:'백오피스 · 판매·주문·제작·정산',
-      desc:'크리에이터가 굿즈를 등록하고 팔고 정산받는 백오피스 전체. 실물·디지털·가챠로 갈리는 판매 유형마다 상태와 예외를 어디까지 다르게 둘지가 설계의 핵심이었습니다.',
-      tags:['Back-office','Commerce','Settlement'],
-      embed:'works/studio-embed.html', cover:'images/studio-cover.jpg' },
-    { title:'신규 AI 서비스 — 런칭 기획', note:'Samantha · 0140am · 2026', role:'Product Manager',
-      desc:'대화는 사라져도 관계는 남도록 설계한 AI 인터랙티브 스토리 채팅 서비스. 기억·컨텍스트 정책, 콘텐츠 검열, 크리에이터 생태계까지 0-to-1 전 과정을 기획했습니다.',
-      tags:['AI','LLM','Safety Policy'],
-      embed:'works/samantha-embed.html', cover:'images/samantha-cover.jpg', imgs:[] },
-    { title:'프라임드라이브 — 시간제 수행기사 플랫폼', note:'사이드 기획 케이스 · 벤치마킹→도메인 설계→랜딩 구현 · 2026', role:'Product Manager',
-      desc:'레퍼런스 한 곳을 분해해 빈틈을 찾고 도메인 12개와 요금 구조를 세운 뒤, 랜딩과 신청 폼까지 직접 구현한 3일짜리 개인 기획 케이스입니다. AI에게 넘긴 일과 끝까지 쥐고 있던 판단을 함께 남겼습니다.',
-      tags:['AI','Automation','0-to-1'],
-      embed:'works/primedrive-embed.html', cover:'images/primedrive-cover.jpg', imgs:[] },
     { title:'직장인 데일리 사주 브리핑 — 출근사주', note:'개인 프로젝트 · 미출시 · 2026', role:'Product Manager',
       desc:'출근길 30초에 소비하는 사주 브리핑. 시장 분석과 13개 기능 도메인 설계에서 시작해, 가장 위험한 가정(만세력 연산이 맞는가)을 먼저 코드로 닫았습니다. 계보가 다른 독립 구현을 오라클로 삼아 79,586건을 교차검증했습니다.',
       tags:['Data','Domain Design','TypeScript','Verification'],
       embed:'works/chulgeun-saju-embed.html', cover:'images/chulgeun-saju-cover.jpg', imgs:[] },
-    { title:'AI 활용 — How I Work with AI', note:'조회 → 데이터 변경 → 기능 생성 · 2021—2026',
+    { title:'AI 활용 — How I Work with AI', note:'조회 → 데이터 변경 → 기능 생성 → 운영 · 2021—2026',
       desc:'Redash로 지표를 조회하던 2021년부터 서드파티 없이 기능을 만드는 지금까지. 직접 만들 수 있게 된 범위, 형식으로 남긴 것, 끝까지 넘기지 않은 판단을 정리했습니다.',
       tags:['AI','Data','Automation'],
       embed:'works/ai-embed.html', cover:'images/ai-cover.jpg' },
@@ -2462,10 +2963,10 @@ body.editing .row-head{cursor:default}
         window.__openPanel(
           doc,
           row.querySelector('b').textContent,
-          ({ admin:'어드민 구현 · 직접 눌러볼 수 있습니다',
-             funnel:'지표 설계 · 단계를 눌러보세요',
-             prd:'PRD 목차 · 항목을 눌러보세요',
-             wire:'화면 정의서 · 번호를 눌러보세요' })[row.dataset.demo] || '',
+          ({ admin:'어드민 구현',
+             funnel:'지표 설계',
+             prd:'PRD 목차',
+             wire:'화면 정의서' })[row.dataset.demo] || '',
           document.getElementById('demoDocs')
         );
         var d = row.dataset.demo;
@@ -2631,7 +3132,7 @@ body.editing .row-head{cursor:default}
           gap:'이 항목이 없으면 "왜 지금 이걸 만드나요"에 매번 다시 답해야 하고, 우선순위 논쟁이 반복됩니다.' },
         { t:'문제 정의', s:'주문 등록은 엑셀, 조회는 전화, 반품은 메신저로 흩어져 있었습니다. 운영자 한 명이 하루 평균 40통 이상의 문의를 받고 있었습니다.',
           gap:'문제를 숫자로 못 박지 않으면 기능이 계속 늘어나기만 하고 무엇을 해결했는지 판단할 수 없습니다.' },
-        { t:'목표와 성공 지표', s:'신규 계약율, 물동량, 작업 단위당 소요 시간, 검색 실패율 네 가지를 출시 전에 정의하고 측정 방법까지 적었습니다.',
+        { t:'목표와 성공 지표', s:'신규 계약률, 물동량, 작업 단위당 소요 시간, 검색 실패율 네 가지를 출시 전에 정의하고 측정 방법까지 적었습니다.',
           gap:'지표를 나중에 정하면 비교할 기준선이 없어 개선 여부를 증명하지 못합니다.' },
         { t:'범위', s:'포함 — 대량 주문 업로드, 배송·반품 신청, 송장 출력, 실시간 상태 추적. 제외 — 정산과 재고 관리는 2차로 미뤘습니다.',
           gap:'제외 항목을 명시하지 않으면 개발 중반에 "이것도 되나요"가 들어와 일정이 밀립니다.' },
@@ -2710,28 +3211,434 @@ body.editing .row-head{cursor:default}
     (function(){
       var track = document.getElementById('deckTrack');
       if (!track) return;
-      var CHAPTERS = [["intro", "인트로"], ["delivus", "딜리버스 서비스"], ["lastmile", "라스트마일 앱"], ["tms", "수배송 관리 TMS"], ["oms", "판매자 OMS"], ["cream", "CREAM"], ["fanlink", "FANLINK"], ["lemonbox", "LEMONBOX"], ["challenge", "21Challenge"]];
-      var SLIDES = [{"t": "Shin Jihye", "s": "포트폴리오 표지 · 전체 프로젝트", "c": "intro", "src": "images/0611_pf64.jpg"}, {"t": "3–5인 유닛에서 PM이자 메이커로", "s": "일하는 방식", "c": "intro", "src": "images/0611_pf64-1.jpg"}, {"t": "주요 프로젝트 6건", "s": "Delivus · MyMusicTaste · Lemonbox · Personal", "c": "intro", "src": "images/0611_pf63.jpg"}, {"t": "당일 배송/반품 서비스 플랫폼 구축", "s": "2021.05 — 2024.05 · Product Manager · 3인 유닛", "c": "delivus", "src": "images/pf04.jpg"}, {"t": "서비스 개요", "s": "세상에서 가장 빠른 소형화물 당일 배송/반품", "c": "delivus", "src": "images/pf05.jpg"}, {"t": "시장 조사", "s": "물류 시장 규모 및 성장 추이", "c": "delivus", "src": "images/pf06.jpg"}, {"t": "문제점 분석", "s": "대형 물류 회사의 분류 방식, 허브 앤 스포크", "c": "delivus", "src": "images/pf07.jpg"}, {"t": "문제점 분석", "s": "내 택배가 늦는 이유는?", "c": "delivus", "src": "images/pf08.jpg"}, {"t": "솔루션", "s": "오전 주문하면 오후 받는 배송, 어떻게 가능하게 할 것인가", "c": "delivus", "src": "images/pf09.jpg"}, {"t": "프로덕트 모듈 정의", "s": "물류 배송 시스템 모듈화", "c": "delivus", "src": "images/pf10.jpg"}, {"t": "스프린트 관리", "s": "물류 최적화 이터레이션 · 2주 단위", "c": "delivus", "src": "images/pf11.jpg"}, {"t": "라스트마일 배송 기사 앱 구축", "s": "2021.07 — 2023.02 · iOS / aOS / PWA", "c": "lastmile", "src": "images/pf12.jpg"}, {"t": "필드 리서치", "s": "쿠팡 배송 운영 현장 조사", "c": "lastmile", "src": "images/pf13.jpg"}, {"t": "페르소나", "s": "고정형 기사와 플렉스 기사", "c": "lastmile", "src": "images/pf14.jpg"}, {"t": "화면 설계", "s": "Wireframe", "c": "lastmile", "src": "images/pf15.jpg"}, {"t": "Project Purpose", "s": "배송 프로세스 간소화", "c": "lastmile", "src": "images/pf16.jpg"}, {"t": "UX 개선 1 · 물품 상하차 스캔", "s": "상차 작업 시간 30분 → 3분", "c": "lastmile", "src": "images/pf17.jpg"}, {"t": "유닛 박스 분류 자동화 플로우 설계", "s": "유닛 상하차 구간 배송 시간 약 90% 단축", "c": "lastmile", "src": "images/pf18.jpg"}, {"t": "UX 개선 2 · 배송 시작(배송중)", "s": "공동현관 출입 정보", "c": "lastmile", "src": "images/pf19.jpg"}, {"t": "출입정보 수집 및 데이터 정확성 개선", "s": "미배송율 10% → 4%", "c": "lastmile", "src": "images/pf20.jpg"}, {"t": "UX 개선 3 · 배송 완료 처리", "s": "네트워크 불안정 지역 배송완료 지연 대응", "c": "lastmile", "src": "images/pf21.jpg"}, {"t": "오프라인 백그라운드 업로드 도입", "s": "물품당 평균 배송 완료 시간 9분 → 5분", "c": "lastmile", "src": "images/pf22.jpg"}, {"t": "프로덕트 프리뷰", "s": "위치 공유 → 배차 수락 → 박스 스캔 → 배송 완료 → 업무 종료 → 정산 확인", "c": "lastmile", "src": "images/pf23.jpg"}, {"t": "다크 모드 시스템", "s": "야간 배송과 저시력 접근성", "c": "lastmile", "src": "images/pf24.jpg"}, {"t": "컴포넌트 시스템", "s": "메인·서브·그레이 컬러와 아이템 카드 템플릿", "c": "lastmile", "src": "images/pf25.jpg"}, {"t": "배송 실시간 정보 공유 프로세스 설계", "s": "알림톡 / 푸시 · 다섯 사용자 그룹", "c": "lastmile", "src": "images/pf26.jpg"}, {"t": "수배송 관리 시스템 TMS 구축", "s": "Transportation Management System · 2021.10 — 2024.02", "c": "tms", "src": "images/pf27.jpg"}, {"t": "페르소나", "s": "관제 관리자 · 분류 관리자 · 현장 작업자 · 파트너 스케줄 관리자", "c": "tms", "src": "images/pf28.jpg"}, {"t": "제품 구조도", "s": "Product Structure", "c": "tms", "src": "images/pf29.jpg"}, {"t": "Project Purpose", "s": "클러스터 편집과 실시간 관제", "c": "tms", "src": "images/pf30.jpg"}, {"t": "분류 클러스터 플랜 편집", "s": "Product Overview", "c": "tms", "src": "images/pf31.jpg"}, {"t": "UX 개선 4 · 분류 클러스터 플랜 편집", "s": "분류 시각화와 맵 폴리곤 편집 · 수작업 50% 감소, 오류율 0.1%", "c": "tms", "src": "images/pf32.jpg"}, {"t": "데이터 기반 허브 상/하차", "s": "최적 경로 자동 생성 알고리즘", "c": "tms", "src": "images/pf33.jpg"}, {"t": "배송 운행 실시간 관제 시스템", "s": "Product Overview", "c": "tms", "src": "images/pf34.jpg"}, {"t": "스프린트 계획과 테스트 케이스", "s": "Work Process", "c": "tms", "src": "images/pf35.jpg"}, {"t": "기능 및 UI 테스트 · 버그 관리", "s": "Stage·Beta 환경 검증 · Asana로 리포트 추적", "c": "tms", "src": "images/pf36.jpg"}, {"t": "판매자 OMS 시스템 구축", "s": "Order Management System · 2021.10 — 2024.03 · PM 2인 유닛", "c": "oms", "src": "images/pf37.jpg"}, {"t": "솔루션", "s": "당일 배송에서 이커머스 IT 통합 솔루션으로 확장", "c": "oms", "src": "images/pf38.jpg"}, {"t": "제품 구조도", "s": "Product Structure", "c": "oms", "src": "images/pf39.jpg"}, {"t": "반품 플로우", "s": "Flowchart", "c": "oms", "src": "images/pf40.jpg"}, {"t": "화면 및 기능 정의서", "s": "Wireframe", "c": "oms", "src": "images/pf41.jpg"}, {"t": "구현", "s": "한 화면에서 모든 처리가 끝나도록 구성", "c": "oms", "src": "images/pf42.jpg"}, {"t": "UX 개선 6 · 검색 기능 개선", "s": "결과 내 검색 · 부분 일치 검색 · 검색어 하이라이트", "c": "oms", "src": "images/pf43.jpg"}, {"t": "컴포넌트 시스템", "s": "UI Component System", "c": "oms", "src": "images/pf44.jpg"}, {"t": "개발 진행 과정", "s": "로우코드 툴을 활용한 사용자 피드백 즉시 반영", "c": "oms", "src": "images/pf45.jpg"}, {"t": "업무 프로세스 · 기획", "s": "요구사항 문서 · 서비스 용어 정리 · 화면 설계", "c": "oms", "src": "images/pf46.jpg"}, {"t": "업무 프로세스 · 개발", "s": "로우코드 구현 · 테스트 · 배포와 히스토리 관리", "c": "oms", "src": "images/pf47.jpg"}, {"t": "성과 · 생산성 85% 향상", "s": "주 단위 배포에서 일 단위 배포로", "c": "oms", "src": "images/pf48.jpg"}, {"t": "CREAM 셀럽 영상 메시지 서비스", "s": "팬과 셀럽이 만나는 1:1 영상 메시지 플랫폼 · 2019.10 — 2021.04 · Product Designer · 3인 유닛", "c": "cream", "src": "images/pf49.jpg"}, {"t": "비즈니스 개요", "s": "타겟 · 핵심 기능 · 수익 모델 · 기술 구현 · 마케팅 전략", "c": "cream", "src": "images/pf50.jpg"}, {"t": "경쟁사 분석 및 차별화 전략", "s": "Cameo · CelebVM 비교", "c": "cream", "src": "images/pf51.jpg"}, {"t": "Benefits", "s": "팬 — 기억할 순간 · 독점 접근 · 유대 / 셀럽 — 팬 참여 · 브랜드 · 통제된 소통", "c": "cream", "src": "images/pf52.jpg"}, {"t": "셀럽이 나의 이름을 부르는 순간", "s": "메인에서 추천 아티스트를 한눈에 · 60초 영상 메시지 제작", "c": "cream", "src": "images/pf53.jpg"}, {"t": "요청 플로우와 셀럽 온보딩", "s": "멤버 선택 → 1:1 요청 → 24~48시간 내 녹화 / 셀럽 기본 정보 등록", "c": "cream", "src": "images/pf54.jpg"}, {"t": "FANLINK 팬 소장품 거래 플랫폼", "s": "아티스트와 팬이 소통하는 디지털 콘텐츠 거래 · 2020.02 — 2021.04 · Product Designer", "c": "fanlink", "src": "images/pf55.jpg"}, {"t": "비즈니스 개요", "s": "FANLINK · 팬이 소장품을 나누고 교환하는 플랫폼", "c": "fanlink", "src": "images/pf56.jpg"}, {"t": "Your Link to Unforgettable Moments", "s": "서비스 가치 구조", "c": "fanlink", "src": "images/pf57.jpg"}, {"t": "아티스트 콘텐츠와 거래 참여", "s": "멤버십 독점 영상 · 아티스트/팬이 진행하는 거래 목록", "c": "fanlink", "src": "images/pf58.jpg"}, {"t": "라이브 옥션과 팬 링크", "s": "시작가·현재가·남은 시간과 자동 증분 입찰 / 아티스트와 팬의 커뮤니티", "c": "fanlink", "src": "images/pf59.jpg"}, {"t": "LEMONBOX 맞춤 비타민 플랫폼", "s": "취향까지 담은 맞춤 비타민 · 2019.02 — 2019.09 · BX 디자인 100%", "c": "lemonbox", "src": "images/pf60.jpg"}, {"t": "비즈니스 개요", "s": "건강 설문 → 맞춤 추천 → 정기 배송 → 복용 모니터링", "c": "lemonbox", "src": "images/pf61.jpg"}, {"t": "취향을 담아 섬세하게 고르는 비타민, 레몬박스", "s": "Brand definition · Design Essence · Service design 3부 구성", "c": "lemonbox", "src": "images/pf62.jpg"}, {"t": "시장 조사", "s": "건강기능식품 시장 4조 9,805억원 · 이커머스 25조", "c": "lemonbox", "src": "images/pf63.jpg"}, {"t": "A-2 Service Strategy", "s": "필요 인식 → 정보 탐색 → 대안 평가 → 구매 결정 → 구매 후 행동", "c": "lemonbox", "src": "images/pf64.jpg"}, {"t": "A-2 Brand Feature", "s": "Contents · Lifestyle · Vitamin · Personalization · Incentive · Brand", "c": "lemonbox", "src": "images/pf65.jpg"}, {"t": "A-2 BX Design Principle", "s": "깨끗하고 단순한 · 실험적이고 직관적인 · 이야기를 담은 · 다채로운 디자인", "c": "lemonbox", "src": "images/pf66.jpg"}, {"t": "A-2 Components System", "s": "메인 컬러 FFD70C · 그레이 2E2E2E · 버튼 4종과 아이템 카드 템플릿", "c": "lemonbox", "src": "images/pf67.jpg"}, {"t": "비타민 테스트 · 코디 신청 · 전문가 상담", "s": "고민 항목 선택 → 결핍 분석 → 약사 코디 신청 → 전문가 상담", "c": "lemonbox", "src": "images/pf68.jpg"}, {"t": "성분 비교와 섭취 미션", "s": "권장미만·충족·초과 비교 / 누적 레몬과 섭취 달성률로 습관 형성", "c": "lemonbox", "src": "images/pf69.jpg"}, {"t": "21Challenge 셀프메디케이션 플랫폼", "s": "21일 습관 형성 헬스케어 서비스", "c": "challenge", "src": "images/pf70.jpg"}, {"t": "비즈니스 개요", "s": "서비스 정의와 핵심 기능", "c": "challenge", "src": "images/pf71.jpg"}, {"t": "제품 구조도", "s": "Product Structure", "c": "challenge", "src": "images/pf72.jpg"}, {"t": "챌린지 홈 화면", "s": "진행중 · 진행 예정 챌린지 위계와 참여 유도 설계", "c": "challenge", "src": "images/pf73.jpg"}, {"t": "프로덕트 프리뷰", "s": "챌린지 진행과 기록 화면", "c": "challenge", "src": "images/pf74.jpg"}, {"t": "21Challenge", "s": "마무리", "c": "challenge", "src": "images/pf75.jpg"}];
+      var TENURE = (function(){
+        var st = new Date(2024, 7, 1), now = new Date();
+        var mo = (now.getFullYear()-st.getFullYear())*12 + (now.getMonth()-st.getMonth());
+        var y = Math.floor(mo/12), m = mo%12;
+        return (y ? y+'년' : '') + (m ? (y?' ':'')+m+'개월' : (y?'':'1개월'));
+      })();
+      var CHAPTERS2 = [["intro", "인트로"], ["delivus", "딜리버스 서비스"], ["lastmile", "라스트마일 앱"], ["tms", "수배송 관리 TMS"], ["oms", "판매자 OMS"], ["cream", "CREAM"], ["fanlink", "FANLINK"], ["lemonbox", "LEMONBOX"], ["challenge", "21Challenge"]];
+      var SLIDES2 = [{"t": "Jihye Shin", "s": "포트폴리오 표지 · 전체 프로젝트", "c": "intro", "src": "images/0611_pf64.jpg"}, {"t": "3–5인 유닛에서 PM이자 메이커로", "s": "일하는 방식", "c": "intro", "src": "images/0611_pf64-1.jpg"}, {"t": "주요 프로젝트 6건", "s": "Delivus · MyMusicTaste · Lemonbox · Personal", "c": "intro", "src": "images/0611_pf63.jpg"}, {"t": "당일 배송/반품 서비스 플랫폼 구축", "s": "2021.05 — 2024.06 · Product Manager · 3인 유닛", "c": "delivus", "src": "images/pf04.jpg"}, {"t": "서비스 개요", "s": "세상에서 가장 빠른 소형화물 당일 배송/반품", "c": "delivus", "src": "images/pf05.jpg"}, {"t": "시장 조사", "s": "물류 시장 규모 및 성장 추이", "c": "delivus", "src": "images/pf06.jpg"}, {"t": "문제점 분석", "s": "대형 물류 회사의 분류 방식, 허브 앤 스포크", "c": "delivus", "src": "images/pf07.jpg"}, {"t": "문제점 분석", "s": "내 택배가 늦는 이유는?", "c": "delivus", "src": "images/pf08.jpg"}, {"t": "솔루션", "s": "오전 주문하면 오후 받는 배송, 어떻게 가능하게 할 것인가", "c": "delivus", "src": "images/pf09.jpg"}, {"t": "프로덕트 모듈 정의", "s": "물류 배송 시스템 모듈화", "c": "delivus", "src": "images/pf10.jpg"}, {"t": "스프린트 관리", "s": "물류 최적화 이터레이션 · 2주 단위", "c": "delivus", "src": "images/pf11.jpg"}, {"t": "라스트마일 배송 기사 앱 구축", "s": "2021.07 — 2023.02 · iOS / aOS / PWA", "c": "lastmile", "src": "images/pf12.jpg"}, {"t": "필드 리서치", "s": "쿠팡 배송 운영 현장 조사", "c": "lastmile", "src": "images/pf13.jpg"}, {"t": "페르소나", "s": "고정형 기사와 플렉스 기사", "c": "lastmile", "src": "images/pf14.jpg"}, {"t": "화면 설계", "s": "Wireframe", "c": "lastmile", "src": "images/pf15.jpg"}, {"t": "Project Purpose", "s": "배송 프로세스 간소화", "c": "lastmile", "src": "images/pf16.jpg"}, {"t": "UX 개선 1 · 물품 상하차 스캔", "s": "상차 작업 시간 30분 → 3분", "c": "lastmile", "src": "images/pf17.jpg"}, {"t": "유닛 박스 분류 자동화 플로우 설계", "s": "유닛 상하차 구간 배송 시간 약 90% 단축", "c": "lastmile", "src": "images/pf18.jpg"}, {"t": "UX 개선 2 · 배송 시작(배송중)", "s": "공동현관 출입 정보", "c": "lastmile", "src": "images/pf19.jpg"}, {"t": "출입정보 수집 및 데이터 정확성 개선", "s": "미배송율 10% → 4%", "c": "lastmile", "src": "images/pf20.jpg"}, {"t": "UX 개선 3 · 배송 완료 처리", "s": "네트워크 불안정 지역 배송완료 지연 대응", "c": "lastmile", "src": "images/pf21.jpg"}, {"t": "오프라인 백그라운드 업로드 도입", "s": "물품당 평균 배송 완료 시간 9분 → 5분", "c": "lastmile", "src": "images/pf22.jpg"}, {"t": "프로덕트 프리뷰", "s": "위치 공유 → 배차 수락 → 박스 스캔 → 배송 완료 → 업무 종료 → 정산 확인", "c": "lastmile", "src": "images/pf23.jpg"}, {"t": "다크 모드 시스템", "s": "야간 배송과 저시력 접근성", "c": "lastmile", "src": "images/pf24.jpg"}, {"t": "컴포넌트 시스템", "s": "메인·서브·그레이 컬러와 아이템 카드 템플릿", "c": "lastmile", "src": "images/pf25.jpg"}, {"t": "배송 실시간 정보 공유 프로세스 설계", "s": "알림톡 / 푸시 · 다섯 사용자 그룹", "c": "lastmile", "src": "images/pf26.jpg"}, {"t": "수배송 관리 시스템 TMS 구축", "s": "Transportation Management System · 2021.10 — 2023.12", "c": "tms", "src": "images/pf27.jpg"}, {"t": "페르소나", "s": "관제 관리자 · 분류 관리자 · 현장 작업자 · 파트너 스케줄 관리자", "c": "tms", "src": "images/pf28.jpg"}, {"t": "제품 구조도", "s": "Product Structure", "c": "tms", "src": "images/pf29.jpg"}, {"t": "Project Purpose", "s": "클러스터 편집과 실시간 관제", "c": "tms", "src": "images/pf30.jpg"}, {"t": "분류 클러스터 플랜 편집", "s": "Product Overview", "c": "tms", "src": "images/pf31.jpg"}, {"t": "UX 개선 4 · 분류 클러스터 플랜 편집", "s": "분류 시각화와 맵 폴리곤 편집 · 수작업 50% 감소, 오류율 0.1%", "c": "tms", "src": "images/pf32.jpg"}, {"t": "데이터 기반 허브 상/하차", "s": "최적 경로 자동 생성 알고리즘", "c": "tms", "src": "images/pf33.jpg"}, {"t": "배송 운행 실시간 관제 시스템", "s": "Product Overview", "c": "tms", "src": "images/pf34.jpg"}, {"t": "스프린트 계획과 테스트 케이스", "s": "Work Process", "c": "tms", "src": "images/pf35.jpg"}, {"t": "기능 및 UI 테스트 · 버그 관리", "s": "Stage·Beta 환경 검증 · Asana로 리포트 추적", "c": "tms", "src": "images/pf36.jpg"}, {"t": "판매자 OMS 시스템 구축", "s": "Order Management System · 2021.10 — 2024.04 · PM 2인 유닛", "c": "oms", "src": "images/pf37.jpg"}, {"t": "솔루션", "s": "당일 배송에서 이커머스 IT 통합 솔루션으로 확장", "c": "oms", "src": "images/pf38.jpg"}, {"t": "제품 구조도", "s": "Product Structure", "c": "oms", "src": "images/pf39.jpg"}, {"t": "반품 플로우", "s": "Flowchart", "c": "oms", "src": "images/pf40.jpg"}, {"t": "화면 및 기능 정의서", "s": "Wireframe", "c": "oms", "src": "images/pf41.jpg"}, {"t": "구현", "s": "한 화면에서 모든 처리가 끝나도록 구성", "c": "oms", "src": "images/pf42.jpg"}, {"t": "UX 개선 6 · 검색 기능 개선", "s": "결과 내 검색 · 부분 일치 검색 · 검색어 하이라이트", "c": "oms", "src": "images/pf43.jpg"}, {"t": "컴포넌트 시스템", "s": "UI Component System", "c": "oms", "src": "images/pf44.jpg"}, {"t": "개발 진행 과정", "s": "로우코드 툴을 활용한 사용자 피드백 즉시 반영", "c": "oms", "src": "images/pf45.jpg"}, {"t": "업무 프로세스 · 기획", "s": "요구사항 문서 · 서비스 용어 정리 · 화면 설계", "c": "oms", "src": "images/pf46.jpg"}, {"t": "업무 프로세스 · 개발", "s": "로우코드 구현 · 테스트 · 배포와 히스토리 관리", "c": "oms", "src": "images/pf47.jpg"}, {"t": "성과 · 생산성 85% 향상", "s": "주 단위 배포에서 일 단위 배포로", "c": "oms", "src": "images/pf48.jpg"}, {"t": "CREAM 셀럽 영상 메시지 서비스", "s": "팬과 셀럽이 만나는 1:1 영상 메시지 플랫폼 · 2019.10 — 2021.05 · Product Designer · 3인 유닛", "c": "cream", "src": "images/pf49.jpg"}, {"t": "비즈니스 개요", "s": "타겟 · 핵심 기능 · 수익 모델 · 기술 구현 · 마케팅 전략", "c": "cream", "src": "images/pf50.jpg"}, {"t": "경쟁사 분석 및 차별화 전략", "s": "Cameo · CelebVM 비교", "c": "cream", "src": "images/pf51.jpg"}, {"t": "Benefits", "s": "팬 — 기억할 순간 · 독점 접근 · 유대 / 셀럽 — 팬 참여 · 브랜드 · 통제된 소통", "c": "cream", "src": "images/pf52.jpg"}, {"t": "셀럽이 나의 이름을 부르는 순간", "s": "메인에서 추천 아티스트를 한눈에 · 60초 영상 메시지 제작", "c": "cream", "src": "images/pf53.jpg"}, {"t": "요청 플로우와 셀럽 온보딩", "s": "멤버 선택 → 1:1 요청 → 24~48시간 내 녹화 / 셀럽 기본 정보 등록", "c": "cream", "src": "images/pf54.jpg"}, {"t": "FANLINK 팬 소장품 거래 플랫폼", "s": "아티스트와 팬이 소통하는 디지털 콘텐츠 거래 · 2020.02 — 2021.04 · Product Designer", "c": "fanlink", "src": "images/pf55.jpg"}, {"t": "비즈니스 개요", "s": "FANLINK · 팬이 소장품을 나누고 교환하는 플랫폼", "c": "fanlink", "src": "images/pf56.jpg"}, {"t": "Your Link to Unforgettable Moments", "s": "서비스 가치 구조", "c": "fanlink", "src": "images/pf57.jpg"}, {"t": "아티스트 콘텐츠와 거래 참여", "s": "멤버십 독점 영상 · 아티스트/팬이 진행하는 거래 목록", "c": "fanlink", "src": "images/pf58.jpg"}, {"t": "라이브 옥션과 팬 링크", "s": "시작가·현재가·남은 시간과 자동 증분 입찰 / 아티스트와 팬의 커뮤니티", "c": "fanlink", "src": "images/pf59.jpg"}, {"t": "LEMONBOX 맞춤 비타민 플랫폼", "s": "취향까지 담은 맞춤 비타민 · 2019.01 — 2019.09 · BX 디자인 100%", "c": "lemonbox", "src": "images/pf60.jpg"}, {"t": "비즈니스 개요", "s": "건강 설문 → 맞춤 추천 → 정기 배송 → 복용 모니터링", "c": "lemonbox", "src": "images/pf61.jpg"}, {"t": "취향을 담아 섬세하게 고르는 비타민, 레몬박스", "s": "Brand definition · Design Essence · Service design 3부 구성", "c": "lemonbox", "src": "images/pf62.jpg"}, {"t": "시장 조사", "s": "건강기능식품 시장 4조 9,805억원 · 이커머스 25조", "c": "lemonbox", "src": "images/pf63.jpg"}, {"t": "A-2 Service Strategy", "s": "필요 인식 → 정보 탐색 → 대안 평가 → 구매 결정 → 구매 후 행동", "c": "lemonbox", "src": "images/pf64.jpg"}, {"t": "A-2 Brand Feature", "s": "Contents · Lifestyle · Vitamin · Personalization · Incentive · Brand", "c": "lemonbox", "src": "images/pf65.jpg"}, {"t": "A-2 BX Design Principle", "s": "깨끗하고 단순한 · 실험적이고 직관적인 · 이야기를 담은 · 다채로운 디자인", "c": "lemonbox", "src": "images/pf66.jpg"}, {"t": "A-2 Components System", "s": "메인 컬러 FFD70C · 그레이 2E2E2E · 버튼 4종과 아이템 카드 템플릿", "c": "lemonbox", "src": "images/pf67.jpg"}, {"t": "비타민 테스트 · 코디 신청 · 전문가 상담", "s": "고민 항목 선택 → 결핍 분석 → 약사 코디 신청 → 전문가 상담", "c": "lemonbox", "src": "images/pf68.jpg"}, {"t": "성분 비교와 섭취 미션", "s": "권장미만·충족·초과 비교 / 누적 레몬과 섭취 달성률로 습관 형성", "c": "lemonbox", "src": "images/pf69.jpg"}, {"t": "21Challenge 셀프메디케이션 플랫폼", "s": "21일 습관 형성 헬스케어 서비스", "c": "challenge", "src": "images/pf70.jpg"}, {"t": "비즈니스 개요", "s": "서비스 정의와 핵심 기능", "c": "challenge", "src": "images/pf71.jpg"}, {"t": "제품 구조도", "s": "Product Structure", "c": "challenge", "src": "images/pf72.jpg"}, {"t": "챌린지 홈 화면", "s": "진행중 · 진행 예정 챌린지 위계와 참여 유도 설계", "c": "challenge", "src": "images/pf73.jpg"}, {"t": "프로덕트 프리뷰", "s": "챌린지 진행과 기록 화면", "c": "challenge", "src": "images/pf74.jpg"}, {"t": "21Challenge", "s": "마무리", "c": "challenge", "src": "images/pf75.jpg"}];
 
-      track.innerHTML = SLIDES.map(function(s, i){
-        return '<figure class="slide" data-ch="' + s.c + '" id="sl' + i + '">' +
-          '<img src="' + s.src + '" alt="' + s.t + ' — ' + s.s + '" loading="' + (i < 2 ? 'eager' : 'lazy') + '">' +
-          '<figcaption><b>' + s.t + '</b><span>' + s.s + '</span>' +
-          '<i>' + String(i+1).padStart(2,'0') + ' / ' + String(SLIDES.length).padStart(2,'0') + '</i></figcaption>' +
-        '</figure>';
-      }).join('');
+      var CHAPTERS1 = [["s1","표지"],["s2","결과"],["s3","도메인"],["s3b","도메인 깊이"],["s5","AI · 판단"],["s5b","AI · 근거"],["s5c","AI · 검증"],["s6","커머스 · 판단"],["s6b","커머스 · 근거"],["s7","B2B · 판단"],["s7b","B2B · 근거"],["s4","반복된 순서 · 판단 기준"],["s8","직접 만든다"],["s8b","3일 실증"],["s9","AI 검수 · 원칙"],["s10","경력 · 역량"]];
 
+      /* 전/후 미니 막대 — 숫자 타일에서 개선 폭을 눈으로 보여준다 */
+      function ba(b, a, lb, la){
+        return '<div class="vz-ba">' +
+          '<div class="l"><span>' + (lb || '전') + '</span><i style="width:' + b + '%"></i></div>' +
+          '<div class="l on"><span>' + (la || '후') + '</span><i style="width:' + a + '%"></i></div></div>';
+      }
+
+      var SLIDES1 = [
+      {t:"계산이 쉬운 안&nbsp;대신 설명되는 안", s:"표지 · 한 문장 논지", c:"s1", html:`
+<div class="sl-cover">
+  <div>
+    <div class="sl-name en">JIHYE SHIN</div>
+    <div class="sl-role">PRODUCT MANAGER · SEOUL · 8 YEARS</div>
+  </div>
+  <div>
+    <div class="sl-claim">계산이 쉬운 안&nbsp;대신<br><em>설명되는 안</em>을 고릅니다.</div>
+    <p class="sl-claimsub">0→1 프로덕트를 정책까지 내려가 설계하고, 필요하면 직접 만들어 확인합니다. 도메인은 다섯 번 바뀌었지만 순서는 같았습니다 — 문제를 원인까지 내리고, 예외와 미결까지 적고, 지표로 확인합니다.</p>
+  </div>
+  <div class="sl-bot">
+    <div class="sl-tags"><span class="tag t-ai">AI · LLM</span><span class="tag t-commerce">크리에이터 커머스</span><span class="tag t-logistics">물류 · 라스트마일</span><span class="tag t-community">팬덤 · 엔터</span><span class="tag t-health">헬스케어</span></div>
+    <div class="sl-cmeta"><b>mozzarella.meow@gmail.com</b>&#8288;케이스 14건 · 프로젝트 8건 · 원격 4년+</div>
+  </div>
+</div>`},
+
+      {t:"먼저 숫자로", s:"세 도메인에서 나온 결과 6건", c:"s2", html:`
+<div class="sl-eb"><b>결과<br>커머스 · 운영</b><i>PART 1 · RESULTS</i><u>Vuddy · 딜리버스<br>2021.05 — 2026</u></div>
+<h3 class="sl-h">커머스에서는 결제까지 잇고,<br>운영에서는 사람이 덜&nbsp;하게 만들었습니다</h3>
+<p class="sl-sub">막대는 개선 전과 후의 비율입니다. 여섯 건 모두 제가 직접 담당한 기능에서 나왔고, 산출 기준은 각 칸 아래에 적었습니다. 여기 없는 <b>케이스 01(AI)은 아직 출시 전</b>&#8288;이라 시장 지표 대신 <b>검증 결과</b>&#8288;로 보여드립니다 — 창 밖 기억 정답률 13% → 94%.</p>
+<div class="sl-grid g3 sl-nums">
+  <div class="sl-cell"><div class="sl-ntag">Creator Commerce</div><div class="sl-big"><u>×10</u> <i>유료 사용자</i></div>` + ba(10,100) + `<p class="sl-ncap">가입자 ×7. 이 성장 구간의 구매 전환 기능을 담당했습니다.</p><div class="sl-nsrc">Vuddy · 2025.05 → 08</div></div>
+  <div class="sl-cell"><div class="sl-ntag">Data</div><div class="sl-big">16% <i>→</i> <u>26%</u></div>` + ba(61.5,100,'개선 전','후') + `<p class="sl-ncap">잘못 짜인 퍼널을 스스로 찾아 재정의. 병목 위치도 한 단계 앞으로 옮겼습니다.</p><div class="sl-nsrc">Vuddy 구매 퍼널 · 30일 UU 대조</div></div>
+  <div class="sl-cell"><div class="sl-ntag">Conversion</div><div class="sl-big"><u>7.5%</u> <i>무료→유료</i></div>` + ba(100,7.5,'무료권','결제') + `<p class="sl-ncap">확률형 가챠를 새로 기획하고 무료 가챠권에서 결제로 이어지는 경로를 설계했습니다.</p><div class="sl-nsrc">Vuddy 가챠 · PRD 작성</div></div>
+  <div class="sl-cell"><div class="sl-ntag">Last-mile</div><div class="sl-big">30분 <i>→</i> <u>3분</u></div>` + ba(100,10) + `<p class="sl-ncap">박스 단위 분류 UX 설계로 상하차 작업 시간 약 90% 단축.</p><div class="sl-nsrc">딜리버스 기사 앱 · 필드 리서치</div></div>
+  <div class="sl-cell"><div class="sl-ntag">Ops · TMS</div><div class="sl-big"><u>−50%</u> <i>재분류</i></div>` + ba(100,50) + `<p class="sl-ncap">분류 오류율 0.1%, 리드타임 20% 단축. 미배송률은 일평균 60% 감소.</p><div class="sl-nsrc">딜리버스 관제 TMS</div></div>
+  <div class="sl-cell"><div class="sl-ntag">Back-office</div><div class="sl-big"><u>−50%</u> <i>운영 시간</i></div>` + ba(100,50) + `<p class="sl-ncap">수동 작업 자동화로 운영 업무 시간 절반, CS 문의 약 30% 감소.</p><div class="sl-nsrc">Vuddy 팬 관리 · 상담 정책</div></div>
+</div>
+<div class="sl-note"><i>그 밖에</i><span>물동량 20%↑</span><span>인앱 결제 6개월 매출 25%↑</span><span>PG 수수료 15% 절감</span><span>알림톡 도달률 95%</span></div>`},
+
+      {t:"다섯 도메인, 정책 층까지", s:"도메인 경험과 직접 정한 것", c:"s3", html:`
+<div class="sl-eb"><b>도메인</b><i>PART 1 · DOMAINS</i><u>다섯 도메인 · 8년</u></div>
+<h3 class="sl-h">다섯 도메인에서, 매번 정책까지 내려가 설계했습니다</h3>
+<p class="sl-sub">도메인을 옮겨 다닌 것이&nbsp;아니라 같은 깊이로 다섯 번 들어갔습니다. 각 카드 아래 태그는 제가 직접 정의한 정책·규칙입니다.</p>
+<div class="sl-grid g5 sl-dom">
+  <div class="sl-cell sl-dm">
+    <div class="nm">물류 · 라스트마일</div>
+    <div class="pr">프로덕트 4종 · 사용자군 4개</div>
+    <div class="ow">기사 앱 · 관제 TMS · 판매자 OMS · 고객 추적 웹앱을 기획부터 운영까지 총괄.</div>
+    <div class="shot"><img src="images/delivus-cover.jpg" alt="딜리버스 — 당일 배송·반품 서비스 플랫폼" loading="lazy"></div>
+    <div class="ch"><span>허브앤스포크 구조 분석</span><span>클러스터 플래닝</span><span>간선 라우트</span><span>자동·수동 배차</span><span>알림톡 트리거</span></div>
+  </div>
+  <div class="sl-cell sl-dm">
+    <div class="nm">크리에이터 커머스 · 정산</div>
+    <div class="pr">커머스·정산·커뮤니티 정책 100%</div>
+    <div class="ow">판매 유형 2종과 정산 케이스 5종, 예외 6단계까지 계산식을 직접 썼습니다.</div>
+    <div class="shot"><img src="images/studio-cover.jpg" alt="Vuddy 크리에이터 스튜디오 — 판매·정산 운영 백오피스" loading="lazy"></div>
+    <div class="ch"><span>원천징수 3.3%</span><span>PG 수수료 모수 분리</span><span>미수금 이월</span><span>확률 고지 의무</span><span>인보이스 프로세스</span></div>
+  </div>
+  <div class="sl-cell sl-dm">
+    <div class="nm">AI · LLM 프로덕트</div>
+    <div class="pr">대화·기억·안전·재화 정책 100%</div>
+    <div class="ow">컨텍스트와 안전을 정책으로 고정하고, 어떤 방에 어떤 모델을 쓸지까지 규칙으로 나눴습니다.</div>
+    <div class="shot"><img src="images/samantha-cover.jpg" alt="AI 인터랙티브 스토리 채팅 서비스" loading="lazy"></div>
+    <div class="ch"><span>컨텍스트 예산 · 절삭 순서</span><span>메모리 추출·요약</span><span>프롬프트 블록 조립</span><span>콘텐츠 검열·제재</span><span>모델 티어 라우팅</span></div>
+  </div>
+  <div class="sl-cell sl-dm">
+    <div class="nm">팬덤 · 엔터테인먼트</div>
+    <div class="pr">프로덕트 3종 · 사용자군 2개</div>
+    <div class="ow">팬과 크리에이터 사이의 거래·관계를 세 번 설계했습니다. CREAM · FANLINK · Vuddy.</div>
+    <div class="shot"><img src="images/vuddy-cover.jpg" alt="Vuddy — 팬·크리에이터 굿즈 커머스와 커뮤니티 플랫폼" loading="lazy"></div>
+    <div class="ch"><span>양방향 요청 플로우</span><span>인앱 결제·PG</span><span>팬 등급·누적 결제</span><span>신고·모더레이션</span><span>라이브 커머스 SDK</span></div>
+  </div>
+  <div class="sl-cell sl-dm">
+    <div class="nm">헬스케어 · 구독</div>
+    <div class="pr">프로덕트 2종 · 브랜드부터 화면까지</div>
+    <div class="ow">건강 설문에서 맞춤 추천, 정기 배송, 복용 모니터링까지의 구매 여정을 설계했습니다.</div>
+    <div class="shot"><img src="images/pf60.jpg" alt="LEMONBOX — 취향까지 담은 맞춤 비타민 서비스" loading="lazy"></div>
+    <div class="ch"><span>구매 의사결정 5단계</span><span>성분 비교 로직</span><span>정기 구독</span><span>습관 형성 21일</span><span>브랜드·컴포넌트 시스템</span></div>
+  </div>
+</div>
+`},
+
+      {t:"도메인 지식은 이 층까지 내려갑니다", s:"도메인 · 직접 정의한 것", c:"s3b", html:`
+<div class="sl-eb"><b>도메인의<br>깊이</b><i>PART 1 · DEPTH</i><u>직접 정의하고<br>문서로 고정한 것</u></div>
+<h3 class="sl-h">도메인 지식은 이 층까지 내려갑니다</h3>
+<p class="sl-sub">“해봤다”와 “정했다”는 다릅니다. 아래 넷은 제가 직접 읽고, 쓰고, 정의하고, 만든 것입니다.</p>
+<div class="sl-tbl t3">
+  <div class="r hd"><div>층</div><div>기준</div><div>어디까지 내려갔는지</div><div>규모</div></div>
+  <div class="r"><div class="it">법 · 규정</div><div class="ai">원문 단서까지<br>직접 읽는다</div><div class="de">게임산업진흥법 시행령상 <b>확률형 아이템 고지 의무</b>를 확인해 가챠 설계를 바꿨고, <b>파견법 예외 조항</b>을 원문에서 확인해 개인 기획의 주력 상품을 뺐습니다. 요약본으로는 둘 다 걸러지지 않았습니다.</div><div class="im">법령 2건<br>원문 대조</div></div>
+  <div class="r"><div class="it">정산</div><div class="ai">계산식과 예외를<br>직접 쓴다</div><div class="de">수수료 <b>모수 분리</b>, 차감 순서, 미수금 이월, 0원 인보이스까지. 판매 유형과 예외가 맞물리면서 실무에서 갈리는 지점을 전부 문서로 고정했습니다.</div><div class="im">판매 유형 2종<br>케이스 5종 · 예외 6단계</div></div>
+  <div class="r"><div class="it">계측</div><div class="ai">이벤트 스키마와 지표를<br>직접 정의한다</div><div class="de">정의 389개와 실제 적재 262개를 <b>전수 대조</b>해, 신뢰할 수 있는 것만 지표로 올렸습니다. 적재되지 않는 이벤트는 지표에서 뺐습니다. Amplitude · Mixpanel · Redash · Airbridge · SQL.</div><div class="im">389 → 262<br>A등급 22종</div></div>
+  <div class="r"><div class="it">구현</div><div class="ai">화면은<br>직접 만든다</div><div class="de">Retool로 판매자 OMS v2/v3를 개발·배포·유지보수했고, 조회 화면에서 멈추지 않고 <b>데이터를 바꾸는 기능</b>까지 만들었습니다. 기획과 구현 사이에 통역이 필요 없습니다. HTML · CSS · JavaScript.</div><div class="im">OMS v2/v3<br>직접 배포</div></div>
+</div>
+`},
+
+      {t:"대화는 사라져도 관계는 남도록", s:"CASE 01 · 신규 AI 서비스 0→1 런칭 기획", c:"s5", html:`
+<div class="sl-chead">
+  <div>
+    <div class="sl-eb"><b>AI 인터랙티브<br>스토리 채팅</b><i>PART 2 · CASE 01 · 0→1 기획</i><u>신규 AI 서비스 · LEVVELS<br>2026 — 현재<br>정책 · 화면 기획 100% 전담</u></div>
+    <h3 class="sl-h">대화는 사라져도<br>관계는 남도록 설계했습니다</h3>
+    <p class="sl-sub"><b>초기 테스트에서</b> 이탈이 몰린 지점은 응답 품질이&nbsp;아니라 <b>같은 설명을 두 번 하게 되는 순간</b>&#8288;이었습니다. 모델을 손대서 될 일이 아니었습니다 — 기억을 다루는 규칙이 없었고, <b>화면을 그리기 전에</b> 컨텍스트·기억·안전·지표 규칙을 먼저 확정했습니다.</p>
+  </div>
+</div>
+<div class="sl-cmeta2"><span class="kpi"><b>94%</b>&#8288;창 밖 기억 정답률 · 13% → 94%</span><span class="kpi"><b>100%</b>&#8288;위기 신호 대응률 · 67% → 100%</span></div>
+<div class="sl-scope row"><i>다룬 범위</i><span>컨텍스트 예산 · 절삭 순서</span><span>프롬프트 블록 조립</span><span>모델 티어 라우팅</span><span>안전 정책</span></div>
+<div class="sl-grid g3 sl-decs">
+  <div class="sl-cell sl-dec"><h4>휘발되는 것과 남는&nbsp;것을<br>먼저 갈랐습니다</h4><p>메시지는 흘려보내고 기억·관계·분기 셋만 방(Room)에 남깁니다. 이후 절삭·요약·설정 변경 규칙이 전부 이 한 줄에서 나왔습니다.</p></div>
+  <div class="sl-cell sl-dec"><h4>AI가 뽑은 기억을<br>사용자가 고치게 했습니다</h4><p>추출이 틀리는 건 막을&nbsp;수&nbsp;없으니 수정·삭제·고정을 열었습니다. 사용자가 캐릭터의 응답을 스스로 납득하기 시작한 쪽이 더 컸습니다.</p></div>
+  <div class="sl-cell sl-dec"><h4>북극성을 DAU가&nbsp;아니라<br>지속된 대화로 잡았습니다</h4><p>10턴&nbsp;이상 이어진 주간 세션 수. 턴 쪼개기를 막으려고 평균 응답 길이와 재생성률을 가드레일로 함께 걸었습니다.</p></div>
+</div>
+<div class="sl-foot">아직 출시 전이라 이 케이스의 숫자는 모두 자체 검증 결과입니다</div>
+`},
+
+      {t:"넘칠 때 무엇을 버릴지까지 기획이 정했습니다", s:"CASE 01 · 근거 — 컨텍스트 예산과 모더레이션 콘솔", c:"s5b", html:`
+<div class="sl-eb"><b>AI 인터랙티브<br>스토리 채팅</b><i>CASE 01 · 근거</i><u>신규 AI 서비스 · LEVVELS<br>컨텍스트 예산<br>모더레이션 콘솔</u></div>
+<h3 class="sl-h">넘칠 때 무엇을 버릴지까지<br>기획이 정했습니다</h3>
+<p class="sl-sub">컨텍스트는 한정돼 있습니다. 예산표와 버리는 순서를 기능보다 <b>먼저</b> 확정했습니다. 16K 안에서 무엇을 남기고 무엇을 버릴지는 기획이 답할 질문이라고 봤습니다.</p>
+<div class="sl-ev big">
+<div class="vz">
+  <div class="vz-h"><div class="t">컨텍스트 예산 · 16K 기준</div><div class="v">합계 <b>16,000</b> 토큰</div></div>
+  <div class="vz-stack">
+    <div class="sg" style="width:19.375%;background:var(--tenure)"></div>
+    <div class="sg" style="width:11.25%;background:color-mix(in srgb,var(--tenure) 68%,transparent)"></div>
+    <div class="sg" style="width:53.75%;background:color-mix(in srgb,var(--tenure) 42%,transparent)"></div>
+    <div class="sg" style="width:15.625%;background:color-mix(in srgb,var(--tenure) 24%,transparent)"></div>
+  </div>
+  <div class="vz-legend">
+    <div><i style="background:var(--tenure)"></i>고정 지시·캐릭터·상황·페르소나 <b>3,100</b></div>
+    <div><i style="background:color-mix(in srgb,var(--tenure) 68%,transparent)"></i>기억 · 요약 <b>1,800</b></div>
+    <div><i style="background:color-mix(in srgb,var(--tenure) 42%,transparent)"></i>최근 대화 · 예시 <b>8,600</b></div>
+    <div><i style="background:color-mix(in srgb,var(--tenure) 24%,transparent)"></i>출력 예약 <b>2,500</b></div>
+  </div>
+  <p class="vz-cap">버리는 순서는 예시 → 기억(중요도 낮은 순) → 요약 재요약 → 최근 대화. 단 <b>최근 대화는 최소 6턴을 보장</b>&#8288;합니다. 원가상 최적은 4턴이었지만 설명할&nbsp;수&nbsp;없는 절약이라 택하지 않았습니다. 안전 지시문은 어떤 캐릭터 설정으로도 덮이지 않는 최상단에 고정했습니다.</p>
+</div>
+<div class="sl-shots">
+  <figure><img src="images/cen/cen-threshold.jpg" alt="모더레이션 콘솔 임계값 설정 화면" loading="lazy"><figcaption><b>모더레이션 콘솔</b>&#8288;카테고리별 임계값을 운영자가 직접 조정 · 변경 사유와 적용 시점을 함께 기록</figcaption></figure>
+  <figure><img src="images/cen/cen-dashboard-16x9.jpg" alt="모더레이션 운영 대시보드" loading="lazy"><figcaption><b>판정 품질 옆에 비용</b>&#8288;폴백률 2.4% · 추정 비용 $14.20 / 12.4M 토큰을 같은 화면에서</figcaption></figure>
+  <div class="src">정책을 문서에 두지 않고 바꿀&nbsp;수&nbsp;있는 값으로 — 어드민 12개 화면 설계</div>
+</div>
+</div>
+`},
+
+      {t:"기획서의 결정이 모델 위에서도 작동하는지", s:"CASE 01 · 검증 — 가설 2건 · 통제 조건 · 루브릭 채점", c:"s5c", html:`
+<div class="sl-chead">
+  <div>
+    <div class="sl-eb"><b>AI 인터랙티브<br>스토리 채팅</b><i>CASE 01 · 검증</i><u>신규 AI 서비스 · LEVVELS<br>가설 2건 · 통제 조건<br>루브릭 채점 후 직접 검수</u></div>
+    <h3 class="sl-h">기획서의 결정이 모델 위에서도<br>작동하는지 먼저 실험했습니다</h3>
+    <p class="sl-sub">기억 구조와 안전 규칙 두 가지를, 같은 입력에 <b>조건만 바꿔</b> 넣고 비교했습니다. 고정 스크립트로 조건 외 변수를 통제하고, 루브릭 기반 채점 뒤 판정 샘플을 직접 검수했습니다.</p>
+  </div>
+</div>
+<div class="sl-cmeta2"><span class="kpi"><b>30턴 × 2</b>&#8288;기억 구조 실험 · 조건 2종</span><span class="kpi"><b>12발화 × 3 × 3</b>&#8288;안전 규칙 실험 · 조건 3종</span></div>
+<div class="sl-scope row"><i>다룬 범위</i><span>가설 2건 · 조건 통제</span><span>루브릭 기반 채점</span><span>판정 샘플 직접 검수</span></div>
+<div class="sl-grid g3 sl-decs">
+  <div class="sl-cell sl-dec"><div class="k">기억 구조</div><h4>리마인드의 효과는<br>확인되지 않았습니다</h4><p>설정 이탈은 두 구조 모두 3%로 드물었습니다. 매 5턴 넣던 리마인드를 제거 후보로 돌리고, 아낀 토큰을 효과가 확인된 기억 블록에 배분했습니다.</p></div>
+  <div class="sl-cell sl-dec"><div class="k">안전 규칙</div><h4>위치가&nbsp;아니라<br>존재가 갈랐습니다</h4><p>제 가설은 “안전 규칙이 설정 <b>위</b>&#8288;에 있어야 한다”였지만 위치는 차이를 만들지 않았습니다. “최상단 고정”의 근거를 위치에서 문장 내용으로 바꿨습니다.</p></div>
+  <div class="sl-cell sl-dec"><div class="k">거절 경험</div><h4>막는 순간<br>캐릭터가 깨졌습니다</h4><p>우회 시도를 거절할 때 캐릭터를 유지한 비율이 20~33%에 그쳤습니다. 거절도 캐릭터의 목소리로 하도록 응답 가이드와 예시를 프롬프트에 추가했습니다.</p></div>
+</div>
+<div class="sl-foot">한계 · 자체 측정 — 기억 30턴 × 2회, 안전 발화 12개 × 3조건 × 3회 · 통계적 유의성 검증 없음 · 오차단율이 33% → 50%로 늘어난 것도 함께 기록했습니다</div>`},
+
+      {t:"예측할&nbsp;수&nbsp;없으면 아무도 오래 하지 못합니다", s:"CASE 02 · Vuddy 크리에이터 커머스", c:"s6", html:`
+<div class="sl-chead">
+  <div>
+    <div class="sl-eb"><b>크리에이터<br>굿즈 커머스</b><i>PART 2 · CASE 02 · 커머스·정산</i><u>Vuddy · LEVVELS<br>2024.08 — 2026<br>커머스·정산·커뮤니티 100%</u></div>
+    <h3 class="sl-h">예측할&nbsp;수&nbsp;없으면<br>아무도 오래 하지 못합니다</h3>
+    <p class="sl-sub">크리에이터는 <b>누가 책임지는지 · 얼마가 언제 들어오는지 · 기록이 남는지</b>&#8288;를 알&nbsp;수&nbsp;없었습니다. 증상을 덮지 않고 세 불확실성의 원인을 각각 없앴습니다.</p>
+  </div>
+</div>
+<div class="sl-cmeta2"><span class="kpi"><b>×10</b>&#8288;유료 사용자 · 가입자 ×7</span><span class="kpi"><b>100%</b>&#8288;커머스·정산·커뮤니티·모더레이션 전담</span></div>
+<div class="sl-scope row"><i>다룬 범위</i><span>커머스 판매 구조</span><span>정산 계산식과 예외</span><span>확률형 아이템 고지 규제</span><span>이벤트 계측 감사</span></div>
+<div class="sl-grid g3 sl-decs">
+  <div class="sl-cell sl-dec"><h4>판매 주체 하나를 정하니<br>나머지가 따라왔습니다</h4><p>계약상 판매 주체를 축으로 유형을 둘로 고정하자 배송 주체·계약·정산 단계가 자동으로 갈립니다. 케이스별 판단을 정산 케이스 5종으로 수렴시켰습니다.</p></div>
+  <div class="sl-cell sl-dec"><h4>가챠 확률을<br>재고에 연동하지 않았습니다</h4><p>재고 기반 실시간 재분배가 초기안이었지만, 고지한 확률과 실제가 달라지면 그 자체로 법적 위반입니다. 고정 확률 + 출현 횟수 제한으로 바꿨습니다.</p></div>
+  <div class="sl-cell sl-dec"><h4>데이터를 쓰기 전에<br>믿을&nbsp;수&nbsp;있는지부터 봤습니다</h4><p>이벤트 정의서 389개와 실제 적재 262개를 전수 대조(67%). 이중 적재 3쌍을 찾아내고 신뢰도 A등급 22종만 지표로 올렸습니다.</p></div>
+</div>
+
+`},
+
+      {t:"1차 분석이 틀렸다는 걸 스스로 찾아냈습니다", s:"CASE 02 · 근거 — 퍼널 재정의와 판매 위젯", c:"s6b", html:`
+<div class="sl-eb"><b>크리에이터<br>굿즈 커머스</b><i>CASE 02 · 근거</i><u>Vuddy · LEVVELS<br>구매 퍼널 재정의<br>판매 위젯</u></div>
+<h3 class="sl-h">1차 분석이 틀렸다는 걸<br>스스로 찾아냈습니다</h3>
+<p class="sl-sub">이벤트 이름만 보고 짠 퍼널은 “구매 버튼에서 63% 이탈”이라는 결론을 냈습니다. 인접 단계의 독립 사용자 수를 대조하다 순서 모순을 발견했고, 이 대조를 표준 절차에 넣었습니다.</p>
+<div class="sl-ev big">
+<div class="vz">
+  <div class="vz-h"><div class="t">구매 퍼널 재정의 · 30일 독립 사용자</div><div class="v">전체 전환 <b>16% → 26%</b> · 병목도 한 단계 앞으로 이동</div></div>
+  <div class="vz-fun">
+    <div class="vz-row"><div class="lb">상품 상세 진입</div><div class="bar"><i style="width:100%"></i></div><div class="n">14,501</div><div class="pc">—</div></div>
+    <div class="vz-row hot"><div class="lb">구매하기 클릭</div><div class="bar"><i style="width:48.5%"></i></div><div class="n">7,032</div><div class="pc">48%</div></div>
+    <div class="vz-row hot"><div class="lb">주문서 진입</div><div class="bar"><i style="width:30.9%"></i></div><div class="n">4,476</div><div class="pc">64%</div></div>
+    <div class="vz-row"><div class="lb">결제 클릭</div><div class="bar"><i style="width:27.3%"></i></div><div class="n">3,952</div><div class="pc">88%</div></div>
+    <div class="vz-row"><div class="lb">결제 완료</div><div class="bar"><i style="width:25.9%"></i></div><div class="n">3,753</div><div class="pc">95%</div></div>
+  </div>
+  <p class="vz-cap">재정의 후 병목은 <b>구매하기 클릭(48%)</b>&#8288;으로 한 단계 앞당겨졌습니다. 두 번째 구간(64%)은 가설이 세 개까지 좁혀졌지만 확정하지 못해 <b>원인 미확인으로 남겨</b> 두었습니다 — 모르는&nbsp;것을 아는 척하면 다음 사람이 잘못된 전제에서 시작합니다.</p>
+</div>
+<div class="sl-shots">
+  <figure><img src="images/live/live-onair.jpg" alt="라이브 방송 중 판매 위젯" loading="lazy"><figcaption><b>ON AIR</b>&#8288;판매 QR · 리액션 · 재고 · 룰렛이 한 화면에서 동시에 동작</figcaption></figure>
+  <figure><img src="images/live/live-studio.jpg" alt="Vuddy 스튜디오 위젯 발급 화면" loading="lazy"><figcaption><b>VUDDY STUDIO</b>&#8288;크리에이터가 판매 단위로 위젯 주소를 직접 발급</figcaption></figure>
+  <div class="src">버디 크리에이터 가이드 공개 문서에서 발췌 · 스트림 ID는 가림</div>
+</div>
+</div>
+`},
+
+      {t:"알고리즘이 모르는&nbsp;것은 사람이 고치게 했습니다", s:"CASE 03 · 딜리버스 물류 프로덕트 4종", c:"s7", html:`
+<div class="sl-chead">
+  <div>
+    <div class="sl-eb"><b>라스트마일<br>물류 프로덕트 4종</b><i>PART 2 · CASE 03 · B2B·백오피스</i><u>DELIVUS<br>기사 앱·TMS·OMS·고객 웹앱<br>2021.05 — 2024.06</u></div>
+    <h3 class="sl-h">알고리즘이 모르는&nbsp;것은<br>사람이 고치게 했습니다</h3>
+    <p class="sl-sub"><b>자동 분류가 당일 현장 상황을 반영하지 못해</b> 허브에서 재분류가 발생했고, 모든 지연이 여기서 갈라져 나왔습니다.</p>
+  </div>
+</div>
+<div class="sl-cmeta2"><span class="kpi"><b>−90%</b>&#8288;상하차 30분 → 3분</span><span class="kpi"><b>−50%</b>&#8288;허브 재분류 · 오류율 0.1%</span></div>
+<div class="sl-scope row"><i>다룬 범위</i><span>라스트마일 관제</span><span>클러스터 플래닝</span><span>로우코드 OMS 직접 구현</span><span>현장 리서치</span></div>
+<div class="sl-grid g3 sl-decs">
+  <div class="sl-cell sl-dec"><h4>자동화를 더 똑똑하게 만드는&nbsp;대신<br>운영자에게 편집권을 줬습니다</h4><p>사전 플래닝 단계에 클러스터를 직접 고치는 GIS 화면을 두고, 데이터 기반 경로 자동 생성은 그 위에 얹었습니다.</p></div>
+  <div class="sl-cell sl-dec"><h4>문제를 현장에서<br>직접 가져왔습니다</h4><p>쿠팡 배송 현장 리서치로 페르소나를 정의하고, 고칠 지점을 상차 스캔·출입 정보·오프라인 업로드 셋으로 좁혔습니다.</p></div>
+  <div class="sl-cell sl-dec"><h4>개발을 기다리지 않고<br>직접 만들어 배포했습니다</h4><p>판매자 OMS v2/v3를 Retool로 직접 개발·배포·유지보수. 조회 화면을 넘어 실제 데이터를 바꾸는 기능까지 만들었습니다.</p></div>
+</div>
+
+`},
+
+      {t:"현장에서 시작해 화면 정의서까지", s:"CASE 03 · 근거 — 리서치 · 관제 · 기사 앱 · OMS", c:"s7b", html:`
+<div class="sl-eb"><b>라스트마일<br>물류 프로덕트 4종</b><i>CASE 03 · 근거</i><u>DELIVUS<br>현장 리서치 · 관제<br>기사 앱 · 판매자 OMS</u></div>
+<h3 class="sl-h">현장에서 가져와<br>화면 정의서까지 직접 만들었습니다</h3>
+<p class="sl-sub">쿠팡 배송 현장에서 시작해, 운영자가 직접 고치는 관제 화면과 기사 앱 플로우, 판매자 OMS 정의서까지 네 단계가 한 줄로 이어집니다. 네 화면 모두 제가 정의하고 운영까지 맡았습니다.</p>
+<div class="sl-film">
+  <figure><img src="images/pf13.jpg" alt="쿠팡 배송 운영 현장 조사" loading="lazy"><figcaption><b>현장 리서치</b>&#8288;쿠팡 배송 운영 현장 조사 → 고정형·플렉스 페르소나</figcaption></figure>
+  <figure><img src="images/pf31.jpg" alt="분류 클러스터 플랜 편집 화면" loading="lazy"><figcaption><b>클러스터 플랜 편집</b>&#8288;맵 폴리곤 편집 · 수작업 50%↓ · 오류율 0.1%</figcaption></figure>
+  <figure><img src="images/pf23.jpg" alt="기사 앱 프로덕트 프리뷰" loading="lazy"><figcaption><b>기사 앱 플로우</b>&#8288;배차 수락 → 박스 스캔 → 배송 완료 → 정산 확인</figcaption></figure>
+  <figure><img src="images/pf41.jpg" alt="판매자 OMS 화면 및 기능 정의서" loading="lazy"><figcaption><b>화면 및 기능 정의서</b>&#8288;판매자 OMS · 한 화면에서 모든 처리가 끝나도록</figcaption></figure>
+</div>
+<div class="sl-res"><div class="rl">결과</div><div class="rv">
+  <span>미배송률 일평균 <em class="h">−60%</em></span>
+  <span>배송 완료 <b>9분 → 5분</b></span>
+  <span>재분류 <em class="h">−50%</em> · 오류율 <b>0.1%</b></span>
+  <span>리드타임 <em class="h">−20%</em></span>
+  <span>Q2 신규 계약률 <em class="h">+50%</em></span>
+  <span>검색 실패율 <em class="h">−40%</em> · 서버 요청 <em class="h">−50%</em></span>
+</div></div>`},
+
+      {t:"도메인이 바뀌어도 순서는 같았습니다", s:"네 단계와 판단 기준", c:"s4", html:`
+<div class="sl-eb"><b>반복된<br>순서</b><i>PART 3 · METHOD</i><u>문제 정의 → 정책 설계<br>미결 명시 → 지표 확인</u></div>
+<h3 class="sl-h">도메인이 바뀌어도 순서는 같았습니다</h3>
+<p class="sl-sub">앞의 세 케이스는 도메인도 팀도 달랐지만 문제를 다루는 순서는 같았습니다 — 매번 지킨 네 단계입니다. 그러고도 안이 둘로 갈릴 때 쓰는 기준은 맨 아래에 적었습니다.</p>
+<div class="sl-scope row"><i>다룬&nbsp;범위</i><span>문제 정의</span><span>정책 설계</span><span>미결 명시</span><span>지표 확인</span></div>
+<div class="sl-steps">
+  <div class="sl-step"><div class="n">STEP 01</div><h4>증상이&nbsp;아니라<br>원인을 없앤다</h4><p>요구사항은 불만 목록보다 사용자가 스스로 만든 우회 방법에서 나옵니다.</p><div class="q">사용자가 프로필에 요약을 직접 넣고 외부 확장까지 설치하고 있었다 — 서비스가 할 일을 사용자가 대신하고 있다는 뜻.</div></div>
+  <div class="sl-step"><div class="n">STEP 02</div><h4>화면을 넘어<br>정책까지 그린다</h4><p>상태·권한·예외 케이스까지 문서에 고정합니다. 비워둔 칸은 개발이&nbsp;대신 정하게 됩니다.</p><div class="q">정책 문서 7단락 중 <b>예외 케이스</b>&#8288;와 <b>미결 사항</b>&#8288;은 비울&nbsp;수&nbsp;없게 했습니다.</div></div>
+  <div class="sl-step"><div class="n">STEP 03</div><h4>모르는&nbsp;것을<br>모른다고 적는다</h4><p>미결에 담당과 기한을 붙여 남깁니다.</p><div class="q">“미결을 적지 않으면 정해진 척이 됩니다.” — 케이스마다 회고에 <b>아직 모르는&nbsp;것</b>&#8288;을 따로 씁니다.</div></div>
+  <div class="sl-step"><div class="n">STEP 04</div><h4>측정되는 것만<br>지표로 만든다</h4><p>적재되지 않는 이벤트는 지표에서 뺍니다. 지표에는 가드레일을 함께 겁니다.</p><div class="q">턴 수를 북극성으로 잡자 응답을 잘게 쪼개려는 압력이 실제로 생겼습니다.</div></div>
+</div>
+<div class="sl-spine">
+  <div class="lead"><div class="k">두 안이 맞붙을 때의 기준</div><div class="v">계산이 쉬운 쪽이&nbsp;아니라<br>설명되는 쪽</div></div>
+  <div class="ex">
+    <div><b>컨텍스트 최소 6턴 보장</b>&#8288;원가상 최적은 4턴. 설명할&nbsp;수&nbsp;없는 절약이라 택하지 않았습니다.</div>
+    <div><b>미수금 아이템별 분배</b>&#8288;총액 비교가 훨씬 단순. 크리에이터가 “왜 이 금액인지” 되짚을&nbsp;수&nbsp;있는 쪽을 택했습니다.</div>
+    <div><b>가챠 고정 확률</b>&#8288;재고 연동이 더 유연. 고지한 값과 실제가 달라지면 그 자체로 위반입니다.</div>
+  </div>
+</div>
+`},
+
+      {t:"직접 끝낼&nbsp;수&nbsp;있는 범위가 해마다 넓어졌습니다", s:"Retool → 계측 → 규격 · 그리고 3일짜리 실증", c:"s8", html:`
+<div class="sl-eb"><b>직접 만드는<br>범위</b><i>PART 3 · BUILD</i><u>2021 → 2026</u></div>
+<h3 class="sl-h">기획과 구현 사이에 통역이 필요 없습니다</h3>
+<p class="sl-sub">설명되는 쪽을 고르려면 먼저 확인할&nbsp;수&nbsp;있어야 합니다. 그래서 직접 만들어 확인했고, 직접 끝낼&nbsp;수&nbsp;있는 범위가 해마다 넓어졌습니다.</p>
+<div class="sl-scope row"><i>다룬 범위</i><span>Retool로 OMS v2/v3 직접 배포</span><span>계측 감사</span><span>기획 규격화</span></div>
+<div class="sl-grid g3 sl-track">
+  <div class="sl-cell sl-tr"><div class="yr">2021</div><div class="lb">Build · Retool</div><h4>조회를 넘어<br>데이터를 바꾸는 기능까지</h4><p>판매자 OMS를 로우코드로 다시 만들어 직접 운영했습니다. 수정·배포·롤백을 같은 날 안에 끝낼&nbsp;수&nbsp;있게 되자 지표가 따라 움직였습니다.</p><div class="out">검색 실패율 −40% · 서버 요청 −50% · 주 단위 → 일 단위 배포</div></div>
+  <div class="sl-cell sl-tr"><div class="yr">2025</div><div class="lb">Measure · Analytics</div><h4>답하는 역할에서<br>정의하고 감시하는 역할로</h4><p>분석 요청에 답하는 자리에서, 무엇을 측정할지 정의하고 계측이 제대로 되는지 감시하는 자리로 옮겼습니다. 표준 7단계에 “이 분석이 틀릴&nbsp;수&nbsp;있는 지점”을 넣었습니다.</p><div class="out">분석 자산 37건 · 계측 감사 389 정의 vs 262 실적재(67%) · A등급 22종만 지표화</div></div>
+  <div class="sl-cell sl-tr"><div class="yr">2026</div><div class="lb">Standardize · AI</div><h4>내가 빠져도<br>문서 품질이 유지되도록</h4><p>기획 방식을 스킬로 정의하고 <b>작성과 검수를 분리</b>&#8288;했습니다. 쓴 사람이 검사하면 자기 문서를 자기가 통과시키기 때문입니다.</p><div class="out">표기 어휘 3종 고정 · 화면 코드 체계 통일 · 확정값 1건당 5곳 대조</div></div>
+</div>
+`},
+
+      {t:"모르는 도메인에 혼자 들어가 3일&nbsp;만에 끝까지", s:"PART 3 · 사이드 케이스 — 3일짜리 실증", c:"s8b", html:`
+<div class="sl-eb"><b>3일짜리<br>실증</b><i>SIDE CASE</i><u>2026.09<br>혼자 · 3일</u></div>
+<h3 class="sl-h">모르는 도메인에 혼자 들어가<br>3일&nbsp;만에 끝까지 갔습니다</h3>
+<p class="sl-sub">앞의 세 해가 회사 안에서 넓힌 범위라면, 이건 그 범위가 회사 밖에서도 작동하는지 확인한 기록입니다. 사주라는 낯선 도메인을 골라 도메인 분석부터 동작하는 랜딩까지 혼자 끝냈습니다.</p>
+<div class="sl-scope row"><i>다룬 범위</i><span>처음 보는 도메인</span><span>기획부터 퍼블리싱</span><span>전수 렌더 검증</span></div>
+<div class="sl-pd">
+  
+  <div class="st">
+    <div><b>3일</b>&#8288;작업 기간</div>
+    <div><b>14장</b>&#8288;도메인 기획서</div>
+    <div><b>12개</b>&#8288;바운디드 컨텍스트</div>
+    <div><b>64개</b>&#8288;정의한 화면</div>
+    <div><b>4종</b>&#8288;동작하는 랜딩 1 · 폼 3 직접 퍼블리싱</div>
+    <div><b>잘림 0건</b>23장 전수 렌더 자동 검증</div>
+  </div>
+</div>`},
+
+      {t:"생성은 쉽고 검수가 어렵습니다", s:"AI에 맡긴 것 · 끝까지 쥔 것 · 검수 로그", c:"s9", html:`
+<div class="sl-eb"><b>AI와<br>일하는 법</b><i>PART 3 · WORKING WITH AI</i><u>AI 초안 검수 로그<br>그리고 네 가지 원칙</u></div>
+<h3 class="sl-h">생성은 쉽고, 검수가 어렵습니다</h3>
+<p class="sl-sub">케이스 01의 검증이 <b>모델의 출력</b>&#8288;을 본 것이라면, 여기는 <b>AI가 쓴 문서</b>&#8288;를 본 기록입니다. 아래 네 건은 우연히 발견한 것이&nbsp;아니라, 맨 아래 네 가지를 매번 보게 만들어 둔 결과입니다.</p>
+<div class="sl-scope row"><i>다룬&nbsp;범위</i><span>AI 초안 검수 로그</span><span>법령 원문 대조</span><span>사실·가정 분리</span><span>검증 자동화</span></div>
+<div class="sl-tbl">
+  <div class="r hd"><div>항목</div><div>AI 초안</div><div>검수 후 결정</div><div>영향</div></div>
+  <div class="r"><div class="it">파견법 해석</div><div class="ai">“자동차 운전 종사자 업무는 파견 허용”</div><div class="de">원문 단서 확인 — <b>여객·화물운송 운전업무는 파견 금지</b>. 고객 차량을 운전하는 구조라 예외를 피할&nbsp;수&nbsp;없었습니다.</div><div class="im">사업 구조 변경<br>파견을 주력에서 제외</div></div>
+  <div class="r"><div class="it">요금 산정</div><div class="ai">시장 단가 추정치를 그대로 제시</div><div class="de">경쟁사 공개 요금(8시간 15,000원)에서 <b>역산해 기사 정산 단가의 하한부터 고정</b>&#8288;했습니다.</div><div class="im">기여이익 31.7%<br>산출 근거 확보</div></div>
+  <div class="r"><div class="it">수치 표기</div><div class="ai">추정치를 사실처럼 단정</div><div class="de">전 수치에 <b>가정 태그</b>&#8288;를 붙이고 2주 검증 실행안을 문서 끝에 명시했습니다.</div><div class="im">어디를 의심할지<br>알&nbsp;수&nbsp;있는 문서</div></div>
+  <div class="r"><div class="it">결과물 검증</div><div class="ai">육안으로 몇 장만 확인</div><div class="de">23장 <b>전수 렌더링 후 잘림·오버플로를 스크립트로 자동 검출</b>&#8288;했습니다.</div><div class="im">잘림 0건</div></div>
+</div>
+<div class="sl-chk">
+  <div><b>법·규정은 원문까지</b>&#8288;“가능하다”로 끝나는 요약은 대부분 예외 조항을 빠뜨린다</div>
+  <div><b>숫자는 재계산한다</b>&#8288;표 안에서, 그리고 다른 장의 같은 숫자와 두 번 맞춘다</div>
+  <div><b>사실과 가정을 나눈다</b>&#8288;섞여 있으면 검토가 불가능하고 나중에 전부 사실로 읽힌다</div>
+  <div><b>검증을 자동화한다</b>&#8288;눈으로 보는 확인은 장수가 늘면 반드시 새어 나간다</div>
+</div>
+`},
+
+      {t:"디자이너로 시작해 PM으로, 8년", s:"경력 · 역량 · 다음", c:"s10", html:`
+<div class="sl-eb"><b>경력과<br>역량</b><i>PART 4 · CAREER</i><u>2018 — 현재 · 8년<br>디자이너 → PM</u></div>
+<h3 class="sl-h">정책까지 직접 정해야 하는 0→1이라면,<br>가장 잘 맞습니다</h3>
+<p class="sl-sub">디자이너로 시작해 PM으로 8년 — 브랜드에서 화면으로, 정책으로, 구현과 지표로 한 칸씩 넓혔습니다. 아래 여섯 층은 모두 손이 닿는 범위입니다.</p>
+<div class="sl-grid g5 sl-car">
+  <div class="sl-cell sl-cr"><div class="co">LEVVELS</div><div class="pd">2024.08 — 현재 · ${TENURE}</div><div class="ro">Product Manager</div><div class="de">신규 AI 서비스 0→1 런칭 기획 · Vuddy 커머스·커뮤니티·데이터</div></div>
+  <div class="sl-cell sl-cr"><div class="co">DELIVUS</div><div class="pd">2021.05 — 2024.06 · 3년 2개월</div><div class="ro">Product Manager</div><div class="de">기사 앱·TMS·OMS·고객 웹앱 4종 총괄 · 전 기간 원격</div></div>
+  <div class="sl-cell sl-cr"><div class="co">MYMUSICTASTE</div><div class="pd">2019.10 — 2021.05 · 1년 8개월</div><div class="ro">Product Designer</div><div class="de">CREAM 셀럽 영상 메시지 3개 플랫폼 출시 · 인앱 결제 도입</div></div>
+  <div class="sl-cell sl-cr"><div class="co">LEMONBOX</div><div class="pd">2019.01 — 2019.09 · 9개월</div><div class="ro">BX / UXUI Designer</div><div class="de">맞춤 비타민 커머스 웹 출시 · 브랜드 정의부터 컴포넌트 시스템까지</div></div>
+  <div class="sl-cell sl-cr"><div class="co">PICKART</div><div class="pd">2018.03 — 2019.01 · 11개월</div><div class="ro">Brand Marketing Designer</div><div class="de">그림 구독 O2O · B2B·B2E 구독 서비스 기획 · 매출 70% 성장</div></div>
+</div>
+<div class="sl-cap"><div class="v rows"><div><b>Product</b>PRD · 운영 정책 문서 · 복수 프로덕트 총괄</div><div><b>Back-office &amp; Ops</b>&#8288;관제·정산·심사·주문 어드민 0→1 · 권한·예외·제재 정책</div><div><b>AI Product</b>&#8288;컨텍스트 예산 · 프롬프트 블록 조립 · 모델 티어 라우팅 · 안전 정책 · 오프라인 평가 설계</div><div><b>Data</b>Amplitude · Mixpanel · Redash · Airbridge · SQL · 계측 감사</div><div><b>Design</b>Figma로 IA부터 화면 정의서까지 · 3개 플랫폼 출시</div><div><b>Development</b>Retool로 OMS v2/v3 직접 개발·배포 · HTML · CSS · JS</div></div></div>
+<div class="sl-close">
+  <div class="cta">화면만 그리고 끝나지 않는 자리를<br>찾고 있습니다.<span>예외와 미결을 문서에 남겨야 하는 자리, 지표를 스스로 만들어야 하는 자리.</span></div>
+  <div class="ct"><b>JIHYE SHIN</b>mozzarella.meow@gmail.com</div>
+</div>`}
+      ];
+
+      /* ── 덱 두 개를 탭으로 ── */
+      var DECKS = [
+        { key:'d1', label:'요약 덱', kind:'html', chapters:CHAPTERS1, slides:SLIDES1,
+          note:'' },
+        { key:'d2', label:'전체 덱', kind:'img',  chapters:CHAPTERS2, slides:SLIDES2,
+          note:'2024년 기준 산출물 — 이후 변경된 일정은 본문 경력을 따릅니다' }
+      ];
+      var SLIDES = SLIDES1;                       /* 아래 sync() 가 보는 "현재 덱" */
       var nav = document.getElementById('deckChapters');
-      nav.innerHTML = CHAPTERS.map(function(c, i){
-        var cover = '';
-        for (var si = 0; si < SLIDES.length; si++){
-          if (SLIDES[si].c === c[0]){ cover = SLIDES[si].src; break; }
-        }
-        return '<button type="button" data-ch="' + c[0] + '"' +
-          (i === 0 ? ' aria-pressed="true"' : ' aria-pressed="false"') + '>' +
-          (cover ? '<span class="ch-thumb" style="background-image:url(\'' + cover + '\')" aria-hidden="true"></span>' : '') +
-          '<span class="ch-label">' + c[1] + '</span></button>';
-      }).join('');
+      var deckBox = track.closest('.deck');
+
+      var tabs = document.createElement('div');
+      tabs.id = 'deckTabs';
+      tabs.className = 'deck-tabs';
+      tabs.setAttribute('role', 'tablist');
+      tabs.innerHTML = '<div class="seg">' + DECKS.map(function(d, i){
+        return '<button type="button" role="tab" data-d="' + i + '" aria-selected="' + (i === 0) + '">' +
+          '<span class="k">DECK ' + (i + 1) + '</span>' +
+          '<span class="v">' + d.label.replace(/\s*덱$/, '') + ' · ' + d.slides.length + '장</span>' +
+        '</button>';
+      }).join('') + '</div><span class="note"></span>';
+      deckBox.insertBefore(tabs, nav);
+
+      function renderDeck(i){
+        var d = DECKS[i], N = d.slides.length;
+        SLIDES = d.slides;
+        deckBox.classList.remove('d1', 'd2');
+        deckBox.classList.add(d.key);
+        nav.className = 'deck-chapters' + (d.kind === 'html' ? ' txt' : '');
+
+        track.innerHTML = d.slides.map(function(s, k){
+          var n = String(k+1).padStart(2,'0') + ' / ' + String(N).padStart(2,'0');
+          var body = d.kind === 'html'
+            ? '<div class="sl-canvas">' + s.html + '<div class="sl-pg">' + n + '</div></div>'
+            : '<img src="' + s.src + '" alt="' + s.t + ' — ' + s.s + '" loading="' + (k < 2 ? 'eager' : 'lazy') + '">';
+          return '<figure class="slide" data-ch="' + s.c + '" id="sl' + k + '">' + body +
+            '<figcaption><b>' + s.t + '</b><span>' + s.s + '</span><i>' + n + '</i></figcaption></figure>';
+        }).join('');
+
+        nav.innerHTML = d.chapters.map(function(c, k){
+          var lead = '';
+          if (d.kind === 'html') {
+            lead = '<span class="ch-n">' + String(k+1).padStart(2,'0') + '</span>';
+          } else {
+            for (var si = 0; si < d.slides.length; si++){
+              if (d.slides[si].c === c[0]){
+                lead = '<span class="ch-thumb" style="background-image:url(' + d.slides[si].src + ')" aria-hidden="true"></span>';
+                break;
+              }
+            }
+          }
+          return '<button type="button" data-ch="' + c[0] + '"' +
+            (k === 0 ? ' aria-pressed="true"' : ' aria-pressed="false"') + '>' +
+            lead + '<span class="ch-label">' + c[1] + '</span></button>';
+        }).join('');
+
+        tabs.querySelectorAll('button[data-d]').forEach(function(b, k){
+          b.setAttribute('aria-selected', String(k === i));
+        });
+        tabs.querySelector('.note').textContent = d.note;
+        track.scrollTop = 0;
+        /* 최초 렌더 때는 아래쪽 바 요소가 아직 없다 — 그때는 IIFE 끝의 sync() 가 처리한다 */
+        try { sync(); } catch (e) {}
+      }
+
+      var fsBtn = null;
+      if (deckBox.requestFullscreen) {
+        fsBtn = document.createElement('button');
+        fsBtn.type = 'button';
+        fsBtn.className = 'deck-fs';
+        fsBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg><span>전체화면으로 보기</span>';
+        deckBox.appendChild(fsBtn);
+        var hint = document.createElement('div');
+        hint.className = 'sl-hint';
+        fsBtn.addEventListener('click', function(){
+          if (document.fullscreenElement) document.exitFullscreen();
+          else deckBox.requestFullscreen().catch(function(){});
+        });
+        document.addEventListener('fullscreenchange', function(){
+          var on = document.fullscreenElement === deckBox;
+          fsBtn.querySelector('span').textContent = on ? '전체화면 종료' : '전체화면으로 보기';
+          if (on) { try { sync(); } catch(e){} }
+        });
+      }
+
+      tabs.addEventListener('click', function(e){
+        var b = e.target.closest('button[data-d]');
+        if (!b) return;
+        renderDeck(parseInt(b.dataset.d, 10));
+      });
+
+      renderDeck(0);
       nav.addEventListener('click', function(e){
         var b = e.target.closest('button'); if (!b) return;
         var first = track.querySelector('.slide[data-ch="' + b.dataset.ch + '"]');
@@ -2757,13 +3664,26 @@ body.editing .row-head{cursor:default}
           next = document.getElementById('deckNext'),
           fill = document.getElementById('deckFill'),
           pos  = document.getElementById('deckPos');
-      function step(){ var a = track.querySelector('.slide'); return a ? a.offsetHeight + 20 : 500; }
-      prev.addEventListener('click', function(){ track.scrollBy({top:-step(), behavior:'smooth'}); });
-      next.addEventListener('click', function(){ track.scrollBy({top: step(), behavior:'smooth'}); });
+      function tops(){ var r = [];
+        track.querySelectorAll('.slide').forEach(function(s){ r.push(s.offsetTop - track.offsetTop); });
+        return r; }
+      function curIdx(){ var T = tops(), y = track.scrollTop, k = 0;
+        for (var i = 0; i < T.length; i++) if (y >= T[i] - 8) k = i;
+        return k; }
+      prev.addEventListener('click', function(){
+        var T = tops(), k = curIdx();
+        if (track.scrollTop > T[k] + 8) track.scrollTo({top:T[k], behavior:'smooth'});
+        else if (k > 0) track.scrollTo({top:T[k-1], behavior:'smooth'});
+      });
+      next.addEventListener('click', function(){
+        var T = tops(), k = curIdx();
+        if (k < T.length - 1) track.scrollTo({top:T[k+1], behavior:'smooth'});
+        else track.scrollTo({top: track.scrollHeight, behavior:'smooth'});
+      });
       function sync(){
         var max = track.scrollHeight - track.clientHeight;
         fill.style.width = ((max > 0 ? track.scrollTop / max : 0) * 100).toFixed(1) + '%';
-        var cur = Math.min(Math.round(track.scrollTop / step()) + 1, SLIDES.length);
+        var cur = curIdx() + 1;
         pos.textContent = String(cur).padStart(2,'0') + ' / ' + String(SLIDES.length).padStart(2,'0');
         prev.disabled = track.scrollTop < 4;
         next.disabled = track.scrollTop > max - 4;
