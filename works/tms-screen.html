@@ -6,12 +6,15 @@
 <title>딜리버스 백오피스 — 분류 클러스터 플랜 · 실시간 관제</title>
 <meta name="description" content="TMS 화면 정의서 SPEC-CLS-001~009 · SPEC-MON-001~008을 그대로 구현한 동작 프로토타입">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
 :root{
- --pri:#1E4FA3;--pri-w:#ECF2FB;--pri-d:#173D7F;--edge:#B9CDEB;
- --bg:#F4F6F9;--line:#E3E7EE;--ink:#10151D;--g1:#3A4351;--g6:#767F8D;--g9:#A5ACB8;
- --ok:#1E9E86;--warn:#C8811F;--neg:#C24A3A;--neg-w:#FDF2F0;--neg-e:#E6C4BD;
- --nav:#101722;--r:6px;
+ /* 딜리버스 키 컬러 */
+ --pri:#6E6EFF;--pri-d:#5451E8;--pri-w:#E9ECF8;--edge:#DADFF0;--pri-t:#F4F5FC;
+ --bg:#F5F6FA;--line:#E4E7F0;--ink:#040918;--g1:#4A5465;--g6:#7B8496;--g9:#A8AEBD;
+ --ok:#12A47E;--ok-w:#EAF7F3;--warn:#F29900;--warn-w:#FEF7EA;
+ --neg:#E2454A;--neg-w:#FFF2F2;--neg-e:#FBD2D3;
+ --nav:#040918;--r:6px;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -21,22 +24,20 @@ body{margin:0;background:var(--bg);color:var(--ink);
 button{font:inherit;color:inherit;cursor:pointer}
 svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
 
-/* ── 레이아웃 ── */
 .app{display:grid;grid-template-columns:214px 1fr;height:100vh;min-height:0}
 .col{display:flex;flex-direction:column;min-width:0;min-height:0}
 
 /* ── 좌측 네비 ── */
 .nav{background:var(--nav);color:#fff;overflow:auto;padding-bottom:20px}
-.brand{display:flex;align-items:center;gap:9px;padding:15px 16px;border-bottom:1px solid #1E2836}
-.brand i{width:20px;height:20px;border-radius:5px;background:linear-gradient(135deg,#3B7BD8,#1E4FA3);display:block}
-.brand b{font-size:13.5px;font-weight:700;letter-spacing:-.01em}
-.nav .grp{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#5B6779;padding:16px 16px 6px}
-.nav a{display:flex;align-items:center;justify-content:space-between;gap:6px;
- padding:7px 16px;font-size:12.5px;color:#9CA7B6;text-decoration:none;font-weight:500;border-left:2px solid transparent}
-.nav a:hover{color:#E6EBF2;background:#161F2C}
-.nav a[aria-current=page]{color:#fff;font-weight:700;background:#17233A;border-left-color:#3B7BD8}
-.nav a em{font-style:normal;font-size:9.5px;font-weight:700;color:#5B6779;
- border:1px solid #2A3648;border-radius:3px;padding:0 4px}
+.brand{display:flex;align-items:center;gap:9px;padding:15px 16px;border-bottom:1px solid #161C31}
+.brand i{width:21px;height:21px;border-radius:6px;background:var(--pri);display:grid;place-items:center;
+ font-style:normal;font-size:11px;font-weight:800;color:#fff}
+.brand b{font-size:13.5px;font-weight:700;letter-spacing:-.015em}
+.nav .grp{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#5A6076;padding:16px 16px 6px}
+.nav a{display:flex;align-items:center;gap:6px;padding:7px 16px;font-size:12.5px;
+ color:#9BA2B6;text-decoration:none;font-weight:500;border-left:2px solid transparent}
+.nav a:hover{color:#E9EBF5;background:#0D1326}
+.nav a[aria-current=page]{color:#fff;font-weight:700;background:#141A33;border-left-color:var(--pri)}
 
 /* ── 상단바 ── */
 .top{height:54px;flex:none;background:#fff;border-bottom:1px solid var(--line);
@@ -44,21 +45,20 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
 .top .srch{flex:1;max-width:430px;height:32px;border:1px solid var(--line);border-radius:var(--r);
  background:var(--bg);display:flex;align-items:center;padding:0 11px;color:var(--g9);font-size:12.5px;font-weight:500}
 .top .env{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--warn);
- border:1px solid #EBD6B4;background:#FDF7EC;border-radius:4px;padding:3px 7px}
+ border:1px solid #F2DDB4;background:var(--warn-w);border-radius:4px;padding:3px 7px}
 .top .who{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--g1)}
 .top .who i{width:26px;height:26px;border-radius:50%;background:var(--pri-w);border:1px solid var(--edge);
- display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:700;color:var(--pri)}
+ display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:700;color:var(--pri-d)}
 .ghost{background:#fff;border:1px solid var(--line);border-radius:var(--r);
  padding:5px 10px;font-size:12px;font-weight:700;color:var(--g1)}
-.ghost:hover{border-color:var(--edge);color:var(--pri)}
+.ghost:hover{border-color:var(--edge);color:var(--pri-d)}
 
-/* ── 본문 ── */
 .view{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 336px;min-height:0}
 .view[hidden]{display:none}
 .work{display:flex;flex-direction:column;gap:11px;min-width:0;min-height:0;padding:15px 16px;overflow:auto}
 .side{border-left:1px solid var(--line);background:#fff;padding:15px;overflow:auto;min-height:0}
 .hd{display:flex;align-items:baseline;gap:9px}
-.hd h1{margin:0;font-size:17px;font-weight:800;letter-spacing:-.02em}
+.hd h1{margin:0;font-size:17px;font-weight:800;letter-spacing:-.025em}
 .hd .sub{font-size:11.5px;font-weight:600;color:var(--g9)}
 .hd .rt{margin-left:auto;display:flex;gap:6px;align-items:center}
 
@@ -67,39 +67,68 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
 .kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
 .kpi .k{font-size:10.5px;font-weight:700;letter-spacing:.07em;color:var(--g6);
  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.kpi .v{font-size:22px;font-weight:800;letter-spacing:-.025em;margin-top:3px}
+.kpi .v{font-size:22px;font-weight:800;letter-spacing:-.03em;margin-top:3px;transition:color .16s}
 .kpi .s{font-size:10.5px;font-weight:600;color:var(--g9);margin-top:1px}
 .kpi.alert{border-color:var(--neg-e);background:var(--neg-w)}
 .kpi.alert .k,.kpi.alert .v{color:var(--neg)}
-.kpi.live .v{transition:color .16s}
-.kpi.flash .v{color:var(--pri)}
+.kpi.flash .v{color:var(--pri-d)}
 
 /* ── 지도 ── */
-.map{position:relative;flex:1;min-height:320px;border:1px solid var(--line);
- border-radius:var(--r);overflow:hidden;background:#E9EEF3}
+.map{position:relative;flex:1;min-height:330px;border:1px solid var(--line);
+ border-radius:var(--r);overflow:hidden;background:#EEF0F5}
+.lf{position:absolute;inset:0}
 .map svg.base{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
-.toolbar{position:absolute;left:9px;top:9px;z-index:4;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
-.chip{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:5px;
- padding:5px 9px;font-size:11.5px;font-weight:700;color:var(--g1);white-space:nowrap}
+.toolbar{position:absolute;left:9px;top:9px;z-index:900;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.chip{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:5px;
+ padding:5px 9px;font-size:11.5px;font-weight:700;color:var(--g1);white-space:nowrap;
+ box-shadow:0 1px 3px rgba(4,9,24,.07)}
 .chip:hover{border-color:var(--edge)}
 .chip[aria-pressed=true]{background:var(--pri);border-color:var(--pri);color:#fff}
-.chip[disabled]{opacity:.45;cursor:not-allowed}
 .toolbar .dv{width:1px;height:18px;background:var(--edge);margin:0 3px}
-.hint{position:absolute;left:9px;bottom:9px;z-index:4;background:rgba(255,255,255,.94);
- border:1px solid var(--line);border-radius:5px;padding:5px 9px;font-size:11px;font-weight:600;color:var(--g6)}
-.selcard{position:absolute;right:9px;top:9px;z-index:4;width:196px;background:#fff;
- border:1px solid var(--edge);border-radius:var(--r);padding:10px 11px;box-shadow:0 6px 18px rgba(16,21,29,.1)}
-.selcard .t{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--pri)}
+.hint{position:absolute;left:9px;bottom:9px;z-index:900;background:rgba(255,255,255,.95);
+ border:1px solid var(--line);border-radius:5px;padding:5px 9px;font-size:11px;font-weight:600;color:var(--g6);
+ box-shadow:0 1px 3px rgba(4,9,24,.07);max-width:62%}
+.selcard{position:absolute;right:9px;top:9px;z-index:901;width:198px;background:#fff;
+ border:1px solid var(--edge);border-radius:var(--r);padding:10px 11px;box-shadow:0 8px 22px rgba(4,9,24,.14)}
+.selcard .t{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--pri-d)}
 .selcard .row{display:flex;justify-content:space-between;font-size:11.5px;font-weight:600;color:var(--g1);margin-top:5px}
 .selcard .row b{font-weight:800;color:var(--ink)}
-.selcard .tn{font-size:10.5px;font-weight:700;color:#3B7BD8;margin-top:2px;letter-spacing:.01em}
-.vtx{cursor:grab}
-.vtx:active{cursor:grabbing}
-.map.locked .vtx{cursor:not-allowed}
+.selcard .tn{font-size:10.5px;font-weight:700;color:var(--pri);margin-top:2px}
+
+/* Leaflet 오버라이드 */
+.leaflet-container{background:#EEF0F5;font-family:inherit;font-size:11px}
+.leaflet-tile-pane{filter:grayscale(.58) saturate(.72) brightness(1.06) contrast(.94)}
+.leaflet-control-attribution{font-size:9.5px;background:rgba(255,255,255,.8);color:var(--g9)}
+.leaflet-control-attribution a{color:var(--g6)}
+.leaflet-bar a{color:var(--g1);border-bottom-color:var(--line)}
+.leaflet-bar a:hover{color:var(--pri-d)}
+.pin{background:none;border:0}
+.pin b{display:flex;align-items:center;justify-content:center;width:100%;height:100%;
+ border-radius:50%;font-size:10.5px;font-weight:800;box-shadow:0 1px 4px rgba(4,9,24,.3)}
+.pin.Black b{background:#040918;color:#fff}
+.pin.Blue  b{background:#6E6EFF;color:#fff}
+.pin.White b{background:#fff;color:#2A3042;border:1.5px solid #8E96AA}
+.pin.Yellow b{background:#F2B705;color:#3B2B00}
+.pin.on b{box-shadow:0 0 0 2.5px #fff,0 2px 8px rgba(4,9,24,.35)}
+.pin.off{opacity:.3}
+.vtxm{background:#fff;border:2.6px solid var(--neg);border-radius:50%;cursor:grab;
+ box-shadow:0 1px 4px rgba(4,9,24,.3)}
+.vtxm:active{cursor:grabbing}
+.map.locked .vtxm{cursor:not-allowed;border-color:var(--ok)}
+.zl{background:none;border:0;color:#6E7A90;font-size:10px;font-weight:800;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff}
+.rl{background:none;border:0;color:#5B6478;font-size:12px;font-weight:800;white-space:nowrap;text-shadow:0 0 4px #fff,0 0 4px #fff}
+.veh{background:none;border:0}
+.veh b{display:block;width:100%;height:100%;border-radius:3px;box-shadow:0 1px 4px rgba(4,9,24,.35)}
+.veh.on b{box-shadow:0 0 0 2.5px #fff,0 2px 8px rgba(4,9,24,.4)}
+.late{background:var(--neg);color:#fff;border:0;border-radius:3px;padding:2px 6px;
+ font-size:9.5px;font-weight:800;white-space:nowrap;box-shadow:0 1px 4px rgba(4,9,24,.3)}
+.hub{background:none;border:0}
+.hub b{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:50%;
+ background:#040918;color:#fff;font-size:9px;font-weight:800;box-shadow:0 0 0 2.5px #fff,0 2px 6px rgba(4,9,24,.35)}
 
 /* ── 사이드 ── */
 .sh{font-size:11px;font-weight:800;letter-spacing:.09em;color:var(--g6);
- display:flex;align-items:center;justify-content:space-between;margin:0 0 8px}
+ display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 8px}
 .sh + .sh{margin-top:16px}
 .facets{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .facet{border:1px solid var(--line);border-radius:var(--r);padding:8px 9px;max-height:150px;overflow:auto}
@@ -109,29 +138,28 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
 .btns{display:flex;gap:5px;flex-wrap:wrap}
 .btn{background:var(--pri);border:1px solid var(--pri);color:#fff;border-radius:5px;
  padding:6px 11px;font-size:12px;font-weight:700}
-.btn:hover{background:var(--pri-d)}
+.btn:hover{background:var(--pri-d);border-color:var(--pri-d)}
 .btn.g{background:#fff;color:var(--g1);border-color:var(--line)}
-.btn.g:hover{border-color:var(--edge);color:var(--pri)}
-.btn.d{background:#fff;color:var(--neg);border-color:var(--neg-e)}
+.btn.g:hover{border-color:var(--edge);color:var(--pri-d)}
 .btn[disabled]{opacity:.42;cursor:not-allowed;background:#fff;color:var(--g9);border-color:var(--line)}
 .tbl{width:100%;border-collapse:collapse;font-size:11.5px}
 .tbl th{text-align:left;font-size:10px;font-weight:800;letter-spacing:.07em;color:var(--g6);
  border-bottom:1px solid var(--ink);padding:0 6px 5px 0;white-space:nowrap}
 .tbl td{border-bottom:1px solid var(--line);padding:7px 6px 7px 0;font-weight:600;color:var(--g1);white-space:nowrap}
-.tbl tr[data-in="1"] td{background:var(--pri-w)}
+.tbl tr[data-in="1"] td{background:var(--pri-t)}
 .tbl tr.sel td{box-shadow:inset 2px 0 0 var(--pri)}
 .tbl tbody tr{cursor:pointer}
-.tbl tbody tr:hover td{background:#F7F9FC}
-.pill{display:inline-block;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:800;letter-spacing:.02em}
-.pill.Black{background:#22252B;color:#fff}
-.pill.Blue{background:#3B7BD8;color:#fff}
+.tbl tbody tr:hover td{background:#F7F8FC}
+.pill{display:inline-block;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:800}
+.pill.Black{background:#040918;color:#fff}
+.pill.Blue{background:#6E6EFF;color:#fff}
 .pill.White{background:#fff;color:var(--g1);border:1px solid var(--g9)}
-.pill.Yellow{background:#F0B429;color:#3B2B00}
+.pill.Yellow{background:#F2B705;color:#3B2B00}
 .note{font-size:10.5px;font-weight:600;color:var(--g9);margin-top:7px;line-height:1.55}
-.banner{display:flex;align-items:flex-start;gap:8px;border:1px solid var(--edge);background:var(--pri-w);
- border-radius:var(--r);padding:9px 11px;font-size:11.5px;font-weight:600;color:var(--pri-d);line-height:1.55}
+.banner{border:1px solid var(--edge);background:var(--pri-w);border-radius:var(--r);
+ padding:9px 11px;font-size:11.5px;font-weight:600;color:var(--pri-d);line-height:1.55}
 .banner b{font-weight:800}
-.banner.done{border-color:#BFE3DA;background:#EDF8F5;color:#12715F}
+.banner.done{border-color:#BFE6D9;background:var(--ok-w);color:#0C7A5E}
 
 /* ── 관제 ── */
 .drvs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -140,38 +168,38 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
 .drv[aria-selected=true]{border-color:var(--pri);box-shadow:inset 2px 0 0 var(--pri)}
 .drv.alert{border-color:var(--neg-e);background:var(--neg-w)}
 .drv .n{display:flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700;color:var(--ink)}
-.drv .n em{font-style:normal;background:#22252B;color:#fff;border-radius:2px;padding:1px 5px;font-size:9.5px;font-weight:800}
-.drv .n em.Blue{background:#3B7BD8}
-.drv .n u{text-decoration:none;background:#F5C84B;color:#3B2B00;border-radius:2px;padding:1px 5px;font-size:9.5px;font-weight:800}
+.drv .n em{font-style:normal;background:#040918;color:#fff;border-radius:2px;padding:1px 5px;font-size:9.5px;font-weight:800}
+.drv .n em.Blue{background:var(--pri)}
+.drv .n u{text-decoration:none;background:#F2B705;color:#3B2B00;border-radius:2px;padding:1px 5px;font-size:9.5px;font-weight:800}
 .drv .n span{margin-left:auto;font-size:10.5px;font-weight:700;color:var(--g9)}
 .drv .d{font-size:11px;font-weight:600;color:var(--g6);margin-top:4px}
 .drv.alert .d{color:var(--neg);font-weight:700}
-.drv .f{display:flex;border-top:1px solid #F0F2F6;margin-top:7px;padding-top:6px;gap:8px}
+.drv .f{display:flex;border-top:1px solid #F0F1F7;margin-top:7px;padding-top:6px;gap:8px}
 .drv .f div{flex:1}
 .drv .f .fk{font-size:9.5px;font-weight:700;letter-spacing:.05em;color:var(--g9)}
 .drv .f .fv{font-size:12px;font-weight:800;color:var(--g1);margin-top:1px}
 .drv.alert .f .fv{color:var(--neg)}
 .unit{border-bottom:1px solid var(--line);padding:8px 0}
 .unit .u1{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;color:var(--g1)}
-.unit .u1 b{flex:1;font-weight:700}
+.unit .u1 b{flex:1}
 .unit .st{font-size:10.5px;font-weight:800}
 .unit .st.done{color:var(--ok)}
-.unit .st.ing{color:var(--pri)}
+.unit .st.ing{color:var(--pri-d)}
 .unit .st.fail{color:var(--neg)}
-.box{border:1px solid var(--edge);background:#F6F9FE;border-radius:5px;padding:8px 9px;margin-top:6px;
+.box{border:1px solid var(--edge);background:var(--pri-t);border-radius:5px;padding:8px 9px;margin-top:6px;
  font-size:11px;font-weight:600;color:var(--g1);line-height:1.6}
-.box .door{font-weight:800;color:var(--pri)}
+.box .door{font-weight:800;color:var(--pri-d)}
 .box .mask{font-weight:800;color:var(--g9);letter-spacing:.08em}
 .box .why{font-size:10px;font-weight:700;color:var(--g9);margin-top:4px}
 .log{font-size:11px;font-weight:600;color:var(--g1);border-bottom:1px solid var(--line);padding:7px 0}
 .log span{color:var(--g9);font-weight:700;font-size:10px;display:block}
 
 /* ── 모달 ── */
-.scrim{position:fixed;inset:0;background:rgba(16,21,29,.42);display:grid;place-items:center;z-index:40}
+.scrim{position:fixed;inset:0;background:rgba(4,9,24,.45);display:grid;place-items:center;z-index:1200}
 .scrim[hidden]{display:none}
 .modal{width:420px;max-width:92vw;background:#fff;border-radius:9px;padding:20px 22px;
- box-shadow:0 22px 60px rgba(16,21,29,.3)}
-.modal h2{margin:0;font-size:16px;font-weight:800;letter-spacing:-.02em}
+ box-shadow:0 22px 60px rgba(4,9,24,.34)}
+.modal h2{margin:0;font-size:16px;font-weight:800;letter-spacing:-.025em}
 .modal p{margin:6px 0 0;font-size:12px;font-weight:600;color:var(--g6);line-height:1.6}
 .modal label{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--g6);margin:16px 0 6px}
 .modal select,.modal textarea{width:100%;border:1px solid var(--line);border-radius:5px;padding:8px 10px;
@@ -181,25 +209,24 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
 .modal .act{display:flex;justify-content:flex-end;gap:7px;margin-top:18px}
 
 /* ── 스펙 패널 ── */
-.specbtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--ink);color:#fff;
- border:0;border-radius:20px;padding:9px 15px;font-size:12px;font-weight:700;box-shadow:0 6px 18px rgba(16,21,29,.25)}
-.spec{position:fixed;top:0;right:0;bottom:0;width:390px;max-width:92vw;background:#fff;z-index:41;
- border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(16,21,29,.14);display:flex;flex-direction:column}
+.specbtn{position:fixed;right:16px;bottom:16px;z-index:1000;background:var(--ink);color:#fff;
+ border:0;border-radius:20px;padding:9px 15px;font-size:12px;font-weight:700;box-shadow:0 6px 18px rgba(4,9,24,.28)}
+.spec{position:fixed;top:0;right:0;bottom:0;width:390px;max-width:92vw;background:#fff;z-index:1210;
+ border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(4,9,24,.16);display:flex;flex-direction:column}
 .spec[hidden]{display:none}
 .spec .sph{display:flex;align-items:center;gap:8px;padding:15px 18px;border-bottom:1px solid var(--line)}
-.spec .sph h2{margin:0;font-size:14.5px;font-weight:800;letter-spacing:-.02em}
+.spec .sph h2{margin:0;font-size:14.5px;font-weight:800;letter-spacing:-.025em}
 .spec .spb{overflow:auto;padding:6px 18px 24px}
 .spec .it{border-bottom:1px solid var(--line);padding:11px 0;display:flex;gap:11px}
-.spec .it .id{font-size:10px;font-weight:800;color:var(--pri);width:104px;flex:none;letter-spacing:.02em;padding-top:2px}
+.spec .it .id{font-size:10px;font-weight:800;color:var(--pri-d);width:104px;flex:none;padding-top:2px}
 .spec .it .tx{font-size:12px;font-weight:600;color:var(--g1);line-height:1.6}
 .spec .it .tx b{color:var(--ink);font-weight:800}
 .spec .it .tx i{display:block;font-style:normal;font-size:10.5px;font-weight:700;color:var(--g9);margin-top:3px}
 
-.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,14px);z-index:50;
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,14px);z-index:1300;
  background:var(--ink);color:#fff;border-radius:7px;padding:9px 15px;font-size:12px;font-weight:600;
  opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
 .toast.on{opacity:1;transform:translate(-50%,0)}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 @media(max-width:1200px){
  .view{grid-template-columns:minmax(0,1fr) 290px}
@@ -208,10 +235,9 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
 @media(max-width:900px){
  .app{grid-template-columns:1fr}
  .nav{display:none}
- .view{grid-template-columns:minmax(0,1fr)}
- .side{border-left:0;border-top:1px solid var(--line)}
  .view{display:block;overflow:auto}
  .work{overflow:visible}
+ .side{border-left:0;border-top:1px solid var(--line)}
 }
 </style>
 </head>
@@ -219,7 +245,7 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
 
 <div class="app">
  <aside class="nav">
-  <div class="brand"><i></i><b>딜리버스 백오피스</b></div>
+  <div class="brand"><i>D</i><b>딜리버스 백오피스</b></div>
   <div class="grp">배차 관리</div>
   <a href="#" data-todo>배차 신청 조회</a>
   <a href="#" data-todo>배차 목록</a>
@@ -242,7 +268,7 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
   <header class="top">
    <div class="srch">박스 ID, 송장번호, 기사명, 연락처로 검색</div>
    <span class="env">PROTOTYPE · 더미 데이터</span>
-   <div class="who"><i>신</i>신지혜 · 운영기획</div>
+   <div class="who"><i>서</i>이서현 · 운영 기획</div>
   </header>
 
   <!-- ══════════ 분류 클러스터 플랜 ══════════ -->
@@ -253,12 +279,11 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
      <span class="sub">SCR-CLS-001 · 2026-09-21 회차 3</span>
      <div class="rt"><button class="ghost" id="cls-reset">초기 상태로</button></div>
     </div>
-
     <div id="cls-banner"></div>
-
     <div class="kpis" id="cls-kpis"></div>
-
     <div class="map" id="cls-map">
+     <div id="cls-lf" class="lf"></div>
+     <svg class="base" id="cls-svg" viewBox="0 0 700 400" preserveAspectRatio="xMidYMid slice" hidden></svg>
      <div class="toolbar">
       <button class="chip" data-layer="zip" aria-pressed="false">집코드 레이어</button>
       <button class="chip" data-layer="region" aria-pressed="false">지역 레이어</button>
@@ -266,7 +291,6 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
       <span class="dv"></span>
       <button class="chip" id="cls-edit" aria-pressed="true">폴리곤 편집</button>
      </div>
-     <svg class="base" id="cls-svg" viewBox="0 0 700 400" preserveAspectRatio="xMidYMid meet"></svg>
      <div class="selcard" id="cls-sel"></div>
      <div class="hint" id="cls-hint">꼭지점을 끌어 경계를 고칩니다 · 레이어는 기본으로 모두 꺼져 있습니다</div>
     </div>
@@ -285,7 +309,7 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
       <button class="btn g" id="b-move" disabled>물품 이동</button>
       <button class="btn" id="b-create">+ 플랜 생성</button></span></div>
     <table class="tbl">
-     <thead><tr><th style="width:38%">CLUSTER ID</th><th>CHUTE</th><th>ITEMS</th><th>TYPE</th></tr></thead>
+     <thead><tr><th style="width:40%">CLUSTER ID</th><th>CHUTE</th><th>ITEMS</th><th>TYPE</th></tr></thead>
      <tbody id="cls-rows"></tbody>
     </table>
     <div class="note" id="cls-count"></div>
@@ -301,11 +325,10 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
      <span class="sub">SCR-MON-001 · 마지막 수신 12초 전</span>
      <div class="rt"><button class="ghost" id="mon-recenter">지도 초기화</button></div>
     </div>
-
     <div class="kpis" id="mon-kpis"></div>
-
-    <div class="map" id="mon-map" style="min-height:250px;flex:none;height:250px">
-     <svg class="base" id="mon-svg" viewBox="0 0 700 250" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="map" id="mon-map" style="flex:none;height:310px;min-height:0">
+     <div id="mon-lf" class="lf"></div>
+     <svg class="base" id="mon-svg" viewBox="0 0 700 276" preserveAspectRatio="xMidYMid slice" hidden></svg>
      <div class="hint">실선 = 실제 이동 · 점선 = 계획 경로 · 이탈은 두 선이 갈라져 보입니다</div>
     </div>
 
@@ -323,13 +346,11 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
    <aside class="side">
     <div class="sh">기사 정보 <span class="note" style="margin:0">선택 고정</span></div>
     <div id="mon-pin"></div>
-
     <div class="sh">유닛 박스 <span class="btns">
       <button class="btn g" data-act="reassign">기사 재배차</button></span></div>
     <div id="mon-units"></div>
-
     <div class="sh">변경 이력</div>
-    <div id="mon-log"><div class="note">아직 없습니다. 상태 변경과 재배차는 사유를 남겨야 처리됩니다.</div></div>
+    <div id="mon-log"></div>
    </aside>
   </section>
  </div>
@@ -361,6 +382,7 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
 
 <div class="toast" id="toast"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 (function(){
 "use strict";
@@ -369,49 +391,138 @@ var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
 var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){
  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var nf=function(n){return n.toLocaleString('ko-KR')};
+var LF=!!window.L;                       /* 타일을 못 불러오면 간이 지도로 내려감 */
 
 var toastEl=$('#toast'),tt;
 function toast(m){toastEl.textContent=m;toastEl.classList.add('on');
- clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('on')},2200)}
+ clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('on')},2300)}
+
+/* OpenStreetMap 타일 — 키가 필요 없고 워터마크도 없습니다.
+   백오피스 톤에 맞추려고 타일 레이어에만 CSS 필터로 채도를 낮췄습니다. */
+var TILE='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var ATTR='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+function baseMap(el,center,zoom){
+ var m=L.map(el,{zoomControl:false,attributionControl:true,minZoom:10,maxZoom:18,
+  zoomSnap:.25,preferCanvas:false}).setView(center,zoom);
+ L.tileLayer(TILE,{subdomains:'abc',maxZoom:19,detectRetina:false,attribution:ATTR}).addTo(m);
+ L.control.zoom({position:'bottomright'}).addTo(m);
+ return m;
+}
 
 /* ══════════════════════════════════════════════
    1. 분류 클러스터 플랜  (SPEC-CLS-001 ~ 009)
    ══════════════════════════════════════════════ */
 
-var TYPE={Black:{f:'#22252B',t:'#fff'},Blue:{f:'#3B7BD8',t:'#fff'},
- White:{f:'#FFFFFF',t:'#22252B',s:'#8E9AAA'},Yellow:{f:'#F0B429',t:'#3B2B00'}};
-
 var CLUSTERS=[
- {id:'C-서초A11',chute:'A11',sector:'서초',alias:'서초001',x:196,y:222,items:90,type:'Blue',cont:3},
- {id:'C-서초A12',chute:'A12',sector:'서초',alias:'서초002',x:262,y:206,items:100,type:'Blue',cont:4},
- {id:'C-서초A13',chute:'A13',sector:'서초',alias:'서초003',x:106,y:316,items:45,type:'Black',cont:2},
- {id:'C-방배D02',chute:'D02',sector:'방배',alias:'방배001',x:238,y:276,items:78,type:'Blue',cont:3},
- {id:'C-방배D03',chute:'D03',sector:'방배',alias:'방배002',x:150,y:124,items:33,type:'Yellow',cont:1},
- {id:'C-강남B07',chute:'B07',sector:'강남',alias:'강남001',x:320,y:248,items:47,type:'Blue',cont:2},
- {id:'C-강남B08',chute:'B08',sector:'강남',alias:'강남002',x:386,y:222,items:38,type:'White',cont:2},
- {id:'C-강남B09',chute:'B09',sector:'강남',alias:'강남003',x:470,y:252,items:29,type:'Yellow',cont:1},
- {id:'C-송파R33',chute:'C31',sector:'송파',alias:'송파001',x:410,y:300,items:61,type:'White',cont:3},
- {id:'C-송파R34',chute:'C32',sector:'송파',alias:'송파002',x:300,y:322,items:55,type:'Blue',cont:2},
- {id:'C-송파R35',chute:'C33',sector:'송파',alias:'송파003',x:352,y:150,items:44,type:'Black',cont:2},
- {id:'C-잠실E01',chute:'E01',sector:'잠실',alias:'잠실001',x:524,y:150,items:38,type:'Black',cont:2},
- {id:'C-잠실E02',chute:'E02',sector:'잠실',alias:'잠실002',x:592,y:176,items:42,type:'Black',cont:2},
- {id:'C-잠실E03',chute:'E03',sector:'잠실',alias:'잠실003',x:620,y:310,items:51,type:'White',cont:2}
+ {id:'C-서초A11',chute:'A11',sector:'서초',alias:'서초001',ll:[37.4923,127.0292],items:90,type:'Blue',cont:3},
+ {id:'C-서초A12',chute:'A12',sector:'서초',alias:'서초002',ll:[37.4877,127.0130],items:100,type:'Blue',cont:4},
+ {id:'C-서초A13',chute:'A13',sector:'서초',alias:'서초003',ll:[37.4838,127.0330],items:45,type:'Black',cont:2},
+ {id:'C-방배D02',chute:'D02',sector:'방배',alias:'방배001',ll:[37.4795,126.9972],items:78,type:'Blue',cont:3},
+ {id:'C-방배D03',chute:'D03',sector:'방배',alias:'방배002',ll:[37.4870,126.9927],items:33,type:'Yellow',cont:1},
+ {id:'C-강남B07',chute:'B07',sector:'강남',alias:'강남001',ll:[37.4979,127.0276],items:47,type:'Blue',cont:2},
+ {id:'C-강남B08',chute:'B08',sector:'강남',alias:'강남002',ll:[37.5046,127.0487],items:38,type:'White',cont:2},
+ {id:'C-강남B09',chute:'B09',sector:'강남',alias:'강남003',ll:[37.5117,127.0594],items:29,type:'Yellow',cont:1},
+ {id:'C-송파R33',chute:'C31',sector:'송파',alias:'송파001',ll:[37.5045,127.1147],items:61,type:'White',cont:3},
+ {id:'C-송파R34',chute:'C32',sector:'송파',alias:'송파002',ll:[37.4979,127.1058],items:55,type:'Blue',cont:2},
+ {id:'C-송파R35',chute:'C33',sector:'송파',alias:'송파003',ll:[37.5079,127.1000],items:44,type:'Black',cont:2},
+ {id:'C-잠실E01',chute:'E01',sector:'잠실',alias:'잠실001',ll:[37.5133,127.0980],items:38,type:'Black',cont:2},
+ {id:'C-잠실E02',chute:'E02',sector:'잠실',alias:'잠실002',ll:[37.5162,127.1058],items:42,type:'Black',cont:2},
+ {id:'C-잠실E03',chute:'E03',sector:'잠실',alias:'잠실003',ll:[37.5202,127.1256],items:51,type:'White',cont:2}
 ];
-CLUSTERS.forEach(function(c,i){
- c.tn=['2010349810'+(5920+i*37),'2010349810'+(5430+i*53)];
-});
+CLUSTERS.forEach(function(c,i){c.tn=['2010349810'+(5920+i*37),'2010349810'+(5430+i*53)]});
 
-var POLY0=[[150,196],[438,178],[470,330],[196,352]];
+var POLY0=[[37.5175,127.0090],[37.5195,127.0700],[37.4830,127.0770],[37.4755,127.0125]];
 var S={poly:POLY0.map(function(p){return p.slice()}),
- layers:{zip:false,region:false,coord:false},
- edit:true,locked:false,sector:[],alias:[],row:null};
+ layers:{zip:false,region:false,coord:false},edit:true,locked:false,
+ sector:[],alias:[],row:null};
 
-var svg=$('#cls-svg'),mapEl=$('#cls-map');
+/* 위경도 ↔ 간이지도 좌표 (타일을 못 쓸 때만) */
+var BB={n:37.5420,s:37.4620,w:126.9700,e:127.1500};
+function px(ll,w,h){return [(ll[1]-BB.w)/(BB.e-BB.w)*w,(BB.n-ll[0])/(BB.n-BB.s)*h]}
+function unpx(x,y,w,h){return [BB.n-(y/h)*(BB.n-BB.s),BB.w+(x/w)*(BB.e-BB.w)]}
 
-/* 지적도 느낌의 배경 — 같은 시드면 항상 같은 모양 */
+function inside(ll,poly){
+ var x=ll[1],y=ll[0],ok=false;
+ for(var i=0,j=poly.length-1;i<poly.length;j=i++){
+  var xi=poly[i][1],yi=poly[i][0],xj=poly[j][1],yj=poly[j][0];
+  if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi)) ok=!ok;
+ }
+ return ok;
+}
+function visible(c){
+ return (!S.sector.length||S.sector.indexOf(c.sector)>-1)
+     && (!S.alias.length ||S.alias.indexOf(c.alias)>-1)}
+function picked(){return CLUSTERS.filter(function(c){return visible(c)&&inside(c.ll,S.poly)})}
+
+/* ── Leaflet 렌더러 ── */
+var cmap,cPoly,cPins={},cVtx=[],cLayer={};
+function initCluster(){
+ cmap=baseMap('cls-lf',[37.4990,127.0560],13);
+ cmap.fitBounds(CLUSTERS.map(function(c){return c.ll}),{padding:[54,54]});
+
+ /* SPEC-CLS-001 · 레이어 3종, 기본 꺼짐 */
+ var SECT={'서초':'06541','강남':'06612','방배':'06967','송파':'05836','잠실':'05288'};
+ cLayer.zip=L.layerGroup();
+ Object.keys(SECT).forEach(function(k){
+  var pts=CLUSTERS.filter(function(c){return c.sector===k}).map(function(c){return c.ll});
+  if(pts.length<2)return;
+  var lat=pts.map(function(p){return p[0]}),lng=pts.map(function(p){return p[1]});
+  var pad=.011,n=Math.max.apply(0,lat)+pad,s=Math.min.apply(0,lat)-pad,
+      e=Math.max.apply(0,lng)+pad,w=Math.min.apply(0,lng)-pad;
+  L.polygon([[n,w],[n,e],[s,e],[s,w]],{color:'#8FA1D6',weight:1.4,fillColor:'#6E6EFF',
+   fillOpacity:.06,interactive:false}).addTo(cLayer.zip);
+  L.marker([n-.004,w+.004],{interactive:false,
+   icon:L.divIcon({className:'zl',html:SECT[k]+' · '+k,iconSize:[70,14]})}).addTo(cLayer.zip);
+ });
+ cLayer.region=L.layerGroup();
+ [['서초구',37.4837,127.0324],['강남구',37.5172,127.0473],['송파구',37.5145,127.1058],
+  ['동작구',37.5124,126.9393],['광진구',37.5385,127.0823]].forEach(function(r){
+  L.marker([r[1],r[2]],{interactive:false,
+   icon:L.divIcon({className:'rl',html:r[0],iconSize:[52,16]})}).addTo(cLayer.region);
+ });
+ cLayer.coord=L.layerGroup();
+ for(var la=37.46;la<=37.55;la+=.02){
+  L.polyline([[la,126.95],[la,127.18]],{color:'#9FAABC',weight:.9,opacity:.65,
+   interactive:false}).addTo(cLayer.coord);
+  L.marker([la,126.976],{interactive:false,
+   icon:L.divIcon({className:'zl',html:la.toFixed(2)+'&deg;N',iconSize:[42,12]})}).addTo(cLayer.coord);
+ }
+ for(var lo=126.98;lo<=127.16;lo+=.03){
+  L.polyline([[37.45,lo],[37.56,lo]],{color:'#9FAABC',weight:.9,opacity:.65,
+   interactive:false}).addTo(cLayer.coord);
+  L.marker([37.467,lo],{interactive:false,
+   icon:L.divIcon({className:'zl',html:lo.toFixed(2)+'&deg;E',iconSize:[46,12]})}).addTo(cLayer.coord);
+ }
+
+ cPoly=L.polygon(S.poly,{color:'#E2454A',weight:2.6,dashArray:'7 5',
+  fillColor:'#E2454A',fillOpacity:.10,interactive:false}).addTo(cmap);
+
+ CLUSTERS.forEach(function(c){
+  cPins[c.id]=L.marker(c.ll,{icon:L.divIcon({className:'pin '+c.type,
+   html:'<b>'+c.items+'</b>',iconSize:[26,26],iconAnchor:[13,13]})})
+   .addTo(cmap).on('click',function(){selectRow(c.id)});
+ });
+ buildVtx();
+}
+function buildVtx(){
+ cVtx.forEach(function(m){cmap.removeLayer(m)});cVtx=[];
+ if(!S.edit||S.locked)return;
+ S.poly.forEach(function(p,i){
+  var m=L.marker(p,{draggable:true,
+   icon:L.divIcon({className:'vtxm',iconSize:[15,15],iconAnchor:[7.5,7.5]})}).addTo(cmap);
+  m.on('drag',function(e){
+   var ll=e.target.getLatLng();
+   S.poly[i]=[ll.lat,ll.lng];
+   renderCls();                       /* 지도 · 집계 · 목록을 한 번에 갱신 */
+  });
+  cVtx.push(m);
+ });
+}
+
+/* ── 간이 지도 (타일 실패 시) ── */
 function blocks(w,h,seed,n){
  var s=seed,rnd=function(){s=(s*1103515245+12345)%2147483648;return s/2147483648};
- var o='<g fill="#E1E7EE">';
+ var o='<g fill="#E3E6EF">';
  for(var i=0;i<n;i++){
   var bw=16+rnd()*58,bh=12+rnd()*36,x=rnd()*(w-bw),y=rnd()*(h-bh);
   o+='<rect x="'+x.toFixed(0)+'" y="'+y.toFixed(0)+'" width="'+bw.toFixed(0)
@@ -419,114 +530,71 @@ function blocks(w,h,seed,n){
  }
  return o+'</g>';
 }
-
-function inside(pt,poly){
- var x=pt[0],y=pt[1],ok=false;
- for(var i=0,j=poly.length-1;i<poly.length;j=i++){
-  var xi=poly[i][0],yi=poly[i][1],xj=poly[j][0],yj=poly[j][1];
-  if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi)) ok=!ok;
- }
- return ok;
-}
-function visible(c){
- return (!S.sector.length||S.sector.indexOf(c.sector)>-1)
-     && (!S.alias.length ||S.alias.indexOf(c.alias)>-1);
-}
-function picked(){return CLUSTERS.filter(function(c){
- return visible(c)&&inside([c.x,c.y],S.poly)})}
-
-/* ── SPEC-CLS-001 : 레이어는 기본 전부 꺼짐 ── */
-function layerSVG(){
- var o='';
- if(S.layers.coord){
-  o+='<g stroke="#C6D2DE" stroke-width="1" opacity=".9">';
-  for(var x=50;x<700;x+=50) o+='<path d="M'+x+',0 L'+x+',400"/>';
-  for(var y=50;y<400;y+=50) o+='<path d="M0,'+y+' L700,'+y+'"/>';
-  o+='</g><g fill="#93A2B3" font-size="8" font-weight="700">';
-  for(var x2=50;x2<700;x2+=100) o+='<text x="'+(x2+3)+'" y="12">127.0'+(x2/100)+'E</text>';
-  o+='</g>';
- }
- if(S.layers.zip){
-  var zips=[['M40,90 L200,70 L230,190 L70,210 Z','06541'],
-            ['M230,190 L200,70 L400,60 L430,180 Z','06612'],
-            ['M70,210 L230,190 L260,350 L100,368 Z','05510'],
-            ['M260,350 L230,190 L430,180 L460,340 Z','05836'],
-            ['M430,180 L400,60 L660,80 L668,230 Z','05288']];
-  o+='<g>';
-  zips.forEach(function(z){
-   o+='<path d="'+z[0]+'" fill="#3B7BD8" fill-opacity=".07" stroke="#9FBCE3" stroke-width="1.4"/>';
-  });
-  o+='</g><g fill="#7C93AE" font-size="9.5" font-weight="800">'
-   +'<text x="96" y="140">06541</text><text x="290" y="128">06612</text>'
-   +'<text x="128" y="290">05510</text><text x="318" y="278">05836</text>'
-   +'<text x="520" y="150">05288</text></g>';
- }
- if(S.layers.region){
-  o+='<g stroke="#8CA2BA" stroke-width="1.8" stroke-dasharray="9 6" fill="none">'
-   +'<path d="M255,0 L280,400"/><path d="M0,236 L700,214"/></g>'
-   +'<g fill="#667C94" font-size="11" font-weight="800" opacity=".85">'
-   +'<text x="120" y="40">서초구</text><text x="330" y="40">강남구</text>'
-   +'<text x="120" y="392">동작구</text><text x="330" y="392">송파구</text></g>';
- }
- return o;
-}
-
-function drawCluster(){
- var pts=S.poly.map(function(p){return p.join(',')}).join(' ');
- var sel=picked(),selIds={};
- sel.forEach(function(c){selIds[c.id]=1});
-
- var o='';
- /* 배경 */
- o+='<rect width="700" height="400" fill="#EDF1F5"/>';
- o+=blocks(700,400,20210510,54);
- o+='<path d="M486,296 q44,-42 100,-22 q30,46 -16,78 q-58,14 -84,-56 Z" fill="#D8E7D5"/>';
- o+='<path d="M0,150 Q180,120 330,168 T700,140" stroke="#BFD4E6" stroke-width="17" fill="none"/>';
- o+='<g stroke="#FCFDFE" stroke-width="7" fill="none" opacity=".95">'
-  +'<path d="M60,0 L110,400"/><path d="M240,0 L268,400"/><path d="M430,0 L446,400"/>'
-  +'<path d="M600,0 L618,400"/><path d="M0,60 L700,44"/><path d="M0,268 L700,286"/>'
-  +'<path d="M0,340 L700,352"/></g>'
-  +'<g stroke="#D4DCE5" stroke-width="1" fill="none">'
-  +'<path d="M60,0 L110,400"/><path d="M240,0 L268,400"/><path d="M430,0 L446,400"/>'
-  +'<path d="M600,0 L618,400"/><path d="M0,60 L700,44"/><path d="M0,268 L700,286"/>'
-  +'<path d="M0,340 L700,352"/></g>';
- o+=layerSVG();
-
- /* 폴리곤 */
- o+='<polygon points="'+pts+'" fill="#E4564B" fill-opacity=".14" stroke="'
-  +(S.locked?'#1E9E86':'#D63B2E')+'" stroke-width="2.6" stroke-dasharray="'
-  +(S.locked?'0':'7 5')+'"/>';
-
- /* SPEC-CLS-003 : 색=컨테이너 타입, 숫자=물품 수 */
+var TYPEC={Black:{f:'#040918',t:'#fff'},Blue:{f:'#6E6EFF',t:'#fff'},
+ White:{f:'#FFFFFF',t:'#2A3042',s:'#8E96AA'},Yellow:{f:'#F2B705',t:'#3B2B00'}};
+function drawClusterSVG(){
+ var svg=$('#cls-svg'),W=700,H=400,o='';
+ o+='<rect width="700" height="400" fill="#EEF0F5"/>'+blocks(700,400,20210510,54);
+ o+='<g stroke="#FBFCFE" stroke-width="7" fill="none"><path d="M60,0 L110,400"/>'
+  +'<path d="M240,0 L268,400"/><path d="M430,0 L446,400"/><path d="M0,268 L700,286"/></g>';
+ var pts=S.poly.map(function(p){var q=px(p,W,H);return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ');
+ o+='<polygon points="'+pts+'" fill="#E2454A" fill-opacity=".12" stroke="'
+  +(S.locked?'#12A47E':'#E2454A')+'" stroke-width="2.6" stroke-dasharray="'+(S.locked?'0':'7 5')+'"/>';
+ var sel={};picked().forEach(function(c){sel[c.id]=1});
  CLUSTERS.forEach(function(c){
-  var vis=visible(c),t=TYPE[c.type];
-  o+='<g opacity="'+(vis?1:.18)+'">'
-   +'<circle cx="'+c.x+'" cy="'+c.y+'" r="'+(selIds[c.id]?14:12)+'" fill="'+t.f+'"'
-   +(t.s?' stroke="'+t.s+'" stroke-width="1.5"':'')
-   +(selIds[c.id]?' stroke="#fff" stroke-width="2.4"':'')+'/>'
-   +'<text x="'+c.x+'" y="'+(c.y+4)+'" text-anchor="middle" font-size="10.5" font-weight="800" fill="'
-   +t.t+'">'+c.items+'</text></g>';
+  var q=px(c.ll,W,H),t=TYPEC[c.type];
+  o+='<g opacity="'+(visible(c)?1:.25)+'"><circle cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)
+   +'" r="'+(sel[c.id]?14:12)+'" fill="'+t.f+'"'+(t.s?' stroke="'+t.s+'" stroke-width="1.5"':'')
+   +(sel[c.id]?' stroke="#fff" stroke-width="2.4"':'')+'/><text x="'+q[0].toFixed(1)+'" y="'
+   +(q[1]+4).toFixed(1)+'" text-anchor="middle" font-size="10.5" font-weight="800" fill="'+t.t+'">'
+   +c.items+'</text></g>';
  });
-
- /* 꼭지점 핸들 */
- if(S.edit&&!S.locked){
-  S.poly.forEach(function(p,i){
-   o+='<circle class="vtx" data-i="'+i+'" cx="'+p[0]+'" cy="'+p[1]+'" r="8" '
-    +'fill="#fff" stroke="#D63B2E" stroke-width="2.6"/>';
-  });
- }
+ if(S.edit&&!S.locked)S.poly.forEach(function(p,i){
+  var q=px(p,W,H);
+  o+='<circle class="vtx" data-i="'+i+'" cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)
+   +'" r="8" fill="#fff" stroke="#E2454A" stroke-width="2.6" style="cursor:grab"/>';
+ });
  svg.innerHTML=o;
- paintSel(sel);
- paintKpi(sel);
- paintRows();
+}
+var drag=null;
+function svgPt(ev,svg){
+ var p=svg.createSVGPoint(),t=ev.touches?ev.touches[0]:ev;
+ p.x=t.clientX;p.y=t.clientY;
+ var m=svg.getScreenCTM();if(!m)return null;
+ var q=p.matrixTransform(m.inverse());return [q.x,q.y];
+}
+if(!LF){
+ var csvg=$('#cls-svg');
+ csvg.addEventListener('mousedown',function(e){
+  if(S.locked||!S.edit||!e.target.classList.contains('vtx'))return;
+  e.preventDefault();drag=+e.target.dataset.i});
+ window.addEventListener('mousemove',function(e){
+  if(drag===null)return;var q=svgPt(e,csvg);if(!q)return;
+  S.poly[drag]=unpx(q[0],q[1],700,400);renderCls()});
+ window.addEventListener('mouseup',function(){drag=null});
 }
 
-/* ── SPEC-CLS-004 : 선택 즉시 집계 + 송장번호 역추적 ── */
+/* ── 공통 갱신 ── */
+function renderCls(){
+ var sel=picked(),ids={};sel.forEach(function(c){ids[c.id]=1});
+ if(LF){
+  cPoly.setLatLngs(S.poly);
+  cPoly.setStyle({color:S.locked?'#12A47E':'#E2454A',dashArray:S.locked?null:'7 5',
+   fillColor:S.locked?'#12A47E':'#E2454A'});
+  CLUSTERS.forEach(function(c){
+   var cls='pin '+c.type+(ids[c.id]?' on':'')+(visible(c)?'':' off');
+   cPins[c.id].setIcon(L.divIcon({className:cls,html:'<b>'+c.items+'</b>',
+    iconSize:[26,26],iconAnchor:[13,13]}));
+  });
+ } else drawClusterSVG();
+ paintSel(sel);paintKpi(sel);paintRows(ids);
+}
+
+/* SPEC-CLS-004 */
 function paintSel(sel){
  var items=0,cont=0,tn=[];
  sel.forEach(function(c){items+=c.items;cont+=c.cont;tn=tn.concat(c.tn)});
- $('#cls-sel').innerHTML=
-  '<div class="t">POLYGON</div>'
+ $('#cls-sel').innerHTML='<div class="t">POLYGON</div>'
   +'<div class="row"><span>Sector</span><b>'+sel.length+'</b></div>'
   +'<div class="row"><span>Shipping item</span><b>'+nf(items)+'</b></div>'
   +'<div class="row"><span>Shipping Container</span><b>'+cont+'</b></div>'
@@ -535,67 +603,65 @@ function paintSel(sel){
     :'<div class="tn" style="color:var(--g9)">묶인 물품 없음</div>')
   +(tn.length>3?'<div class="tn" style="color:var(--g9)">외 '+(tn.length-3)+'건</div>':'');
 }
-
-/* ── SPEC-CLS-005 : 상단 집계는 편집과 같은 트랜잭션에서 갱신 ── */
+/* SPEC-CLS-005 */
 function paintKpi(sel){
  var all=CLUSTERS.filter(visible);
  var allItems=all.reduce(function(a,c){return a+c.items},0);
  var items=sel.reduce(function(a,c){return a+c.items},0);
  var by={Black:0,Blue:0,White:0,Yellow:0};
  sel.forEach(function(c){by[c.type]+=c.items});
- var cards=[
-  ['선택 클러스터',sel.length,'조회 '+all.length+'개 중'],
+ var cards=[['선택 클러스터',sel.length,'조회 '+all.length+'개 중'],
   ['선택 물품',nf(items),'조회 '+nf(allItems)+'건 중'],
-  ['BLACK',nf(by.Black),'컨테이너 타입'],
-  ['BLUE',nf(by.Blue),'컨테이너 타입'],
-  ['WHITE',nf(by.White),'컨테이너 타입'],
-  ['YELLOW',nf(by.Yellow),'컨테이너 타입']
- ];
+  ['BLACK',nf(by.Black),'컨테이너 타입'],['BLUE',nf(by.Blue),'컨테이너 타입'],
+  ['WHITE',nf(by.White),'컨테이너 타입'],['YELLOW',nf(by.Yellow),'컨테이너 타입']];
  var box=$('#cls-kpis');
  box.innerHTML=cards.map(function(c){
-  return '<div class="kpi live"><div class="k">'+c[0]+'</div><div class="v">'+c[1]
+  return '<div class="kpi"><div class="k">'+c[0]+'</div><div class="v">'+c[1]
    +'</div><div class="s">'+c[2]+'</div></div>'}).join('');
- $$('.kpi',box).forEach(function(e){
-  e.classList.add('flash');setTimeout(function(){e.classList.remove('flash')},170)});
+ $$('.kpi',box).forEach(function(e){e.classList.add('flash');
+  setTimeout(function(){e.classList.remove('flash')},170)});
 }
-
-/* ── SPEC-CLS-007 : CLUSTER ID ↔ CHUTE ID 1:1 ── */
-function paintRows(){
- var sel={};picked().forEach(function(c){sel[c.id]=1});
+/* SPEC-CLS-007 */
+function paintRows(ids){
  var list=CLUSTERS.filter(visible).sort(function(a,b){
-  return (sel[b.id]?1:0)-(sel[a.id]?1:0)||a.id.localeCompare(b.id)});
+  return (ids[b.id]?1:0)-(ids[a.id]?1:0)||a.id.localeCompare(b.id)});
  $('#cls-rows').innerHTML=list.map(function(c){
-  return '<tr data-id="'+c.id+'" data-in="'+(sel[c.id]?1:0)+'"'
-   +(S.row===c.id?' class="sel"':'')+'>'
+  return '<tr data-id="'+c.id+'" data-in="'+(ids[c.id]?1:0)+'"'+(S.row===c.id?' class="sel"':'')+'>'
    +'<td><i style="display:inline-block;width:5px;height:5px;border-radius:50%;margin-right:7px;'
-   +'vertical-align:1px;background:'+(sel[c.id]?'var(--pri)':'transparent')+'"></i>'+c.id+'</td>'
+   +'vertical-align:1px;background:'+(ids[c.id]?'var(--pri)':'transparent')+'"></i>'+c.id+'</td>'
    +'<td>'+c.chute+'</td><td>'+c.items+'</td>'
    +'<td><span class="pill '+c.type+'">'+c.type+'</span></td></tr>'}).join('');
- $('#cls-count').textContent=list.length+' results · 폴리곤에 묶인 '+Object.keys(sel).length+'개';
- var n=Object.keys(sel).length;
+ $('#cls-count').textContent=list.length+' results · 폴리곤에 묶인 '+Object.keys(ids).length+'개';
+ var n=Object.keys(ids).length;
  $('#b-merge').disabled=S.locked||n<2;
  $('#b-move').disabled=S.locked||n<1;
  $('#b-create').disabled=S.locked;
 }
+function selectRow(id){
+ S.row=(S.row===id)?null:id;
+ var ids={};picked().forEach(function(c){ids[c.id]=1});paintRows(ids);
+ var c=CLUSTERS.filter(function(x){return x.id===S.row})[0];
+ if(c){toast(c.id+' → 슈트 '+c.chute+' · 물품 '+c.items+'건');
+  if(LF)cmap.panTo(c.ll,{animate:true,duration:.4})}
+}
+$('#cls-rows').addEventListener('click',function(e){
+ var tr=e.target.closest('tr');if(tr)selectRow(tr.dataset.id)});
 
-/* ── SPEC-CLS-006 : Sector ID · alias 다중 선택 ── */
+/* SPEC-CLS-006 */
 function buildFacets(){
  var sec=[],ali=[];
  CLUSTERS.forEach(function(c){
   if(sec.indexOf(c.sector)<0)sec.push(c.sector);
   if(ali.indexOf(c.alias)<0)ali.push(c.alias)});
- function box(arr,key,el){
-  $(el).innerHTML=arr.map(function(v){
-   return '<label><input type="checkbox" data-k="'+key+'" value="'+v+'">'+v+'</label>'}).join('');
- }
+ var box=function(arr,key,el){$(el).innerHTML=arr.map(function(v){
+  return '<label><input type="checkbox" data-k="'+key+'" value="'+v+'">'+v+'</label>'}).join('')};
  box(sec,'sector','#fc-sector');box(ali,'alias','#fc-alias');
  $('.facets').addEventListener('change',function(e){
   var i=e.target;if(!i.dataset.k)return;
-  var k=i.dataset.k,arr=S[k];
-  var at=arr.indexOf(i.value);
+  var arr=S[i.dataset.k],at=arr.indexOf(i.value);
   if(i.checked&&at<0)arr.push(i.value);
   if(!i.checked&&at>-1)arr.splice(at,1);
-  S.row=null;drawCluster();noteFacet();
+  S.row=null;renderCls();noteFacet();
  });
  noteFacet();
 }
@@ -606,65 +672,27 @@ function noteFacet(){
   : '아무것도 고르지 않으면 전체를 봅니다. 선택은 지도와 목록에 동시에 적용됩니다.';
 }
 
-/* ── SPEC-CLS-002 : 꼭지점 드래그 편집 (새로 그리지 않음) ── */
-var drag=null;
-function toSVG(ev){
- var p=svg.createSVGPoint();
- var t=ev.touches?ev.touches[0]:ev;
- p.x=t.clientX;p.y=t.clientY;
- var m=svg.getScreenCTM();
- if(!m)return null;
- var q=p.matrixTransform(m.inverse());
- return [Math.max(4,Math.min(696,q.x)),Math.max(4,Math.min(396,q.y))];
-}
-function down(ev){
- if(S.locked||!S.edit)return;
- var t=ev.target;
- if(!t.classList||!t.classList.contains('vtx'))return;
- ev.preventDefault();
- drag=+t.dataset.i;
-}
-function move(ev){
- if(drag===null)return;
- var q=toSVG(ev);if(!q)return;
- ev.preventDefault();
- S.poly[drag]=[Math.round(q[0]),Math.round(q[1])];
- drawCluster();                     /* 지도 · 집계 · 목록을 같은 호출에서 갱신 */
-}
-function up(){drag=null}
-svg.addEventListener('mousedown',down);
-svg.addEventListener('touchstart',down,{passive:false});
-window.addEventListener('mousemove',move);
-window.addEventListener('touchmove',move,{passive:false});
-window.addEventListener('mouseup',up);
-window.addEventListener('touchend',up);
-
-$('.toolbar').addEventListener('click',function(e){
+$('#cls-map .toolbar').addEventListener('click',function(e){
  var b=e.target.closest('.chip');if(!b)return;
  if(b.dataset.layer){
-  S.layers[b.dataset.layer]=!S.layers[b.dataset.layer];
-  b.setAttribute('aria-pressed',String(S.layers[b.dataset.layer]));
-  drawCluster();
-  var on=Object.keys(S.layers).filter(function(k){return S.layers[k]});
+  var k=b.dataset.layer;S.layers[k]=!S.layers[k];
+  b.setAttribute('aria-pressed',String(S.layers[k]));
+  if(LF){S.layers[k]?cLayer[k].addTo(cmap):cmap.removeLayer(cLayer[k])}
+  var on=Object.keys(S.layers).filter(function(x){return S.layers[x]});
   $('#cls-hint').textContent=on.length
    ? '레이어 '+on.length+'개 켜짐 · 전부 켜면 판단이 어려워 기본값은 모두 꺼짐입니다'
    : '꼭지점을 끌어 경계를 고칩니다 · 레이어는 기본으로 모두 꺼져 있습니다';
+  if(!LF)renderCls();
  }
  if(b.id==='cls-edit'){
   if(S.locked){toast('확정된 플랜은 편집할 수 없습니다');return}
-  S.edit=!S.edit;b.setAttribute('aria-pressed',String(S.edit));drawCluster();
+  S.edit=!S.edit;b.setAttribute('aria-pressed',String(S.edit));
+  if(LF)buildVtx();
+  renderCls();
  }
 });
 
-$('#cls-rows').addEventListener('click',function(e){
- var tr=e.target.closest('tr');if(!tr)return;
- S.row=(S.row===tr.dataset.id)?null:tr.dataset.id;
- paintRows();
- var c=CLUSTERS.filter(function(x){return x.id===S.row})[0];
- if(c)toast(c.id+' → 슈트 '+c.chute+' · 물품 '+c.items+'건');
-});
-
-/* ── SPEC-CLS-008 / 009 : 확정 전에만 병합·이동, 생성은 소터 전송 ── */
+/* SPEC-CLS-008 / 009 */
 $('#b-merge').addEventListener('click',function(){
  toast('선택한 '+picked().length+'개 플랜을 병합했습니다 (확정 전에만 가능)')});
 $('#b-move').addEventListener('click',function(){
@@ -674,175 +702,189 @@ $('#b-create').addEventListener('click',function(){
  if(!sel.length){toast('폴리곤에 묶인 클러스터가 없습니다');return}
  S.locked=true;
  var items=sel.reduce(function(a,c){return a+c.items},0);
- $('#cls-banner').innerHTML='<div class="banner done"><div>'
+ $('#cls-banner').innerHTML='<div class="banner done">'
   +'<b>PLAN-20260921-03 소터 전송 완료</b> · 클러스터 '+sel.length+'개 / 물품 '+nf(items)+'건<br>'
-  +'편집 창이 닫혔습니다. 이 시점부터 경계 수정 · 플랜 병합 · 물품 이동은 막힙니다.</div></div>';
+  +'편집 창이 닫혔습니다. 이 시점부터 경계 수정 · 플랜 병합 · 물품 이동은 막힙니다.</div>';
  $('#cls-hint').textContent='확정된 플랜입니다 · 편집은 다음 회차에 다시 열립니다';
- drawCluster();
+ $('#cls-map').classList.add('locked');
+ if(LF)buildVtx();
+ renderCls();
  toast('소터로 전송했습니다 · 되돌리기는 여기서 끝납니다');
 });
 $('#cls-reset').addEventListener('click',function(){
  S.poly=POLY0.map(function(p){return p.slice()});
- S.locked=false;S.edit=true;S.row=null;
- S.sector=[];S.alias=[];
+ S.locked=false;S.edit=true;S.row=null;S.sector=[];S.alias=[];
  $$('.facets input').forEach(function(i){i.checked=false});
  $('#cls-edit').setAttribute('aria-pressed','true');
  $('#cls-banner').innerHTML='';
+ $('#cls-map').classList.remove('locked');
  $('#cls-hint').textContent='꼭지점을 끌어 경계를 고칩니다 · 레이어는 기본으로 모두 꺼져 있습니다';
- noteFacet();drawCluster();
+ $$('[data-layer]').forEach(function(b){b.setAttribute('aria-pressed','false');
+  if(LF&&S.layers[b.dataset.layer])cmap.removeLayer(cLayer[b.dataset.layer]);
+  S.layers[b.dataset.layer]=false});
+ if(LF){buildVtx();cmap.fitBounds(CLUSTERS.map(function(c){return c.ll}),{padding:[54,54]})}
+ noteFacet();renderCls();
 });
-
-buildFacets();drawCluster();
 
 /* ══════════════════════════════════════════════
    2. 실시간 관제  (SPEC-MON-001 ~ 008)
+   실제 도로 경로 — OSRM(OpenStreetMap)에서 받아 좌표를 그대로 넣었습니다.
    ══════════════════════════════════════════════ */
+
+var HUB=[37.4699,127.0378];
+var R={
+B3094:[[37.46999,127.03845],[37.46957,127.03859],[37.46975,127.03923],[37.48001,127.03827],[37.48471,127.03408],[37.49305,127.03007],[37.49153,127.03059],[37.49126,127.02974],[37.49231,127.02923],[37.49274,127.02902],[37.49305,127.03007],[37.50454,127.02498],[37.50733,127.0339],[37.51391,127.03081],[37.51731,127.04225],[37.51807,127.04646],[37.51711,127.04672]],
+B2871:[[37.46999,127.03845],[37.46957,127.03859],[37.46975,127.03923],[37.47137,127.03878],[37.47815,127.03875],[37.47868,127.03996],[37.4819,127.04293],[37.48564,127.04135],[37.48401,127.02983],[37.48405,127.03134],[37.48322,127.03152],[37.48344,127.03346],[37.48334,127.03276],[37.48322,127.03152],[37.48405,127.03134],[37.48452,127.0334],[37.48222,127.01806],[37.48729,127.0149],[37.49285,127.01385],[37.49277,127.01317]],
+B3140:[[37.46999,127.03845],[37.46957,127.03859],[37.46975,127.03923],[37.47815,127.03875],[37.47868,127.03996],[37.4819,127.04293],[37.48548,127.04136],[37.48617,127.04522],[37.49448,127.0635],[37.50088,127.08467],[37.50431,127.08799],[37.50298,127.09243],[37.50123,127.09163],[37.50096,127.09254],[37.50046,127.09291],[37.50088,127.09148],[37.50308,127.09247],[37.50441,127.08806],[37.51009,127.09295],[37.51179,127.09257],[37.51293,127.0995],[37.51546,127.10667],[37.51496,127.10689],[37.51474,127.10572]],
+P3301:[[37.46999,127.03845],[37.46957,127.03859],[37.46975,127.03923],[37.47137,127.03878],[37.47815,127.03875],[37.47868,127.03996],[37.4819,127.04293],[37.48548,127.04136],[37.48628,127.04547],[37.49441,127.06332],[37.4945,127.0631],[37.49363,127.06149],[37.49441,127.06332],[37.50677,127.0568],[37.50851,127.06312]],
+A3301:[[37.46999,127.03845],[37.46957,127.03859],[37.46975,127.03923],[37.47137,127.03878],[37.47568,127.03878],[37.4757,127.03943],[37.47583,127.03969],[37.48127,127.04438],[37.48282,127.04698],[37.48416,127.0457],[37.48442,127.04545],[37.48491,127.04645],[37.48628,127.04547],[37.48831,127.04979],[37.48105,127.05371],[37.47586,127.05882],[37.47716,127.06144],[37.47996,127.06635]],
+B2990:[[37.46999,127.03845],[37.46957,127.03859],[37.46975,127.03923],[37.47137,127.03878],[37.47836,127.03876],[37.47939,127.03852],[37.48052,127.03803],[37.48138,127.03743],[37.48471,127.03408],[37.4896,127.03171],[37.48537,127.01805],[37.48468,127.01459],[37.48367,127.01478],[37.48365,127.01459]],
+B3155:[[37.46999,127.03845],[37.46957,127.03859],[37.4697,127.03903],[37.46922,127.03928],[37.46859,127.03976],[37.47125,127.04378],[37.4721,127.0462],[37.47296,127.04759],[37.47523,127.051],[37.47564,127.05056]]
+};
+function cut(a,r){return a.slice(0,Math.max(2,Math.round(a.length*r)))}
 
 var DRIVERS=[
  {id:'B3094',name:'정지호',ph:'010-3224-2432',gr:'S',ty:'Black',veh:'자동차',dist:24.31,
-  done:24,total:44,el:'01:21:45',state:'ing',
-  plan:'M46,52 L150,74 L232,120 L318,152 L404,186',
-  act :'M46,52 L150,74 L232,120 L300,146',pos:[300,146]},
+  done:24,total:44,el:'01:21:45',state:'ing',plan:R.B3094,act:cut(R.B3094,.66)},
  {id:'B2871',name:'김민호',ph:'010-1433-1393',gr:'B',ty:'Black',veh:'이륜차',dist:18.02,
-  done:30,total:57,el:'01:04:12',state:'ing',
-  plan:'M82,196 L178,180 L268,202 L356,190',
-  act :'M82,196 L178,180 L252,196',pos:[252,196]},
+  done:30,total:57,el:'01:04:12',state:'ing',plan:R.B2871,act:cut(R.B2871,.62)},
  {id:'B3140',name:'박상훈',ph:'010-2020-1123',gr:'S',ty:'Blue',veh:'자동차',dist:27.63,
-  done:53,total:65,el:'02:08:30',state:'ing',
-  plan:'M420,44 L498,74 L556,118 L618,166',
-  act :'M420,44 L498,74 L546,108',pos:[546,108]},
+  done:53,total:65,el:'02:08:30',state:'ing',plan:R.B3140,act:cut(R.B3140,.84)},
  {id:'B3301',name:'오경수',ph:'010-9906-3359',gr:'C',ty:'Blue',veh:'자동차',dist:31.08,
-  done:37,total:52,el:'02:41:08',state:'ing',late:22,
-  plan:'M132,118 L246,106 L352,92 L462,80',
-  act :'M132,118 L246,106 L318,158 L386,196',pos:[386,196]},
+  done:37,total:52,el:'02:41:08',state:'ing',late:22,plan:R.P3301,act:R.A3301},
  {id:'B2990',name:'이현우',ph:'010-7781-0042',gr:'A',ty:'Black',veh:'이륜차',dist:15.44,
-  done:61,total:61,el:'03:12:00',state:'done',
-  plan:'M520,196 L590,180 L646,150',act:'M520,196 L590,180 L646,150',pos:[646,150]},
+  done:61,total:61,el:'03:12:00',state:'done',plan:R.B2990,act:R.B2990},
  {id:'B3155',name:'최다은',ph:'010-3311-8890',gr:'B',ty:'Blue',veh:'이륜차',dist:9.12,
-  done:12,total:40,el:'00:48:20',state:'ing',
-  plan:'M60,120 L118,146 L182,142',act:'M60,120 L104,138',pos:[104,138]}
+  done:12,total:40,el:'00:48:20',state:'ing',plan:R.B3155,act:cut(R.B3155,.42)}
 ];
 
-var UNITS={
- B3094:[
-  {id:'강남서초999-A24L',eta:'24:33',st:'done',addr:'서울특별시 송파구 도곡로 450, 101호',tn:'20103498105920',door:'#32058*'},
-  {id:'강남서초999-A25L',eta:'24:41',st:'ing', addr:'서울특별시 송파구 도곡로 450, 902호',tn:'20103498105430',door:'#11904*'},
-  {id:'강남서초999-A26L',eta:'25:02',st:'ing', addr:'서울특별시 강남구 논현로 32, 501호',tn:'20103498106118',door:'#77213*'},
-  {id:'강남서초999-A27L',eta:'25:20',st:'fail',addr:'서울특별시 강남구 논현로 32, 지하 1층',tn:'20103498106204',door:'#77213*'}
- ]
-};
+var UNITS={B3094:[
+ {id:'강남서초999-A24L',eta:'24:33',st:'done',addr:'서울특별시 서초구 서초대로 397, 101호',tn:'20103498105920',door:'#32058*'},
+ {id:'강남서초999-A25L',eta:'24:41',st:'ing', addr:'서울특별시 서초구 서초대로 397, 902호',tn:'20103498105430',door:'#11904*'},
+ {id:'강남서초999-A26L',eta:'25:02',st:'ing', addr:'서울특별시 강남구 논현로 132, 501호',tn:'20103498106118',door:'#77213*'},
+ {id:'강남서초999-A27L',eta:'25:20',st:'fail',addr:'서울특별시 강남구 논현로 132, 지하 1층',tn:'20103498106204',door:'#77213*'}]};
 function unitsOf(id){
  if(UNITS[id])return UNITS[id];
- var d=DRIVERS.filter(function(x){return x.id===id})[0],out=[],i;
- var DONG=['강남구 논현로','송파구 도곡로','서초구 방배로'];
- for(i=0;i<3;i++)out.push({id:d.id+'-U0'+(i+1),eta:'2'+(4+i)+':1'+i,
-  st:i===0?'done':'ing',addr:'서울특별시 '+DONG[i]+' '+(100+i*7)+', '+(i+2)+'0'+i+'호',
+ var A=['서초구 사평대로','강남구 봉은사로','송파구 올림픽로'],out=[];
+ for(var i=0;i<3;i++)out.push({id:id+'-U0'+(i+1),eta:'2'+(4+i)+':1'+i,st:i===0?'done':'ing',
+  addr:'서울특별시 '+A[i]+' '+(100+i*27)+', '+(i+2)+'0'+i+'호',
   tn:'2010349810'+(7000+i*13),door:'#'+(20000+i*311)+'*'});
  return out;
 }
 
 var M={filter:'ing',sel:'B3094',log:[]};
-var msvg=$('#mon-svg');
+var mmap,mLines={},mVeh={},mLate=null,mHub,monBounds,monFitted=false;
 
-/* ── SPEC-MON-001 : 개입 대상만 붉게 ── */
 function monKpi(){
  var c=[['배송 대기','9,213',''],['배송 완료','8,540',''],['미배송','88','개입 대상'],
         ['정상 운행','412',''],['운행 지연','23','개입 대상'],['평균 리드타임','4.2h','정차 시간 포함']];
  $('#mon-kpis').innerHTML=c.map(function(k,i){
-  var al=(i===2||i===4)?' alert':'';
-  return '<div class="kpi'+al+'"><div class="k">'+k[0]+'</div><div class="v">'+k[1]
-   +'</div><div class="s">'+(k[2]||'&nbsp;')+'</div></div>'}).join('');
+  return '<div class="kpi'+((i===2||i===4)?' alert':'')+'"><div class="k">'+k[0]+'</div><div class="v">'
+   +k[1]+'</div><div class="s">'+(k[2]||'&nbsp;')+'</div></div>'}).join('');
 }
+function col(d){return d.late?'#E2454A':(d.state==='done'?'#12A47E':'#6E6EFF')}
 
-/* ── SPEC-MON-002 / 003 : 계획·실제 중첩, 지연은 색 + 라벨 ── */
-function monMap(){
- var o='<rect width="700" height="250" fill="#EDF1F5"/>'
-  +blocks(700,250,20240202,42)
-  +'<path d="M0,96 Q190,70 340,110 T700,88" stroke="#BFD4E6" stroke-width="15" fill="none"/>'
-  +'<g stroke="#FCFDFE" stroke-width="6" fill="none" opacity=".95">'
-  +'<path d="M90,0 L124,250"/><path d="M300,0 L318,250"/><path d="M500,0 L516,250"/>'
-  +'<path d="M0,180 L700,196"/></g>'
-  +'<g stroke="#D4DCE5" stroke-width="1" fill="none">'
-  +'<path d="M90,0 L124,250"/><path d="M300,0 L318,250"/><path d="M500,0 L516,250"/>'
-  +'<path d="M0,180 L700,196"/></g>'
-  +'<g><circle cx="46" cy="52" r="7" fill="#22252B"/>'
-  +'<circle cx="46" cy="52" r="2.6" fill="#fff"/></g>';
+function initMon(){
+ mmap=baseMap('mon-lf',[37.4960,127.0640],12.5);
+ mHub=L.marker(HUB,{icon:L.divIcon({className:'hub',html:'<b>허브</b>',
+  iconSize:[30,30],iconAnchor:[15,15]})}).addTo(mmap);
  DRIVERS.forEach(function(d){
-  var on=(M.sel===d.id),dim=on?1:(d.late?.92:.52);
-  var col=d.late?'#C24A3A':(d.state==='done'?'#1E9E86':'#3B58D4');
-  o+='<g opacity="'+dim+'">'
-   +'<path d="'+d.plan+'" stroke="#9AA8BC" stroke-width="2.2" stroke-dasharray="6 5" fill="none"'
-   +' stroke-linecap="round"/>'
-   +'<path d="'+d.act+'" stroke="'+col+'" stroke-width="3.4" fill="none"'
-   +' stroke-linecap="round" stroke-linejoin="round"/>'
-   +'<rect x="'+(d.pos[0]-7)+'" y="'+(d.pos[1]-6)+'" width="14" height="12" rx="2.5" fill="'+col+'"/>'
-   +'</g>';
-  if(d.late){
-   o+='<g><rect x="'+(d.pos[0]-14)+'" y="'+(d.pos[1]+9)+'" width="72" height="15" rx="3" fill="#C24A3A"/>'
-    +'<text x="'+(d.pos[0]+22)+'" y="'+(d.pos[1]+19.5)+'" text-anchor="middle" font-size="9.5"'
-    +' font-weight="800" fill="#fff">지연 '+d.late+'분</text></g>';
-  }
+  mLines[d.id]={
+   plan:L.polyline(d.plan,{color:'#8C97AC',weight:2.2,dashArray:'6 5',
+    opacity:.85,interactive:false}).addTo(mmap),
+   act:L.polyline(d.act,{color:col(d),weight:3.6,opacity:.95,
+    lineCap:'round',lineJoin:'round',interactive:false}).addTo(mmap)};
+  var last=d.act[d.act.length-1];
+  mVeh[d.id]=L.marker(last,{icon:L.divIcon({className:'veh',
+   html:'<b style="background:'+col(d)+'"></b>',iconSize:[15,12],iconAnchor:[7,6]})})
+   .addTo(mmap).on('click',function(){pickDriver(d.id)});
+  if(d.late)mLate=L.marker(last,{interactive:false,icon:L.divIcon({className:'late',
+   html:'지연 '+d.late+'분',iconSize:[62,16],iconAnchor:[-8,-4]})}).addTo(mmap);
  });
- o+='<g fill="#7A8798" font-size="9" font-weight="700">'
-  +'<text x="30" y="44">허브 출발</text><text x="600" y="172">배송 완료</text></g>';
- msvg.innerHTML=o;
+ monBounds=L.latLngBounds([HUB]);
+ DRIVERS.forEach(function(d){d.plan.concat(d.act).forEach(function(p){monBounds.extend(p)})});
+ monFocus();
 }
+function monFocus(){
+ DRIVERS.forEach(function(d){
+  var on=(M.sel===d.id),op=on?1:(d.late?.95:.62);
+  mLines[d.id].act.setStyle({opacity:op,weight:on?4.6:3.4});
+  mLines[d.id].plan.setStyle({opacity:on?.95:.5,weight:on?2.6:2.2});
+  var e=mVeh[d.id].getElement();if(e)e.className='veh leaflet-marker-icon leaflet-zoom-animated'+(on?' on':'');
+ });
+}
+function monMapSVG(){
+ var W=700,H=276,o='<rect width="700" height="276" fill="#EEF0F5"/>'+blocks(700,276,20240202,42);
+ var B={n:37.5280,s:37.4620,w:126.9950,e:127.1350};
+ var p=function(ll){return [((ll[1]-B.w)/(B.e-B.w)*W).toFixed(1),((B.n-ll[0])/(B.n-B.s)*H).toFixed(1)]};
+ var d2=function(a){return 'M'+a.map(function(ll){return p(ll).join(',')}).join(' L')};
+ DRIVERS.forEach(function(d){
+  var on=(M.sel===d.id),op=on?1:(d.late?.92:.5);
+  o+='<g opacity="'+op+'"><path d="'+d2(d.plan)+'" stroke="#8C97AC" stroke-width="2.2" '
+   +'stroke-dasharray="6 5" fill="none"/><path d="'+d2(d.act)+'" stroke="'+col(d)
+   +'" stroke-width="'+(on?4.2:3.2)+'" fill="none" stroke-linecap="round" stroke-linejoin="round"/>';
+  var q=p(d.act[d.act.length-1]);
+  o+='<rect x="'+(q[0]-7)+'" y="'+(q[1]-6)+'" width="14" height="12" rx="2.5" fill="'+col(d)+'"/></g>';
+  if(d.late)o+='<g><rect x="'+(+q[0]+6)+'" y="'+(+q[1]-8)+'" width="62" height="16" rx="3" fill="#E2454A"/>'
+   +'<text x="'+(+q[0]+37)+'" y="'+(+q[1]+3.5)+'" text-anchor="middle" font-size="9.5" font-weight="800" '
+   +'fill="#fff">지연 '+d.late+'분</text></g>';
+ });
+ var h=p(HUB);
+ o+='<g><circle cx="'+h[0]+'" cy="'+h[1]+'" r="11" fill="#040918"/><text x="'+h[0]+'" y="'
+  +(+h[1]+3.5)+'" text-anchor="middle" font-size="9" font-weight="800" fill="#fff">허브</text></g>';
+ $('#mon-svg').innerHTML=o;
+}
+function monRender(){LF?monFocus():monMapSVG()}
 
-/* ── SPEC-MON-004 / 005 : 기본 필터 운행중 · 처리·잔여·경과 한 줄 ── */
+/* SPEC-MON-004 / 005 */
 function monList(){
  var list=DRIVERS.filter(function(d){
   return M.filter==='all'||(M.filter==='ing'?d.state==='ing':d.state==='done')});
  $('#mon-drvs').innerHTML=list.map(function(d){
-  return '<button class="drv'+(d.late?' alert':'')+'" data-id="'+d.id+'"'
-   +' aria-selected="'+(M.sel===d.id)+'">'
-   +'<div class="n"><em class="'+d.ty+'">'+d.ty+'</em><u>'+d.gr+'</u>'+d.name
-   +' <span>'+d.ph+'</span></div>'
-   +'<div class="d">'+(d.late
-     ? '경로 이탈 · 예상 도착 '+d.late+'분 초과'
-     : '운행 거리 '+d.dist.toFixed(2)+'km · 기사 번호 '+d.id+' · '+d.veh)+'</div>'
-   +'<div class="f">'
+  return '<button class="drv'+(d.late?' alert':'')+'" data-id="'+d.id+'" aria-selected="'
+   +(M.sel===d.id)+'"><div class="n"><em class="'+d.ty+'">'+d.ty+'</em><u>'+d.gr+'</u>'+d.name
+   +' <span>'+d.ph+'</span></div><div class="d">'
+   +(d.late?'경로 이탈 · 예상 도착 '+d.late+'분 초과'
+     :'운행 거리 '+d.dist.toFixed(2)+'km · 기사 번호 '+d.id+' · '+d.veh)+'</div><div class="f">'
    +'<div><div class="fk">처리</div><div class="fv">'+d.done+'</div></div>'
    +'<div><div class="fk">잔여</div><div class="fv">'+(d.total-d.done)+'</div></div>'
-   +'<div><div class="fk">경과</div><div class="fv">'+d.el+'</div></div>'
-   +'</div></button>'}).join('')
-  || '<div class="note">이 필터에 해당하는 기사가 없습니다.</div>';
+   +'<div><div class="fk">경과</div><div class="fv">'+d.el+'</div></div></div></button>'}).join('')
+  ||'<div class="note">이 필터에 해당하는 기사가 없습니다.</div>';
 }
-
-/* ── SPEC-MON-006 / 007 : 선택 고정 · 출입 정보 마스킹 ── */
+/* SPEC-MON-006 / 007 */
 function monSide(){
  var d=DRIVERS.filter(function(x){return x.id===M.sel})[0];
  if(!d){$('#mon-pin').innerHTML='<div class="note">기사를 고르면 여기에 고정됩니다.</div>';
   $('#mon-units').innerHTML='';return}
  $('#mon-pin').innerHTML='<div class="drv'+(d.late?' alert':'')+'" aria-selected="true">'
   +'<div class="n"><em class="'+d.ty+'">'+d.ty+'</em><u>'+d.gr+'</u>'+d.name+'</div>'
-  +'<div class="d">'+d.ph+'<br>운행 거리 '+d.dist.toFixed(2)+'km · 기사 번호 '+d.id+'<br>운송 수단 '+d.veh+'</div>'
-  +'<div class="f"><div><div class="fk">처리</div><div class="fv">'+d.done+'</div></div>'
+  +'<div class="d">'+d.ph+'<br>운행 거리 '+d.dist.toFixed(2)+'km · 기사 번호 '+d.id
+  +'<br>운송 수단 '+d.veh+'</div><div class="f">'
+  +'<div><div class="fk">처리</div><div class="fv">'+d.done+'</div></div>'
   +'<div><div class="fk">잔여</div><div class="fv">'+(d.total-d.done)+'</div></div>'
   +'<div><div class="fk">경과</div><div class="fv">'+d.el+'</div></div></div></div>';
-
  $('#mon-units').innerHTML=unitsOf(d.id).map(function(u){
-  var lab={done:'배송 완료',ing:'배송중',fail:'미배송'}[u.st];
-  var open=(u.st==='ing');
+  var lab={done:'배송 완료',ing:'배송중',fail:'미배송'}[u.st],open=(u.st==='ing');
   return '<div class="unit"><div class="u1"><b>'+u.id+'</b><span>'+u.eta+'</span>'
-   +'<span class="st '+u.st+'">'+lab+'</span></div>'
-   +'<div class="box">주소 : '+esc(u.addr)+'<br>송장 번호 : '+u.tn+'<br>'
-   +'공동현관 출입 정보 : '+(open
-      ? '<span class="door">'+u.door+'</span>'
-      : '<span class="mask">#••••••</span>')+''
-   +'<div class="why">'+(open
-      ? '배송 단계에서만 열립니다'
-      : '완료 · 미배송 건은 보관 기간 정책에 따라 마스킹됩니다')+'</div>'
+   +'<span class="st '+u.st+'">'+lab+'</span></div><div class="box">주소 : '+esc(u.addr)
+   +'<br>송장 번호 : '+u.tn+'<br>공동현관 출입 정보 : '
+   +(open?'<span class="door">'+u.door+'</span>':'<span class="mask">#••••••</span>')
+   +'<div class="why">'+(open?'배송 단계에서만 열립니다'
+     :'완료 · 미배송 건은 보관 기간 정책에 따라 마스킹됩니다')+'</div>'
    +'<div class="btns" style="margin-top:7px">'
    +'<button class="btn g" data-act="status" data-u="'+u.id+'">상태 변경</button>'
-   +'<button class="btn g" data-act="photo">배송 완료 사진</button></div></div></div>'
- }).join('');
-
+   +'<button class="btn g" data-act="photo">배송 완료 사진</button></div></div></div>'}).join('');
  $('#mon-log').innerHTML=M.log.length
-  ? M.log.map(function(l){return '<div class="log">'+esc(l.t)
-     +'<span>'+esc(l.r)+(l.m?' · '+esc(l.m):'')+' · '+l.at+'</span></div>'}).join('')
+  ? M.log.map(function(l){return '<div class="log">'+esc(l.t)+'<span>'+esc(l.r)
+     +(l.m?' · '+esc(l.m):'')+' · '+l.at+'</span></div>'}).join('')
   : '<div class="note">아직 없습니다. 상태 변경과 재배차는 사유를 남겨야 처리됩니다.</div>';
 }
-
+function pickDriver(id){
+ M.sel=id;monList();monRender();monSide();
+ if(!LF)return;
+ var d=DRIVERS.filter(function(x){return x.id===id})[0];
+ if(d)mmap.fitBounds(L.latLngBounds(d.plan.concat(d.act)),{padding:[36,36],maxZoom:14.5});
+}
 $('#mon-filter').addEventListener('click',function(e){
  var b=e.target.closest('.chip');if(!b)return;
  M.filter=b.dataset.f;
@@ -850,25 +892,20 @@ $('#mon-filter').addEventListener('click',function(e){
  monList();
 });
 $('#mon-drvs').addEventListener('click',function(e){
- var b=e.target.closest('.drv');if(!b)return;
- M.sel=b.dataset.id;monList();monMap();monSide();
-});
-/* 지도 조작은 선택을 풀지 않습니다 (SPEC-MON-006) */
+ var b=e.target.closest('.drv');if(b)pickDriver(b.dataset.id)});
 $('#mon-recenter').addEventListener('click',function(){
- monMap();toast('지도를 초기화했습니다 · 선택한 기사는 유지됩니다')});
+ if(LF&&monBounds)mmap.fitBounds(monBounds,{padding:[30,30]});
+ monRender();toast('지도를 초기화했습니다 · 선택한 기사는 유지됩니다')});
 
-/* ── SPEC-MON-008 : 사유 없는 변경은 처리되지 않음 ── */
-var REASONS={
- status:['고객 부재','주소 오류','파손 확인','수취 거부','출입 불가','기타'],
- reassign:['경로 이탈','차량 고장','기사 요청','물량 초과','사고','기타']
-};
+/* SPEC-MON-008 */
+var REASONS={status:['고객 부재','주소 오류','파손 확인','수취 거부','출입 불가','기타'],
+ reassign:['경로 이탈','차량 고장','기사 요청','물량 초과','사고','기타']};
 var scrim=$('#scrim'),mOk=$('#m-ok'),mReason=$('#m-reason'),mMemo=$('#m-memo'),pending=null;
 function openModal(kind,target){
  pending={kind:kind,target:target};
  $('#m-title').textContent=kind==='status'?'배송 상태 변경':'기사 재배차';
- $('#m-desc').textContent=kind==='status'
-  ? target+' 의 배송 상태를 바꿉니다.'
-  : (DRIVERS.filter(function(d){return d.id===M.sel})[0]||{}).name+' 기사의 잔여 물량을 다른 기사에게 넘깁니다.';
+ $('#m-desc').textContent=kind==='status'?target+' 의 배송 상태를 바꿉니다.'
+  :(DRIVERS.filter(function(d){return d.id===M.sel})[0]||{}).name+' 기사의 잔여 물량을 다른 기사에게 넘깁니다.';
  mReason.innerHTML='<option value="">— 사유를 고르세요 —</option>'
   +REASONS[kind].map(function(r){return '<option>'+r+'</option>'}).join('');
  mMemo.value='';mOk.disabled=true;$('#m-req').style.visibility='visible';
@@ -876,16 +913,16 @@ function openModal(kind,target){
 }
 mReason.addEventListener('change',function(){
  mOk.disabled=!mReason.value;
- $('#m-req').style.visibility=mReason.value?'hidden':'visible';
-});
+ $('#m-req').style.visibility=mReason.value?'hidden':'visible'});
 $('#m-cancel').addEventListener('click',function(){scrim.hidden=true;pending=null});
 scrim.addEventListener('click',function(e){if(e.target===scrim){scrim.hidden=true;pending=null}});
 document.addEventListener('keydown',function(e){
- if(e.key==='Escape'){if(!scrim.hidden){scrim.hidden=true;pending=null}
-  if(!$('#spec-panel').hidden)$('#spec-panel').hidden=true}});
+ if(e.key!=='Escape')return;
+ if(!scrim.hidden){scrim.hidden=true;pending=null}
+ if(!$('#spec-panel').hidden)$('#spec-panel').hidden=true});
 mOk.addEventListener('click',function(){
  if(!pending||!mReason.value)return;
- var now=new Date(),at=('0'+now.getHours()).slice(-2)+':'+('0'+now.getMinutes()).slice(-2);
+ var n=new Date(),at=('0'+n.getHours()).slice(-2)+':'+('0'+n.getMinutes()).slice(-2);
  M.log.unshift({t:(pending.kind==='status'?'상태 변경 · ':'재배차 · ')+(pending.target||M.sel),
   r:mReason.value,m:mMemo.value.trim(),at:at});
  scrim.hidden=true;pending=null;monSide();
@@ -899,9 +936,15 @@ document.addEventListener('click',function(e){
  else if(a==='photo')toast('배송 완료 사진은 이 프로토타입에 포함하지 않았습니다');
 });
 
-monKpi();monMap();monList();monSide();
+/* ══════════ 부팅 ══════════ */
+if(LF){initCluster();initMon()}
+else{
+ $('#cls-svg').hidden=false;$('#mon-svg').hidden=false;
+ $('#cls-hint').textContent='지도 타일을 불러오지 못해 간이 지도로 표시합니다 · 편집은 그대로 동작합니다';
+}
+buildFacets();renderCls();
+monKpi();monList();monSide();monRender();
 
-/* ══════════ 화면 전환 · 스펙 패널 ══════════ */
 $('.nav').addEventListener('click',function(e){
  var a=e.target.closest('a');if(!a)return;
  e.preventDefault();
@@ -911,7 +954,11 @@ $('.nav').addEventListener('click',function(e){
  a.setAttribute('aria-current','page');
  $('#v-cluster').hidden=(v!=='cluster');
  $('#v-monitor').hidden=(v!=='monitor');
- if(v==='cluster')drawCluster();else monMap();
+ if(LF)setTimeout(function(){
+  if(v==='cluster'){cmap.invalidateSize();return}
+  mmap.invalidateSize();
+  if(!monFitted&&monBounds){mmap.fitBounds(monBounds,{padding:[30,30]});monFitted=true}
+ },40);
 });
 
 var SPECS=[
@@ -921,7 +968,7 @@ var SPECS=[
  ['SPEC-CLS-004','폴리곤에 묶인 Sector · 물품 · 컨테이너를 즉시 집계하고 <b>송장번호까지 역추적</b>합니다.','지도 우상단 POLYGON 카드'],
  ['SPEC-CLS-005','상단 집계는 편집과 <b>같은 트랜잭션에서 갱신</b>합니다. 지도와 숫자가 어긋나면 편집을 신뢰할 수 없습니다.','드래그 중 KPI 6개가 함께 변합니다'],
  ['SPEC-CLS-006','Sector ID와 alias를 다중 선택해 범위를 좁힙니다. <b>지도와 목록에 동시 적용</b>됩니다.','우측 체크박스 두 열'],
- ['SPEC-CLS-007','CLUSTER ID는 소터의 <b>CHUTE ID와 1:1</b>입니다. 행을 누르면 매핑이 보입니다.','우측 플랜 테이블'],
+ ['SPEC-CLS-007','CLUSTER ID는 소터의 <b>CHUTE ID와 1:1</b>입니다. 행이나 핀을 누르면 매핑이 보입니다.','우측 플랜 테이블'],
  ['SPEC-CLS-008','플랜 병합 · 물품 이동은 <b>확정 전에만</b> 가능합니다.','플랜 생성 후 두 버튼이 잠깁니다'],
  ['SPEC-CLS-009','플랜 생성이 <b>소터 전송 트리거</b>입니다. 누르는 순간 편집 창이 닫힙니다.','+ 플랜 생성'],
  ['SPEC-MON-001','미배송 · 운행 지연만 <b>붉은색으로 분리</b>합니다. 나머지는 참고값입니다.','상단 KPI 6개 중 2개'],
