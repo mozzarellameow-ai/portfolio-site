@@ -815,7 +815,15 @@ function monFocus(){
  });
 }
 function monMapSVG(){
- var W=700,H=276,o='<rect width="700" height="276" fill="#EEF0F5"/>'+blocks(700,276,20240202,42);
+ var W=700,H=276,o='<rect width="700" height="276" fill="#EEF0F5"/>'+blocks(700,276,20240202,44)
+  +'<path d="M470,196 q38,-34 86,-18 q26,38 -14,64 q-50,12 -72,-46 Z" fill="#D8E7D5"/>'
+  +'<path d="M0,84 Q180,58 330,96 T700,74" stroke="#BFD4E6" stroke-width="14" fill="none"/>'
+  +'<g stroke="#FBFCFE" stroke-width="6" fill="none"><path d="M90,0 L124,276"/>'
+  +'<path d="M300,0 L318,276"/><path d="M500,0 L516,276"/><path d="M0,190 L700,206"/>'
+  +'<path d="M0,40 L700,28"/></g>'
+  +'<g stroke="#D4DCE5" stroke-width="1" fill="none"><path d="M90,0 L124,276"/>'
+  +'<path d="M300,0 L318,276"/><path d="M500,0 L516,276"/><path d="M0,190 L700,206"/>'
+  +'<path d="M0,40 L700,28"/></g>';
  var B={n:37.5280,s:37.4620,w:126.9950,e:127.1350};
  var p=function(ll){return [((ll[1]-B.w)/(B.e-B.w)*W).toFixed(1),((B.n-ll[0])/(B.n-B.s)*H).toFixed(1)]};
  var d2=function(a){return 'M'+a.map(function(ll){return p(ll).join(',')}).join(' L')};

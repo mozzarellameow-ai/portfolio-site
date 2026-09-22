@@ -185,40 +185,75 @@ svg{font-family:Pretendard;font-variant-numeric:tabular-nums}
 </style></head>
 <body>
 <!-- ══ TMS 01 · 표지 ══ -->
-<div class="wrap" id="tms-01"><div class="stage"><div class="fr cov">
- <div style="position:absolute;left:100px;top:150px;width:860px;z-index:2">
-  <div style="font-size:15px;font-weight:700;letter-spacing:.14em;color:#8FA8CF">DELIVUS · 2021.10 — 2024.02</div>
-  <div style="font-size:62px;font-weight:700;line-height:1.24;letter-spacing:-.035em;color:#fff;margin-top:22px">
-   배송 관제 시스템 TMS<br><span style="color:#8FA8CF">클러스터 플래닝과 실시간 관제</span></div>
-  <div style="font-size:17px;font-weight:600;color:#A8B4C6;margin-top:26px;line-height:1.7;max-width:760px">
-   자동 분류가 당일 현장을 모르는 탓에 허브에서 재분류가 반복됐습니다.<br>
-   알고리즘을 더 정교하게 만드는 길 대신, 소터로 보내기 직전에 운영자가 고칠 수 있게 했습니다.</div>
+<div class="wrap" id="tms-01"><div class="stage"><div class="fr cov"
+ style="background:linear-gradient(108deg,#6B71FD 0%,#5E78F0 34%,#4E85DF 72%,#438BD5 100%)">
+
+ <!-- 하단 라이트 패널 -->
+ <div style="position:absolute;left:0;right:0;bottom:0;height:374px;background:#D9DFEF;
+  border-top-left-radius:46px"></div>
+
+ <!-- 타이틀 -->
+ <div style="position:absolute;left:100px;top:168px;width:1000px;z-index:3">
+  <div style="font-size:40px;font-weight:700;line-height:1.34;letter-spacing:-.038em;color:#fff;white-space:nowrap">
+   디지털 물류 솔루션, 수배송 관리 시스템 TMS 구축</div>
+  <div style="font-size:21px;font-weight:500;letter-spacing:-.005em;
+   color:rgba(255,255,255,.62);margin-top:16px">Transportation Management System</div>
  </div>
- <div style="position:absolute;left:1000px;top:150px;width:820px;height:600px;z-index:1">
-  <div style="position:absolute;right:0;top:0;width:700px;height:571px;overflow:hidden;border-radius:8px;
-   transform:rotate(-1.2deg);box-shadow:0 48px 96px -34px rgba(0,0,0,.88),0 0 0 1px rgba(160,190,240,.16)">
-   <img src="../images/pf31.jpg" alt="클러스터 플래닝 편집 화면" loading="lazy"
-    style="position:absolute;left:-501px;top:-352px;width:1656px;max-width:none;display:block"></div>
-  <div style="position:absolute;left:0;bottom:0;width:540px;height:441px;overflow:hidden;border-radius:7px;
-   transform:rotate(1.4deg);box-shadow:0 40px 84px -26px rgba(0,0,0,.9),0 0 0 1px rgba(160,190,240,.22)">
-   <img src="../images/pf34.jpg" alt="실시간 관제 화면" loading="lazy"
-    style="position:absolute;left:-386px;top:-271px;width:1277px;max-width:none;display:block"></div>
+
+ <!-- Contents -->
+ <div style="position:absolute;left:100px;top:548px;width:940px;z-index:3">
+  <div style="font-size:21px;font-weight:700;color:#fff;letter-spacing:-.025em">Contents</div>
+  <div style="font-size:15.5px;font-weight:600;color:rgba(255,255,255,.8);
+   margin-top:20px;line-height:2.05;letter-spacing:-.01em">
+   · 문제 정의 &nbsp; · 판단과 개입 시점 &nbsp; · 이해관계자 &nbsp; · 제품 구조 &nbsp; · 클러스터 플래닝<br>
+   · 성과 &nbsp; · 경로 관리 &nbsp; · 실시간 관제 &nbsp; · 개발 · 품질 &nbsp; · 화면 미리보기 &nbsp; · 회고</div>
  </div>
- <div style="position:absolute;left:100px;bottom:120px;width:1720px;border-top:1px solid rgba(255,255,255,.14);padding-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px">
-  <div><div style="font-size:11px;font-weight:700;letter-spacing:.13em;color:#6C7A90">작업 기간</div>
-   <div style="font-size:14px;font-weight:600;color:#D6DEE9;margin-top:10px;line-height:1.75">
-    2021.10 — 12 · MVP PWA 출시<br>2022.02 — 06 · MVP 유지보수<br>2022.09 — 12 · v2.0 Retool<br>2024.01 — 02 · v3.0 PWA</div></div>
-  <div><div style="font-size:11px;font-weight:700;letter-spacing:.13em;color:#6C7A90">역할 · 유닛</div>
-   <div style="font-size:14px;font-weight:600;color:#D6DEE9;margin-top:10px;line-height:1.75">
-    Product Manager<br>PM 1인 · FE 1인 · BE 1인<br>정책 · 화면 기획 전담</div></div>
-  <div><div style="font-size:11px;font-weight:700;letter-spacing:.13em;color:#6C7A90">다룬 범위</div>
-   <div style="font-size:14px;font-weight:600;color:#D6DEE9;margin-top:10px;line-height:1.75">
-    클러스터 플래닝 · 경로 관리<br>실시간 관제 · 배차<br>운영 백오피스 15개 도메인</div></div>
-  <div><div style="font-size:11px;font-weight:700;letter-spacing:.13em;color:#6C7A90">이해관계자</div>
-   <div style="font-size:14px;font-weight:600;color:#D6DEE9;margin-top:10px;line-height:1.75">
-    판매자 · 간선기사 · 물류 운영자<br>라스트마일 기사 · 최종 고객<br>5개 군</div></div>
+
+ <!-- Project Information -->
+ <div style="position:absolute;left:100px;bottom:78px;width:1180px;z-index:3">
+  <div style="font-size:19px;font-weight:700;color:#141A2B;letter-spacing:-.025em">Project Information</div>
+  <div style="display:flex;gap:64px;margin-top:24px">
+   <div style="display:grid;grid-template-columns:78px auto;gap:11px 26px;
+    font-size:13.5px;line-height:1.6;letter-spacing:-.012em">
+    <div style="font-weight:700;color:#141A2B">작업 기간</div>
+    <div style="font-weight:500;color:#39415A">2021.10 ~ 2021.12 (약 2개월) MVP PWA 출시</div>
+    <div></div><div style="font-weight:500;color:#39415A">2022.02 ~ 2022.06 (약 4개월) MVP PWA 유지보수</div>
+    <div></div><div style="font-weight:500;color:#39415A">2022.09 ~ 2022.12 (약 3개월) v2.0 Retool 개발</div>
+    <div></div><div style="font-weight:500;color:#39415A">2024.01 ~ 2024.02 (약 1개월) v3.0 PWA 출시</div>
+   </div>
+   <div style="display:grid;grid-template-columns:78px auto;gap:11px 26px;
+    font-size:13.5px;line-height:1.6;letter-spacing:-.012em">
+    <div style="font-weight:700;color:#141A2B">역할</div>
+    <div style="font-weight:500;color:#39415A">Product Manager</div>
+    <div style="font-weight:700;color:#141A2B">기여</div>
+    <div style="font-weight:500;color:#39415A">기획 90%, 디자인 90%, 관리 90%</div>
+    <div style="font-weight:700;color:#141A2B">작업 범위</div>
+    <div style="font-weight:500;color:#39415A">제품 MVP 기획 및 UX · UI 디자인, 제품 로드맵 관리</div>
+    <div style="font-weight:700;color:#141A2B">유닛 구성</div>
+    <div style="font-weight:500;color:#39415A">PM(본인), Frontend Developer, Backend Developer 총 3인</div>
+   </div>
+  </div>
  </div>
- <div class="pgn w">TMS 01</div>
+
+ <!-- 모니터 -->
+ <div style="position:absolute;left:1002px;top:98px;z-index:2">
+  <div style="width:1130px;padding:13px 13px 38px;background:linear-gradient(180deg,#F7F8FA,#E8EAEF);
+   border-radius:15px;box-shadow:0 44px 90px -30px rgba(18,24,48,.42),0 0 0 1px rgba(255,255,255,.55) inset">
+   <div style="width:1104px;height:569px;border-radius:5px;overflow:hidden;background:#F5F6FA;
+    box-shadow:0 0 0 1px rgba(20,26,43,.16)">
+    <iframe src="tms-screen.html?embed=1#monitor" title="실시간 관제 화면" scrolling="no"
+     style="width:1680px;height:866px;border:0;display:block;
+     transform:scale(0.657143);transform-origin:0 0"></iframe>
+   </div>
+  </div>
+  <div style="width:150px;height:92px;margin:0 auto;
+   background:linear-gradient(180deg,#DDE0E6,#C6CAD3)"></div>
+  <div style="width:424px;height:17px;margin:0 auto;border-radius:9px;
+   background:linear-gradient(180deg,#D3D6DE,#B9BDC8);
+   box-shadow:0 14px 26px -12px rgba(18,24,48,.4)"></div>
+ </div>
+
+ <div class="pgn" style="color:#8790A6">TMS 01</div>
 </div></div></div>
 
 <!-- ══ TMS 02 · 문제 정의 ══ -->
